@@ -16,27 +16,33 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="12dp"
-            android:text="Sign In"
+            android:layout_marginBottom="24dp"
+            android:text="SIGN IN"
             android:textSize="56px"/>
         <EditText
             android:layout_width="450px"
             android:layout_height="80px"
-            android:layout_marginBottom="6px"
+            android:layout_marginBottom="28px"
+            android:paddingLeft="10dp"
             android:hint="Username"
+            android:background="@drawable/round_et"
             android:id="@+id/et_username"/>
         <EditText
             android:layout_width="450px"
             android:layout_height="80px"
-            android:layout_marginBottom="6px"
+            android:layout_marginBottom="28px"
+            android:paddingLeft="10dp"
             android:hint="Password"
             android:password="true"
+            android:background="@drawable/round_et"
             android:id="@+id/et_password"/>
         <Button
             android:layout_width="450px"
             android:layout_height="80px"
             android:layout_marginBottom="36px"
-            android:text="Sign In"
+            android:text="SIGN IN"
+            android:textColor="#fff"
+            android:background="@drawable/round_btn"
             android:id="@+id/btn_signin"/>
 
         <!-- Register start-->
@@ -52,6 +58,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Register"
+                android:textColor="#fa5961"
                 android:id="@+id/tv_register"
                 android:layout_weight="1"/>
         </LinearLayout>
