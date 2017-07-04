@@ -5,7 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.sigma.prouds.LoginActivity">
+    tools:context="com.sigma.prouds.LoginActivity"
+    android:background="@drawable/background">
 
     <!-- Register start-->
     <LinearLayout

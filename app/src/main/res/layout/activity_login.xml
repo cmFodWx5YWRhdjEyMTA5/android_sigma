@@ -5,14 +5,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.sigma.prouds.LoginActivity">
+    tools:context="com.sigma.prouds.LoginActivity"
+    android:background="@drawable/background">
     <!-- Sign In start -->
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true">
+        android:layout_centerHorizontal="true"
+        android:id="@+id/ll_signin">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -45,26 +47,29 @@
             android:background="@drawable/round_btn"
             android:id="@+id/btn_signin"/>
 
-        <!-- Register start-->
-        <LinearLayout
-            android:layout_width="240dp"
-            android:layout_height="wrap_content">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/register"
-                android:layout_weight="1"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Register"
-                android:textColor="@color/pink"
-                android:id="@+id/tv_register"
-                android:layout_weight="1"/>
-        </LinearLayout>
-        <!-- Register end-->
-
     </LinearLayout>
     <!-- Sign In end-->
+    <!-- Register start-->
+    <LinearLayout
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/ll_signin">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/register"
+            android:layout_weight="1" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Register"
+            android:textColor="@color/pink"
+            android:id="@+id/tv_register"
+            android:layout_weight="1"/>
+    </LinearLayout>
+    <!-- Register end-->
+
+
 
 </RelativeLayout>
