@@ -7,14 +7,23 @@
     android:layout_height="match_parent"
     tools:context="com.sigma.prouds.LoginActivity"
     android:background="@drawable/background">
-
+    <!-- Logo start -->
+    <ImageView
+        android:layout_width="240dp"
+        android:layout_height="70dp"
+        android:layout_marginLeft="18dp"
+        android:layout_above="@+id/ll_signin"
+        app:srcCompat="@drawable/logo" />
+    <!-- Logo end -->
     <!-- Register start-->
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
         android:orientation="vertical"
         android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true">
+        android:layout_centerHorizontal="true"
+        android:id="@+id/ll_signin">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
