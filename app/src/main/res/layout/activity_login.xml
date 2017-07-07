@@ -73,7 +73,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Register"
-            android:textColor="@color/pink"
+            android:textColor="@color/btn"
             android:id="@+id/tv_register"
             android:layout_weight="1"/>
     </LinearLayout>

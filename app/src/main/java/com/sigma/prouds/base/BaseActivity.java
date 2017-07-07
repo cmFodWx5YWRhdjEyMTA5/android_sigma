@@ -23,6 +23,7 @@ public abstract class BaseActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(getLayout());
         query = new AQuery(this);
+        workingSpace();
     }
 
     @Override
