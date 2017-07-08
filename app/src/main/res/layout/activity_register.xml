@@ -5,43 +5,53 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.sigma.prouds.LoginActivity">
-
+    tools:context="com.sigma.prouds.LoginActivity"
+    android:background="@drawable/background">
+    <!-- Logo start -->
+    <ImageView
+        android:layout_width="240dp"
+        android:layout_height="70dp"
+        android:layout_marginLeft="18dp"
+        android:layout_above="@+id/ll_signin"
+        app:srcCompat="@drawable/logo" />
+    <!-- Logo end -->
     <!-- Register start-->
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
         android:orientation="vertical"
         android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true">
+        android:layout_centerHorizontal="true"
+        android:id="@+id/ll_signin">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="24dp"
             android:text="REGISTER"
-            android:textSize="56px"/>
+            android:textSize="24dp"/>
         <EditText
-            android:layout_width="450px"
-            android:layout_height="80px"
-            android:layout_marginBottom="28px"
-            android:paddingLeft="10dp"
+            android:layout_width="240dp"
+            android:layout_height="48dp"
+            android:layout_marginBottom="14dp"
+            android:paddingLeft="20dp"
             android:hint="Email address"
             android:background="@drawable/round_et"
             android:id="@+id/et_email"/>
         <EditText
-            android:layout_width="450px"
-            android:layout_height="80px"
-            android:layout_marginBottom="28px"
-            android:paddingLeft="10dp"
+            android:layout_width="240dp"
+            android:layout_height="48dp"
+            android:layout_marginBottom="14dp"
+            android:paddingLeft="20dp"
             android:hint="Password"
-            android:password="true"
+            android:inputType="textPassword"
             android:background="@drawable/round_et"
             android:id="@+id/et_password"/>
         <Button
-            android:layout_width="450px"
-            android:layout_height="80px"
+            android:layout_width="240dp"
+            android:layout_height="48dp"
             android:text="REGISTER"
-            android:textColor="#fff"
+            android:textColor="@color/white"
             android:background="@drawable/round_btn"
             android:id="@+id/btn_register"/>
     </LinearLayout>

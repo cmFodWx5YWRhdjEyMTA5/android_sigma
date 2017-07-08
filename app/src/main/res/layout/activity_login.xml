@@ -5,66 +5,80 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.sigma.prouds.LoginActivity">
+    tools:context="com.sigma.prouds.LoginActivity"
+    android:background="@drawable/background">
+    <!-- Logo start -->
+    <ImageView
+        android:layout_width="240dp"
+        android:layout_height="70dp"
+        android:layout_marginLeft="18dp"
+        android:layout_above="@+id/ll_signin"
+        app:srcCompat="@drawable/logo" />
+    <!-- Logo end -->
     <!-- Sign In start -->
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
         android:orientation="vertical"
         android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true">
+        android:layout_centerHorizontal="true"
+        android:id="@+id/ll_signin">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="24dp"
             android:text="SIGN IN"
-            android:textSize="56px"/>
+            android:textSize="24sp"/>
         <EditText
-            android:layout_width="450px"
-            android:layout_height="80px"
-            android:layout_marginBottom="28px"
-            android:paddingLeft="10dp"
+            android:layout_width="240dp"
+            android:layout_height="48dp"
+            android:layout_marginBottom="14dp"
+            android:paddingLeft="20dp"
             android:hint="Username"
             android:background="@drawable/round_et"
             android:id="@+id/et_username"/>
         <EditText
-            android:layout_width="450px"
-            android:layout_height="80px"
-            android:layout_marginBottom="28px"
-            android:paddingLeft="10dp"
+            android:layout_width="240dp"
+            android:layout_height="48dp"
+            android:layout_marginBottom="14dp"
+            android:paddingLeft="20dp"
             android:hint="Password"
-            android:password="true"
+            android:inputType="textPassword"
             android:background="@drawable/round_et"
             android:id="@+id/et_password"/>
         <Button
-            android:layout_width="450px"
-            android:layout_height="80px"
-            android:layout_marginBottom="36px"
+            android:layout_width="240dp"
+            android:layout_height="48dp"
+            android:layout_marginBottom="20dp"
             android:text="SIGN IN"
-            android:textColor="#fff"
+            android:textColor="@color/white"
             android:background="@drawable/round_btn"
             android:id="@+id/btn_signin"/>
 
-        <!-- Register start-->
-        <LinearLayout
-            android:layout_width="450px"
-            android:layout_height="wrap_content">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Don't have an account?"
-                android:layout_weight="1"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Register"
-                android:textColor="#fa5961"
-                android:id="@+id/tv_register"
-                android:layout_weight="1"/>
-        </LinearLayout>
-        <!-- Register end-->
-
     </LinearLayout>
     <!-- Sign In end-->
+    <!-- Register start-->
+    <LinearLayout
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/ll_signin">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/register"
+            android:layout_weight="1" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Register"
+            android:textColor="@color/btn"
+            android:id="@+id/tv_register"
+            android:layout_weight="1"/>
+    </LinearLayout>
+    <!-- Register end-->
+
+
 
 </RelativeLayout>
