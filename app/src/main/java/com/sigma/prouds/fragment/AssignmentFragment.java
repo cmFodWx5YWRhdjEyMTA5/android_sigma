@@ -1,5 +1,6 @@
 package com.sigma.prouds.fragment;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -13,8 +14,16 @@ import com.sigma.prouds.R;
  */
 
 public class AssignmentFragment extends Fragment {
+    static Context ctx;
+
     public AssignmentFragment() {
         // Required empty public constructor
+    }
+
+    public static AssignmentFragment newInstance(Context context) {
+        AssignmentFragment fragment = new AssignmentFragment();
+        ctx = context;
+        return fragment;
     }
 
     @Override

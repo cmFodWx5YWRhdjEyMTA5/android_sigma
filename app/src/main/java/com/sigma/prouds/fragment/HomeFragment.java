@@ -1,5 +1,6 @@
 package com.sigma.prouds.fragment;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -14,8 +15,16 @@ import com.sigma.prouds.base.BaseActivity;
  */
 
 public class HomeFragment extends Fragment {
+    static Context ctx;
+
     public HomeFragment() {
         // Required empty public constructor
+    }
+
+    public static HomeFragment newInstance(Context context) {
+        HomeFragment fragment = new HomeFragment();
+        ctx = context;
+        return fragment;
     }
 
     @Override
