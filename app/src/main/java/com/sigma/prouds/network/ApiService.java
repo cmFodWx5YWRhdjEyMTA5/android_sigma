@@ -4,6 +4,7 @@ import com.sigma.prouds.model.EmptyModel;
 import com.sigma.prouds.network.response.DetailProjectResponse;
 import com.sigma.prouds.network.response.LoginResponse;
 import com.sigma.prouds.network.response.ProjectDocResponse;
+import com.sigma.prouds.network.response.ProjectIssueResponse;
 import com.sigma.prouds.network.response.TeamMemberResponse;
 
 import retrofit2.Call;
@@ -32,5 +33,9 @@ public interface ApiService
 
     @GET("dev/home/projectdoc/{project_id}")
     Call<ProjectDocResponse> getProjectDoc (@Path("project_id") String projectId);
+
+    @GET("dev/home/projectissue/{project_id}")
+    Call<ProjectIssueResponse> getProject (@Path("project_id") String projectId);
+
 
 }
