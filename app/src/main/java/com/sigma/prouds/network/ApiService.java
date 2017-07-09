@@ -1,11 +1,12 @@
 package com.sigma.prouds.network;
 
 import com.sigma.prouds.model.EmptyModel;
-import com.sigma.prouds.model.LoginResponse;
+import com.sigma.prouds.network.response.LoginResponse;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
-import retrofit2.http.GET;
+import retrofit2.http.Field;
+import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.POST;
 
 /**
@@ -14,6 +15,7 @@ import retrofit2.http.POST;
 
 public interface ApiService
 {
+    @FormUrlEncoded
     @POST("dev/login/login")
-    Call<LoginResponse> login(@Body EmptyModel model);
+    Call<LoginResponse> login(@Field("user_id") String userId, @Field("password") String password, @Field("fpid") String fpid);
 }
