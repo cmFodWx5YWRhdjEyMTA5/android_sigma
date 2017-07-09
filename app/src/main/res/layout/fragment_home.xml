@@ -1,44 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/greyBg">
 
-    <!-- Toolbar start-->
-    <!--<android.support.v7.widget.Toolbar-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="56dp"-->
-        <!--android:background="@color/header"-->
-        <!--android:paddingRight="16dp"-->
-        <!--android:id="@+id/toolbar">-->
-        <!--<RelativeLayout-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="match_parent">-->
-            <!--<ImageView-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="48dp"-->
-                <!--android:layout_centerVertical="true"-->
-                <!--app:srcCompat="@drawable/logo_white"/>-->
-            <!--<ImageView-->
-                <!--android:layout_width="24dp"-->
-                <!--android:layout_height="24dp"-->
-                <!--android:layout_alignParentEnd="true"-->
-                <!--android:layout_alignParentRight="true"-->
-                <!--android:layout_centerVertical="true"-->
-                <!--app:srcCompat="@drawable/search"-->
-                <!--android:id="@+id/iv_search" />-->
-        <!--</RelativeLayout>-->
-    <!--</android.support.v7.widget.Toolbar>-->
-    <!-- Toolbar end-->
-
-    <!-- Recycler View start -->
+    <!--Recycler View start-->
     <!--<android.support.v7.widget.RecyclerView-->
         <!--android:layout_width="match_parent"-->
         <!--android:layout_height="wrap_content"-->
-        <!--android:id="@+id/rv_home"-->
-        <!--android:layout_below="@+id/toolbar">-->
+        <!--android:id="@+id/rv_home">-->
     <!--</android.support.v7.widget.RecyclerView>-->
-    <!-- Recycler View end -->
+    <!--Recycler View end-->
 
 </RelativeLayout>

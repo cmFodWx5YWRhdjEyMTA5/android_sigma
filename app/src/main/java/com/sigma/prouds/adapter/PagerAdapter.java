@@ -23,7 +23,6 @@ public class PagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        //// TODO: 7/7/2017 assign fragment
         return fragmentList.get(position);
     }
 

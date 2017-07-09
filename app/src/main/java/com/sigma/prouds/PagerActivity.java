@@ -1,19 +1,27 @@
 package com.sigma.prouds;
 
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.*;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.Toolbar;
 
 import com.sigma.prouds.base.BaseActivity;
+import com.sigma.prouds.base.BaseFragmentActivity;
 import com.sigma.prouds.fragment.AssignmentFragment;
 import com.sigma.prouds.fragment.HomeFragment;
 import com.sigma.prouds.fragment.NotifFragment;
 import com.sigma.prouds.fragment.PerformanceFragment;
 import com.sigma.prouds.fragment.TimesheetFragment;
 
-public class PagerActivity extends BaseActivity {
+public class PagerActivity extends BaseFragmentActivity {
 
     private TabLayout tabLayout;
-    private ViewPager viewPager;
+    private android.support.v7.widget.Toolbar toolbar;
+    private RelativeLayout homeToolbar;
+    private Fragment fragment;
     private int[] tabIcons = {
             R.drawable.tab_home,
             R.drawable.tab_assignment,
@@ -21,6 +29,7 @@ public class PagerActivity extends BaseActivity {
             R.drawable.tab_notif,
             R.drawable.tab_performance
     };
+
     @Override
     protected int getLayout() {
         return R.layout.activity_pager;
@@ -29,31 +38,67 @@ public class PagerActivity extends BaseActivity {
     @Override
     protected void workingSpace() {
         assignXML();
-        setupViewPager(viewPager);
-        tabLayout.setupWithViewPager(viewPager);
-        setTabIcons();
+        setTabLayout();
+        tabEvent();
     }
 
     private void assignXML() {
-        viewPager = (ViewPager) findViewById(R.id.view_pager);
+        toolbar = (android.support.v7.widget.Toolbar) findViewById(R.id.toolbar);
         tabLayout = (TabLayout) findViewById(R.id.tabs);
+        homeToolbar = (RelativeLayout) toolbar.findViewById(R.id.tb_home);
     }
 
-    private void setupViewPager(ViewPager viewPager) {
-        com.sigma.prouds.adapter.PagerAdapter adapter = new com.sigma.prouds.adapter.PagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(new HomeFragment());
-        adapter.addFragment(new AssignmentFragment());
-        adapter.addFragment(new TimesheetFragment());
-        adapter.addFragment(new NotifFragment());
-        adapter.addFragment(new PerformanceFragment());
-        viewPager.setAdapter(adapter);
+    private void setTabLayout() {
+        tabLayout.addTab(tabLayout.newTab().setIcon(tabIcons[0]));
+        tabLayout.addTab(tabLayout.newTab().setIcon(tabIcons[1]));
+        tabLayout.addTab(tabLayout.newTab().setIcon(tabIcons[2]));
+        tabLayout.addTab(tabLayout.newTab().setIcon(tabIcons[3]));
+        tabLayout.addTab(tabLayout.newTab().setIcon(tabIcons[4]));
     }
 
-    private void setTabIcons(){
-        tabLayout.getTabAt(0).setIcon(tabIcons[0]);
-        tabLayout.getTabAt(1).setIcon(tabIcons[1]);
-        tabLayout.getTabAt(2).setIcon(tabIcons[2]);
-        tabLayout.getTabAt(3).setIcon(tabIcons[3]);
-        tabLayout.getTabAt(4).setIcon(tabIcons[4]);
+    public void tabEvent() {
+        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                setFragment(tab.getPosition());
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
     }
+
+    public void setFragment(int position) {
+        switch (position) {
+            case 0:
+                fragment = HomeFragment.newInstance(this);
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).commit();
+                //TODO add view for toolbar
+                break;
+            case 1:
+                fragment = AssignmentFragment.newInstance(this);
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).commit();
+                break;
+            case 2:
+                fragment = TimesheetFragment.newInstance(this);
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).commit();
+                break;
+            case 3:
+                fragment = NotifFragment.newInstance(this);
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).commit();
+                break;
+            case 4:
+                fragment = PerformanceFragment.newInstance(this);
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).commit();
+                break;
+        }
+    }
+
 }

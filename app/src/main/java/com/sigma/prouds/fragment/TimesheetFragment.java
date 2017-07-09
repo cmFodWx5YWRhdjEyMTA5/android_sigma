@@ -1,5 +1,6 @@
 package com.sigma.prouds.fragment;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -8,13 +9,22 @@ import android.view.ViewGroup;
 
 import com.sigma.prouds.R;
 
+
 /**
  * Created by goy on 7/7/2017.
  */
 
 public class TimesheetFragment extends Fragment {
+    static Context ctx;
+
     public TimesheetFragment() {
         // Required empty public constructor
+    }
+
+    public static TimesheetFragment newInstance(Context context) {
+        TimesheetFragment fragment = new TimesheetFragment();
+        ctx = context;
+        return fragment;
     }
 
     @Override

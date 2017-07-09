@@ -1,5 +1,6 @@
 package com.sigma.prouds.fragment;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -13,8 +14,16 @@ import com.sigma.prouds.R;
  */
 
 public class NotifFragment extends Fragment {
+    static Context ctx;
+
     public NotifFragment() {
         // Required empty public constructor
+    }
+
+    public static NotifFragment newInstance(Context context) {
+        NotifFragment fragment = new NotifFragment();
+        ctx = context;
+        return fragment;
     }
 
     @Override

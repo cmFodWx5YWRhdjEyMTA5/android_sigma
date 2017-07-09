@@ -23,9 +23,6 @@
         <activity
             android:name=".RegisterActivity"
             android:label="@string/title_activity_register" />
-        <activity
-            android:name=".fragment.HomeFragment"
-            android:label="@string/title_activity_home" />
         <activity android:name=".PagerActivity">
 
         </activity>
