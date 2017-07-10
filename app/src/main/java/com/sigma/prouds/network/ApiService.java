@@ -3,6 +3,9 @@ package com.sigma.prouds.network;
 import com.sigma.prouds.model.EmptyModel;
 import com.sigma.prouds.network.response.DetailProjectResponse;
 import com.sigma.prouds.network.response.LoginResponse;
+import com.sigma.prouds.network.response.MyActivityResponse;
+import com.sigma.prouds.network.response.MyAssignmentResponse;
+import com.sigma.prouds.network.response.ProjectActivityResponse;
 import com.sigma.prouds.network.response.ProjectDocResponse;
 import com.sigma.prouds.network.response.ProjectIssueResponse;
 import com.sigma.prouds.network.response.TeamMemberResponse;
@@ -37,5 +40,13 @@ public interface ApiService
     @GET("dev/home/projectissue/{project_id}")
     Call<ProjectIssueResponse> getProject (@Path("project_id") String projectId);
 
+    @GET("dev/home/projectactivities/{project_id}")
+    Call<ProjectActivityResponse> getProjectActivity (@Path("project_id") String projectId);
+
+    @GET("dev/home/myactivities")
+    Call<MyActivityResponse> getMyActivityResponse();
+    
+    @GET("dev/home/myassignment")
+    Call<MyAssignmentResponse> getMyAssignmentResponse();
 
 }
