@@ -54,7 +54,7 @@
             android:text="SIGN IN"
             android:textColor="@color/white"
             android:background="@drawable/round_btn"
-            android:id="@+id/btn_signin"/>
+            android:id="@+id/bt_signin"/>
 
     </LinearLayout>
     <!-- Sign In end-->
