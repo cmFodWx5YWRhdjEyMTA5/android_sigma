@@ -4,9 +4,37 @@
     android:layout_height="match_parent">
 
     <!-- Toolbar start-->
+    <!-- home -->
     <include
         android:id="@+id/toolbar_home"
         layout="@layout/toolbar_home"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:visibility="gone">
+    </include>
+
+    <!-- assignment -->
+    <include
+        android:id="@+id/toolbar_assignment"
+        layout="@layout/toolbar_myassignment"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:visibility="gone">
+    </include>
+
+    <!-- timesheet -->
+    <include
+        android:id="@+id/toolbar_timesheet"
+        layout="@layout/toolbar_timesheet"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:visibility="gone">
+    </include>
+
+    <!-- performance -->
+    <include
+        android:id="@+id/toolbar_performance"
+        layout="@layout/toolbar_myperformance"
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
         android:visibility="gone">

@@ -2,31 +2,24 @@ package com.sigma.prouds;
 
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.view.*;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.Toolbar;
+import android.support.v7.widget.Toolbar;
+import android.view.View;
 
-import com.sigma.prouds.base.BaseActivity;
 import com.sigma.prouds.base.BaseFragmentActivity;
 import com.sigma.prouds.fragment.AssignmentFragment;
 import com.sigma.prouds.fragment.HomeFragment;
-import com.sigma.prouds.fragment.NotifFragment;
 import com.sigma.prouds.fragment.PerformanceFragment;
 import com.sigma.prouds.fragment.TimesheetFragment;
 
 public class PagerActivity extends BaseFragmentActivity {
 
     private TabLayout tabLayout;
-    private android.support.v7.widget.Toolbar toolbar;
-    private RelativeLayout homeToolbar;
+    private Toolbar tbHome, tbAssignment, tbTimesheet, tbPerformance;
     private Fragment fragment;
     private int[] tabIcons = {
             R.drawable.tab_home,
             R.drawable.tab_assignment,
-            R.drawable.timesheet,
-            R.drawable.tab_notif,
+            R.drawable.tab_timesheet,
             R.drawable.tab_performance
     };
 
@@ -43,9 +36,11 @@ public class PagerActivity extends BaseFragmentActivity {
     }
 
     private void assignXML() {
-        toolbar = (android.support.v7.widget.Toolbar) findViewById(R.id.toolbar);
         tabLayout = (TabLayout) findViewById(R.id.tabs);
-        homeToolbar = (RelativeLayout) toolbar.findViewById(R.id.tb_home);
+        tbHome = (Toolbar) findViewById(R.id.toolbar_home);
+        tbAssignment = (Toolbar) findViewById(R.id.toolbar_assignment);
+        tbTimesheet = (Toolbar) findViewById(R.id.toolbar_timesheet);
+        tbPerformance = (Toolbar) findViewById(R.id.toolbar_performance);
     }
 
     private void setTabLayout() {
@@ -53,7 +48,6 @@ public class PagerActivity extends BaseFragmentActivity {
         tabLayout.addTab(tabLayout.newTab().setIcon(tabIcons[1]));
         tabLayout.addTab(tabLayout.newTab().setIcon(tabIcons[2]));
         tabLayout.addTab(tabLayout.newTab().setIcon(tabIcons[3]));
-        tabLayout.addTab(tabLayout.newTab().setIcon(tabIcons[4]));
     }
 
     public void tabEvent() {
@@ -81,22 +75,34 @@ public class PagerActivity extends BaseFragmentActivity {
                 fragment = HomeFragment.newInstance(this);
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).commit();
                 //TODO add view for toolbar
+                tbHome.setVisibility(View.VISIBLE);
+                tbAssignment.setVisibility(View.GONE);
+                tbTimesheet.setVisibility(View.GONE);
+                tbPerformance.setVisibility(View.GONE);
                 break;
             case 1:
                 fragment = AssignmentFragment.newInstance(this);
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).commit();
+                tbHome.setVisibility(View.GONE);
+                tbAssignment.setVisibility(View.VISIBLE);
+                tbTimesheet.setVisibility(View.GONE);
+                tbPerformance.setVisibility(View.GONE);
                 break;
             case 2:
                 fragment = TimesheetFragment.newInstance(this);
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).commit();
+                tbHome.setVisibility(View.GONE);
+                tbAssignment.setVisibility(View.GONE);
+                tbTimesheet.setVisibility(View.VISIBLE);
+                tbPerformance.setVisibility(View.GONE);
                 break;
             case 3:
-                fragment = NotifFragment.newInstance(this);
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).commit();
-                break;
-            case 4:
                 fragment = PerformanceFragment.newInstance(this);
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).commit();
+                tbHome.setVisibility(View.GONE);
+                tbAssignment.setVisibility(View.GONE);
+                tbTimesheet.setVisibility(View.GONE);
+                tbPerformance.setVisibility(View.VISIBLE);
                 break;
         }
     }

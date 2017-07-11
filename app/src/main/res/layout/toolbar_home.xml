@@ -25,8 +25,8 @@
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            app:srcCompat="@drawable/search"
-            android:id="@+id/iv_search" />
+            app:srcCompat="@drawable/notif"
+            android:id="@+id/iv_notif" />
 
     </RelativeLayout>
 </android.support.v7.widget.Toolbar>

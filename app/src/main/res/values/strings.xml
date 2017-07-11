@@ -12,4 +12,6 @@
     <string name="toolbar_myperformance">MY PERFORMANCE</string>
     <string name="toolbar_notification">NOTIFICATION</string>
     <string name="toolbar_timesheet">TIMESHEET</string>
+
+    <string name="search_hint">Search business unit or project ...</string>
 </resources>
