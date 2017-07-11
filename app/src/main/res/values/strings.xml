@@ -7,4 +7,9 @@
     <string name="title_activity_home">HomeActivity</string>
 
     <string name="register">Don\'t have an account?</string>
+
+    <string name="toolbar_myassignment">MY ASSIGNMENT</string>
+    <string name="toolbar_myperformance">MY PERFORMANCE</string>
+    <string name="toolbar_notification">NOTIFICATION</string>
+    <string name="toolbar_timesheet">TIMESHEET</string>
 </resources>
