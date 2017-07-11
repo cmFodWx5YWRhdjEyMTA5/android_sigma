@@ -10,8 +10,8 @@ public class UserModel
     private String userName;
     private String buId;
     private String userTypeId;
-    private String SupId;
-    private String ProfId;
+    private String supId;
+    private String profId;
     private String lastLogin;
     private String loggedIn;
 
@@ -57,22 +57,22 @@ public class UserModel
 
     public String getSupId()
     {
-        return SupId;
+        return supId;
     }
 
     public void setSupId(String supId)
     {
-        SupId = supId;
+        this.supId = supId;
     }
 
     public String getProfId()
     {
-        return ProfId;
+        return profId;
     }
 
     public void setProfId(String profId)
     {
-        ProfId = profId;
+        this.profId = profId;
     }
 
     public String getLastLogin()

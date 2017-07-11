@@ -36,6 +36,7 @@
             android:layout_marginBottom="14dp"
             android:paddingLeft="20dp"
             android:hint="Username"
+            android:text="gina.nufus@sigma.co.id"
             android:background="@drawable/round_et"
             android:id="@+id/et_username"/>
         <EditText
@@ -44,6 +45,7 @@
             android:layout_marginBottom="14dp"
             android:paddingLeft="20dp"
             android:hint="Password"
+            android:text="S201502162"
             android:inputType="textPassword"
             android:background="@drawable/round_et"
             android:id="@+id/et_password"/>

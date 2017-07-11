@@ -10,12 +10,17 @@ import com.sigma.prouds.network.response.ProjectDocResponse;
 import com.sigma.prouds.network.response.ProjectIssueResponse;
 import com.sigma.prouds.network.response.TeamMemberResponse;
 
+import java.util.Map;
+
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.Field;
+import retrofit2.http.FieldMap;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.Multipart;
 import retrofit2.http.POST;
+import retrofit2.http.Part;
 import retrofit2.http.Path;
 
 /**
@@ -25,8 +30,9 @@ import retrofit2.http.Path;
 public interface ApiService
 {
     @FormUrlEncoded
-    @POST("dev/login/login")
+    @POST("dev/login/login/")
     Call<LoginResponse> login(@Field("user_id") String userId, @Field("password") String password, @Field("fpid") String fpid);
+
 
     @GET("dev/home/detailproject/{project_id}")
     Call<DetailProjectResponse> getDetailProject(@Path("project_id") String projectId);
@@ -45,7 +51,7 @@ public interface ApiService
 
     @GET("dev/home/myactivities")
     Call<MyActivityResponse> getMyActivityResponse();
-    
+
     @GET("dev/home/myassignment")
     Call<MyAssignmentResponse> getMyAssignmentResponse();
 

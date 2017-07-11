@@ -33,6 +33,9 @@ public class PagerActivity extends BaseFragmentActivity {
         assignXML();
         setTabLayout();
         tabEvent();
+        
+        fragment = HomeFragment.newInstance(this);
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).commit();
     }
 
     private void assignXML() {
