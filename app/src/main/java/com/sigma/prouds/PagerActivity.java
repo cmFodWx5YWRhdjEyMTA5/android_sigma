@@ -1,5 +1,6 @@
 package com.sigma.prouds;
 
+import android.graphics.Typeface;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.Toolbar;
@@ -33,7 +34,7 @@ public class PagerActivity extends BaseFragmentActivity {
         assignXML();
         setTabLayout();
         tabEvent();
-        
+
         fragment = HomeFragment.newInstance(this);
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).commit();
     }
@@ -44,6 +45,10 @@ public class PagerActivity extends BaseFragmentActivity {
         tbAssignment = (Toolbar) findViewById(R.id.toolbar_assignment);
         tbTimesheet = (Toolbar) findViewById(R.id.toolbar_timesheet);
         tbPerformance = (Toolbar) findViewById(R.id.toolbar_performance);
+
+        query.id(R.id.tv_title_toolbar_assignment).typeface(Typeface.createFromAsset(getAssets(), "lato_black.ttf"));
+        query.id(R.id.tv_title_toolbar_timesheet).typeface(Typeface.createFromAsset(getAssets(), "lato_black.ttf"));
+        query.id(R.id.tv_title_toolbar_myperformance).typeface(Typeface.createFromAsset(getAssets(), "lato_black.ttf"));
     }
 
     private void setTabLayout() {
@@ -78,32 +83,32 @@ public class PagerActivity extends BaseFragmentActivity {
                 fragment = HomeFragment.newInstance(this);
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).commit();
                 tbHome.setVisibility(View.VISIBLE);
-                tbAssignment.setVisibility(View.GONE);
-                tbTimesheet.setVisibility(View.GONE);
+                tbAssignment.setVisibility(View.INVISIBLE);
+                tbTimesheet.setVisibility(View.INVISIBLE);
                 tbPerformance.setVisibility(View.GONE);
                 break;
             case 1:
                 fragment = AssignmentFragment.newInstance(this);
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).commit();
-                tbHome.setVisibility(View.GONE);
+                tbHome.setVisibility(View.INVISIBLE);
                 tbAssignment.setVisibility(View.VISIBLE);
-                tbTimesheet.setVisibility(View.GONE);
-                tbPerformance.setVisibility(View.GONE);
+                tbTimesheet.setVisibility(View.INVISIBLE);
+                tbPerformance.setVisibility(View.INVISIBLE);
                 break;
             case 2:
                 fragment = TimesheetFragment.newInstance(this);
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).commit();
-                tbHome.setVisibility(View.GONE);
-                tbAssignment.setVisibility(View.GONE);
+                tbHome.setVisibility(View.INVISIBLE);
+                tbAssignment.setVisibility(View.INVISIBLE);
                 tbTimesheet.setVisibility(View.VISIBLE);
-                tbPerformance.setVisibility(View.GONE);
+                tbPerformance.setVisibility(View.INVISIBLE);
                 break;
             case 3:
                 fragment = PerformanceFragment.newInstance(this);
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).commit();
-                tbHome.setVisibility(View.GONE);
-                tbAssignment.setVisibility(View.GONE);
-                tbTimesheet.setVisibility(View.GONE);
+                tbHome.setVisibility(View.INVISIBLE);
+                tbAssignment.setVisibility(View.INVISIBLE);
+                tbTimesheet.setVisibility(View.INVISIBLE);
                 tbPerformance.setVisibility(View.VISIBLE);
                 break;
         }

@@ -13,6 +13,7 @@
         android:layout_height="match_parent">
 
         <TextView
+            android:id="@+id/tv_title_toolbar_timesheet"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/toolbar_timesheet"
