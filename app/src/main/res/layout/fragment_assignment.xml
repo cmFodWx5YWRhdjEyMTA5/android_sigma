@@ -2,12 +2,45 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/background"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp">
+
+    <!-- Search start -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="12dp"
+        android:orientation="horizontal"
+        android:id="@+id/ll_search">
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:paddingLeft="16dp"
+            android:textSize="14sp"
+            android:background="@color/white"
+            android:hint="@string/search_hint"
+            android:id="@+id/et_search" />
+        <ImageView
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_toRightOf="@id/et_search"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="12dp"
+            android:layout_gravity="center_vertical"
+            app:srcCompat="@drawable/search" />
+    </LinearLayout>
+    <!-- Search stop -->
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_assignment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_below="@+id/ll_search">
     </android.support.v7.widget.RecyclerView>
 
     <ProgressBar
