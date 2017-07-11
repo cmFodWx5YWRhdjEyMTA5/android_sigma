@@ -8,6 +8,8 @@ import android.view.ViewGroup;
  */
 
 public class NotifAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+//    BUILD CONSTRUCTOR HERE
+
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         return null;

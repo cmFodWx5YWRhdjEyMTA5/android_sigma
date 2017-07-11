@@ -1,4 +1,4 @@
-package com.sigma.prouds.Holder;
+package com.sigma.prouds.holder;
 
 import android.view.View;
 import android.widget.ProgressBar;
@@ -22,5 +22,6 @@ public class HomeChildHolder extends ChildViewHolder {
         percen = (TextView) itemView.findViewById(R.id.tv_percen);
         status = (TextView) itemView.findViewById(R.id.tv_status);
         progressBar = (ProgressBar) itemView.findViewById(R.id.pb_home);
+
     }
 }
