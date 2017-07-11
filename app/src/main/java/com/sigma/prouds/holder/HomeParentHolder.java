@@ -1,4 +1,4 @@
-package com.sigma.prouds.Holder;
+package com.sigma.prouds.holder;
 
 import android.view.View;
 import android.widget.ImageView;
