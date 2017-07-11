@@ -1,5 +1,6 @@
 package com.sigma.prouds;
 
+import android.graphics.Typeface;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.Toolbar;
@@ -44,6 +45,10 @@ public class PagerActivity extends BaseFragmentActivity {
         tbAssignment = (Toolbar) findViewById(R.id.toolbar_assignment);
         tbTimesheet = (Toolbar) findViewById(R.id.toolbar_timesheet);
         tbPerformance = (Toolbar) findViewById(R.id.toolbar_performance);
+
+        query.id(R.id.tv_title_toolbar_assignment).typeface(Typeface.createFromAsset(getAssets(), "lato_black.ttf"));
+        query.id(R.id.tv_title_toolbar_timesheet).typeface(Typeface.createFromAsset(getAssets(), "lato_black.ttf"));
+        query.id(R.id.tv_title_toolbar_myperformance).typeface(Typeface.createFromAsset(getAssets(), "lato_black.ttf"));
     }
 
     private void setTabLayout() {
