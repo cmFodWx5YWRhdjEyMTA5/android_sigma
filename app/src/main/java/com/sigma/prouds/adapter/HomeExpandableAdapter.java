@@ -9,8 +9,8 @@ import com.bignerdranch.expandablerecyclerview.Adapter.ExpandableRecyclerAdapter
 import com.bignerdranch.expandablerecyclerview.Model.ParentObject;
 import com.sigma.prouds.holder.HomeChildHolder;
 import com.sigma.prouds.holder.HomeParentHolder;
-import com.sigma.prouds.HomeChild;
-import com.sigma.prouds.HomeParent;
+import com.sigma.prouds.item.HomeChild;
+import com.sigma.prouds.item.HomeParent;
 import com.sigma.prouds.R;
 
 import java.util.List;

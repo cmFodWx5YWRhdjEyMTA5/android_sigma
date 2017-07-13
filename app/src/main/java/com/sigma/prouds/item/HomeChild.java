@@ -1,4 +1,4 @@
-package com.sigma.prouds;
+package com.sigma.prouds.item;
 
 import android.widget.ProgressBar;
 import android.widget.TextView;

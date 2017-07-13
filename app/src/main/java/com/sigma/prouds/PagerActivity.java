@@ -41,10 +41,10 @@ public class PagerActivity extends BaseFragmentActivity {
 
     private void assignXML() {
         tabLayout = (TabLayout) findViewById(R.id.tabs);
-        tbHome = (Toolbar) findViewById(R.id.toolbar_home);
-        tbAssignment = (Toolbar) findViewById(R.id.toolbar_assignment);
-        tbTimesheet = (Toolbar) findViewById(R.id.toolbar_timesheet);
-        tbPerformance = (Toolbar) findViewById(R.id.toolbar_performance);
+        tbHome = (Toolbar) findViewById(R.id.tb_home);
+        tbAssignment = (Toolbar) findViewById(R.id.tb_assignment);
+        tbTimesheet = (Toolbar) findViewById(R.id.tb_timesheet);
+        tbPerformance = (Toolbar) findViewById(R.id.tb_performance);
 
         query.id(R.id.tv_title_toolbar_assignment).typeface(Typeface.createFromAsset(getAssets(), "lato_black.ttf"));
         query.id(R.id.tv_title_toolbar_timesheet).typeface(Typeface.createFromAsset(getAssets(), "lato_black.ttf"));
