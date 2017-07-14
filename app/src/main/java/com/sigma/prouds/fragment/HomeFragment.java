@@ -21,7 +21,7 @@ import java.util.ArrayList;
  * Created by goy on 7/7/2017.
  */
 
-public class HomeFragment extends Fragment {
+public class HomeFragment extends BaseFragment {
     static Context ctx;
 
     public HomeFragment() {
@@ -35,14 +35,12 @@ public class HomeFragment extends Fragment {
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    protected int getLayout() {
+        return R.layout.fragment_home;
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View viewRoot = inflater.inflate(R.layout.fragment_home, container, false);
-
+    protected void workingSpace(View view) {
         RecyclerView rvHome = (RecyclerView) viewRoot.findViewById(R.id.rv_home);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
         rvHome.setLayoutManager(layoutManager);
@@ -53,11 +51,9 @@ public class HomeFragment extends Fragment {
         adapter.setParentAndIconExpandOnClick(true);
 
         rvHome.setAdapter(adapter);
-
-        return viewRoot;
     }
 
-/* POPULATE LIST HERE */
+    /* POPULATE LIST HERE */
     private ArrayList<ParentObject> generateList() {
         ArrayList<ParentObject> parentObjects = new ArrayList<>();
         return parentObjects;
