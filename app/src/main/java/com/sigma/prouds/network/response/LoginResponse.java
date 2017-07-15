@@ -8,15 +8,27 @@ import com.sigma.prouds.model.UserModel;
 
 public class LoginResponse
 {
-    private UserModel userData;
+    private UserModel userdata;
 
-    public UserModel getUserData()
+    private String token;
+
+    public UserModel getUserdata()
     {
-        return userData;
+        return userdata;
     }
 
-    public void setUserData(UserModel userData)
+    public void setUserdata(UserModel userdata)
     {
-        this.userData = userData;
+        this.userdata = userdata;
+    }
+
+    public String getToken()
+    {
+        return token;
+    }
+
+    public void setToken(String token)
+    {
+        this.token = token;
     }
 }

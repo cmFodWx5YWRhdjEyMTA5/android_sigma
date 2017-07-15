@@ -6,6 +6,7 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.sigma.prouds.base.BaseActivity;
+import com.sigma.prouds.model.LoginModel;
 import com.sigma.prouds.network.ApiService;
 import com.sigma.prouds.network.ApiUtils;
 import com.sigma.prouds.network.response.LoginResponse;
@@ -47,20 +48,24 @@ public class LoginActivity extends BaseActivity
     public void sendLogin()
     {
         dialog.show();
-
-        service.login(query.id(R.id.et_username).getText().toString(),query.id(R.id.et_password).getText().toString(),"160927084946").enqueue(new Callback<LoginResponse>()
+        LoginModel model = new LoginModel();
+        model.setUserId(query.id(R.id.et_username).getText().toString());
+        model.setPassword(query.id(R.id.et_password).getText().toString());
+        model.setFpid("160927084946");
+        service.login(model).enqueue(new Callback<LoginResponse>()
         {
             @Override
             public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response)
             {
-                //Log.i("TAG", response.body().getUserData().toString());
-                /*if (response.body().getUserData().getLoggedIn().equalsIgnoreCase("true"))
-                {*/
-                dialog.dismiss();
-                app.getSessionManager().setLogin(true);
-                Intent intent = new Intent(LoginActivity.this, PagerActivity.class);
-                startActivity(intent);
-                //}
+                if (response.body().getUserdata().getLoggedIn() == "true")
+                {
+                    dialog.dismiss();
+                    app.getSessionManager().setLogin(true);
+                    app.getSessionManager().setToken(response.body().getToken());
+                    Log.i("Token", app.getSessionManager().getToken());
+                    Intent intent = new Intent(LoginActivity.this, PagerActivity.class);
+                    startActivity(intent);
+                }
 
             }
 

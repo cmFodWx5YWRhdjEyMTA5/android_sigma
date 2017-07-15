@@ -13,6 +13,7 @@ public class SessionManager
     private static final int MODE_PRIVATE = 0; // preference mode operation
 
     private static final String LOGIN = "login";
+    private static final String TOKEN = "token";
 
     private SharedPreferences pref; // use to access preference
     private SharedPreferences.Editor editor; // use to edit preference
@@ -37,6 +38,17 @@ public class SessionManager
     public void setLogin(boolean isLogin) // set login info when user already login
     {
         editor.putBoolean(LOGIN, isLogin);
+        editor.commit();
+    }
+
+    public String getToken()
+    {
+        return pref.getString(TOKEN, "");
+    }
+
+    public void setToken(String token)
+    {
+        editor.putString(TOKEN, token);
         editor.commit();
     }
 }
