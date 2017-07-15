@@ -22,5 +22,6 @@ public class HomeChildHolder extends ChildViewHolder {
         percen = (TextView) itemView.findViewById(R.id.tv_percen);
         status = (TextView) itemView.findViewById(R.id.tv_status);
         progressBar = (ProgressBar) itemView.findViewById(R.id.pb_home);
+
     }
 }

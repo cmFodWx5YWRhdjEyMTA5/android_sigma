@@ -22,7 +22,4 @@ public class HomeParentHolder extends ParentViewHolder{
         updateDate = (TextView) itemView.findViewById(R.id.tv_updateDate);
         dropdown = (ImageView) itemView.findViewById(R.id.iv_dropdown);
     }
-
-    //TODO benerin bottom nav, rapihin icon
-    //TODO bind parent - child, adapter home
 }

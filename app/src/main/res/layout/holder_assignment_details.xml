@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginBottom="1dp"
+        android:background="@color/white">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:textSize="12sp"
+                android:textColor="@color/notifText"
+                android:id="@+id/tv_task"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <!-- Start date -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginRight="16dp"
+                    android:id="@+id/ll_startdate">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="2dp"
+                        android:textSize="11sp"
+                        android:textColor="@color/notifTime"
+                        android:text="@string/ad_start"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="12sp"
+                        android:textColor="@color/notifText"
+                        android:id="@+id/tv_ad_startdate"/>
+                </LinearLayout>
+
+                <!-- End date -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_toRightOf="@id/ll_startdate"
+                    android:id="@+id/ll_enddate">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="2dp"
+                        android:textSize="11sp"
+                        android:textColor="@color/notifTime"
+                        android:text="@string/ad_end"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="12sp"
+                        android:textColor="@color/notifText"
+                        android:id="@+id/tv_ad_enddate"/>
+                </LinearLayout>
+
+                <!-- Due date -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textSize="12sp"
+                    android:textColor="@color/assignmentDue"
+                    android:layout_below="@+id/iv_add_timesheet"
+                    android:gravity="bottom|right"
+                    android:text="aaaa"
+                    android:id="@+id/tv_assignment_due" />
+            </LinearLayout>
+        </LinearLayout>
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            app:srcCompat="@drawable/add_timesheet"
+            android:layout_alignParentRight="true"
+            android:id="@+id/iv_add_timesheet" />
+    </RelativeLayout>
+
+</LinearLayout>

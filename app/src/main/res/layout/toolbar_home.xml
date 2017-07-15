@@ -10,8 +10,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/tb_home">
+        android:layout_height="match_parent">
 
         <ImageView
             app:srcCompat="@drawable/logo_white"
@@ -20,13 +19,14 @@
             android:layout_centerVertical="true" />
 
         <ImageView
+            android:id="@+id/iv_notif"
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            app:srcCompat="@drawable/notif"
-            android:id="@+id/iv_notif" />
+            android:visibility="visible"
+            app:srcCompat="@drawable/notif" />
 
     </RelativeLayout>
 </android.support.v7.widget.Toolbar>

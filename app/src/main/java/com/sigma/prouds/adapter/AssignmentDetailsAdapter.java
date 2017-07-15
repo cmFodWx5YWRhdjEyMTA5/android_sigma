@@ -4,12 +4,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.ViewGroup;
 
 /**
- * Created by goy on 7/10/2017.
+ * Created by goy on 7/15/2017.
  */
 
-public class NotifAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
-//    BUILD CONSTRUCTOR HERE
-
+public class AssignmentDetailsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         return null;
