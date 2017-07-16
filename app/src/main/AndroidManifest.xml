@@ -16,8 +16,7 @@
         <activity
             android:name=".RegisterActivity"
             android:label="@string/title_activity_register" />
-        <activity android:name=".PagerActivity">
-        </activity>
+        <activity android:name=".PagerActivity"></activity>
         <activity android:name=".AssignmentDetailsActivity" />
         <activity android:name=".ProjectDetailsActivity">
             <intent-filter>
@@ -26,6 +25,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".SplashActivity"></activity>
     </application>
 
 </manifest>

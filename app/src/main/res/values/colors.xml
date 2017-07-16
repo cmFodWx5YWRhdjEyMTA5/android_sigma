@@ -12,6 +12,7 @@
 
     <color name="header">#cf000f</color>
     <color name="background">#f9f9f9</color>
+    <color name="splash">#ec202b</color>
 
     <color name="notifUser">#cf0010</color>
     <color name="notifText">#595e63</color>
