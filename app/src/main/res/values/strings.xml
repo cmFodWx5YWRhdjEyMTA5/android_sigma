@@ -14,9 +14,36 @@
     <string name="toolbar_timesheet">TIMESHEET</string>
     <string name="toolbar_projectdetails">PROJECT DETAILS</string>
 
-    <string name="search_hint">Search business unit or project ...</string>
+    <string name="search_hint">Search business unit or project …</string>
 
     <string name="ad_start">START DATE</string>
     <string name="ad_end">END DATE</string>
+
+    <!-- overview fragment -->
+    <string name="ov_projectdetail">Project Detail</string>
+    <string name="ov_iwo">IWO (Internal Work Order)</string>
+    <string name="ov_buo">Business Unit Owner</string>
+    <string name="ov_desc">Description</string>
+    <string name="ov_more">MORE</string>
+    <string name="ov_workplan">Workplan Status</string>
+    <string name="ov_completed">Completed task</string>
+    <string name="ov_inprogress">In Progress task</string>
+    <string name="ov_notstarted">Not Started task</string>
+    <string name="ov_ondue">On Due task</string>
+    <string name="ov_overdue">Over Due task</string>
+    <string name="ov_perform">Project Performance Status</string>
+    <string name="ov_ev">EV</string>
+    <string name="ov_pv">PV</string>
+    <string name="ov_ac">AC</string>
+    <string name="ov_spi">SPI</string>
+    <string name="ov_cpi">CPI</string>
+
+    <string name="drawer_overview">Overview</string>
+    <string name="drawer_workplan">Workplan</string>
+    <string name="drawer_activity">Activity</string>
+    <string name="drawer_issues">Issues</string>
+    <string name="drawer_doc">Docs &amp; Files</string>
+    <string name="drawer_team">Team Member</string>
+    <string name="drawer_setting">Project Setting</string>
 
 </resources>
