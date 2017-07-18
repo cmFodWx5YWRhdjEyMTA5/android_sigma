@@ -9,6 +9,7 @@ import com.sigma.prouds.network.response.MyAssignmentResponse;
 import com.sigma.prouds.network.response.ProjectActivityResponse;
 import com.sigma.prouds.network.response.ProjectDocResponse;
 import com.sigma.prouds.network.response.ProjectIssueResponse;
+import com.sigma.prouds.network.response.ProjectResponse;
 import com.sigma.prouds.network.response.TeamMemberResponse;
 
 import java.util.Map;
@@ -19,6 +20,7 @@ import retrofit2.http.Field;
 import retrofit2.http.FieldMap;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.Header;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.Part;
@@ -36,6 +38,9 @@ public interface ApiService
 
     @GET("dev/home/detailproject/{project_id}")
     Call<DetailProjectResponse> getDetailProject(@Path("project_id") String projectId);
+
+    @GET("dev/home/")
+    Call<ProjectResponse> getHome(@Header("token") String token);
 
     @GET("dev/home/p_teammember/{project_id}")
     Call<TeamMemberResponse> getTeamMember (@Path("project_id") String projectId);
