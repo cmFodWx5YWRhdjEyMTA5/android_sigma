@@ -6,20 +6,27 @@ import android.widget.TextView;
 
 import com.bignerdranch.expandablerecyclerview.ViewHolder.ParentViewHolder;
 import com.sigma.prouds.R;
+import com.sigma.prouds.model.BusinessUnitExpendableModel;
+import com.thoughtbot.expandablerecyclerview.models.ExpandableGroup;
+import com.thoughtbot.expandablerecyclerview.viewholders.GroupViewHolder;
 
 /**
  * Created by goy on 7/11/2017.
  */
 
-public class HomeParentHolder extends ParentViewHolder{
+public class HomeParentHolder extends GroupViewHolder{
     public TextView unit, updateDate;
     public ImageView dropdown;
 
     public HomeParentHolder(View itemView) {
         super(itemView);
-
         unit = (TextView) itemView.findViewById(R.id.tv_unit);
         updateDate = (TextView) itemView.findViewById(R.id.tv_updateDate);
         dropdown = (ImageView) itemView.findViewById(R.id.iv_dropdown);
+    }
+
+    public void bindBUName(ExpandableGroup group)
+    {
+        unit.setText(group.getTitle());
     }
 }

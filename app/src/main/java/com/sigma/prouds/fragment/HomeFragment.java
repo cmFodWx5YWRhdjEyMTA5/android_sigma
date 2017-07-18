@@ -3,8 +3,10 @@ package com.sigma.prouds.fragment;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,11 +17,16 @@ import com.sigma.prouds.R;
 import com.sigma.prouds.adapter.HomeExpandableAdapter;
 import com.sigma.prouds.base.BaseActivity;
 import com.sigma.prouds.base.BaseFragment;
+import com.sigma.prouds.model.BusinessUnitExpendableModel;
+import com.sigma.prouds.model.ProjectModel;
 import com.sigma.prouds.network.ApiService;
 import com.sigma.prouds.network.ApiUtils;
 import com.sigma.prouds.network.response.ProjectResponse;
+import com.thoughtbot.expandablerecyclerview.models.ExpandableGroup;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -33,6 +40,10 @@ public class HomeFragment extends BaseFragment {
     static Context ctx;
     private ApiService service;
     private ProudsApplication app;
+    private RecyclerView rvHome;
+    private HomeExpandableAdapter adapter;
+    private  List<BusinessUnitExpendableModel> listResult;
+    ArrayList<BusinessUnitExpendableModel> arrayList;
     public HomeFragment() {
         // Required empty public constructor
     }
@@ -52,23 +63,15 @@ public class HomeFragment extends BaseFragment {
     protected void workingSpace(View view)
     {
         app = (ProudsApplication) ctx.getApplicationContext();
-        RecyclerView rvHome = (RecyclerView) viewRoot.findViewById(R.id.rv_home);
+        rvHome = (RecyclerView) viewRoot.findViewById(R.id.rv_home);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
         rvHome.setLayoutManager(layoutManager);
+        RecyclerView.ItemAnimator animator = rvHome.getItemAnimator();
+        if (animator instanceof DefaultItemAnimator) {
+            ((DefaultItemAnimator) animator).setSupportsChangeAnimations(false);
+        }
+        getData();
 
-        HomeExpandableAdapter adapter = new HomeExpandableAdapter(getActivity(), generateList());
-        adapter.setCustomParentAnimationViewId(R.id.iv_dropdown);
-        adapter.setParentClickableViewAnimationDefaultDuration();
-        adapter.setParentAndIconExpandOnClick(true);
-
-        rvHome.setAdapter(adapter);
-    }
-
-    /* POPULATE LIST HERE */
-    private ArrayList<ParentObject> generateList()
-    {
-        ArrayList<ParentObject> parentObjects = new ArrayList<>();
-        return parentObjects;
     }
 
     public void getData()
@@ -79,7 +82,24 @@ public class HomeFragment extends BaseFragment {
             @Override
             public void onResponse(Call<ProjectResponse> call, Response<ProjectResponse> response)
             {
+                listResult = response.body().getProject();
+                arrayList = new ArrayList<>();
+                Log.i("response", response.body().getProject().get(0).getBuName() + "null");
+                for (int i = 0; i <= listResult.size() - 1; i++)
+                {
+                    Log.i("response", "aaaaa");
+                    ArrayList<ProjectModel> list = new ArrayList<ProjectModel>();
+                    for (int j = 0; j <= listResult.get(i).getProjectList().size() - 1; j++)
+                    {
+                        list.add(listResult.get(i).getProjectList().get(j));
+                        Log.i("p name", listResult.get(i).getProjectList().get(j).getProjectName());
+                    }
+                    arrayList.add(new BusinessUnitExpendableModel(listResult.get(i).getBuName(), list));
+                }
 
+                adapter = new HomeExpandableAdapter(arrayList);
+                rvHome.setAdapter(adapter);
+                Log.i("response zzz", arrayList.get(0).getTitle());
             }
 
             @Override
@@ -90,5 +110,4 @@ public class HomeFragment extends BaseFragment {
         });
 
     }
-
 }

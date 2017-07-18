@@ -1,5 +1,6 @@
 package com.sigma.prouds.network.response;
 
+import com.sigma.prouds.model.BusinessUnitExpendableModel;
 import com.sigma.prouds.model.BusinessUnitModel;
 
 import java.util.List;
@@ -10,14 +11,14 @@ import java.util.List;
 
 public class ProjectResponse
 {
-    private List<BusinessUnitModel> project;
+    private List<BusinessUnitExpendableModel> project;
 
-    public List<BusinessUnitModel> getProject()
+    public List<BusinessUnitExpendableModel> getProject()
     {
         return project;
     }
 
-    public void setProject(List<BusinessUnitModel> project)
+    public void setProject(List<BusinessUnitExpendableModel> project)
     {
         this.project = project;
     }

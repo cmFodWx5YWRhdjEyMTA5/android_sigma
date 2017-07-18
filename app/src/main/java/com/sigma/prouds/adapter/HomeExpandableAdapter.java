@@ -5,13 +5,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.bignerdranch.expandablerecyclerview.Adapter.ExpandableRecyclerAdapter;
 import com.bignerdranch.expandablerecyclerview.Model.ParentObject;
 import com.sigma.prouds.holder.HomeChildHolder;
 import com.sigma.prouds.holder.HomeParentHolder;
 import com.sigma.prouds.item.HomeChild;
 import com.sigma.prouds.item.HomeParent;
 import com.sigma.prouds.R;
+import com.sigma.prouds.model.BusinessUnitExpendableModel;
+import com.sigma.prouds.model.BusinessUnitModel;
+import com.sigma.prouds.model.ProjectModel;
+import com.thoughtbot.expandablerecyclerview.ExpandableRecyclerViewAdapter;
+import com.thoughtbot.expandablerecyclerview.models.ExpandableGroup;
 
 import java.util.List;
 
@@ -19,35 +23,42 @@ import java.util.List;
  * Created by goy on 7/12/2017.
  */
 
-public class HomeExpandableAdapter extends ExpandableRecyclerAdapter<HomeParentHolder, HomeChildHolder> {
-    private LayoutInflater inflater;
+public class HomeExpandableAdapter extends ExpandableRecyclerViewAdapter<HomeParentHolder, HomeChildHolder>
+{
 
-    public HomeExpandableAdapter(Context context, List<ParentObject> parentItemList) {
-        super(context, parentItemList);
-        inflater = LayoutInflater.from(context);
+
+    public HomeExpandableAdapter(List<? extends ExpandableGroup> groups)
+    {
+        super(groups);
     }
 
     @Override
-    public HomeParentHolder onCreateParentViewHolder(ViewGroup viewGroup) {
-        View view = inflater.inflate(R.layout.holder_home_parent, viewGroup, false);
+    public HomeParentHolder onCreateGroupViewHolder(ViewGroup parent, int viewType)
+    {
+        View view = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.holder_home_parent, parent, false);
         return new HomeParentHolder(view);
     }
 
     @Override
-    public HomeChildHolder onCreateChildViewHolder(ViewGroup viewGroup) {
-        View view = inflater.inflate(R.layout.holder_home_child, viewGroup, false);
+    public HomeChildHolder onCreateChildViewHolder(ViewGroup parent, int viewType)
+    {
+        View view = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.holder_home_child, parent, false);
         return new HomeChildHolder(view);
     }
 
     @Override
-    public void onBindParentViewHolder(HomeParentHolder homeParentHolder, int i, Object o) {
-        HomeParent parent = (HomeParent) o;
-//        BINDING PARENT HERE
+    public void onBindChildViewHolder(HomeChildHolder holder, int flatPosition, ExpandableGroup group, int childIndex)
+    {
+        final ProjectModel model = ((BusinessUnitExpendableModel) group).getItems().get(childIndex);
+        holder.onBind(model);
+
     }
 
     @Override
-    public void onBindChildViewHolder(HomeChildHolder homeChildHolder, int i, Object o) {
-        HomeChild child = (HomeChild) o;
-//        BINDING CHILD
+    public void onBindGroupViewHolder(HomeParentHolder holder, int flatPosition, ExpandableGroup group)
+    {
+        holder.bindBUName(group);
     }
 }

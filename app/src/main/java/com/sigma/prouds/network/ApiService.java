@@ -58,6 +58,6 @@ public interface ApiService
     Call<MyActivityResponse> getMyActivityResponse();
 
     @GET("dev/home/myassignment")
-    Call<MyAssignmentResponse> getMyAssignmentResponse();
+    Call<MyAssignmentResponse> getMyAssignmentResponse(@Header("token") String token);
 
 }

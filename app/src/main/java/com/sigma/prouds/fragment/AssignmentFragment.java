@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
 
+import com.sigma.prouds.ProudsApplication;
 import com.sigma.prouds.R;
 import com.sigma.prouds.adapter.AssignmentAdapter;
 import com.sigma.prouds.base.BaseFragment;
@@ -32,7 +33,7 @@ import retrofit2.Response;
 
 public class AssignmentFragment extends BaseFragment
 {
-
+    private ProudsApplication app;
     static Context ctx;
     private ApiService service;
     private RecyclerView rvAssigment;
@@ -58,6 +59,7 @@ public class AssignmentFragment extends BaseFragment
     @Override
     protected void workingSpace(View view)
     {
+        app = (ProudsApplication) ctx.getApplicationContext();
         rvAssigment = (RecyclerView) view.findViewById(R.id.rv_assignment);
         getAssignmentData();
     }
@@ -65,7 +67,7 @@ public class AssignmentFragment extends BaseFragment
     public void getAssignmentData()
     {
         service = ApiUtils.apiService();
-        service.getMyAssignmentResponse().enqueue(new Callback<MyAssignmentResponse>()
+        service.getMyAssignmentResponse(app.getSessionManager().getToken()).enqueue(new Callback<MyAssignmentResponse>()
         {
             @Override
             public void onResponse(Call<MyAssignmentResponse> call, Response<MyAssignmentResponse> response)

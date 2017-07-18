@@ -1,10 +1,13 @@
 package com.sigma.prouds.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 /**
  * Created by 1414 on 7/18/2017.
  */
 
-public class ProjectModel
+public class ProjectModel implements Parcelable
 {
     private String projectId;
     private String projectName;
@@ -13,6 +16,32 @@ public class ProjectModel
     private String projectStatus;
     private String projectDesc;
     private String createdBy;
+
+    protected ProjectModel(Parcel in)
+    {
+        projectId = in.readString();
+        projectName = in.readString();
+        buName = in.readString();
+        projectComplete = in.readString();
+        projectStatus = in.readString();
+        projectDesc = in.readString();
+        createdBy = in.readString();
+    }
+
+    public static final Creator<ProjectModel> CREATOR = new Creator<ProjectModel>()
+    {
+        @Override
+        public ProjectModel createFromParcel(Parcel in)
+        {
+            return new ProjectModel(in);
+        }
+
+        @Override
+        public ProjectModel[] newArray(int size)
+        {
+            return new ProjectModel[size];
+        }
+    };
 
     public String getProjectId()
     {
@@ -82,5 +111,23 @@ public class ProjectModel
     public void setCreatedBy(String createdBy)
     {
         this.createdBy = createdBy;
+    }
+
+    @Override
+    public int describeContents()
+    {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags)
+    {
+        dest.writeString(projectId);
+        dest.writeString(projectName);
+        dest.writeString(buName);
+        dest.writeString(projectComplete);
+        dest.writeString(projectStatus);
+        dest.writeString(projectDesc);
+        dest.writeString(createdBy);
     }
 }

@@ -6,10 +6,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.sigma.prouds.base.BaseActivity;
+import com.sigma.prouds.network.ApiService;
 
 public class SplashActivity extends BaseActivity {
 
     public ProudsApplication app;
+    private ApiService service;
 
     @Override
     protected int getLayout() {
@@ -19,7 +21,6 @@ public class SplashActivity extends BaseActivity {
     @Override
     protected void workingSpace() {
         this.app = (ProudsApplication) getApplication();
-
         new Handler().postDelayed(new Runnable() { // login checking process starts here
             @Override
             public void run()
