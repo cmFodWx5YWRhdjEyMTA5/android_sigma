@@ -48,7 +48,7 @@ public class LoginActivity extends BaseActivity
     public void sendLogin()
     {
         dialog.show();
-        LoginModel model = new LoginModel();
+        final LoginModel model = new LoginModel();
         model.setUserId(query.id(R.id.et_username).getText().toString());
         model.setPassword(query.id(R.id.et_password).getText().toString());
         model.setFpid("160927084946");
@@ -62,9 +62,12 @@ public class LoginActivity extends BaseActivity
                     dialog.dismiss();
                     app.getSessionManager().setLogin(true);
                     app.getSessionManager().setToken(response.body().getToken());
+                    app.getSessionManager().setUserName(model.getUserId());
+                    app.getSessionManager().setPassword(model.getPassword());
                     Log.i("Token", app.getSessionManager().getToken());
                     Intent intent = new Intent(LoginActivity.this, PagerActivity.class);
                     startActivity(intent);
+                    LoginActivity.this.finish();
                 }
 
             }

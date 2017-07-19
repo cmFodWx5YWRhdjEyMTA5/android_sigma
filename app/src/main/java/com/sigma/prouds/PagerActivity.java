@@ -1,9 +1,12 @@
 package com.sigma.prouds;
 
+import android.content.Intent;
 import android.graphics.Typeface;
+import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 
 import com.sigma.prouds.base.BaseFragmentActivity;
@@ -13,6 +16,8 @@ import com.sigma.prouds.fragment.PerformanceFragment;
 import com.sigma.prouds.fragment.TimesheetFragment;
 
 public class PagerActivity extends BaseFragmentActivity {
+
+    public static final String KEY_TO_DETAIL_PROJECT = "key_to_detail-project";
 
     private TabLayout tabLayout;
     private Toolbar tbHome, tbAssignment, tbTimesheet, tbPerformance;
@@ -114,4 +119,13 @@ public class PagerActivity extends BaseFragmentActivity {
         }
     }
 
+    public void onEvent(Bundle bundle)
+    {
+        if (bundle.containsKey(KEY_TO_DETAIL_PROJECT))
+        {
+            Log.i("project_id", bundle.getString(KEY_TO_DETAIL_PROJECT));
+            Intent intent = new Intent(this, ProjectDetailsActivity.class);
+            startActivity(intent);
+        }
+    }
 }

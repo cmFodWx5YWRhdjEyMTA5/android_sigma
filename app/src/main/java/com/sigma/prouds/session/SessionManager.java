@@ -11,6 +11,8 @@ public class SessionManager
 {
     private static final String PREF_NAME = "prouds"; // preference filename
     private static final int MODE_PRIVATE = 0; // preference mode operation
+    private static final String USER_NAME = "user_name";
+    private static final String PASSWORD = "password";
 
     private static final String LOGIN = "login";
     private static final String TOKEN = "token";
@@ -51,4 +53,27 @@ public class SessionManager
         editor.putString(TOKEN, token);
         editor.commit();
     }
+
+    public void setUserName(String userName)
+    {
+        editor.putString(USER_NAME, userName);
+        editor.commit();
+    }
+
+    public String getUserName()
+    {
+        return pref.getString(USER_NAME, "");
+    }
+
+    public void setPassword(String password)
+    {
+        editor.putString(PASSWORD, password);
+        editor.commit();
+    }
+
+    public String getPassword()
+    {
+        return pref.getString(PASSWORD, "");
+    }
+
 }
