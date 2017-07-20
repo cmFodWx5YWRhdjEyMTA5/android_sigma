@@ -46,4 +46,9 @@
     <string name="drawer_team">Team Member</string>
     <string name="drawer_setting">Project Setting</string>
 
+    <string name="wp_monitoring">Monitoring</string>
+    <string name="wp_physical_checklist">Physical Checklist</string>
+    <string name="wp_seeall">SEE ALL</string>
+    <string name="wp_duration">DURATION</string>
+    <string name="wp_work">WORK</string>
 </resources>
