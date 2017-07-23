@@ -8,7 +8,7 @@ public class ProjectIssueModel
 {
     private String issueId;
     private String userId;
-    private String userName;
+    private String reportedBy;
     private String projectId;
     private String projectName;
     private String note;
@@ -39,14 +39,14 @@ public class ProjectIssueModel
         this.userId = userId;
     }
 
-    public String getUserName()
+    public String getReportedBy()
     {
-        return userName;
+        return reportedBy;
     }
 
-    public void setUserName(String userName)
+    public void setReportedBy(String reportedBy)
     {
-        this.userName = userName;
+        this.reportedBy = reportedBy;
     }
 
     public String getProjectId()

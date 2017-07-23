@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:background="@color/background"
     android:padding="16dp">
 
@@ -27,6 +27,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="12sp"
+                android:id="@+id/tv_issue_priority"
                 android:layout_gravity="center_vertical"
                 android:textColor="@color/homeParentDate"/>
 
@@ -45,7 +46,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
                     android:textSize="12sp"
-                    android:textColor="@color/white"
+                    android:textColor="@color/notifText"
                     android:id="@+id/tv_issue_status" />
             </RelativeLayout>
         </LinearLayout>
@@ -54,6 +55,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp">
             <TextView
+                android:id="@+id/tv_subject"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="8dp"
@@ -92,6 +94,7 @@
             android:id="@+id/tv_issue"/>
         <!--TODO ask dipisah atau gabung-->
         <TextView
+            android:id="@+id/tv_date_issue"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="12sp"
