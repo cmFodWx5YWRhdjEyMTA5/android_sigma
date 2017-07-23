@@ -52,7 +52,7 @@
             android:layout_height="48dp"
             android:text="REGISTER"
             android:textColor="@color/white"
-            android:background="@drawable/round_btn"
+            android:background="@drawable/round_red"
             android:id="@+id/btn_register"/>
     </LinearLayout>
     <!-- Register end-->

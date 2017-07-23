@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:background="@color/white"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginRight="12dp"
+                android:id="@+id/iv_issue_priority"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:layout_gravity="center_vertical"
+                android:textColor="@color/homeParentDate"/>
+
+            <!--TODO rata kanan, image status-->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="end">
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="24dp"
+                    android:layout_centerInParent="true"
+                    android:id="@+id/iv_issue_status"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:textSize="12sp"
+                    android:textColor="@color/white"
+                    android:id="@+id/tv_issue_status" />
+            </RelativeLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="8dp"
+                android:text="@string/issues"
+                android:textSize="14sp"
+                android:textColor="@color/btn"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="8dp"
+                android:textSize="14sp"
+                android:textColor="@color/btn"
+                android:id="@+id/tv_issue_number"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginRight="8dp"
+                android:text="@string/issues_reporter"
+                android:textSize="12sp"
+                android:textColor="@color/homeParent" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginRight="8dp"
+                android:textSize="12sp"
+                android:textColor="@color/homeParent"
+                android:id="@+id/tv_issue_reporter"/>
+        </LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:maxLines="5"
+            android:id="@+id/tv_issue"/>
+        <!--TODO ask dipisah atau gabung-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:textColor="@color/homeParentDate"/>
+    </LinearLayout>
+
+</LinearLayout>
