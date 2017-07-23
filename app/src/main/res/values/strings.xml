@@ -55,4 +55,9 @@
     <string name="issues_report">REPORT AN ISSUE</string>
     <string name="issues">Issues</string>
     <string name="issues_reporter">reported by</string>
+
+    <string name="doc_upload">UPLOAD DOCUMENT</string>
+    <string name="doc_uploader">uploaded by</string>
+    <string name="doc_date">at</string>
+
 </resources>
