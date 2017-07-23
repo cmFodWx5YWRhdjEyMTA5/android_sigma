@@ -43,7 +43,7 @@ public interface ApiService
     Call<ProjectResponse> getHome(@Header("token") String token);
 
     @GET("dev/home/p_teammember/{project_id}")
-    Call<TeamMemberResponse> getTeamMember (@Path("project_id") String projectId);
+    Call<TeamMemberResponse> getTeamMember (@Path("project_id") String projectId, @Header("token") String token);
 
     @GET("dev/home/projectdoc/{project_id}")
     Call<ProjectDocResponse> getProjectDoc (@Path("project_id") String projectId);
