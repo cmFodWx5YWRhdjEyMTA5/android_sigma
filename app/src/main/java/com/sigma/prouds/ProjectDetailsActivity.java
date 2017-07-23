@@ -1,5 +1,6 @@
 package com.sigma.prouds;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -10,6 +11,7 @@ import android.util.Log;
 import android.view.Gravity;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 
 import com.sigma.prouds.adapter.DrawerAdapter;
 import com.sigma.prouds.base.BaseActivity;
@@ -27,8 +29,10 @@ public class ProjectDetailsActivity extends BaseActivity {
 
     private ViewPager vpProjectDetails;
     private TabLayout tlProjectDetails;
+    private ProgressBar pbDetail;
 
     public static final String KEY_DRAWER_ITEM = "key_drawer_item";
+
     private ImageView ivMenu, ivDrawerClose;
     private DrawerAdapter adapter;
     private DrawerLayout pdDrawer;
@@ -43,6 +47,8 @@ public class ProjectDetailsActivity extends BaseActivity {
         R.string.drawer_team,
         R.string.drawer_setting};
 
+    private String projectId;
+
 
     @Override
     protected int getLayout() {
@@ -52,7 +58,8 @@ public class ProjectDetailsActivity extends BaseActivity {
     @Override
     protected void workingSpace() {
         assignXML();
-        pdFragment = new OverviewFragment();
+        getDataFromHome();
+        pdFragment = new OverviewFragment().newInstance(this, projectId);
         pdFragmentManager.beginTransaction().replace(R.id.pd_container, pdFragment).commit();
 
         drawerItems();
@@ -65,6 +72,24 @@ public class ProjectDetailsActivity extends BaseActivity {
         ivDrawerClose = (ImageView) findViewById(R.id.iv_drawerclose);
         pdDrawer = (DrawerLayout) findViewById(R.id.pd_drawer);
         pdListView = (ListView) findViewById(R.id.lv_pd_drawer);
+        pbDetail = (ProgressBar) findViewById(R.id.pb_project_details);
+    }
+
+    public void getDataFromHome()
+    {
+        Intent intent = getIntent();
+        Bundle bundle = intent.getExtras().getBundle(PagerActivity.KEY_TO_DETAIL_PROJECT);
+        query.id(R.id.tv_pd_project).text(bundle.getString(PagerActivity.KEY_PROJECT_NAME));
+        query.id(R.id.tv_pd_percen).text(bundle.getString(PagerActivity.KEY_PROJECT_COMPLETED)+"%");
+        query.id(R.id.tv_pd_status).text(bundle.getString(PagerActivity.KEY_PROJECT_STATUS));
+
+        float progress = Float.parseFloat(bundle.getString(PagerActivity.KEY_PROJECT_COMPLETED));
+        int finalProgress = (int) progress;
+        pbDetail.setProgress(finalProgress);
+
+        projectId = bundle.getString(PagerActivity.KEY_PROJECT_ID);
+
+
     }
 
     public void drawerItems(){
@@ -84,7 +109,7 @@ public class ProjectDetailsActivity extends BaseActivity {
         if(bundle.containsKey(KEY_DRAWER_ITEM)){
             switch(bundle.getInt(KEY_DRAWER_ITEM)){
                 case R.string.drawer_overview:
-                    pdFragment = new OverviewFragment();
+                    pdFragment = new OverviewFragment().newInstance(this, projectId);
                     break;
                 case R.string.drawer_workplan:
                     pdFragment = new WorkplanFragment();
@@ -93,7 +118,7 @@ public class ProjectDetailsActivity extends BaseActivity {
                     pdFragment = new ActivityFragment();
                     break;
                 case R.string.drawer_issues:
-                    pdFragment = new IssuesFragment();
+                    pdFragment = new IssuesFragment().newInstance(this, projectId);
                     break;
                 case R.string.drawer_doc:
                     pdFragment = new DocFileFragment();
@@ -107,7 +132,8 @@ public class ProjectDetailsActivity extends BaseActivity {
             }
 
             pdFragmentManager.beginTransaction().replace(R.id.pd_container, pdFragment).commit();
-            pdDrawer.closeDrawer(pdListView);
+            closeDrawer();
+            //pdDrawer.closeDrawer(pdListView);
         }
     }
 

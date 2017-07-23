@@ -1,22 +1,81 @@
 package com.sigma.prouds.fragment;
 
+import android.content.Context;
+import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 
+import com.sigma.prouds.ProudsApplication;
 import com.sigma.prouds.R;
+import com.sigma.prouds.adapter.ProjectIssueAdapter;
 import com.sigma.prouds.base.BaseFragment;
+import com.sigma.prouds.network.ApiService;
+import com.sigma.prouds.network.ApiUtils;
+import com.sigma.prouds.network.response.ProjectIssueResponse;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * Created by goy on 7/15/2017.
  */
 
-public class IssuesFragment extends BaseFragment {
-    @Override
-    protected int getLayout() {
-        return R.layout.fragment_activity;
+public class IssuesFragment extends BaseFragment
+{
+
+    private ApiService service;
+    static Context ctx;
+    private String projectId;
+    private ProudsApplication app;
+    private ProjectIssueAdapter adapter;
+    private RecyclerView rvIssue;
+
+    public static IssuesFragment newInstance(Context context, String projectId)
+    {
+        IssuesFragment fragment = new IssuesFragment();
+        ctx = context;
+        Bundle args = new Bundle();
+        args.putString("project_id", projectId);
+        fragment.setArguments(args);
+        return fragment;
     }
 
     @Override
-    protected void workingSpace(View view) {
+    protected int getLayout() {
+        return R.layout.fragment_issues;
+    }
 
+    @Override
+    protected void workingSpace(View view)
+    {
+        app = (ProudsApplication) ctx.getApplicationContext();
+        service = ApiUtils.apiService();
+        projectId = getArguments().getString("project_id");
+        rvIssue = (RecyclerView) view.findViewById(R.id.rv_issues);
+        getIssueData();
+    }
+
+    public void getIssueData()
+    {
+        service.getProjectIssues(projectId, app.getSessionManager().getToken()).enqueue(new Callback<ProjectIssueResponse>()
+        {
+            @Override
+            public void onResponse(Call<ProjectIssueResponse> call, Response<ProjectIssueResponse> response)
+            {
+                adapter = new ProjectIssueAdapter(ctx, response.body().getProjectIssueList());
+                RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(ctx);
+                rvIssue.setLayoutManager(mLayoutManager);
+                rvIssue.setAdapter(adapter);
+            }
+
+            @Override
+            public void onFailure(Call<ProjectIssueResponse> call, Throwable t)
+            {
+
+            }
+        });
     }
 }

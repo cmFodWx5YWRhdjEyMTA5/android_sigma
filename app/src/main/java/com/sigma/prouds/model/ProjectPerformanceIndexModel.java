@@ -9,8 +9,8 @@ public class ProjectPerformanceIndexModel
     private String pv;
     private String ev;
     private String ac;
-    private int cpi;
-    private int spi;
+    private String cpi;
+    private String spi;
 
     public String getPv()
     {
@@ -42,22 +42,22 @@ public class ProjectPerformanceIndexModel
         this.ac = ac;
     }
 
-    public int getCpi()
+    public String getCpi()
     {
         return cpi;
     }
 
-    public void setCpi(int cpi)
+    public void setCpi(String cpi)
     {
         this.cpi = cpi;
     }
 
-    public int getSpi()
+    public String getSpi()
     {
         return spi;
     }
 
-    public void setSpi(int spi)
+    public void setSpi(String spi)
     {
         this.spi = spi;
     }

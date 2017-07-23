@@ -43,9 +43,17 @@ public class HomeChildHolder extends ChildViewHolder
             public void onClick(View v)
             {
                 Bundle bundle = new Bundle();
-                bundle.putString(PagerActivity.KEY_TO_DETAIL_PROJECT,model.getProjectId() + "");
+                bundle.putString(PagerActivity.KEY_PROJECT_ID,model.getProjectId() + "");
+                bundle.putString(PagerActivity.KEY_PROJECT_NAME, model.getProjectName());
+                bundle.putString(PagerActivity.KEY_PROJECT_STATUS, model.getProjectStatus());
+                bundle.putString(PagerActivity.KEY_PROJECT_COMPLETED, model.getProjectComplete() + "");
                 EventBus.getDefault().post(bundle);
             }
         });
+        float progress = Float.parseFloat(model.getProjectComplete());
+        int finalProgress = (int) progress;
+        progressBar.setProgress(finalProgress);
+        percen.setText(model.getProjectComplete() + "%");
+        status.setText(model.getProjectStatus());
     }
 }
