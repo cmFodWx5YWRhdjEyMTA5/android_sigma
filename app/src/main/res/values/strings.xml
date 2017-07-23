@@ -51,4 +51,8 @@
     <string name="wp_seeall">SEE ALL</string>
     <string name="wp_duration">DURATION</string>
     <string name="wp_work">WORK</string>
+
+    <string name="issues_report">REPORT AN ISSUE</string>
+    <string name="issues">Issues</string>
+    <string name="issues_reporter">reported by</string>
 </resources>

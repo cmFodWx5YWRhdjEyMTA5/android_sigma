@@ -13,6 +13,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
+        <!--TODO ganti toolbar tiap fragment-->
         <!-- Toolbar start -->
         <android.support.v7.widget.Toolbar
             android:layout_width="match_parent"
@@ -121,26 +122,7 @@
                     android:textColor="@color/homeChild"
                     android:id="@+id/tv_pd_status"/>
             </LinearLayout>
-
-            <!--&lt;!&ndash; Tab menu &ndash;&gt;-->
-            <!--<android.support.design.widget.TabLayout-->
-            <!--android:id="@+id/tl_project_details"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_alignParentBottom="true"-->
-            <!--app:tabMode="fixed"-->
-            <!--app:tabGravity="fill"-->
-            <!--android:background="@color/white"-->
-            <!--app:tabIndicatorHeight="3dp"-->
-            <!--app:tabIndicatorColor="@color/header"/>-->
         </LinearLayout>
-
-        <!--<android.support.v4.view.ViewPager-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent"-->
-        <!--android:layout_below="@id/ll_pd_header"-->
-        <!--android:id="@+id/vp_projec_details">-->
-        <!--</android.support.v4.view.ViewPager>-->
 
         <!-- Fragment Container start -->
         <FrameLayout
