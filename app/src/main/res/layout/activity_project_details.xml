@@ -113,7 +113,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginRight="8dp"
                     android:textSize="14sp"
-                    android:id="@+id/tv__pd_percen"/>
+                    android:id="@+id/tv_pd_percen"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

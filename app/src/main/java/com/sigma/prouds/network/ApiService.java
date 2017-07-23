@@ -37,7 +37,7 @@ public interface ApiService
 
 
     @GET("dev/home/detailproject/{project_id}")
-    Call<DetailProjectResponse> getDetailProject(@Path("project_id") String projectId);
+    Call<DetailProjectResponse> getDetailProject(@Path("project_id") String projectId, @Header("token") String token);
 
     @GET("dev/home/")
     Call<ProjectResponse> getHome(@Header("token") String token);

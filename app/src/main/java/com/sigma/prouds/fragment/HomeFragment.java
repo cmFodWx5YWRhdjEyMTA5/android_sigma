@@ -76,36 +76,35 @@ public class HomeFragment extends BaseFragment {
 
     public void getData()
     {
+        query.id(R.id.pb_home).visible();
         service = ApiUtils.apiService();
         service.getHome(app.getSessionManager().getToken()).enqueue(new Callback<ProjectResponse>()
         {
             @Override
             public void onResponse(Call<ProjectResponse> call, Response<ProjectResponse> response)
             {
+                query.id(R.id.pb_home).gone();
                 listResult = response.body().getProject();
                 arrayList = new ArrayList<>();
                 Log.i("response", response.body().getProject().get(0).getBuName() + "null");
                 for (int i = 0; i <= listResult.size() - 1; i++)
                 {
-                    Log.i("response", "aaaaa");
                     ArrayList<ProjectModel> list = new ArrayList<ProjectModel>();
                     for (int j = 0; j <= listResult.get(i).getProjectList().size() - 1; j++)
                     {
                         list.add(listResult.get(i).getProjectList().get(j));
-                        Log.i("p name", listResult.get(i).getProjectList().get(j).getProjectName());
                     }
                     arrayList.add(new BusinessUnitExpendableModel(listResult.get(i).getBuName(), list));
                 }
 
                 adapter = new HomeExpandableAdapter(arrayList);
                 rvHome.setAdapter(adapter);
-                Log.i("response zzz", arrayList.get(0).getTitle());
             }
 
             @Override
             public void onFailure(Call<ProjectResponse> call, Throwable t)
             {
-
+                query.id(R.id.pb_home).gone();
             }
         });
 

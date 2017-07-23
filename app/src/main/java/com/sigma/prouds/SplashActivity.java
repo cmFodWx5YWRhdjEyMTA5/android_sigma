@@ -57,10 +57,6 @@ public class SplashActivity extends BaseActivity {
 
                         }
                     });
-
-                    Intent intent = new Intent(SplashActivity.this, PagerActivity.class); // intent use to move to another activity, this activity goes to MainActivity
-                    startActivity(intent);
-                    SplashActivity.this.finish(); // close SplashActivity
                 }
                 else // user hasn't login yet
                 {
