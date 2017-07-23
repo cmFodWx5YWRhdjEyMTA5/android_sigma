@@ -132,7 +132,8 @@ public class ProjectDetailsActivity extends BaseActivity {
             }
 
             pdFragmentManager.beginTransaction().replace(R.id.pd_container, pdFragment).commit();
-            pdDrawer.closeDrawer(pdListView);
+            closeDrawer();
+            //pdDrawer.closeDrawer(pdListView);
         }
     }
 
