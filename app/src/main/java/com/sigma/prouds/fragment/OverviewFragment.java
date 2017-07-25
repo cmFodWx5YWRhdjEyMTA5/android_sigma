@@ -64,21 +64,23 @@ public class OverviewFragment extends BaseFragment
             @Override
             public void onResponse(Call<DetailProjectResponse> call, Response<DetailProjectResponse> response)
             {
-                Log.i("TAG1 : ", response.body().getOverview().getIwo());
-                setView(response.body());
+                if (query != null)
+                {
+                    setView(response.body());
+                }
+
             }
 
             @Override
             public void onFailure(Call<DetailProjectResponse> call, Throwable t)
             {
-                Log.i("TAG3 : ", t.toString());
+
             }
         });
     }
 
     public void setView(DetailProjectResponse model)
     {
-        Log.i("TAG2 : ", model.getOverview().getIwo());
         query.id(R.id.tv_iwo).text(model.getOverview().getIwo());
         query.id(R.id.tv_buo).text(model.getOverview().getBuOwner());
         query.id(R.id.tv_desc).text(model.getOverview().getDescription() + "");

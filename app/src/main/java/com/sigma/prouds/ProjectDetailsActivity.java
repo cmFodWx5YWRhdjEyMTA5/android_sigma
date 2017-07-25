@@ -124,7 +124,7 @@ public class ProjectDetailsActivity extends BaseActivity {
                     pdFragment = new DocFileFragment();
                     break;
                 case R.string.drawer_team:
-                    pdFragment = new TeamMemberFragment();
+                    pdFragment = new TeamMemberFragment().newInstance(this, projectId);
                     break;
                 case R.string.drawer_setting:
                     pdFragment = new ProjectSettingFragment();

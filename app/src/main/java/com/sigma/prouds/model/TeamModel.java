@@ -8,13 +8,9 @@ public class TeamModel
 {
     private String userId;
     private String userName;
-    private String lastLogin;
-    private String projectId;
-    private String projectName;
-    private String projectComplete;
-    private String projectStatus;
-    private String projectDesc;
-    private String createdBy;
+    private String email;
+    private String profName;
+    private String position;
 
     public String getUserId()
     {
@@ -36,73 +32,33 @@ public class TeamModel
         this.userName = userName;
     }
 
-    public String getLastLogin()
+    public String getEmail()
     {
-        return lastLogin;
+        return email;
     }
 
-    public void setLastLogin(String lastLogin)
+    public void setEmail(String email)
     {
-        this.lastLogin = lastLogin;
+        this.email = email;
     }
 
-    public String getProjectId()
+    public String getProfName()
     {
-        return projectId;
+        return profName;
     }
 
-    public void setProjectId(String projectId)
+    public void setProfName(String profName)
     {
-        this.projectId = projectId;
+        this.profName = profName;
     }
 
-    public String getProjectName()
+    public String getPosition()
     {
-        return projectName;
+        return position;
     }
 
-    public void setProjectName(String projectName)
+    public void setPosition(String position)
     {
-        this.projectName = projectName;
-    }
-
-    public String getProjectComplete()
-    {
-        return projectComplete;
-    }
-
-    public void setProjectComplete(String projectComplete)
-    {
-        this.projectComplete = projectComplete;
-    }
-
-    public String getProjectStatus()
-    {
-        return projectStatus;
-    }
-
-    public void setProjectStatus(String projectStatus)
-    {
-        this.projectStatus = projectStatus;
-    }
-
-    public String getProjectDesc()
-    {
-        return projectDesc;
-    }
-
-    public void setProjectDesc(String projectDesc)
-    {
-        this.projectDesc = projectDesc;
-    }
-
-    public String getCreatedBy()
-    {
-        return createdBy;
-    }
-
-    public void setCreatedBy(String createdBy)
-    {
-        this.createdBy = createdBy;
+        this.position = position;
     }
 }

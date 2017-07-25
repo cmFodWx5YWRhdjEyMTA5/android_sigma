@@ -3,6 +3,8 @@ package com.sigma.prouds.network.response;
 import com.sigma.prouds.model.TeamModel;
 import com.sigma.prouds.model.UserModel;
 
+import java.util.List;
+
 /**
  * Created by 1414 on 7/9/2017.
  */
@@ -10,7 +12,7 @@ import com.sigma.prouds.model.UserModel;
 public class TeamMemberResponse
 {
     private UserModel userdata;
-    private TeamModel projectMember;
+    private List<TeamModel> projectMember;
 
     public UserModel getUserdata()
     {
@@ -22,12 +24,12 @@ public class TeamMemberResponse
         this.userdata = userdata;
     }
 
-    public TeamModel getProjectMember()
+    public List<TeamModel> getProjectMember()
     {
         return projectMember;
     }
 
-    public void setProjectMember(TeamModel projectMember)
+    public void setProjectMember(List<TeamModel> projectMember)
     {
         this.projectMember = projectMember;
     }
