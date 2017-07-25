@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        android:background="@color/white">
+        <!-- display picture -->
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginRight="12dp"
+            android:id="@+id/civ_activity"
+            android:visibility="visible"/>
+
+        <!--content-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <!-- user -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:textSize="16dp"
+                android:textColor="@color/homeParent"
+                android:id="@+id/tv_act_user"/>
+            <!-- position -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:textSize="12dp"
+                android:textColor="@color/homeParentDate"
+                android:id="@+id/tv_act_position"/>
+            <!-- project name -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="8dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="8dp"
+                    android:textSize="14dp"
+                    android:textColor="@color/homeParent"
+                    android:text="@string/act_project" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="14dp"
+                    android:textColor="@color/btn"
+                    android:id="@+id/tv_act_project_name"/>
+            </LinearLayout>
+            <!-- activity name -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="8dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="14dp"
+                    android:textColor="@color/homeParent"
+                    android:text="("
+                    android:textStyle="bold"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="14dp"
+                    android:textColor="@color/homeParent"
+                    android:id="@+id/tv_act_hour"/>
+                <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="8dp"
+                android:textSize="14dp"
+                android:textColor="@color/homeParent"
+                android:text=")"
+                android:textStyle="bold"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="8dp"
+                    android:textSize="14dp"
+                    android:textColor="@color/homeParent"
+                    android:text="-" />
+                <!--TODO max line dari ()-->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="14dp"
+                    android:textColor="@color/homeParent"
+                    android:id="@+id/tv_act_name"/>
+            </LinearLayout>
+            <!-- desc-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14dp"
+                android:textColor="@color/homeParent"
+                android:id="@+id/tv_act_desc"/>
+                <!--TODO cek max lines-->
+                <!--TODO cek tanggal gabung/pisah-->
+            <!--footer-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="8dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="6dp"
+                    android:textSize="12dp"
+                    android:textColor="@color/homeParentDate"
+                    android:id="@+id/tv_act_date" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="6dp"
+                    android:textSize="12dp"
+                    android:textColor="@color/homeParentDate"
+                    android:id="@+id/tv_act_time" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="6dp"
+                    android:textSize="12dp"
+                    android:textColor="@color/homeParentDate"
+                    android:text="@string/act_via"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="12dp"
+                    android:textColor="@color/homeParentDate"
+                    android:id="@+id/tv_act_via" />
+            </LinearLayout>
+            <!-- permission -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:id="@+id/rl_permission">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="12dp"
+                    android:layout_toLeftOf="@+id/tv_act_approve"
+                    android:textSize="12dp"
+                    android:textColor="@color/btn"
+                    android:textStyle="bold"
+                    android:text="@string/act_deny"
+                    android:id="@+id/tv_act_deny"
+                    android:visibility="visible"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="12dp"
+                    android:layout_alignParentRight="true"
+                    android:textSize="12dp"
+                    android:textColor="@color/actApprove"
+                    android:textStyle="bold"
+                    android:text="@string/act_approve"
+                    android:id="@+id/tv_act_approve"
+                    android:visibility="visible"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="12dp"
+                    android:layout_alignParentRight="true"
+                    android:textSize="12dp"
+                    android:textColor="@color/inactiveText"
+                    android:textStyle="bold"
+                    android:text="@string/act_denied"
+                    android:id="@+id/tv_act_denied"
+                    android:visibility="invisible"/>
+            </RelativeLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>
