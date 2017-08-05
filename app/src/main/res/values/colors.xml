@@ -15,6 +15,8 @@
     <color name="background">#f9f9f9</color>
     <color name="splash">#ec202b</color>
 
+    <color name="inactiveText">#bababa</color>
+
     <color name="notifUser">#cf0010</color>
     <color name="notifText">#595e63</color>
     <color name="notifTime">#c1c1c1</color>
@@ -26,4 +28,6 @@
     <color name="homeChild">#404548</color>
 
     <color name="assignmentDue">#f0c132</color>
+
+    <color name="actApprove">#14b8bc</color>
 </resources>

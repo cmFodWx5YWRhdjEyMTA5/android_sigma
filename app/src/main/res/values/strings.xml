@@ -60,4 +60,9 @@
     <string name="doc_uploader">uploaded by</string>
     <string name="doc_date">at</string>
 
+    <string name="act_project">Project</string>
+    <string name="act_via">via</string>
+    <string name="act_deny">DENY</string>
+    <string name="act_approve">APPROVE</string>
+    <string name="act_denied">DENIED</string>
 </resources>
