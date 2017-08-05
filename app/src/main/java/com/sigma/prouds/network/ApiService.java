@@ -46,7 +46,7 @@ public interface ApiService
     Call<TeamMemberResponse> getTeamMember (@Path("project_id") String projectId, @Header("token") String token);
 
     @GET("dev/home/projectdoc/{project_id}")
-    Call<ProjectDocResponse> getProjectDoc (@Path("project_id") String projectId);
+    Call<ProjectDocResponse> getProjectDoc (@Path("project_id") String projectId, @Header("token") String token);
 
     @GET("dev/home/projectissue/{project_id}")
     Call<ProjectIssueResponse> getProjectIssues (@Path("project_id") String projectId, @Header("token") String token);

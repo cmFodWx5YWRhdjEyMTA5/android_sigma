@@ -97,7 +97,7 @@ public class HomeFragment extends BaseFragment {
                     arrayList.add(new BusinessUnitExpendableModel(listResult.get(i).getBuName(), list));
                 }
 
-                adapter = new HomeExpandableAdapter(arrayList);
+                adapter = new HomeExpandableAdapter(ctx, arrayList);
                 rvHome.setAdapter(adapter);
             }
 

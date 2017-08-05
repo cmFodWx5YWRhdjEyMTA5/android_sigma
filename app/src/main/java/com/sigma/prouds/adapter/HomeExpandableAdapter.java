@@ -26,10 +26,12 @@ import java.util.List;
 public class HomeExpandableAdapter extends ExpandableRecyclerViewAdapter<HomeParentHolder, HomeChildHolder>
 {
 
+    private Context context;
 
-    public HomeExpandableAdapter(List<? extends ExpandableGroup> groups)
+    public HomeExpandableAdapter(Context context, List<? extends ExpandableGroup> groups)
     {
         super(groups);
+        this.context = context;
     }
 
     @Override
@@ -37,7 +39,7 @@ public class HomeExpandableAdapter extends ExpandableRecyclerViewAdapter<HomePar
     {
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.holder_home_parent, parent, false);
-        return new HomeParentHolder(view);
+        return new HomeParentHolder(context, view);
     }
 
     @Override
@@ -45,7 +47,7 @@ public class HomeExpandableAdapter extends ExpandableRecyclerViewAdapter<HomePar
     {
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.holder_home_child, parent, false);
-        return new HomeChildHolder(view);
+        return new HomeChildHolder(context, view);
     }
 
     @Override
