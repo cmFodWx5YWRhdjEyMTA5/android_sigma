@@ -8,18 +8,22 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.sigma.prouds.R;
+import com.sigma.prouds.base.BaseFragment;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import in.goodiebag.carouselpicker.CarouselPicker;
 
 
 /**
  * Created by goy on 7/7/2017.
  */
 
-public class TimesheetFragment extends Fragment {
+public class TimesheetFragment extends BaseFragment {
     static Context ctx;
 
-    public TimesheetFragment() {
-        // Required empty public constructor
-    }
+    private CarouselPicker cpDate;
 
     public static TimesheetFragment newInstance(Context context) {
         TimesheetFragment fragment = new TimesheetFragment();
@@ -28,14 +32,26 @@ public class TimesheetFragment extends Fragment {
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    protected int getLayout() {
+        return R.layout.fragment_timesheet;
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_timesheet, container, false);
+    protected void workingSpace(View view) {
+        assignXML();
+    }
+
+    public void assignXML() {
+        cpDate = (CarouselPicker) viewRoot.findViewById(R.id.cp_date);
+    }
+
+    public void carouselSetup() {
+//        create list
+        List<CarouselPicker.PickerItem> dateFilter = new ArrayList<>();
+        dateFilter.add(new CarouselPicker.TextItem("one", 14)); // 14 = font size
+        dateFilter.add(new CarouselPicker.TextItem("two", 14));
+        dateFilter.add(new CarouselPicker.TextItem("three", 14));
+        CarouselPicker.CarouselViewAdapter textAdapter = new CarouselPicker.CarouselViewAdapter(getActivity(), dateFilter, 0);
+        cpDate.setAdapter(textAdapter);
     }
 }

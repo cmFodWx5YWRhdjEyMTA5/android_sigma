@@ -101,4 +101,14 @@
     <string name="set_cogs">COGS</string>
     <string name="set_save">SAVE</string>
 
+    <string name="ts_add">ADD TIMESHEET</string>
+    <string name="ts_submitted">Submitted</string>
+    <string name="ts_hours">hours</string>
+    <string name="ts_for">for</string>
+    <string name="ts_appos">\"</string>
+    <string name="ts_in">in</string>
+    <string name="ts_errormsg">Left a Distribution Error Message</string>
+    <string name="ts_resubmit">RE-SUBMIT</string>
+    
+
 </resources>
