@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/background"
+        android:orientation="vertical"
+        android:padding="16dp">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="24dp"
+            android:layout_marginBottom="24dp"
+            android:layout_gravity="center"
+            android:id="@+id/iv_ts_status"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:textSize="14sp"
+            android:textColor="@color/homeParent"
+            android:id="@+id/tv_ts_time"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="16dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/ts_submitted"
+                android:textSize="14sp"
+                android:textColor="@color/homeParent"
+                android:layout_marginRight="4dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:textColor="@color/homeParent"
+                android:textStyle="bold"
+                android:layout_marginRight="4dp"
+                android:id="@+id/ts_submit_time"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/ts_hours"
+                android:textSize="14sp"
+                android:textColor="@color/homeParent"
+                android:textStyle="bold"
+                android:layout_marginRight="4dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/ts_for"
+                android:textSize="14sp"
+                android:textColor="@color/homeParent"
+                android:layout_marginRight="4dp"/>
+            <!--TODO multiline text-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/ts_appos"
+                android:textSize="14sp"
+                android:textColor="@color/homeParent"
+                android:layout_marginRight="4dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:textColor="@color/homeParent"
+                android:layout_marginRight="4dp"
+                android:id="@+id/ts_task"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/ts_appos"
+                android:textSize="14sp"
+                android:textColor="@color/homeParent"
+                android:layout_marginRight="4dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/ts_in"
+                android:textSize="14sp"
+                android:textColor="@color/homeParent"
+                android:layout_marginRight="4dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:textColor="@color/btn"
+                android:layout_marginRight="4dp"
+                android:id="@+id/ts_project"/>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:text="@string/ts_errormsg"
+            android:textSize="14sp"
+            android:textColor="@color/homeParent" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:textSize="14sp"
+            android:textColor="@color/homeParent"
+            android:maxLines="6"
+            android:id="@+id/tv_ts_errormsg"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginBottom="16dp"
+            android:text="@string/ts_resubmit"
+            android:textSize="14sp"
+            android:textColor="@color/btn"
+            android:visibility="visible"/>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/border"/>
+
+</LinearLayout>

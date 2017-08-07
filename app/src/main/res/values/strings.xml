@@ -65,4 +65,50 @@
     <string name="act_deny">DENY</string>
     <string name="act_approve">APPROVE</string>
     <string name="act_denied">DENIED</string>
+    
+    <string name="set_iwo">IWO</string>
+    <string name="set_projectid">Project ID</string>
+    <string name="set_project_name">Project Name</string>
+    <string name="set_business_unit">Business Unit</string>
+    <string name="set_related_business">Related Business Unit</string>
+    <string name="set_customer">Customer</string>
+    <string name="set_end_customer">End Customer</string>
+    <string name="set_project_val">Project Value</string>
+    <string name="set_margin">Margin</string>
+    <string name="set_product">PRODUCT</string>
+    <string name="set_desc">Description</string>
+    <string name="set_project_type">Project Type</string>
+    <string name="set_project">Project</string>
+    <string name="set_non_project">Non Project</string>
+    <string name="set_HO">H/O Operation</string>
+    <string name="set_yes">Yes</string>
+    <string name="set_no">No</string>
+    <string name="set_pm">Project Manager</string>
+    <string name="set_acc_manager">Account Manager</string>
+    <string name="set_type_effort">Type of Effort</string>
+    <string name="set_product_type">Product Type</string>
+    <string name="set_status">STATUS</string>
+    <string name="set_project_status">Project Status</string>
+    <string name="set_start">Start Date</string>
+    <string name="set_end">End Date</string>
+    <string name="set_visibility">Visibility</string>
+    <string name="set_own_business">Owning Business Member (Default)</string>
+    <string name="set_project_member">Project Member Only</string>
+    <string name="set_finance">FINANCE</string>
+    <string name="set_cap_expense">Capital Expense</string>
+    <string name="set_project_overhead">Project Overhead</string>
+    <string name="set_actual_cost">Actual Cost Workplan</string>
+    <string name="set_cogs">COGS</string>
+    <string name="set_save">SAVE</string>
+
+    <string name="ts_add">ADD TIMESHEET</string>
+    <string name="ts_submitted">Submitted</string>
+    <string name="ts_hours">hours</string>
+    <string name="ts_for">for</string>
+    <string name="ts_appos">\"</string>
+    <string name="ts_in">in</string>
+    <string name="ts_errormsg">Left a Distribution Error Message</string>
+    <string name="ts_resubmit">RE-SUBMIT</string>
+    
+
 </resources>
