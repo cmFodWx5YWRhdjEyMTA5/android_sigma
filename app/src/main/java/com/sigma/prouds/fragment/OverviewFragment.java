@@ -4,6 +4,9 @@ import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.sigma.prouds.LoginActivity;
@@ -29,6 +32,8 @@ public class OverviewFragment extends BaseFragment
     static Context ctx;
     private String projectId;
     private ProudsApplication app;
+    private ScrollView svOverview;
+    private ProgressBar pbOverview;
 
     private TextView tvIwo;
 
@@ -50,6 +55,8 @@ public class OverviewFragment extends BaseFragment
     protected void workingSpace(View view)
     {
         tvIwo = (TextView) view.findViewById(R.id.tv_iwo);
+        svOverview = (ScrollView) view.findViewById(R.id.sv_overview);
+        pbOverview = (ProgressBar) view.findViewById(R.id.pb_overview);
         app = (ProudsApplication) ctx.getApplicationContext();
         service = ApiUtils.apiService();
         projectId = getArguments().getString("project_id");
@@ -66,6 +73,8 @@ public class OverviewFragment extends BaseFragment
             {
                 if (query != null)
                 {
+                    query.id(pbOverview).gone();
+                    query.id(svOverview).visible();
                     setView(response.body());
                 }
 

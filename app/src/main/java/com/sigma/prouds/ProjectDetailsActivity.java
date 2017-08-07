@@ -9,6 +9,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
@@ -33,7 +34,7 @@ public class ProjectDetailsActivity extends BaseActivity {
 
     public static final String KEY_DRAWER_ITEM = "key_drawer_item";
 
-    private ImageView ivMenu, ivDrawerClose;
+    private ImageView ivMenu, ivDrawerClose, ivBack;
     private DrawerAdapter adapter;
     private DrawerLayout pdDrawer;
     private Fragment pdFragment = null;
@@ -58,6 +59,16 @@ public class ProjectDetailsActivity extends BaseActivity {
     @Override
     protected void workingSpace() {
         assignXML();
+
+        ivBack.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                ProjectDetailsActivity.this.finish();
+            }
+        });
+
         getDataFromHome();
         pdFragment = new OverviewFragment().newInstance(this, projectId);
         pdFragmentManager.beginTransaction().replace(R.id.pd_container, pdFragment).commit();
@@ -73,6 +84,7 @@ public class ProjectDetailsActivity extends BaseActivity {
         pdDrawer = (DrawerLayout) findViewById(R.id.pd_drawer);
         pdListView = (ListView) findViewById(R.id.lv_pd_drawer);
         pbDetail = (ProgressBar) findViewById(R.id.pb_project_details);
+        ivBack = (ImageView) findViewById(R.id.iv_back);
     }
 
     public void getDataFromHome()
