@@ -57,19 +57,15 @@ public class LoginActivity extends BaseActivity
             @Override
             public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response)
             {
-                if (response.body().getUserdata().getLoggedIn() == "true")
-                {
-                    dialog.dismiss();
-                    app.getSessionManager().setLogin(true);
-                    app.getSessionManager().setToken(response.body().getToken());
-                    app.getSessionManager().setUserName(model.getUserId());
-                    app.getSessionManager().setPassword(model.getPassword());
-                    Log.i("Token", app.getSessionManager().getToken());
-                    Intent intent = new Intent(LoginActivity.this, PagerActivity.class);
-                    startActivity(intent);
-                    LoginActivity.this.finish();
-                }
-
+                dialog.dismiss();
+                app.getSessionManager().setLogin(true);
+                app.getSessionManager().setToken(response.body().getToken());
+                app.getSessionManager().setUserName(model.getUserId());
+                app.getSessionManager().setPassword(model.getPassword());
+                Log.i("Token", app.getSessionManager().getToken());
+                Intent intent = new Intent(LoginActivity.this, PagerActivity.class);
+                startActivity(intent);
+                LoginActivity.this.finish();
             }
 
             @Override

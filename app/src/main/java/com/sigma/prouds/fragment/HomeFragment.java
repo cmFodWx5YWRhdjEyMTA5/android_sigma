@@ -83,9 +83,7 @@ public class HomeFragment extends BaseFragment {
             @Override
             public void onResponse(Call<ProjectResponse> call, Response<ProjectResponse> response)
             {
-                if(query != null){
-                    query.id(R.id.pb_home).gone();
-                }
+                query.id(R.id.pb_home).gone();
                 listResult = response.body().getProject();
                 arrayList = new ArrayList<>();
 //                Log.i("response", response.body().getProject().get(0).getBuName() + "null");
