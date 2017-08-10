@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.sigma.prouds.adapter.DrawerAdapter;
 import com.sigma.prouds.base.BaseActivity;
@@ -35,6 +36,7 @@ public class ProjectDetailsActivity extends BaseActivity {
     public static final String KEY_DRAWER_ITEM = "key_drawer_item";
 
     private ImageView ivMenu, ivDrawerClose, ivBack;
+    private TextView tvToolbarTitle;
     private DrawerAdapter adapter;
     private DrawerLayout pdDrawer;
     private Fragment pdFragment = null;
@@ -85,6 +87,7 @@ public class ProjectDetailsActivity extends BaseActivity {
         pdListView = (ListView) findViewById(R.id.lv_pd_drawer);
         pbDetail = (ProgressBar) findViewById(R.id.pb_project_details);
         ivBack = (ImageView) findViewById(R.id.iv_back);
+        tvToolbarTitle = (TextView) findViewById(R.id.tv_title_toolbar_assignment);
     }
 
     public void getDataFromHome()
@@ -122,24 +125,31 @@ public class ProjectDetailsActivity extends BaseActivity {
             switch(bundle.getInt(KEY_DRAWER_ITEM)){
                 case R.string.drawer_overview:
                     pdFragment = new OverviewFragment().newInstance(this, projectId);
+                    tvToolbarTitle.setText("PROJECT OVERVIEW");
                     break;
                 case R.string.drawer_workplan:
                     pdFragment = new WorkplanFragment();
+                    tvToolbarTitle.setText("WORKPLAN");
                     break;
                 case R.string.drawer_activity:
                     pdFragment = new ActivityFragment();
+                    tvToolbarTitle.setText("ACTIVITY");
                     break;
                 case R.string.drawer_issues:
                     pdFragment = new IssuesFragment().newInstance(this, projectId);
+                    tvToolbarTitle.setText("ISSUES");
                     break;
                 case R.string.drawer_doc:
                     pdFragment = new DocFileFragment().newInstance(this, projectId);
+                    tvToolbarTitle.setText("DOCS & FILES");
                     break;
                 case R.string.drawer_team:
                     pdFragment = new TeamMemberFragment().newInstance(this, projectId);
+                    tvToolbarTitle.setText("TEAM MEMBER");
                     break;
                 case R.string.drawer_setting:
                     pdFragment = new ProjectSettingFragment();
+                    tvToolbarTitle.setText("PROJECT SETTING");
                     break;
             }
 

@@ -3,18 +3,27 @@ package com.sigma.prouds.fragment;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentStatePagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.github.florent37.materialviewpager.MaterialViewPager;
 import com.sigma.prouds.R;
+import com.sigma.prouds.adapter.MyActivityAdapter;
+import com.sigma.prouds.adapter.PerformanceAdapter;
+import com.sigma.prouds.base.BaseFragment;
 
 /**
  * Created by goy on 7/7/2017.
  */
 
-public class PerformanceFragment extends Fragment {
+public class PerformanceFragment extends BaseFragment
+{
     static Context ctx;
+    private ViewPager vpPerformance;
+    private PerformanceAdapter adapter;
 
     public PerformanceFragment() {
         // Required empty public constructor
@@ -26,15 +35,18 @@ public class PerformanceFragment extends Fragment {
         return fragment;
     }
 
+
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    protected int getLayout()
+    {
+        return R.layout.fragment_performance;
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_performance, container, false);
+    protected void workingSpace(View view)
+    {
+        vpPerformance = (ViewPager) view.findViewById(R.id.vp_performance);
+        adapter = new PerformanceAdapter(getFragmentManager(), ctx);
+        vpPerformance.setAdapter(adapter);
     }
 }

@@ -1,5 +1,6 @@
 package com.sigma.prouds.fragment;
 
+import android.content.Context;
 import android.view.View;
 
 import com.sigma.prouds.R;
@@ -10,6 +11,16 @@ import com.sigma.prouds.base.BaseFragment;
  */
 
 public class WorkplanFragment extends BaseFragment {
+
+    static Context ctx;
+
+    public static WorkplanFragment newInstance(Context context)
+    {
+        WorkplanFragment fragment = new WorkplanFragment();
+        ctx = context;
+        return fragment;
+    }
+
     @Override
     protected int getLayout() {
         return R.layout.fragment_workplan;
