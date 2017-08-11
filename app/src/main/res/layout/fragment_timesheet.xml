@@ -6,8 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/background"
     android:padding="16dp">
-
-    <!--TODO carousel content-->
+    
     <com.synnapps.carouselview.CarouselView
         android:id="@+id/cv_timesheet"
         android:layout_width="match_parent"

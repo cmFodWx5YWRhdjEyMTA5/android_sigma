@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.sigma.prouds.AddTimesheetActivity"
+    android:background="@color/background"
+    android:orientation="vertical">
+
+    <!-- Toolbar start -->
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="@color/header"
+        android:paddingRight="16dp"
+        android:id="@+id/tb_add_timesheet"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/back"
+                android:id="@+id/iv_back"/>
+
+            <TextView
+                android:id="@+id/tv_title_toolbar_assignment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tb_addts"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"/>
+
+        </RelativeLayout>
+    </android.support.v7.widget.Toolbar>
+    <!-- Toolbar end -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:layout_below="@+id/tb_add_timesheet"
+        android:layout_above="@id/rl_addts">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginBottom="12dp"
+            android:background="@color/white"
+            android:paddingLeft="16dp"
+            android:textSize="14sp"
+            android:id="@+id/et_addts_date"
+            />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginBottom="12dp"
+            android:background="@color/white"
+            android:paddingLeft="16dp"
+            android:textSize="14sp"
+            android:hint="@string/addts_choose_project"
+            android:id="@+id/et_addts_project"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:orientation="horizontal"
+            android:layout_marginBottom="12dp">
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:background="@color/white"
+                android:paddingLeft="16dp"
+                android:textSize="14sp"
+                android:hint="@string/addts_choose_task"
+                android:id="@+id/et_addts_task"
+                />
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_weight="2"
+                android:background="@color/white"
+                android:paddingLeft="16dp"
+                android:textSize="14sp"
+                android:hint="@string/addts_work_hours"
+                android:id="@+id/et_addts_hours"
+                />
+        </LinearLayout>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginBottom="12dp"
+            android:background="@color/white"
+            android:paddingLeft="16dp"
+            android:textSize="14sp"
+            android:hint="@string/addts_subject"
+            android:id="@+id/et_addts_subject"
+            />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_marginBottom="12dp"
+            android:background="@color/white"
+            android:paddingLeft="16dp"
+            android:paddingTop="16dp"
+            android:textSize="14sp"
+            android:gravity="top"
+            android:hint="@string/addts_message"
+            android:id="@+id/et_addts_msg"
+            />
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="@color/btn"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/rl_addts">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/addts_new"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:layout_centerInParent="true"/>
+    </RelativeLayout>
+
+</RelativeLayout>
