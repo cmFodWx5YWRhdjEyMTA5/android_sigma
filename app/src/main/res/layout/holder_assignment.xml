@@ -40,7 +40,7 @@
             android:layout_height="16dp"
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="12dp"
-            app:srcCompat="@drawable/detail"
+            android:src="@drawable/detail"
             android:id="@+id/iv_detail"/>
 
     </LinearLayout>

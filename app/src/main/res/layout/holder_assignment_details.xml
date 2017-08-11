@@ -88,7 +88,7 @@
         <ImageView
             android:layout_width="24dp"
             android:layout_height="24dp"
-            app:srcCompat="@drawable/add_timesheet"
+            android:src="@drawable/add_timesheet"
             android:layout_alignParentRight="true"
             android:id="@+id/iv_add_timesheet" />
     </RelativeLayout>

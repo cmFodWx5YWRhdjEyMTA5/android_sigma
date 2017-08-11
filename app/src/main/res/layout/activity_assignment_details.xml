@@ -25,7 +25,7 @@
                 android:layout_height="24dp"
                 android:layout_alignParentLeft="true"
                 android:layout_centerVertical="true"
-                app:srcCompat="@drawable/back"
+                android:src="@drawable/back"
                 android:id="@+id/iv_back"/>
 
             <TextView
@@ -34,7 +34,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/toolbar_myassignment"
                 android:textColor="@color/white"
-                android:textSize="18sp"
+                android:textSize="16sp"
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"/>
 
@@ -46,7 +46,7 @@
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:visibility="visible"
-                app:srcCompat="@mipmap/notif" />
+                android:src="@drawable/notif" />
 
         </RelativeLayout>
     </android.support.v7.widget.Toolbar>
@@ -80,7 +80,7 @@
             android:layout_alignParentRight="true"
             android:layout_marginLeft="12dp"
             android:layout_gravity="center_vertical"
-            app:srcCompat="@drawable/search" />
+            android:src="@drawable/search"/>
     </LinearLayout>
     <!-- Search stop -->
 

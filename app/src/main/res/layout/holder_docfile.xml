@@ -40,7 +40,7 @@
                     android:layout_marginLeft="12dp"
                     android:layout_alignParentRight="true"
                     android:id="@+id/iv_doc_download"
-                    app:srcCompat="@drawable/download"/>
+                    android:src="@drawable/download"/>
             </RelativeLayout>
             <!-- uploader name and time -->
             <LinearLayout
