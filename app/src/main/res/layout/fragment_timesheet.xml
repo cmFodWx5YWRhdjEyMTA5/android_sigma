@@ -8,14 +8,16 @@
     android:padding="16dp">
 
     <!--TODO carousel content-->
-    <in.goodiebag.carouselpicker.CarouselPicker
+    <com.synnapps.carouselview.CarouselView
+        android:id="@+id/cv_timesheet"
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        android:padding="16dp"
-        android:background="@color/white"
-        app:items_visible="three"
-        android:id="@+id/cp_date">
-    </in.goodiebag.carouselpicker.CarouselPicker>
+        app:disableAutoPlayOnUserInteraction="true"
+        app:autoPlay="false"
+        app:pageTransformInterval="1000"
+        app:pageTransformer="slide_over"
+        app:fillColor="@color/btn"
+        />
 
     <LinearLayout
         android:layout_width="wrap_content"
