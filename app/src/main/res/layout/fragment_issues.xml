@@ -25,7 +25,7 @@
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:layout_margin="12dp"
-            app:srcCompat="@drawable/add_timesheet"
+            android:src="@drawable/add"
             android:id="@+id/iv_report_issue"
             android:layout_centerVertical="true"/>
         <TextView

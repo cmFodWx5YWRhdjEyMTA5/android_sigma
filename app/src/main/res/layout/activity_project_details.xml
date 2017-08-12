@@ -32,7 +32,7 @@
                     android:layout_height="24dp"
                     android:layout_alignParentLeft="true"
                     android:layout_centerVertical="true"
-                    app:srcCompat="@drawable/back"
+                    android:src="@drawable/back"
                     android:id="@+id/iv_back"/>
 
                 <TextView

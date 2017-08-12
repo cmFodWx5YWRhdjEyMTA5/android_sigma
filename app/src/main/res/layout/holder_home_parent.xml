@@ -28,7 +28,7 @@
                 android:layout_width="16dp"
                 android:layout_height="16dp"
                 android:layout_marginLeft="12dp"
-                app:srcCompat="@drawable/dropdown"
+                android:src="@drawable/dropdown"
                 android:id="@id/iv_dropdown"/>
         </LinearLayout>
         <TextView

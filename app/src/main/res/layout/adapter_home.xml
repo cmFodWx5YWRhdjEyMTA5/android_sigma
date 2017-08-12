@@ -32,12 +32,14 @@
         <!-- Detail end -->
         <!-- Dropdown arrow start -->
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginRight="12dp"
+            android:layout_marginLeft="12dp"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            app:srcCompat="@android:drawable/arrow_down_float"
+            android:src="@drawable/dropdown"
             android:id="@+id/iv_dropdown"/>
         <!-- Dropdown arrow end -->
     </RelativeLayout>

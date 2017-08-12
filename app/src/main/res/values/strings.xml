@@ -8,11 +8,12 @@
 
     <string name="register">Don\'t have an account?</string>
 
-    <string name="toolbar_myassignment">MY ASSIGNMENT</string>
-    <string name="toolbar_myperformance">MY PERFORMANCE</string>
-    <string name="toolbar_notification">NOTIFICATION</string>
-    <string name="toolbar_timesheet">TIMESHEET</string>
-    <string name="toolbar_projectdetails">PROJECT DETAILS</string>
+    <string name="tb_myassignment">MY ASSIGNMENT</string>
+    <string name="tb_myperformance">MY PERFORMANCE</string>
+    <string name="tb_notification">NOTIFICATION</string>
+    <string name="tb_timesheet">TIMESHEET</string>
+    <string name="tb_projectdetails">PROJECT DETAILS</string>
+    <string name="tb_addts">ADD TIMESHEET</string>
 
     <string name="search_hint">Search business unit or project …</string>
 
@@ -65,7 +66,7 @@
     <string name="act_deny">DENY</string>
     <string name="act_approve">APPROVE</string>
     <string name="act_denied">DENIED</string>
-    
+
     <string name="set_iwo">IWO</string>
     <string name="set_projectid">Project ID</string>
     <string name="set_project_name">Project Name</string>
@@ -110,5 +111,12 @@
     <string name="ts_errormsg">Left a Distribution Error Message</string>
     <string name="ts_resubmit">RE-SUBMIT</string>
     
+    <string name="addts_choose_project">Choose a project</string>
+    <string name="addts_choose_task">Choose a task</string>
+    <string name="addts_work_hours">Work Hours</string>
+    <string name="addts_subject">Subject</string>
+    <string name="addts_message">Message</string>
+    <string name="addts_new">ADD NEW</string>
+
 
 </resources>

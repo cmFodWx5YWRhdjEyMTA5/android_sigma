@@ -134,10 +134,12 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
+                android:layout_marginBottom="8dp"
                 android:background="@color/white"
                 android:padding="10dp"
                 android:textSize="12sp"
                 android:hint="@string/set_desc"
+                android:gravity="top"
                 android:id="@+id/et_desc"/>
             <TextView
                 android:layout_width="match_parent"
