@@ -8,6 +8,7 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 
 import com.sigma.prouds.base.BaseFragmentActivity;
 import com.sigma.prouds.fragment.AssignmentFragment;
@@ -32,6 +33,7 @@ public class PagerActivity extends BaseFragmentActivity {
             R.drawable.tab_timesheet,
             R.drawable.tab_performance
     };
+    private ImageView ivNotif;
 
     @Override
     protected int getLayout() {
@@ -44,6 +46,13 @@ public class PagerActivity extends BaseFragmentActivity {
         setTabLayout();
         tabEvent();
 
+        ivNotif.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
         fragment = HomeFragment.newInstance(this);
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).commit();
     }
@@ -54,7 +63,7 @@ public class PagerActivity extends BaseFragmentActivity {
         tbAssignment = (Toolbar) findViewById(R.id.tb_assignment);
         tbTimesheet = (Toolbar) findViewById(R.id.tb_timesheet);
         tbPerformance = (Toolbar) findViewById(R.id.tb_performance);
-
+        ivNotif = (ImageView) findViewById(R.id.iv_notif);
         query.id(R.id.tv_title_toolbar_assignment).typeface(Typeface.createFromAsset(getAssets(), "lato_black.ttf"));
         query.id(R.id.tv_title_toolbar_timesheet).typeface(Typeface.createFromAsset(getAssets(), "lato_black.ttf"));
         query.id(R.id.tv_title_toolbar_myperformance).typeface(Typeface.createFromAsset(getAssets(), "lato_black.ttf"));
