@@ -58,18 +58,20 @@
         </LinearLayout>
     </LinearLayout>
 
-    <com.github.aakira.expandablelayout.ExpandableRelativeLayout
+    <com.github.aakira.expandablelayout.ExpandableLinearLayout
+        android:id="@+id/ex_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:ael_expanded="true"
-        app:ael_duration="500"
-        app:ael_interpolator="bounce">
+        android:orientation="vertical"
+        app:ael_duration="400">
 
         <LinearLayout
             android:orientation="vertical" android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/background"
-            android:padding="16dp">
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -222,6 +224,6 @@
 
         </LinearLayout>
 
-    </com.github.aakira.expandablelayout.ExpandableRelativeLayout>
+    </com.github.aakira.expandablelayout.ExpandableLinearLayout>
 
 </LinearLayout>
