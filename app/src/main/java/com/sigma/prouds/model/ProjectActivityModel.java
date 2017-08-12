@@ -24,6 +24,7 @@ public class ProjectActivityModel
     private String longitude;
     private String latitude;
     private String submitDate;
+    private String isApproved;
 
     public String getWp()
     {
@@ -203,5 +204,13 @@ public class ProjectActivityModel
     public void setSubmitDate(String submitDate)
     {
         this.submitDate = submitDate;
+    }
+
+    public String getIsApproved() {
+        return isApproved;
+    }
+
+    public void setIsApproved(String isApproved) {
+        this.isApproved = isApproved;
     }
 }
