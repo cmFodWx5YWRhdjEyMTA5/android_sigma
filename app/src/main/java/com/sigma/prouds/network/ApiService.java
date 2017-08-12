@@ -52,7 +52,7 @@ public interface ApiService
     Call<ProjectIssueResponse> getProjectIssues (@Path("project_id") String projectId, @Header("token") String token);
 
     @GET("dev/home/projectactivities/{project_id}")
-    Call<ProjectActivityResponse> getProjectActivity (@Path("project_id") String projectId);
+    Call<ProjectActivityResponse> getProjectActivity (@Path("project_id") String projectId, @Header("token") String token);
 
     @GET("dev/home/myactivities")
     Call<MyActivityResponse> getMyActivityResponse();
