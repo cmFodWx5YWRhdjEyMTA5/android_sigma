@@ -63,6 +63,9 @@
 
     <string name="act_project">Project</string>
     <string name="act_via">via</string>
+    <string name="act_errormsg1">Left a</string>
+    <string name="act_errormsg2">Distribution Error</string>
+    <string name="act_errormsg3">message</string>
     <string name="act_deny">DENY</string>
     <string name="act_approve">APPROVE</string>
     <string name="act_denied">DENIED</string>

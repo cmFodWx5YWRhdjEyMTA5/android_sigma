@@ -42,67 +42,45 @@
                 android:textColor="@color/homeParentDate"
                 android:id="@+id/tv_act_position"/>
             <!-- project name -->
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginBottom="8dp">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="8dp"
-                    android:textSize="14dp"
-                    android:textColor="@color/homeParent"
-                    android:text="@string/act_project" />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="14dp"
-                    android:textColor="@color/btn"
-                    android:id="@+id/tv_act_project_name"/>
-            </LinearLayout>
-            <!-- activity name -->
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginBottom="8dp">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="14dp"
-                    android:textColor="@color/homeParent"
-                    android:text="("
-                    android:textStyle="bold"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="14dp"
-                    android:textColor="@color/homeParent"
-                    android:id="@+id/tv_act_hour"/>
-                <TextView
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="8dp"
                 android:textSize="14dp"
-                android:textColor="@color/homeParent"
-                android:text=")"
-                android:textStyle="bold"/>
+                android:id="@+id/tv_act_project_name"/>
+
+            <!-- activity name -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:textSize="14dp"
+                android:id="@+id/tv_act_name"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="8dp"
+                    android:layout_marginRight="4dp"
                     android:textSize="14dp"
-                    android:textColor="@color/homeParent"
-                    android:text="-" />
-                <!--TODO max line dari ()-->
+                    android:text="@string/act_errormsg1" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="4dp"
+                    android:textSize="14dp"
+                    android:textStyle="bold"
+                    android:text="@string/act_errormsg2" />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="14dp"
-                    android:textColor="@color/homeParent"
-                    android:id="@+id/tv_act_name"/>
+                    android:text="@string/act_errormsg3" />
             </LinearLayout>
+
             <!-- desc-->
             <TextView
                 android:layout_width="wrap_content"
@@ -110,42 +88,16 @@
                 android:textSize="14dp"
                 android:textColor="@color/homeParent"
                 android:id="@+id/tv_act_desc"/>
-                <!--TODO cek max lines-->
-                <!--TODO cek tanggal gabung/pisah-->
+
             <!--footer-->
-            <LinearLayout
-                android:layout_width="match_parent"
+            <TextView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginBottom="8dp">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="6dp"
-                    android:textSize="12dp"
-                    android:textColor="@color/homeParentDate"
-                    android:id="@+id/tv_act_date" />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="6dp"
-                    android:textSize="12dp"
-                    android:textColor="@color/homeParentDate"
-                    android:id="@+id/tv_act_time" />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="6dp"
-                    android:textSize="12dp"
-                    android:textColor="@color/homeParentDate"
-                    android:text="@string/act_via"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="12dp"
-                    android:textColor="@color/homeParentDate"
-                    android:id="@+id/tv_act_via" />
-            </LinearLayout>
+                android:layout_marginBottom="8dp"
+                android:textSize="12dp"
+                android:textColor="@color/homeParentDate"
+                android:id="@+id/tv_act_footer"/>
+
             <!-- permission -->
             <RelativeLayout
                 android:layout_width="match_parent"
