@@ -4,40 +4,40 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.sigma.prouds.AddTimesheetActivity"
     android:background="@color/background"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context="com.sigma.prouds.AddTimesheetActivity">
 
     <!-- Toolbar start -->
-    <android.support.v7.widget.Toolbar
+    <android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/tb_add_timesheet"
         android:layout_width="match_parent"
         android:layout_height="56dp"
         android:background="@color/header"
-        android:paddingRight="16dp"
-        android:id="@+id/tb_add_timesheet"
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto">
+        android:paddingRight="16dp">
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
             <ImageView
+                android:id="@+id/iv_back"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:layout_alignParentLeft="true"
                 android:layout_centerVertical="true"
-                android:src="@drawable/back"
-                android:id="@+id/iv_back"/>
+                android:src="@drawable/back" />
 
             <TextView
                 android:id="@+id/tv_title_toolbar_assignment"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
                 android:text="@string/tb_addts"
                 android:textColor="@color/white"
-                android:textSize="16sp"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"/>
+                android:textSize="16sp" />
 
         </RelativeLayout>
     </android.support.v7.widget.Toolbar>
@@ -46,99 +46,96 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="16dp"
+        android:layout_above="@+id/rl_addts"
         android:layout_below="@+id/tb_add_timesheet"
-        android:layout_above="@id/rl_addts">
+        android:orientation="vertical"
+        android:padding="16dp">
 
         <EditText
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:layout_marginBottom="12dp"
-            android:background="@color/white"
-            android:paddingLeft="16dp"
-            android:textSize="14sp"
             android:id="@+id/et_addts_date"
-            />
-
-        <EditText
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_marginBottom="12dp"
             android:background="@color/white"
             android:paddingLeft="16dp"
-            android:textSize="14sp"
-            android:hint="@string/addts_choose_project"
+            android:textSize="14sp" />
+
+        <EditText
             android:id="@+id/et_addts_project"
-            />
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginBottom="12dp"
+            android:background="@color/white"
+            android:hint="@string/addts_choose_project"
+            android:paddingLeft="16dp"
+            android:textSize="14sp" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="48dp"
-            android:orientation="horizontal"
-            android:layout_marginBottom="12dp">
+            android:layout_marginBottom="12dp"
+            android:orientation="horizontal">
+
             <EditText
+                android:id="@+id/et_addts_task"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:layout_marginRight="10dp"
                 android:layout_weight="1"
                 android:background="@color/white"
-                android:paddingLeft="16dp"
-                android:textSize="14sp"
                 android:hint="@string/addts_choose_task"
-                android:id="@+id/et_addts_task"
-                />
+                android:paddingLeft="16dp"
+                android:textSize="14sp" />
+
             <EditText
+                android:id="@+id/et_addts_hours"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:layout_weight="2"
                 android:background="@color/white"
-                android:paddingLeft="16dp"
-                android:textSize="14sp"
                 android:hint="@string/addts_work_hours"
-                android:id="@+id/et_addts_hours"
-                />
+                android:paddingLeft="16dp"
+                android:textSize="14sp" />
         </LinearLayout>
 
         <EditText
+            android:id="@+id/et_addts_subject"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_marginBottom="12dp"
             android:background="@color/white"
-            android:paddingLeft="16dp"
-            android:textSize="14sp"
             android:hint="@string/addts_subject"
-            android:id="@+id/et_addts_subject"
-            />
+            android:paddingLeft="16dp"
+            android:textSize="14sp" />
 
         <EditText
+            android:id="@+id/et_addts_msg"
             android:layout_width="match_parent"
             android:layout_height="150dp"
             android:layout_marginBottom="12dp"
             android:background="@color/white"
-            android:paddingLeft="16dp"
-            android:paddingTop="16dp"
-            android:textSize="14sp"
             android:gravity="top"
             android:hint="@string/addts_message"
-            android:id="@+id/et_addts_msg"
-            />
+            android:paddingLeft="16dp"
+            android:paddingTop="16dp"
+            android:textSize="14sp" />
 
     </LinearLayout>
 
     <RelativeLayout
+        android:id="@+id/rl_addts"
         android:layout_width="match_parent"
         android:layout_height="56dp"
-        android:background="@color/btn"
         android:layout_alignParentBottom="true"
-        android:id="@+id/rl_addts">
+        android:background="@color/btn">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
             android:text="@string/addts_new"
             android:textColor="@color/white"
-            android:textSize="18sp"
-            android:layout_centerInParent="true"/>
+            android:textSize="18sp" />
     </RelativeLayout>
 
 </RelativeLayout>

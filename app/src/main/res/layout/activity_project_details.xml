@@ -53,7 +53,7 @@
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
                     android:visibility="visible"
-                    app:srcCompat="@mipmap/notif" />
+                    android:src="@drawable/notif" />
 
             </RelativeLayout>
         </android.support.v7.widget.Toolbar>

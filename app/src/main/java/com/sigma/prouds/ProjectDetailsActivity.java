@@ -128,7 +128,7 @@ public class ProjectDetailsActivity extends BaseActivity {
                     tvToolbarTitle.setText("PROJECT OVERVIEW");
                     break;
                 case R.string.drawer_workplan:
-                    pdFragment = new WorkplanFragment();
+                    pdFragment = new WorkplanFragment().newInstance(this, projectId);
                     tvToolbarTitle.setText("WORKPLAN");
                     break;
                 case R.string.drawer_activity:

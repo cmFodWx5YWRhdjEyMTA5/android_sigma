@@ -9,7 +9,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.github.florent37.materialviewpager.MaterialViewPager;
 import com.sigma.prouds.R;
 import com.sigma.prouds.adapter.MyActivityAdapter;
 import com.sigma.prouds.adapter.PerformanceAdapter;
@@ -45,8 +44,8 @@ public class PerformanceFragment extends BaseFragment
     @Override
     protected void workingSpace(View view)
     {
-        vpPerformance = (ViewPager) view.findViewById(R.id.vp_performance);
-        adapter = new PerformanceAdapter(getFragmentManager(), ctx);
-        vpPerformance.setAdapter(adapter);
+        //vpPerformance = (ViewPager) view.findViewById(R.id.vp_performance);
+        //adapter = new PerformanceAdapter(getFragmentManager(), ctx);
+        //vpPerformance.setAdapter(adapter);
     }
 }
