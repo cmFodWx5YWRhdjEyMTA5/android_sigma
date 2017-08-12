@@ -22,7 +22,6 @@ import in.goodiebag.carouselpicker.CarouselPicker;
 
 public class TimesheetFragment extends BaseFragment {
     static Context ctx;
-
     private CarouselPicker cpDate;
 
     public static TimesheetFragment newInstance(Context context) {
@@ -46,7 +45,6 @@ public class TimesheetFragment extends BaseFragment {
     }
 
     public void carouselSetup() {
-//        create list
         List<CarouselPicker.PickerItem> dateFilter = new ArrayList<>();
         dateFilter.add(new CarouselPicker.TextItem("one", 14)); // 14 = font size
         dateFilter.add(new CarouselPicker.TextItem("two", 14));
