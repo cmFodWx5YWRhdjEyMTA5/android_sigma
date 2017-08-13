@@ -5,6 +5,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
+import com.sigma.prouds.fragment.ChartFragment;
 import com.sigma.prouds.fragment.MyActivityFragment;
 
 /**
@@ -13,6 +14,7 @@ import com.sigma.prouds.fragment.MyActivityFragment;
 
 public class PerformanceAdapter extends FragmentPagerAdapter
 {
+
     private Context context;
 
     public PerformanceAdapter(FragmentManager fm, Context context)
@@ -28,7 +30,7 @@ public class PerformanceAdapter extends FragmentPagerAdapter
         {
             case 0:
                 return MyActivityFragment.newInstance(context);
-            default:return MyActivityFragment.newInstance(context);
+            default:return ChartFragment.newInstance(context);
         }
     }
 

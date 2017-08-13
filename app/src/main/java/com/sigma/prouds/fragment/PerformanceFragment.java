@@ -44,8 +44,8 @@ public class PerformanceFragment extends BaseFragment
     @Override
     protected void workingSpace(View view)
     {
-        //vpPerformance = (ViewPager) view.findViewById(R.id.vp_performance);
-        //adapter = new PerformanceAdapter(getFragmentManager(), ctx);
-        //vpPerformance.setAdapter(adapter);
+        vpPerformance = (ViewPager) view.findViewById(R.id.vp_performance);
+        adapter = new PerformanceAdapter(getFragmentManager(), ctx);
+        vpPerformance.setAdapter(adapter);
     }
 }

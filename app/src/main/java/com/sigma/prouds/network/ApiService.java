@@ -55,7 +55,7 @@ public interface ApiService
     Call<ProjectActivityResponse> getProjectActivity (@Path("project_id") String projectId, @Header("token") String token);
 
     @GET("dev/home/myactivities")
-    Call<MyActivityResponse> getMyActivityResponse();
+    Call<MyActivityResponse> getMyActivity(@Header("token") String token);
 
     @GET("dev/home/myassignment")
     Call<MyAssignmentResponse> getMyAssignmentResponse(@Header("token") String token);

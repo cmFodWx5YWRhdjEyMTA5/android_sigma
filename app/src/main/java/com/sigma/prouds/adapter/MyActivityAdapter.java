@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.sigma.prouds.R;
+import com.sigma.prouds.holder.ActivityHolder;
 import com.sigma.prouds.holder.MyActivityHolder;
 import com.sigma.prouds.model.ProjectActivityModel;
 
@@ -32,14 +33,14 @@ public class MyActivityAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType)
     {
         View itemView =  LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.holder_my_activity, parent, false);
-        return new MyActivityHolder(context, itemView);
+                .inflate(R.layout.holder_activity, parent, false);
+        return new ActivityHolder(context, itemView);
     }
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position)
     {
-        MyActivityHolder item = (MyActivityHolder) holder;
+        ActivityHolder item = (ActivityHolder) holder;
         item.bind(list.get(position));
     }
 

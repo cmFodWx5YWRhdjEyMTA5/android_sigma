@@ -6,13 +6,21 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
+import com.sigma.prouds.ProudsApplication;
 import com.sigma.prouds.R;
 import com.sigma.prouds.adapter.MyActivityAdapter;
 import com.sigma.prouds.base.BaseFragment;
 import com.sigma.prouds.model.ProjectActivityModel;
+import com.sigma.prouds.network.ApiService;
+import com.sigma.prouds.network.ApiUtils;
+import com.sigma.prouds.network.response.MyActivityResponse;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * Created by 1414 on 8/7/2017.
@@ -23,9 +31,9 @@ public class MyActivityFragment extends BaseFragment
     static Context ctx;
     private RecyclerView vpActivity;
     private MyActivityAdapter adapter;
-    private List<ProjectActivityModel> list;
-
-
+    //private List<ProjectActivityModel> list;
+    private ApiService service;
+    private ProudsApplication app;
 
 
     public static MyActivityFragment newInstance(Context context)
@@ -45,17 +53,29 @@ public class MyActivityFragment extends BaseFragment
     protected void workingSpace(View view)
     {
         vpActivity = (RecyclerView) view.findViewById(R.id.rv_my_activity);
-        list = new ArrayList<>();
-        for (int i = 0; i <= 10 ; i ++)
+        app = (ProudsApplication) ctx.getApplicationContext();
+        service = ApiUtils.apiService();
+        getData();
+
+    }
+
+    public void getData()
+    {
+        service.getMyActivity(app.getSessionManager().getToken()).enqueue(new Callback<MyActivityResponse>()
         {
-            ProjectActivityModel model = new ProjectActivityModel();
-            model.setMessage("item " + i);
-            list.add(model);
-        }
+            @Override
+            public void onResponse(Call<MyActivityResponse> call, Response<MyActivityResponse> response)
+            {
+                adapter = new MyActivityAdapter(ctx, response.body().getActivityTimesheet());
+                vpActivity.setLayoutManager(new LinearLayoutManager(ctx));
+                vpActivity.setAdapter(adapter);
+            }
 
+            @Override
+            public void onFailure(Call<MyActivityResponse> call, Throwable t)
+            {
 
-        adapter = new MyActivityAdapter(ctx, list);
-        vpActivity.setLayoutManager(new LinearLayoutManager(ctx));
-        vpActivity.setAdapter(adapter);
+            }
+        });
     }
 }
