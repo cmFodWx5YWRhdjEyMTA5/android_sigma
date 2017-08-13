@@ -26,7 +26,7 @@ public class PerformanceFragment extends BaseFragment
     static Context ctx;
     private ViewPager vpPerformance;
     private PerformanceAdapter adapter;
-    
+
     private TabLayout tabLayout;
 
 
