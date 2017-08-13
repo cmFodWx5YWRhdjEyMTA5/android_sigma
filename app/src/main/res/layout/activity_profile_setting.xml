@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.sigma.prouds.ProfileSettingActivity"
+    android:background="@color/background">
+    <!-- Toolbar start -->
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="@color/header"
+        android:paddingRight="16dp"
+        android:id="@+id/tb_assignment_details"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/back"
+                android:id="@+id/iv_back"/>
+
+            <TextView
+                android:id="@+id/tv_title_toolbar_assignment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tb_myassignment"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"/>
+
+            <ImageView
+                android:id="@+id/iv_notif"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:visibility="visible"
+                android:src="@drawable/notif" />
+
+        </RelativeLayout>
+    </android.support.v7.widget.Toolbar>
+    <!-- Toolbar end -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="24dp"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_above="@+id/ll_profset_footer">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="36dp">
+                    <RelativeLayout
+                        android:layout_width="72dp"
+                        android:layout_height="72dp"
+                        android:layout_marginRight="16dp"
+                        android:id="@+id/rl_dp">
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            android:layout_width="72dp"
+                            android:layout_height="72dp"
+                            android:layout_marginRight="12dp"
+                            android:layout_marginLeft="12dp"
+                            android:layout_alignParentLeft="true"
+                            android:layout_centerVertical="true"
+                            android:id="@+id/iv_dp"/>
+                        <ImageView
+                            android:layout_width="36dp"
+                            android:layout_height="36dp"
+                            android:src="@drawable/change_photo"
+                            android:layout_alignParentBottom="true"
+                            android:layout_alignParentRight="true"
+                            android:id="@+id/iv_change_dp"/>
+                    </RelativeLayout>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_gravity="center_vertical">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="24sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/homeParent"
+                            android:id="@+id/tv_username"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="16sp"
+                            android:textColor="@color/homeParent"
+                            android:id="@+id/tv_role"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/profset_basic"
+                    android:textColor="@color/homeParent"
+                    android:textSize="16sp"
+                    android:layout_marginBottom="12dp"/>
+                <!-- UID -->
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="42dp"
+                    android:layout_marginBottom="12dp"
+                    android:padding="8dp"
+                    android:background="@color/white"
+                    android:hint="@string/profset_uid"
+                    android:textSize="14sp"
+                    android:id="@+id/et_profset_uid"/>
+
+                <!-- ROLE -->
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="42dp"
+                    android:layout_marginBottom="12dp"
+                    android:padding="8dp"
+                    android:background="@color/white"
+                    android:hint="@string/profset_role"
+                    android:textSize="14sp"
+                    android:id="@+id/et_profset_role"/>
+
+                <!-- FULL NAME -->
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="42dp"
+                    android:layout_marginBottom="12dp"
+                    android:padding="8dp"
+                    android:background="@color/white"
+                    android:hint="@string/profset_name"
+                    android:textSize="14sp"
+                    android:id="@+id/et_profset_name"/>
+
+                <!-- EMAIL -->
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="42dp"
+                    android:layout_marginBottom="12dp"
+                    android:padding="8dp"
+                    android:background="@color/white"
+                    android:hint="@string/profset_email"
+                    android:textSize="14sp"
+                    android:id="@+id/et_profset_email"/>
+
+                <!-- PHONE NUMB -->
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="42dp"
+                    android:layout_marginBottom="12dp"
+                    android:padding="8dp"
+                    android:background="@color/white"
+                    android:hint="@string/profset_phone"
+                    android:textSize="14sp"
+                    android:id="@+id/et_profset_phone"/>
+
+                <!-- ADDRESS -->
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="96dp"
+                    android:layout_marginBottom="36dp"
+                    android:padding="8dp"
+                    android:background="@color/white"
+                    android:hint="@string/profset_address"
+                    android:textSize="14sp"
+                    android:gravity="start"
+                    android:id="@+id/et_profset_address"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/profset_pwd"
+                    android:textColor="@color/homeParent"
+                    android:textSize="16sp"
+                    android:layout_marginBottom="12dp"/>
+                <!-- OLD PWD -->
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="42dp"
+                    android:layout_marginBottom="12dp"
+                    android:padding="8dp"
+                    android:background="@color/white"
+                    android:hint="@string/profset_old_pwd"
+                    android:textSize="14sp"
+                    android:id="@+id/et_profset_old_pwd"/>
+
+                <!-- NEW PWD -->
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="42dp"
+                    android:layout_marginBottom="12dp"
+                    android:padding="8dp"
+                    android:background="@color/white"
+                    android:hint="@string/profset_new_pwd"
+                    android:textSize="14sp"
+                    android:id="@+id/et_profset_new_pwd"/>
+
+                <!-- CONFIRM PWD -->
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="42dp"
+                    android:layout_marginBottom="36dp"
+                    android:padding="8dp"
+                    android:background="@color/white"
+                    android:hint="@string/profset_conf_pwd"
+                    android:textSize="14sp"
+                    android:id="@+id/et_profset_conf_pwd"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="128dp"
+                android:orientation="vertical"
+                android:layout_alignParentBottom="true"
+                android:id="@+id/ll_profset_footer">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:background="@color/btn"
+                    android:text="@string/profset_save"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:id="@+id/tv_profset_save"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:id="@+id/ll_profset_logout"
+                    android:gravity="center_horizontal|center_vertical"
+                    >
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_marginRight="12dp"
+                        android:src="@drawable/change_photo" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="56dp"
+                        android:text="@string/profset_logout"
+                        android:textColor="@color/btn"
+                        android:textSize="18sp"
+                        android:gravity="center_vertical"
+                        android:id="@+id/tv_profset_logout"/>
+                </LinearLayout>
+
+            </LinearLayout>
+        </RelativeLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

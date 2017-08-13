@@ -113,7 +113,7 @@
     <string name="ts_in">in</string>
     <string name="ts_errormsg">Left a Distribution Error Message</string>
     <string name="ts_resubmit">RE-SUBMIT</string>
-    
+
     <string name="addts_choose_project">Choose a project</string>
     <string name="addts_choose_task">Choose a task</string>
     <string name="addts_work_hours">Work Hours</string>
@@ -121,5 +121,21 @@
     <string name="addts_message">Message</string>
     <string name="addts_new">ADD NEW</string>
 
+    <string name="profset_basic">BASIC INFO</string>
+    <string name="profset_uid">User ID</string>
+    <string name="profset_role">Role</string>
+    <string name="profset_name">Full Name</string>
+    <string name="profset_email">Email Address</string>
+    <string name="profset_phone">Phone Number</string>
+    <string name="profset_address">Address</string>
+    <string name="profset_pwd">Password</string>
+    <string name="profset_old_pwd">Old Password</string>
+    <string name="profset_new_pwd">New Password</string>
+    <string name="profset_conf_pwd">Confirm Password</string>
+    <string name="profset_save">SAVE CHANGES</string>
+    <string name="profset_logout">LOGOUT</string>
+
+    <string name="tab_perform_act">My Activity</string>
+    <string name="tab_perform_performance">Performance</string>
 
 </resources>

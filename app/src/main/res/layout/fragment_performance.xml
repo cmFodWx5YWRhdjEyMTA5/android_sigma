@@ -42,7 +42,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="16sp"
                 android:textColor="@color/homeParent"
-                android:id="@+id/tv_position"/>
+                android:id="@+id/tv_role"/>
         </LinearLayout>
 
         <ImageView

@@ -16,9 +16,12 @@ import java.util.List;
 public class PagerAdapter extends FragmentPagerAdapter {
 
     private final List<Fragment> fragmentList = new ArrayList<>();
+    private final List<String> fragmentTitle = new ArrayList<>();
+    private Context context;
 
-    public PagerAdapter(FragmentManager fm) {
+    public PagerAdapter(FragmentManager fm, Context context) {
         super(fm);
+        this.context = context;
     }
 
     @Override
@@ -31,12 +34,13 @@ public class PagerAdapter extends FragmentPagerAdapter {
         return fragmentList.size();
     }
 
-    public CharSequence getPageTitle(int position) {
-        return null;
+    public void addFragment(Fragment fragment, String title) {
+        fragmentList.add(fragment);
+        fragmentTitle.add(title);
     }
 
-    public void addFragment(Fragment fragment) {
-        fragmentList.add(fragment);
+    public CharSequence getPageTitle(int position) {
+        return fragmentTitle.get(position);
     }
 
 }
