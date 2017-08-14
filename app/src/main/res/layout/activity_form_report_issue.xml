@@ -86,7 +86,9 @@
                 android:background="@color/white"
                 android:hint="@string/issue_priority"
                 android:paddingLeft="16dp"
-                android:textSize="14sp" />
+                android:textSize="14sp"
+                android:focusable="false"
+                android:focusableInTouchMode="false"/>
 
             <EditText
                 android:id="@+id/et_issue_upload"
@@ -96,6 +98,8 @@
                 android:background="@color/white"
                 android:hint="@string/issue_upload"
                 android:paddingLeft="16dp"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
                 android:textSize="14sp" />
         </LinearLayout>
 

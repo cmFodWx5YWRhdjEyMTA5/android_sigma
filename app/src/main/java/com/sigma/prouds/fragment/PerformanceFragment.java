@@ -10,7 +10,9 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
+import com.sigma.prouds.ProudsApplication;
 import com.sigma.prouds.R;
 import com.sigma.prouds.adapter.MyActivityAdapter;
 import com.sigma.prouds.adapter.PerformanceAdapter;
@@ -26,7 +28,8 @@ public class PerformanceFragment extends BaseFragment
     static Context ctx;
     private ViewPager vpPerformance;
     private PerformanceAdapter adapter;
-
+    private TextView tvUserName;
+    private ProudsApplication app;
     private TabLayout tabLayout;
 
 
@@ -50,7 +53,10 @@ public class PerformanceFragment extends BaseFragment
     @Override
     protected void workingSpace(View view)
     {
+        app = (ProudsApplication) ctx.getApplicationContext();
         vpPerformance = (ViewPager) view.findViewById(R.id.vp_performance);
+        tvUserName = (TextView) view.findViewById(R.id.tv_username);
+        tvUserName.setText(app.getSessionManager().getUserName());
         setViewPager(vpPerformance);
 
         tabLayout = (TabLayout) view.findViewById(R.id.tl_performance);

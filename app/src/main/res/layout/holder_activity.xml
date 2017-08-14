@@ -18,7 +18,8 @@
             android:layout_height="24dp"
             android:layout_marginRight="12dp"
             android:id="@+id/civ_activity"
-            android:visibility="visible"/>
+            android:visibility="visible"
+            android:src="@drawable/user"/>
 
         <!--content-->
         <LinearLayout

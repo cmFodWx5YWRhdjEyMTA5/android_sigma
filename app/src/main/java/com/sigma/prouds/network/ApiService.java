@@ -3,6 +3,9 @@ package com.sigma.prouds.network;
 import com.sigma.prouds.model.EmptyModel;
 import com.sigma.prouds.model.LoginModel;
 import com.sigma.prouds.model.PerformanceSendModel;
+import com.sigma.prouds.model.PerformanceYearSendModel;
+import com.sigma.prouds.model.ReportIssueModel;
+import com.sigma.prouds.network.response.AddReportResponse;
 import com.sigma.prouds.network.response.DetailProjectResponse;
 import com.sigma.prouds.network.response.LoginResponse;
 import com.sigma.prouds.network.response.MyActivityResponse;
@@ -64,5 +67,11 @@ public interface ApiService
 
     @POST("dev/report/myperformances")
     Call<MyPerformanceResponse> getMyPerfomance(@Header("token") String token, @Body PerformanceSendModel model);
+
+    @POST("dev/report/myperformances/myperformances_yearly")
+    Call<MyPerformanceResponse> getYearResponse(@Header("token") String token, @Body PerformanceYearSendModel model);
+
+    @POST("dev/home/addissue")
+    Call<AddReportResponse> sendIssue(@Header("token") String token, @Body ReportIssueModel model);
 
 }
