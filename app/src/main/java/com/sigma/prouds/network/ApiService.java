@@ -2,10 +2,12 @@ package com.sigma.prouds.network;
 
 import com.sigma.prouds.model.EmptyModel;
 import com.sigma.prouds.model.LoginModel;
+import com.sigma.prouds.model.PerformanceSendModel;
 import com.sigma.prouds.network.response.DetailProjectResponse;
 import com.sigma.prouds.network.response.LoginResponse;
 import com.sigma.prouds.network.response.MyActivityResponse;
 import com.sigma.prouds.network.response.MyAssignmentResponse;
+import com.sigma.prouds.network.response.MyPerformanceResponse;
 import com.sigma.prouds.network.response.ProjectActivityResponse;
 import com.sigma.prouds.network.response.ProjectDocResponse;
 import com.sigma.prouds.network.response.ProjectIssueResponse;
@@ -59,5 +61,8 @@ public interface ApiService
 
     @GET("dev/home/myassignment")
     Call<MyAssignmentResponse> getMyAssignmentResponse(@Header("token") String token);
+
+    @POST("dev/report/myperformances")
+    Call<MyPerformanceResponse> getMyPerfomance(@Header("token") String token, @Body PerformanceSendModel model);
 
 }
