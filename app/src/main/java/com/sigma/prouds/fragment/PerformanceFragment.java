@@ -32,11 +32,6 @@ public class PerformanceFragment extends BaseFragment
     private ProudsApplication app;
     private TabLayout tabLayout;
 
-
-    public PerformanceFragment() {
-        // Required empty public constructor
-    }
-
     public static PerformanceFragment newInstance(Context context) {
         PerformanceFragment fragment = new PerformanceFragment();
         ctx = context;
@@ -65,7 +60,7 @@ public class PerformanceFragment extends BaseFragment
     }
 
     private void setViewPager(ViewPager viewPager) {
-        PagerAdapter adapter = new PagerAdapter(getActivity().getSupportFragmentManager(), ctx);
+        PagerAdapter adapter = new PagerAdapter(getChildFragmentManager(), ctx);
         adapter.addFragment(new MyActivityFragment().newInstance(ctx), "My Activity");
         adapter.addFragment(new ChartFragment().newInstance(ctx), "Performances");
         viewPager.setAdapter(adapter);

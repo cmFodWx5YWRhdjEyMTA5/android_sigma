@@ -7,6 +7,7 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CalendarView;
 import android.widget.TextView;
 
 import com.sigma.prouds.R;
@@ -26,7 +27,7 @@ import in.goodiebag.carouselpicker.CarouselPicker;
 
 public class TimesheetFragment extends BaseFragment {
     static Context ctx;
-    private CarouselView cvDate;
+    private CalendarView cvDate;
     private TextView tvDate;
     private TextView tvHour;
 
@@ -53,14 +54,14 @@ public class TimesheetFragment extends BaseFragment {
     }
 
     public void assignXML() {
-        cvDate = (CarouselView) viewRoot.findViewById(R.id.cv_timesheet);
+        cvDate = (CalendarView) viewRoot.findViewById(R.id.cv_timesheet);
     }
 
-    public void carouselSetup() {
+    /*public void carouselSetup() {
         cvDate.setPageCount(sampleDate.length);
         cvDate.setSlideInterval(1000);
         cvDate.setViewListener(viewListener);
-    }
+    }*/
 
     ViewListener viewListener = new ViewListener() {
         @Override
@@ -73,7 +74,7 @@ public class TimesheetFragment extends BaseFragment {
             tvDate.setText(sampleDate[position]);
             tvHour.setText(sampleHour[position]);
 
-            cvDate.setIndicatorGravity(Gravity.CENTER_HORIZONTAL| Gravity.BOTTOM);
+            //cvDate.setIndicatorGravity(Gravity.CENTER_HORIZONTAL| Gravity.BOTTOM);
 
             return cvContent;
         }
