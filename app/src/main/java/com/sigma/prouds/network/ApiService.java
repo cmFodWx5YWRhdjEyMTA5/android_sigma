@@ -11,6 +11,7 @@ import com.sigma.prouds.network.response.LoginResponse;
 import com.sigma.prouds.network.response.MyActivityResponse;
 import com.sigma.prouds.network.response.MyAssignmentResponse;
 import com.sigma.prouds.network.response.MyPerformanceResponse;
+import com.sigma.prouds.network.response.MyPerformanceYearlyResponse;
 import com.sigma.prouds.network.response.ProjectActivityResponse;
 import com.sigma.prouds.network.response.ProjectDocResponse;
 import com.sigma.prouds.network.response.ProjectIssueResponse;
@@ -68,8 +69,8 @@ public interface ApiService
     @POST("dev/report/myperformances")
     Call<MyPerformanceResponse> getMyPerfomance(@Header("token") String token, @Body PerformanceSendModel model);
 
-    @POST("dev/report/myperformances/myperformances_yearly")
-    Call<MyPerformanceResponse> getYearResponse(@Header("token") String token, @Body PerformanceYearSendModel model);
+    @POST("dev/report/myperformances_yearly")
+    Call<MyPerformanceYearlyResponse> getYearPerformance(@Header("token") String token, @Body PerformanceYearSendModel model);
 
     @POST("dev/home/addissue")
     Call<AddReportResponse> sendIssue(@Header("token") String token, @Body ReportIssueModel model);
