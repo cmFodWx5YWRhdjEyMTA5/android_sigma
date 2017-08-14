@@ -29,7 +29,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".AddTimesheetActivity" />
-        <activity android:name=".ProfileSettingActivity"></activity>
+        <activity android:name=".ProfileSettingActivity" />
+        <activity android:name=".FormReportIssueActivity"></activity>
     </application>
 
 </manifest>

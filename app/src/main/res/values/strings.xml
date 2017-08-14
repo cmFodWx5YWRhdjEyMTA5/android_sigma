@@ -19,6 +19,7 @@
     <string name="tab_perform_performance">Performance</string>
 
     <string name="search_hint">Search business unit or project …</string>
+    <string name="search_recents">RECENTS</string>
 
     <string name="ad_start">START DATE</string>
     <string name="ad_end">END DATE</string>
@@ -142,6 +143,10 @@
     <string name="chart_util">UTILIZATION</string>
     <string name="chart_entry">USER ENTRY</string>
 
-
+    <string name="issue_subject">Subject</string>
+    <string name="issue_message">Message</string>
+    <string name="issue_priority">Choose a Priority</string>
+    <string name="issue_upload">Upload file</string>
+    <string name="issue_report">REPORT ISSUE</string>
 
 </resources>
