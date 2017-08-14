@@ -42,5 +42,6 @@ dependencies {
     compile 'com.synnapps:carouselview:0.1.4'
     compile 'com.github.aakira:expandable-layout:1.6.0@aar'
     compile 'com.github.lzyzsd:circleprogress:1.2.1'
+    compile 'com.github.PhilJay:MPAndroidChart:v2.2.4'
     testCompile 'junit:junit:4.12'
 }
