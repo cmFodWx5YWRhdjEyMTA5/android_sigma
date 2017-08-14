@@ -61,8 +61,8 @@ public class PerformanceFragment extends BaseFragment
 
     private void setViewPager(ViewPager viewPager) {
         PagerAdapter adapter = new PagerAdapter(getChildFragmentManager(), ctx);
-        adapter.addFragment(new MyActivityFragment().newInstance(ctx), "My Activity");
         adapter.addFragment(new ChartFragment().newInstance(ctx), "Performances");
+        adapter.addFragment(new MyActivityFragment().newInstance(ctx), "My Activity");
         viewPager.setAdapter(adapter);
     }
 

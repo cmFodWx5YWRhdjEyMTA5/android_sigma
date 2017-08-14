@@ -53,7 +53,7 @@ public class PagerActivity extends BaseFragmentActivity {
             }
         });
 
-        fragment = HomeFragment.newInstance(this);
+        fragment = PerformanceFragment.newInstance(this);
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).commit();
     }
 
@@ -98,12 +98,12 @@ public class PagerActivity extends BaseFragmentActivity {
     public void setFragment(int position) {
         switch (position) {
             case 0:
-                fragment = HomeFragment.newInstance(this);
+                fragment = PerformanceFragment.newInstance(this);
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).commit();
-                tbHome.setVisibility(View.VISIBLE);
+                tbHome.setVisibility(View.INVISIBLE);
                 tbAssignment.setVisibility(View.INVISIBLE);
                 tbTimesheet.setVisibility(View.INVISIBLE);
-                tbPerformance.setVisibility(View.GONE);
+                tbPerformance.setVisibility(View.VISIBLE);
                 break;
             case 1:
                 fragment = AssignmentFragment.newInstance(this);
@@ -114,20 +114,20 @@ public class PagerActivity extends BaseFragmentActivity {
                 tbPerformance.setVisibility(View.INVISIBLE);
                 break;
             case 2:
+                fragment = HomeFragment.newInstance(this);
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).commit();
+                tbHome.setVisibility(View.VISIBLE);
+                tbAssignment.setVisibility(View.INVISIBLE);
+                tbTimesheet.setVisibility(View.INVISIBLE);
+                tbPerformance.setVisibility(View.GONE);
+                break;
+            case 3:
                 fragment = TimesheetFragment.newInstance(this);
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).commit();
                 tbHome.setVisibility(View.INVISIBLE);
                 tbAssignment.setVisibility(View.INVISIBLE);
                 tbTimesheet.setVisibility(View.VISIBLE);
                 tbPerformance.setVisibility(View.INVISIBLE);
-                break;
-            case 3:
-                fragment = PerformanceFragment.newInstance(this);
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).commit();
-                tbHome.setVisibility(View.INVISIBLE);
-                tbAssignment.setVisibility(View.INVISIBLE);
-                tbTimesheet.setVisibility(View.INVISIBLE);
-                tbPerformance.setVisibility(View.VISIBLE);
                 break;
         }
     }
