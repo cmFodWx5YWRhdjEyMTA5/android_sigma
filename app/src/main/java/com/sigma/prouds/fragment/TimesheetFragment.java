@@ -47,7 +47,9 @@ public class TimesheetFragment extends BaseFragment {
     @Override
     protected void workingSpace(View view) {
         assignXML();
-        carouselSetup();
+
+
+//        carouselSetup();
     }
 
     public void assignXML() {

@@ -117,6 +117,7 @@
     <string name="ts_in">in</string>
     <string name="ts_errormsg">Left a Distribution Error Message</string>
     <string name="ts_resubmit">RE-SUBMIT</string>
+    <string name="ts_choose_date">CHOOSE DATE</string>
 
     <string name="addts_choose_project">Choose a project</string>
     <string name="addts_choose_task">Choose a task</string>
