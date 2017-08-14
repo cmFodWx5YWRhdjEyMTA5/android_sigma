@@ -27,6 +27,12 @@ public class PagerActivity extends BaseFragmentActivity {
     private TabLayout tabLayout;
     private Toolbar tbHome, tbAssignment, tbTimesheet, tbPerformance;
     private Fragment fragment;
+
+    private Fragment fragment1;
+    private Fragment fragment2;
+    private Fragment fragment3;
+    private Fragment fragment4;
+
     private int[] tabIcons = {
             R.drawable.tab_home,
             R.drawable.tab_assignment,
@@ -53,8 +59,8 @@ public class PagerActivity extends BaseFragmentActivity {
             }
         });
 
-        fragment = PerformanceFragment.newInstance(this);
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).commit();
+        fragment1 = PerformanceFragment.newInstance(this);
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment1).commit();
     }
 
     private void assignXML() {
@@ -98,32 +104,46 @@ public class PagerActivity extends BaseFragmentActivity {
     public void setFragment(int position) {
         switch (position) {
             case 0:
-                fragment = PerformanceFragment.newInstance(this);
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).commit();
+                if (fragment1 == null)
+                {
+                    fragment1 = PerformanceFragment.newInstance(this);
+                }
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment1).commit();
                 tbHome.setVisibility(View.INVISIBLE);
                 tbAssignment.setVisibility(View.INVISIBLE);
                 tbTimesheet.setVisibility(View.INVISIBLE);
                 tbPerformance.setVisibility(View.VISIBLE);
                 break;
             case 1:
-                fragment = AssignmentFragment.newInstance(this);
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).commit();
+                if (fragment2 == null)
+                {
+                    fragment2 = AssignmentFragment.newInstance(this);
+                }
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment2).commit();
                 tbHome.setVisibility(View.INVISIBLE);
                 tbAssignment.setVisibility(View.VISIBLE);
                 tbTimesheet.setVisibility(View.INVISIBLE);
                 tbPerformance.setVisibility(View.INVISIBLE);
                 break;
             case 2:
-                fragment = HomeFragment.newInstance(this);
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).commit();
+                if (fragment3 == null)
+                {
+                    fragment3 = HomeFragment.newInstance(this);
+                }
+
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment3).commit();
                 tbHome.setVisibility(View.VISIBLE);
                 tbAssignment.setVisibility(View.INVISIBLE);
                 tbTimesheet.setVisibility(View.INVISIBLE);
                 tbPerformance.setVisibility(View.GONE);
                 break;
             case 3:
-                fragment = TimesheetFragment.newInstance(this);
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).commit();
+                if (fragment4 == null)
+                {
+                    fragment4 = TimesheetFragment.newInstance(this);
+                }
+
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment4).commit();
                 tbHome.setVisibility(View.INVISIBLE);
                 tbAssignment.setVisibility(View.INVISIBLE);
                 tbTimesheet.setVisibility(View.VISIBLE);

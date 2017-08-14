@@ -1,6 +1,7 @@
 package com.sigma.prouds.fragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.Gravity;
@@ -8,8 +9,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CalendarView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.sigma.prouds.AddTimesheetActivity;
 import com.sigma.prouds.R;
 import com.sigma.prouds.base.BaseFragment;
 import com.synnapps.carouselview.CarouselView;
@@ -30,6 +33,7 @@ public class TimesheetFragment extends BaseFragment {
     private CalendarView cvDate;
     private TextView tvDate;
     private TextView tvHour;
+    private LinearLayout llAddTimesheet;
 
     String[] sampleDate = {"Wed, Jun 7", "Wed, Jun 8", "Wed, Jun 9", "Wed, Jun 10"};
     String[] sampleHour = {"3", "4", "5", "6"};
@@ -48,7 +52,15 @@ public class TimesheetFragment extends BaseFragment {
     @Override
     protected void workingSpace(View view) {
         assignXML();
-
+        llAddTimesheet = (LinearLayout) view.findViewById(R.id.ll_add_timesheet);
+        llAddTimesheet.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                toAddTimesheet();
+            }
+        });
 
 //        carouselSetup();
     }
@@ -62,6 +74,7 @@ public class TimesheetFragment extends BaseFragment {
         cvDate.setSlideInterval(1000);
         cvDate.setViewListener(viewListener);
     }*/
+
 
     ViewListener viewListener = new ViewListener() {
         @Override
@@ -80,5 +93,10 @@ public class TimesheetFragment extends BaseFragment {
         }
     };
 
+    public void toAddTimesheet()
+    {
+        Intent intent = new Intent(getActivity(), AddTimesheetActivity.class);
+        startActivity(intent);
+    }
 
 }

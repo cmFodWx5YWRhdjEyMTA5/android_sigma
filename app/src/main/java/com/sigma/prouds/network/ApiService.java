@@ -4,6 +4,7 @@ import com.sigma.prouds.model.EmptyModel;
 import com.sigma.prouds.model.LoginModel;
 import com.sigma.prouds.model.PerformanceSendModel;
 import com.sigma.prouds.model.PerformanceYearSendModel;
+import com.sigma.prouds.model.ProjectListTimesheetSenderModel;
 import com.sigma.prouds.model.ReportIssueModel;
 import com.sigma.prouds.network.response.AddReportResponse;
 import com.sigma.prouds.network.response.DetailProjectResponse;
@@ -17,6 +18,7 @@ import com.sigma.prouds.network.response.ProjectDocResponse;
 import com.sigma.prouds.network.response.ProjectIssueResponse;
 import com.sigma.prouds.network.response.ProjectResponse;
 import com.sigma.prouds.network.response.TeamMemberResponse;
+import com.sigma.prouds.network.response.UserProjectTimesheetResponse;
 
 import java.util.Map;
 
@@ -74,5 +76,8 @@ public interface ApiService
 
     @POST("dev/home/addissue")
     Call<AddReportResponse> sendIssue(@Header("token") String token, @Body ReportIssueModel model);
+
+    @POST("dev/timesheet/view/")
+    Call<UserProjectTimesheetResponse> getUserProjectTimesheet(@Header("token") String token, @Body ProjectListTimesheetSenderModel model);
 
 }
