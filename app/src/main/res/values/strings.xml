@@ -143,4 +143,10 @@
     <string name="chart_util">UTILIZATION</string>
     <string name="chart_entry">USER ENTRY</string>
 
+    <string name="issue_subject">Subject</string>
+    <string name="issue_message">Message</string>
+    <string name="issue_priority">Choose a Priority</string>
+    <string name="issue_upload">Upload file</string>
+    <string name="issue_report">REPORT ISSUE</string>
+
 </resources>
