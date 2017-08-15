@@ -28,8 +28,8 @@
                 android:layout_height="match_parent">
 
                 <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
                     android:layout_alignParentLeft="true"
                     android:layout_centerVertical="true"
                     android:src="@drawable/back"
@@ -41,7 +41,7 @@
                     android:layout_height="wrap_content"
                     android:text="PROJECT OVERVIEW"
                     android:textColor="@color/white"
-                    android:textSize="18sp"
+                    android:textSize="14sp"
                     android:layout_centerHorizontal="true"
                     android:layout_centerVertical="true"/>
 
@@ -55,6 +55,17 @@
                     android:visibility="visible"
                     android:src="@drawable/notif" />
 
+                <ImageView
+                    android:id="@+id/iv_notif_active"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:visibility="invisible"
+                    android:src="@drawable/notif_active" />
+
+
             </RelativeLayout>
         </android.support.v7.widget.Toolbar>
         <!-- Toolbar end -->
@@ -65,7 +76,7 @@
             android:layout_below="@+id/tb_project_details"
             android:paddingLeft="16dp"
             android:paddingRight="16dp"
-            android:layout_marginBottom="16dp"
+            android:layout_marginBottom="28dp"
             android:orientation="vertical"
             android:gravity="center_vertical"
             android:id="@+id/ll_pd_header">
@@ -74,7 +85,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingTop="24dp"
-                android:layout_marginBottom="8dp"
+                android:layout_marginBottom="12dp"
                 android:orientation="horizontal">
 
                 <!-- Project Title -->
@@ -83,8 +94,8 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
                     android:layout_toLeftOf="@+id/iv_menu"
-                    android:textSize="18sp"
-                    android:textColor="@color/homeChild"
+                    android:textSize="16sp"
+                    android:textColor="@color/homeParent"
                     android:id="@+id/tv_pd_project" />
 
                 <!-- Menu -->
@@ -114,12 +125,13 @@
                     android:layout_height="wrap_content"
                     android:layout_marginRight="8dp"
                     android:textSize="14sp"
+                    android:textColor="@color/homeParent"
                     android:id="@+id/tv_pd_percen"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="14sp"
-                    android:textColor="@color/homeChild"
+                    android:textColor="@color/homeParent"
                     android:id="@+id/tv_pd_status"/>
             </LinearLayout>
         </LinearLayout>
@@ -145,9 +157,9 @@
         <ImageView
             android:layout_width="24dp"
             android:layout_height="24dp"
-            android:layout_margin="12dp"
+            android:layout_margin="16dp"
             android:layout_alignParentRight="true"
-            app:srcCompat="@drawable/menu"
+            android:src="@drawable/close_drawer"
             android:id="@+id/iv_drawerclose"/>
         <ListView
             android:layout_width="250dp"

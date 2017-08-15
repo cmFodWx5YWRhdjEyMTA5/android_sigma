@@ -1,6 +1,7 @@
 package com.sigma.prouds;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -36,12 +37,14 @@ public class ProjectDetailsActivity extends BaseActivity {
     public static final String KEY_DRAWER_ITEM = "key_drawer_item";
 
     private ImageView ivMenu, ivDrawerClose, ivBack;
-    private TextView tvToolbarTitle;
+    private TextView tvToolbarTitle, tvProject, tvPercen, tvStatus;
     private DrawerAdapter adapter;
     private DrawerLayout pdDrawer;
     private Fragment pdFragment = null;
     private FragmentManager pdFragmentManager = getSupportFragmentManager();
     private ListView pdListView;
+    private Typeface latoBold;
+    private Typeface latoBlack;
     private int[] items = {R.string.drawer_overview,
         R.string.drawer_workplan,
         R.string.drawer_activity,
@@ -78,6 +81,10 @@ public class ProjectDetailsActivity extends BaseActivity {
         drawerItems();
         query.id(R.id.iv_menu).clicked(this, "openDrawer");
         query.id(R.id.iv_drawerclose).clicked(this, "closeDrawer");
+
+        latoBold = Typeface.createFromAsset(getAssets(), "lato_bold.ttf");
+        latoBlack = Typeface.createFromAsset(getAssets(), "lato_black.ttf");
+        setTypeFace();
     }
 
     public void assignXML() {
@@ -88,6 +95,16 @@ public class ProjectDetailsActivity extends BaseActivity {
         pbDetail = (ProgressBar) findViewById(R.id.pb_project_details);
         ivBack = (ImageView) findViewById(R.id.iv_back);
         tvToolbarTitle = (TextView) findViewById(R.id.tv_title_toolbar_assignment);
+        tvProject = (TextView) findViewById(R.id.tv_pd_project);
+        tvPercen = (TextView) findViewById(R.id.tv_pd_percen);
+        tvStatus = (TextView) findViewById(R.id.tv_pd_status);
+    }
+
+    public void setTypeFace() {
+        tvToolbarTitle.setTypeface(latoBlack);
+        tvProject.setTypeface(latoBold);
+        tvPercen.setTypeface(latoBlack);
+        tvStatus.setTypeface(latoBlack);
     }
 
     public void getDataFromHome()

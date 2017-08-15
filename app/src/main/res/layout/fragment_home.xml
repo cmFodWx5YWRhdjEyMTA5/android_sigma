@@ -14,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_marginTop="24dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="28dp"
         android:orientation="horizontal"
         android:id="@+id/ll_search">
         <EditText
@@ -22,7 +22,7 @@
             android:layout_height="48dp"
             android:layout_weight="1"
             android:paddingLeft="16dp"
-            android:textSize="14sp"
+            android:textSize="12sp"
             android:background="@color/white"
             android:hint="@string/search_hint"
             android:id="@+id/et_search" />

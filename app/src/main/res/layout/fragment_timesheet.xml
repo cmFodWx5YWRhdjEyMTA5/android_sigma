@@ -37,15 +37,15 @@
         android:paddingBottom="8dp"
         android:orientation="horizontal"
         android:layout_gravity="center_horizontal"
-        android:gravity="center_vertical|center_horizontal">
+        android:gravity="center_vertical|center_horizontal"
+        android:id="@+id/ll_ts_choose_date">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="12dp"
             android:textSize="14sp"
             android:textColor="@color/btn"
-            android:text="@string/ts_choose_date"
-            android:id="@+id/tv_ts_choose_date"/>
+            android:text="@string/ts_choose_date" />
         <ImageView
             android:layout_width="14dp"
             android:layout_height="14dp"
