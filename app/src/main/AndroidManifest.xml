@@ -33,6 +33,11 @@
         <activity android:name=".FormReportIssueActivity" />
         <activity android:name=".SearchResultActivity" />
         <activity android:name=".SearchActivity"></activity>
+
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="61375f44bb9bc0ab906665b7bca9ee29eb698c48"
+            />
     </application>
 
 </manifest>

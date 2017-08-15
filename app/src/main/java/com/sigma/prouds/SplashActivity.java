@@ -4,13 +4,16 @@ import android.content.Intent;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 
+import com.crashlytics.android.Crashlytics;
 import com.sigma.prouds.base.BaseActivity;
 import com.sigma.prouds.model.LoginModel;
 import com.sigma.prouds.network.ApiService;
 import com.sigma.prouds.network.ApiUtils;
 import com.sigma.prouds.network.response.LoginResponse;
 
+import io.fabric.sdk.android.Fabric;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -27,6 +30,8 @@ public class SplashActivity extends BaseActivity {
 
     @Override
     protected void workingSpace() {
+        //Fabric.with(this, new Crashlytics());
+        //forceCrash();
         this.app = (ProudsApplication) getApplication();
         service = ApiUtils.apiService();
         new Handler().postDelayed(new Runnable() { // login checking process starts here
@@ -66,5 +71,9 @@ public class SplashActivity extends BaseActivity {
                 }
             }
         }, 2000);
+    }
+
+    public void forceCrash() {
+        throw new RuntimeException("This is a crash");
     }
 }

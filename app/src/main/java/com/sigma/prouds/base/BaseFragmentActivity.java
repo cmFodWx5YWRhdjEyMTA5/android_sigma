@@ -6,8 +6,10 @@ import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 
 import com.androidquery.AQuery;
+import com.crashlytics.android.Crashlytics;
 
 import de.greenrobot.event.EventBus;
+import io.fabric.sdk.android.Fabric;
 
 /**
  * Created by 1414 on 6/22/2017.
@@ -22,6 +24,7 @@ public abstract class BaseFragmentActivity extends FragmentActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(getLayout());
+        Fabric.with(this, new Crashlytics());
         query = new AQuery(this);
         workingSpace();
     }

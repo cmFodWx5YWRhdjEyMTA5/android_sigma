@@ -1,5 +1,28 @@
 apply plugin: 'com.android.application'
 
+buildscript {
+    repositories {
+        maven { url 'https://maven.fabric.io/public' }
+    }
+
+    dependencies {
+        // These docs use an open ended version so that our plugin
+        // can be updated quickly in response to Android tooling updates
+
+        // We recommend changing it to the latest version from our changelog:
+        // https://docs.fabric.io/android/changelog.html#fabric-gradle-plugin
+        classpath 'io.fabric.tools:gradle:1.+'
+    }
+}
+
+apply plugin: 'io.fabric'
+
+repositories {
+    maven { url 'https://maven.fabric.io/public' }
+}
+
+
+
 android {
     compileSdkVersion 25
     buildToolsVersion "25.0.3"
@@ -43,5 +66,8 @@ dependencies {
     compile 'com.github.aakira:expandable-layout:1.6.0@aar'
     compile 'com.github.lzyzsd:circleprogress:1.2.1'
     compile 'com.github.PhilJay:MPAndroidChart:v2.2.4'
+    compile('com.crashlytics.sdk.android:crashlytics:2.6.8@aar') {
+        transitive = true;
+    }
     testCompile 'junit:junit:4.12'
 }
