@@ -58,7 +58,9 @@
             android:layout_marginBottom="12dp"
             android:background="@color/white"
             android:paddingLeft="16dp"
-            android:textSize="14sp" />
+            android:textSize="14sp"
+            android:focusableInTouchMode="false"
+            android:focusable="false"/>
 
         <EditText
             android:id="@+id/et_addts_project"
@@ -95,6 +97,7 @@
                 android:background="@color/white"
                 android:hint="@string/addts_work_hours"
                 android:paddingLeft="16dp"
+                android:inputType="number"
                 android:textSize="14sp" />
         </LinearLayout>
 

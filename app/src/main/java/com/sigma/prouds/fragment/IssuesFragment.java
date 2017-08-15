@@ -1,12 +1,16 @@
 package com.sigma.prouds.fragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 
+import com.sigma.prouds.FormReportIssueActivity;
 import com.sigma.prouds.ProudsApplication;
 import com.sigma.prouds.R;
 import com.sigma.prouds.adapter.ProjectIssueAdapter;
@@ -32,6 +36,7 @@ public class IssuesFragment extends BaseFragment
     private ProudsApplication app;
     private ProjectIssueAdapter adapter;
     private RecyclerView rvIssue;
+    private RelativeLayout rlAddIssue;
 
     public static IssuesFragment newInstance(Context context, String projectId)
     {
@@ -55,7 +60,14 @@ public class IssuesFragment extends BaseFragment
         service = ApiUtils.apiService();
         projectId = getArguments().getString("project_id");
         rvIssue = (RecyclerView) view.findViewById(R.id.rv_issues);
+        rlAddIssue = (RelativeLayout) view.findViewById(R.id.rl_report_issue);
         getIssueData();
+        rlAddIssue.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                toAddIssue();
+            }
+        });
     }
 
     public void getIssueData()
@@ -77,5 +89,11 @@ public class IssuesFragment extends BaseFragment
 
             }
         });
+    }
+
+    public void toAddIssue()
+    {
+        Intent intent = new Intent(getActivity(), FormReportIssueActivity.class);
+        getActivity().startActivity(intent);
     }
 }
