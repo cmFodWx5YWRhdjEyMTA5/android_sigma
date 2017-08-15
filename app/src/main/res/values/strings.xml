@@ -20,6 +20,7 @@
 
     <string name="search_hint">Search business unit or project …</string>
     <string name="search_recents">RECENTS</string>
+    <string name="search_result">SEARCH RESULT</string>
 
     <string name="ad_start">START DATE</string>
     <string name="ad_end">END DATE</string>
@@ -149,5 +150,8 @@
     <string name="issue_priority">Choose a Priority</string>
     <string name="issue_upload">Upload file</string>
     <string name="issue_report">REPORT ISSUE</string>
+
+    <string name="dayoff_enjoy">Enjoy Your Day-off !</string>
+    <string name="dayoff_update">You don\'t have to update anything today</string>
 
 </resources>

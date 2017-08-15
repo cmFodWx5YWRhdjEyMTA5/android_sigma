@@ -30,7 +30,9 @@
         </activity>
         <activity android:name=".AddTimesheetActivity" />
         <activity android:name=".ProfileSettingActivity" />
-        <activity android:name=".FormReportIssueActivity"></activity>
+        <activity android:name=".FormReportIssueActivity" />
+        <activity android:name=".SearchResultActivity" />
+        <activity android:name=".SearchActivity"></activity>
     </application>
 
 </manifest>

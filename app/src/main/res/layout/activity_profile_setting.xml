@@ -12,7 +12,7 @@
         android:layout_height="56dp"
         android:background="@color/header"
         android:paddingRight="16dp"
-        android:id="@+id/tb_assignment_details"
+        android:id="@+id/tb_profile_setting"
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto">
         <RelativeLayout
@@ -52,7 +52,9 @@
     <!-- Toolbar end -->
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_below="@+id/tb_profile_setting"
+        android:layout_above="@+id/ll_profset_footer">
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -62,8 +64,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_above="@+id/ll_profset_footer">
+                android:orientation="vertical">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -226,46 +227,45 @@
                     android:textSize="14sp"
                     android:id="@+id/et_profset_conf_pwd"/>
             </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="128dp"
-                android:orientation="vertical"
-                android:layout_alignParentBottom="true"
-                android:id="@+id/ll_profset_footer">
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="56dp"
-                    android:background="@color/btn"
-                    android:text="@string/profset_save"
-                    android:textColor="@color/white"
-                    android:textSize="18sp"
-                    android:gravity="center_horizontal|center_vertical"
-                    android:id="@+id/tv_profset_save"/>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:id="@+id/ll_profset_logout"
-                    android:gravity="center_horizontal|center_vertical"
-                    >
-                    <ImageView
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:layout_marginRight="12dp"
-                        android:src="@drawable/change_photo" />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="56dp"
-                        android:text="@string/profset_logout"
-                        android:textColor="@color/btn"
-                        android:textSize="18sp"
-                        android:gravity="center_vertical"
-                        android:id="@+id/tv_profset_logout"/>
-                </LinearLayout>
-
-            </LinearLayout>
         </RelativeLayout>
 
     </ScrollView>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="128dp"
+        android:orientation="vertical"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/ll_profset_footer">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:background="@color/btn"
+            android:text="@string/profset_save"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:gravity="center_horizontal|center_vertical"
+            android:id="@+id/tv_profset_save"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:id="@+id/ll_profset_logout"
+            android:gravity="center_horizontal|center_vertical"
+            >
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginRight="12dp"
+                android:src="@drawable/change_photo" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="56dp"
+                android:text="@string/profset_logout"
+                android:textColor="@color/btn"
+                android:textSize="18sp"
+                android:gravity="center_vertical"
+                android:id="@+id/tv_profset_logout"/>
+        </LinearLayout>
 
+    </LinearLayout>
 </RelativeLayout>

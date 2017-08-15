@@ -26,12 +26,6 @@ import in.goodiebag.carouselpicker.CarouselPicker;
 
 public class TimesheetFragment extends BaseFragment {
     static Context ctx;
-    private CarouselView cvDate;
-    private TextView tvDate;
-    private TextView tvHour;
-
-    String[] sampleDate = {"Wed, Jun 7", "Wed, Jun 8", "Wed, Jun 9", "Wed, Jun 10"};
-    String[] sampleHour = {"3", "4", "5", "6"};
 
     public static TimesheetFragment newInstance(Context context) {
         TimesheetFragment fragment = new TimesheetFragment();
@@ -48,36 +42,10 @@ public class TimesheetFragment extends BaseFragment {
     protected void workingSpace(View view) {
         assignXML();
 
-
-//        carouselSetup();
     }
 
     public void assignXML() {
-        cvDate = (CarouselView) viewRoot.findViewById(R.id.cv_timesheet);
     }
-
-    public void carouselSetup() {
-        cvDate.setPageCount(sampleDate.length);
-        cvDate.setSlideInterval(1000);
-        cvDate.setViewListener(viewListener);
-    }
-
-    ViewListener viewListener = new ViewListener() {
-        @Override
-        public View setViewForPosition(int position) {
-
-            View cvContent = getActivity().getLayoutInflater().inflate(R.layout.carousel, null);
-            tvDate = (TextView) cvContent.findViewById(R.id.tv_ts_date);
-            tvHour = (TextView) cvContent.findViewById(R.id.tv_ts_hour);
-
-            tvDate.setText(sampleDate[position]);
-            tvHour.setText(sampleHour[position]);
-
-            cvDate.setIndicatorGravity(Gravity.CENTER_HORIZONTAL| Gravity.BOTTOM);
-
-            return cvContent;
-        }
-    };
 
 
 }
