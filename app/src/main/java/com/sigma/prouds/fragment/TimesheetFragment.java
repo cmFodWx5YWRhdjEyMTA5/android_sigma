@@ -15,8 +15,13 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.sigma.prouds.AddTimesheetActivity;
+import com.sigma.prouds.ProudsApplication;
 import com.sigma.prouds.R;
 import com.sigma.prouds.base.BaseFragment;
+import com.sigma.prouds.model.ProjectListTimesheetSenderModel;
+import com.sigma.prouds.network.ApiService;
+import com.sigma.prouds.network.ApiUtils;
+import com.sigma.prouds.network.response.UserProjectTimesheetResponse;
 import com.synnapps.carouselview.CarouselView;
 import com.synnapps.carouselview.ViewListener;
 
@@ -26,6 +31,9 @@ import java.util.Calendar;
 import java.util.List;
 
 import in.goodiebag.carouselpicker.CarouselPicker;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 
 /**
@@ -39,7 +47,8 @@ public class TimesheetFragment extends BaseFragment {
     private TextView tvHour;
     private LinearLayout llAddTimesheet, llChooseDate;
 
-
+    private ApiService service;
+    private ProudsApplication app;
 
     public static TimesheetFragment newInstance(Context context) {
         TimesheetFragment fragment = new TimesheetFragment();
@@ -54,6 +63,9 @@ public class TimesheetFragment extends BaseFragment {
 
     @Override
     protected void workingSpace(View view) {
+        app = (ProudsApplication) ctx.getApplicationContext();
+        service = ApiUtils.apiService();
+
         tvDate = (TextView) view.findViewById(R.id.tv_ts_date);
 
         final Calendar calendar = Calendar.getInstance();
@@ -94,6 +106,26 @@ public class TimesheetFragment extends BaseFragment {
     {
         Intent intent = new Intent(getActivity(), AddTimesheetActivity.class);
         startActivity(intent);
+    }
+
+    public void getData(String date)
+    {
+        ProjectListTimesheetSenderModel model = new ProjectListTimesheetSenderModel();
+        model.setMobile("1");
+        model.setDate(date);
+        service.getUserProjectTimesheet(app.getSessionManager().getToken(), model).enqueue(new Callback<UserProjectTimesheetResponse>() {
+            @Override
+            public void onResponse(Call<UserProjectTimesheetResponse> call, Response<UserProjectTimesheetResponse> response)
+            {
+
+            }
+
+            @Override
+            public void onFailure(Call<UserProjectTimesheetResponse> call, Throwable t)
+            {
+
+            }
+        });
     }
 
 }

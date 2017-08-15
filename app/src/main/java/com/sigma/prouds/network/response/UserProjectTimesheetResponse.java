@@ -1,5 +1,6 @@
 package com.sigma.prouds.network.response;
 
+import com.sigma.prouds.model.UserActivityTimesheetModel;
 import com.sigma.prouds.model.UserProjectTimesheetModel;
 
 import java.util.List;
@@ -11,6 +12,7 @@ import java.util.List;
 public class UserProjectTimesheetResponse
 {
     List<UserProjectTimesheetModel> userProject;
+    List<UserActivityTimesheetModel> userActivities;
 
     public List<UserProjectTimesheetModel> getUserProject() {
         return userProject;
@@ -18,5 +20,13 @@ public class UserProjectTimesheetResponse
 
     public void setUserProject(List<UserProjectTimesheetModel> userProject) {
         this.userProject = userProject;
+    }
+
+    public List<UserActivityTimesheetModel> getUserActivities() {
+        return userActivities;
+    }
+
+    public void setUserActivities(List<UserActivityTimesheetModel> userActivities) {
+        this.userActivities = userActivities;
     }
 }
