@@ -61,7 +61,7 @@ public class HomeChildHolder extends ChildViewHolder
         progressBar.setProgress(finalProgress);
         percen.setText(model.getProjectComplete() + "%");
         status.setText(model.getProjectStatus());
-        percen.setTypeface(latoBlack);
+        percen.setTypeface(latoRegular);
         status.setTypeface(latoBlack);
     }
 }

@@ -1,5 +1,6 @@
 package com.sigma.prouds.fragment;
 
+import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CalendarView;
+import android.widget.DatePicker;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -18,7 +20,9 @@ import com.sigma.prouds.base.BaseFragment;
 import com.synnapps.carouselview.CarouselView;
 import com.synnapps.carouselview.ViewListener;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import in.goodiebag.carouselpicker.CarouselPicker;
@@ -33,10 +37,9 @@ public class TimesheetFragment extends BaseFragment {
     private CalendarView cvDate;
     private TextView tvDate;
     private TextView tvHour;
-    private LinearLayout llAddTimesheet;
+    private LinearLayout llAddTimesheet, llChooseDate;
 
-    String[] sampleDate = {"Wed, Jun 7", "Wed, Jun 8", "Wed, Jun 9", "Wed, Jun 10"};
-    String[] sampleHour = {"3", "4", "5", "6"};
+
 
     public static TimesheetFragment newInstance(Context context) {
         TimesheetFragment fragment = new TimesheetFragment();
@@ -51,7 +54,31 @@ public class TimesheetFragment extends BaseFragment {
 
     @Override
     protected void workingSpace(View view) {
-        assignXML();
+        tvDate = (TextView) view.findViewById(R.id.tv_ts_date);
+
+        final Calendar calendar = Calendar.getInstance();
+        final DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                calendar.set(Calendar.YEAR, year);
+                calendar.set(Calendar.MONTH, month);
+                calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+
+                String myFormat = "EEE, MMM d yyyy";
+                SimpleDateFormat sdf = new SimpleDateFormat(myFormat);
+                tvDate.setText(sdf.format(calendar.getTime()));
+            }
+        };
+        llChooseDate = (LinearLayout) view.findViewById(R.id.ll_ts_choose_date);
+        llChooseDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new DatePickerDialog(getActivity(), date, calendar.get(Calendar.YEAR),
+                        calendar.get(Calendar.MONTH),
+                        calendar.get(Calendar.DAY_OF_MONTH)).show();
+            }
+        });
+
         llAddTimesheet = (LinearLayout) view.findViewById(R.id.ll_add_timesheet);
         llAddTimesheet.setOnClickListener(new View.OnClickListener()
         {
@@ -61,37 +88,7 @@ public class TimesheetFragment extends BaseFragment {
                 toAddTimesheet();
             }
         });
-
-//        carouselSetup();
     }
-
-    public void assignXML() {
-        cvDate = (CalendarView) viewRoot.findViewById(R.id.cv_timesheet);
-    }
-
-    /*public void carouselSetup() {
-        cvDate.setPageCount(sampleDate.length);
-        cvDate.setSlideInterval(1000);
-        cvDate.setViewListener(viewListener);
-    }*/
-
-
-    ViewListener viewListener = new ViewListener() {
-        @Override
-        public View setViewForPosition(int position) {
-
-            View cvContent = getActivity().getLayoutInflater().inflate(R.layout.carousel, null);
-            tvDate = (TextView) cvContent.findViewById(R.id.tv_ts_date);
-            tvHour = (TextView) cvContent.findViewById(R.id.tv_ts_hour);
-
-            tvDate.setText(sampleDate[position]);
-            tvHour.setText(sampleHour[position]);
-
-            //cvDate.setIndicatorGravity(Gravity.CENTER_HORIZONTAL| Gravity.BOTTOM);
-
-            return cvContent;
-        }
-    };
 
     public void toAddTimesheet()
     {

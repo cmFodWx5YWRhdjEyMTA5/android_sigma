@@ -21,13 +21,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:textSize="16sp"
+                android:textSize="15sp"
                 android:textColor="@color/homeParent"
                 android:id="@+id/tv_unit"/>
             <ImageView
-                android:layout_width="16dp"
-                android:layout_height="16dp"
-                android:layout_marginLeft="12dp"
+                android:layout_width="14dp"
+                android:layout_height="14dp"
+                android:layout_marginLeft="14dp"
                 android:src="@drawable/dropdown"
                 android:id="@id/iv_dropdown"/>
         </LinearLayout>
