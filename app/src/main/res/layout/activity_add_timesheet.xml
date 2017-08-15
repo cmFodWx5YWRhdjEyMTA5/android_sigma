@@ -70,6 +70,8 @@
             android:background="@color/white"
             android:hint="@string/addts_choose_project"
             android:paddingLeft="16dp"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
             android:textSize="14sp" />
 
         <LinearLayout
@@ -87,7 +89,9 @@
                 android:background="@color/white"
                 android:hint="@string/addts_choose_task"
                 android:paddingLeft="16dp"
-                android:textSize="14sp" />
+                android:textSize="14sp"
+                android:focusableInTouchMode="false"
+                android:focusable="false"/>
 
             <EditText
                 android:id="@+id/et_addts_hours"

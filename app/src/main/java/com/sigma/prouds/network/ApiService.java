@@ -1,12 +1,15 @@
 package com.sigma.prouds.network;
 
+import com.sigma.prouds.model.AddTimeSheetModel;
 import com.sigma.prouds.model.EmptyModel;
 import com.sigma.prouds.model.LoginModel;
 import com.sigma.prouds.model.PerformanceSendModel;
 import com.sigma.prouds.model.PerformanceYearSendModel;
 import com.sigma.prouds.model.ProjectListTimesheetSenderModel;
 import com.sigma.prouds.model.ReportIssueModel;
+import com.sigma.prouds.model.TaskListTimesheetSenderModel;
 import com.sigma.prouds.network.response.AddReportResponse;
+import com.sigma.prouds.network.response.AddTimeSheetResponse;
 import com.sigma.prouds.network.response.DetailProjectResponse;
 import com.sigma.prouds.network.response.LoginResponse;
 import com.sigma.prouds.network.response.MyActivityResponse;
@@ -17,6 +20,7 @@ import com.sigma.prouds.network.response.ProjectActivityResponse;
 import com.sigma.prouds.network.response.ProjectDocResponse;
 import com.sigma.prouds.network.response.ProjectIssueResponse;
 import com.sigma.prouds.network.response.ProjectResponse;
+import com.sigma.prouds.network.response.TaskAddTimeSheetResponse;
 import com.sigma.prouds.network.response.TeamMemberResponse;
 import com.sigma.prouds.network.response.UserProjectTimesheetResponse;
 
@@ -80,4 +84,9 @@ public interface ApiService
     @POST("dev/timesheet/view/")
     Call<UserProjectTimesheetResponse> getUserProjectTimesheet(@Header("token") String token, @Body ProjectListTimesheetSenderModel model);
 
+    @POST("dev/timesheet/taskList/")
+    Call<TaskAddTimeSheetResponse> getTaskTimeSheet(@Header("token") String token, @Body TaskListTimesheetSenderModel model);
+
+    @POST("dev/timesheet/addTimesheet/")
+    Call<AddTimeSheetResponse> addTimeSheet(@Header("token") String token, @Body AddTimeSheetModel model);
 }

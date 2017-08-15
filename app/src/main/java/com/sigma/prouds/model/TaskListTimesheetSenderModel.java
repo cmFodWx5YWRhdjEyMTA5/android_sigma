@@ -4,17 +4,17 @@ package com.sigma.prouds.model;
  * Created by lucgu.qolfiera on 8/15/2017.
  */
 
-public class ProjectListTimesheetSenderModel
+public class TaskListTimesheetSenderModel
 {
-    private String date;
+    private String projectId;
     private String mobile;
 
-    public String getDate() {
-        return date;
+    public String getProjectId() {
+        return projectId;
     }
 
-    public void setDate(String date) {
-        this.date = date;
+    public void setProjectId(String projectId) {
+        this.projectId = projectId;
     }
 
     public String getMobile() {
