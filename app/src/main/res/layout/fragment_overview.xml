@@ -6,11 +6,11 @@
               android:background="@color/background"
               android:orientation="vertical">
 
-    <!--<ScrollView-->
-        <!--android:id="@+id/sv_overview"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent"-->
-        <!--android:visibility="gone"></ScrollView>-->
+    <ScrollView
+        android:id="@+id/sv_overview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -516,6 +516,7 @@
 
         </LinearLayout>
     </LinearLayout>
+    </ScrollView>
 
     <ProgressBar
         android:id="@+id/pb_overview"
