@@ -15,6 +15,8 @@ import android.view.ViewGroup;
 import android.widget.CalendarView;
 import android.widget.DatePicker;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.sigma.prouds.AddTimesheetActivity;
@@ -51,8 +53,10 @@ public class TimesheetFragment extends BaseFragment {
     private CalendarView cvDate;
     private TextView tvDate;
     private TextView tvHour;
-    private LinearLayout llAddTimesheet, llChooseDate;
-
+    private TextView tvEmpty;
+    private LinearLayout  llChooseDate;
+    private RelativeLayout llAddTimesheet;
+    private ProgressBar pbTimeSheet;
     private ApiService service;
     private ProudsApplication app;
     private TimesheetAdapter adapter;
@@ -75,6 +79,8 @@ public class TimesheetFragment extends BaseFragment {
         service = ApiUtils.apiService();
         rvTimesheet = (RecyclerView) view.findViewById(R.id.rv_timesheet);
         tvDate = (TextView) view.findViewById(R.id.tv_ts_date);
+        pbTimeSheet = (ProgressBar) view.findViewById(R.id.pb_timesheet);
+        tvEmpty = (TextView) view.findViewById(R.id.tv_empty_timesheet);
 
         final Calendar calendar = Calendar.getInstance();
         final DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
@@ -103,7 +109,7 @@ public class TimesheetFragment extends BaseFragment {
             }
         });
 
-        llAddTimesheet = (LinearLayout) view.findViewById(R.id.ll_add_timesheet);
+        llAddTimesheet = (RelativeLayout) view.findViewById(R.id.ll_add_timesheet);
         llAddTimesheet.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -130,6 +136,9 @@ public class TimesheetFragment extends BaseFragment {
 
     public void getData(String date)
     {
+        rvTimesheet.setVisibility(View.INVISIBLE);
+        pbTimeSheet.setVisibility(View.VISIBLE);
+        tvEmpty.setVisibility(View.GONE);
         ProjectListTimesheetSenderModel model = new ProjectListTimesheetSenderModel();
         model.setMobile("1");
         model.setDate(date);
@@ -137,11 +146,23 @@ public class TimesheetFragment extends BaseFragment {
             @Override
             public void onResponse(Call<UserProjectTimesheetResponse> call, Response<UserProjectTimesheetResponse> response)
             {
+                if (response.body().getUserActivities().size() == 0)
+                {
+                    tvEmpty.setVisibility(View.VISIBLE);
+                }
+                rvTimesheet.setVisibility(View.VISIBLE);
+                pbTimeSheet.setVisibility(View.GONE);
                 Log.i("Succes : ", response.body().getUserActivities().size() + "");
                 adapter = new TimesheetAdapter(ctx, response.body().getUserActivities());
                 RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(ctx);
                 rvTimesheet.setLayoutManager(mLayoutManager);
                 rvTimesheet.setAdapter(adapter);
+                /*int hour = 0;
+                for (int i=0; i <= response.body().getUserActivities().size()-1;i++)
+                {
+                    hour += Integer.parseInt(response.body().getUserActivities().get(i).getHourTotal());
+                }
+                tvHour.setText(hour + "Hours");*/
             }
 
             @Override

@@ -8,27 +8,41 @@
     android:padding="16dp">
 
     <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        android:background="@drawable/red_box">
+
+    <LinearLayout
         android:layout_width="185dp"
         android:layout_height="80dp"
-        android:orientation="vertical"
         android:layout_gravity="center"
-        android:gravity="center_horizontal|center_vertical">
+        android:gravity="center_horizontal|center_vertical"
+        android:orientation="vertical">
+
         <TextView
+            android:id="@+id/tv_ts_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="6dp"
-            android:textSize="16sp"
-            android:textStyle="bold"
             android:textAlignment="gravity"
             android:textColor="@color/homeParent"
-            android:id="@+id/tv_ts_date"/>
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
         <TextView
+            android:id="@+id/tv_ts_hour"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/tv_ts_hour"
-            android:textSize="14sp"
-            android:textAlignment="gravity"/>
+            android:textAlignment="gravity"
+            android:textSize="14sp" />
     </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/splash"></View>
 
     <LinearLayout
         android:layout_width="185dp"
@@ -42,7 +56,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="12dp"
+            android:layout_marginRight="6dp"
             android:textSize="14sp"
             android:textColor="@color/btn"
             android:text="@string/ts_choose_date" />
@@ -50,6 +64,8 @@
             android:layout_width="14dp"
             android:layout_height="14dp"
             android:src="@drawable/dropdown" />
+    </LinearLayout>
+
     </LinearLayout>
 
     <CalendarView
@@ -60,32 +76,40 @@
         android:id="@+id/cv_timesheet">
     </CalendarView>
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="185dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
-        android:layout_marginBottom="36dp"
+        android:layout_marginTop="8dp"
+        android:padding="4dp"
+        android:layout_marginBottom="8dp"
         android:orientation="horizontal"
         android:id="@+id/ll_add_timesheet"
-        android:layout_gravity="center">
+        android:layout_gravity="center"
+        android:background="@color/btn">
+
+
         <ImageView
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_marginRight="24dp"
-            android:src="@drawable/add"/>
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_marginRight="8dp"
+            android:src="@drawable/add_white"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/tv"/>
         <TextView
+            android:id="@+id/tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/ts_add"
-            android:textSize="18sp"
-            android:textColor="@color/btn"/>
-    </LinearLayout>
-    
+            android:textSize="16sp"
+            android:layout_centerInParent="true"
+            android:textColor="@color/white"/>
+    </RelativeLayout>
+
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginBottom="12dp">
+        android:layout_marginBottom="8dp">
 
         <TextView
             android:layout_width="wrap_content"
@@ -96,11 +120,29 @@
             android:id="@+id/ts_date"/>
     </RelativeLayout>
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ProgressBar
+            android:id="@+id/pb_timesheet"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"/>
+
+        <TextView
+            android:id="@+id/tv_empty_timesheet"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Timesheet is empty"
+            android:layout_centerInParent="true"
+            android:visibility="gone"/>
+
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:id="@+id/rv_timesheet">
     </android.support.v7.widget.RecyclerView>
-
+    </RelativeLayout>
 
 </LinearLayout>
