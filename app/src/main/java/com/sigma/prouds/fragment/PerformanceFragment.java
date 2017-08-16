@@ -48,7 +48,6 @@ public class PerformanceFragment extends BaseFragment
     @Override
     protected void workingSpace(View view)
     {
-        //forceCrash(view);
         app = (ProudsApplication) ctx.getApplicationContext();
         vpPerformance = (ViewPager) view.findViewById(R.id.vp_performance);
         tvUserName = (TextView) view.findViewById(R.id.tv_username);
@@ -67,9 +66,7 @@ public class PerformanceFragment extends BaseFragment
         viewPager.setAdapter(adapter);
     }
 
-    public void forceCrash(View view) {
-        throw new RuntimeException("This is a crash");
-    }
+
 
 
 }

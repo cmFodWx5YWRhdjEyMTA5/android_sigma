@@ -5,6 +5,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,6 +20,7 @@ import android.widget.TextView;
 import com.sigma.prouds.AddTimesheetActivity;
 import com.sigma.prouds.ProudsApplication;
 import com.sigma.prouds.R;
+import com.sigma.prouds.adapter.TimesheetAdapter;
 import com.sigma.prouds.base.BaseFragment;
 import com.sigma.prouds.model.ProjectListTimesheetSenderModel;
 import com.sigma.prouds.network.ApiService;
@@ -28,7 +32,9 @@ import com.synnapps.carouselview.ViewListener;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
+import java.util.TimeZone;
 
 import in.goodiebag.carouselpicker.CarouselPicker;
 import retrofit2.Call;
@@ -49,6 +55,8 @@ public class TimesheetFragment extends BaseFragment {
 
     private ApiService service;
     private ProudsApplication app;
+    private TimesheetAdapter adapter;
+    private RecyclerView rvTimesheet;
 
     public static TimesheetFragment newInstance(Context context) {
         TimesheetFragment fragment = new TimesheetFragment();
@@ -65,7 +73,7 @@ public class TimesheetFragment extends BaseFragment {
     protected void workingSpace(View view) {
         app = (ProudsApplication) ctx.getApplicationContext();
         service = ApiUtils.apiService();
-
+        rvTimesheet = (RecyclerView) view.findViewById(R.id.rv_timesheet);
         tvDate = (TextView) view.findViewById(R.id.tv_ts_date);
 
         final Calendar calendar = Calendar.getInstance();
@@ -78,7 +86,11 @@ public class TimesheetFragment extends BaseFragment {
 
                 String myFormat = "EEE, MMM d yyyy";
                 SimpleDateFormat sdf = new SimpleDateFormat(myFormat);
+                String form = year + "-" + String.valueOf(month + 1)+ "-" + dayOfMonth;
                 tvDate.setText(sdf.format(calendar.getTime()));
+                Log.i("Date selected : ", form);
+                getData(form);
+
             }
         };
         llChooseDate = (LinearLayout) view.findViewById(R.id.ll_ts_choose_date);
@@ -100,6 +112,14 @@ public class TimesheetFragment extends BaseFragment {
                 toAddTimesheet();
             }
         });
+
+        String myFormat = "EEE, MMM d yyyy";
+        SimpleDateFormat sdf = new SimpleDateFormat(myFormat);
+        tvDate.setText(sdf.format(calendar.getTime()));
+        Date cDate = new Date();
+        String fDate = new SimpleDateFormat("yyyy-MM-dd").format(cDate);
+        Log.i("Date today : ", fDate);
+        getData(fDate);
     }
 
     public void toAddTimesheet()
@@ -117,7 +137,11 @@ public class TimesheetFragment extends BaseFragment {
             @Override
             public void onResponse(Call<UserProjectTimesheetResponse> call, Response<UserProjectTimesheetResponse> response)
             {
-
+                Log.i("Succes : ", response.body().getUserActivities().size() + "");
+                adapter = new TimesheetAdapter(ctx, response.body().getUserActivities());
+                RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(ctx);
+                rvTimesheet.setLayoutManager(mLayoutManager);
+                rvTimesheet.setAdapter(adapter);
             }
 
             @Override
@@ -127,5 +151,7 @@ public class TimesheetFragment extends BaseFragment {
             }
         });
     }
+
+
 
 }
