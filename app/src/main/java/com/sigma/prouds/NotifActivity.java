@@ -10,26 +10,16 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.sigma.prouds.adapter.NotifAdapter;
+import com.sigma.prouds.base.BaseActivity;
 
 /**
  * Created by goy on 7/7/2017.
  */
 
-public class NotifActivity extends Fragment {
-    static Context ctx;
+public class NotifActivity extends BaseActivity {
 
     private RecyclerView rvNotif;
     private NotifAdapter adapter;
-
-    public NotifActivity() {
-        // Required empty public constructor
-    }
-
-    public static NotifActivity newInstance(Context context) {
-        NotifActivity fragment = new NotifActivity();
-        ctx = context;
-        return fragment;
-    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -37,19 +27,20 @@ public class NotifActivity extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    protected int getLayout() {
+        return R.layout.activity_notif;
+    }
 
-        View viewroot = inflater.inflate(R.layout.activity_notif, container, false);
-
-        rvNotif = (RecyclerView) viewroot.findViewById(R.id.rv_notif);
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
+    @Override
+    protected void workingSpace() {
+        rvNotif = (RecyclerView) findViewById(R.id.rv_notif);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         rvNotif.setLayoutManager(layoutManager);
 
         adapter = new NotifAdapter();
 
         rvNotif.setAdapter(adapter);
-
-        return viewroot;
     }
+
+
 }

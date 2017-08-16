@@ -33,7 +33,8 @@
         <activity android:name=".ProfileSettingActivity" />
         <activity android:name=".FormReportIssueActivity" />
         <activity android:name=".SearchResultActivity" />
-        <activity android:name=".SearchActivity" />
+        <activity android:name=".NotifActivity" />
+        <activity android:name=".SearchActivity"></activity>
 
         <meta-data
             android:name="io.fabric.ApiKey"

@@ -5,12 +5,14 @@
     android:id="@+id/ll_notif_holder">
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="wrap_content"
         android:background="@color/background"
-        android:gravity="center">
-        <ImageView
+        android:gravity="center"
+        android:padding="16dp">
+        <de.hdodenhof.circleimageview.CircleImageView
             android:layout_width="40dp"
             android:layout_height="40dp"
+            android:src="@drawable/user"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="24dp"
             android:id="@+id/iv_dp"/>
@@ -23,28 +25,30 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/tv_username"
-                    android:textSize="14sp"
-                    android:textColor="@color/notifUser"
-                    android:text="username"/>
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="14sp"
-                    android:textColor="@color/notifText"
+                    android:textColor="@color/homeParent"
                     android:text="something"
                     android:id="@+id/tv_notif"/>
             </LinearLayout>
             <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="14dp"
+                android:textSize="14sp"
+                android:textColor="@color/homeParent"
+                android:text="something"
+                android:id="@+id/tv_notif_acc"/>
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/tv_time"
-                android:textSize="11sp"
+                android:textSize="12sp"
                 android:text="here"
-                android:textColor="@color/notifTime"/>
+                android:textColor="@color/homeParentDate"/>
         </LinearLayout>
     </LinearLayout>
     <View

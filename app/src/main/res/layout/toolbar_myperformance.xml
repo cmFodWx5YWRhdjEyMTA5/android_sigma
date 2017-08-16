@@ -29,7 +29,17 @@
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:src="@drawable/notif"
-            android:id="@+id/iv_notif" />
+            android:id="@+id/iv_performance_notif" />
+
+        <ImageView
+            android:id="@+id/iv_performance_notif_active"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:visibility="invisible"
+            android:src="@drawable/notif_active"/>
 
     </RelativeLayout>
 </android.support.v7.widget.Toolbar>

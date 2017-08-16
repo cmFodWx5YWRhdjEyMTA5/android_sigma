@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -39,7 +38,7 @@ public class PagerActivity extends BaseFragmentActivity {
             R.drawable.tab_timesheet,
             R.drawable.tab_performance
     };
-    private ImageView ivNotif;
+    private ImageView ivHomeNotif, ivAssignmentNotif, ivPerformanceNotif, ivTimesheetNotif;
 
     @Override
     protected int getLayout() {
@@ -51,16 +50,40 @@ public class PagerActivity extends BaseFragmentActivity {
         assignXML();
         setTabLayout();
         tabEvent();
-
-        ivNotif.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
+        setNotif();
 
         fragment1 = PerformanceFragment.newInstance(this);
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment1).commit();
+    }
+
+    public void setNotif() {
+        ivHomeNotif.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                toNotif();
+            }
+        });
+
+        ivAssignmentNotif.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                toNotif();
+            }
+        });
+
+        ivPerformanceNotif.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                toNotif();
+            }
+        });
+
+        ivTimesheetNotif.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                toNotif();
+            }
+        });
     }
 
     private void assignXML() {
@@ -69,10 +92,18 @@ public class PagerActivity extends BaseFragmentActivity {
         tbAssignment = (Toolbar) findViewById(R.id.tb_assignment);
         tbTimesheet = (Toolbar) findViewById(R.id.tb_timesheet);
         tbPerformance = (Toolbar) findViewById(R.id.tb_performance);
-        ivNotif = (ImageView) findViewById(R.id.iv_notif);
+        ivHomeNotif = (ImageView) findViewById(R.id.iv_home_notif);
+        ivPerformanceNotif = (ImageView) findViewById(R.id.iv_performance_notif);
+        ivAssignmentNotif = (ImageView) findViewById(R.id.iv_assignment_notif);
+        ivTimesheetNotif = (ImageView) findViewById(R.id.iv_ts_notif);
         query.id(R.id.tv_title_toolbar_assignment).typeface(Typeface.createFromAsset(getAssets(), "lato_black.ttf"));
         query.id(R.id.tv_title_toolbar_timesheet).typeface(Typeface.createFromAsset(getAssets(), "lato_black.ttf"));
         query.id(R.id.tv_title_toolbar_myperformance).typeface(Typeface.createFromAsset(getAssets(), "lato_black.ttf"));
+    }
+
+    public void toNotif() {
+        Intent intent = new Intent(this, NotifActivity.class);
+        startActivity(intent);
     }
 
     private void setTabLayout() {
