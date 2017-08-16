@@ -55,10 +55,28 @@
                     android:focusableInTouchMode="false"/>
             </LinearLayout>
 
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ProgressBar
+                    android:id="@+id/pb_performance"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"/>
+
             <LinearLayout
+                android:id="@+id/ll_performance"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:padding="8dp"
+                android:visibility="visible">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
 
                 <com.github.lzyzsd.circleprogress.DonutProgress
                     android:layout_marginLeft="50dp"
@@ -66,7 +84,36 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     custom:donut_progress="0"
+                    android:layout_centerHorizontal="true"
                     custom:donut_finished_color="@color/splash"/>
+
+                    <TextView
+                        android:id="@+id/tv_ui_user_entry"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/pb_user_entry"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="4dp"
+                        android:text="USER ENTRY"/>
+
+                    <TextView
+                        android:id="@+id/tv_entry_status"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tv_ui_user_entry"
+                        android:layout_centerHorizontal="true"
+                        android:textSize="11sp"
+                        android:layout_marginTop="4dp"
+                        android:text="USER ENTRY"/>
+
+
+                </RelativeLayout>
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
 
                 <com.github.lzyzsd.circleprogress.DonutProgress
                     android:layout_marginLeft="50dp"
@@ -74,9 +121,33 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     custom:donut_progress="0"
+                    android:layout_centerHorizontal="true"
                     custom:donut_finished_color="@color/splash"/>
 
+                    <TextView
+                        android:id="@+id/tv_ui_util"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/pb_user_utilization"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="4dp"
+                        android:text="USER UTILIZATION"/>
+
+                    <TextView
+                        android:id="@+id/tv_util_status"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tv_ui_util"
+                        android:layout_centerHorizontal="true"
+                        android:textSize="11sp"
+                        android:layout_marginTop="4dp"
+                        android:text="USER ENTRY"/>
+
+                </RelativeLayout>
+
             </LinearLayout>
+
+            </RelativeLayout>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

@@ -7,7 +7,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.github.lzyzsd.circleprogress.DonutProgress;
 import com.github.mikephil.charting.charts.BarChart;
@@ -30,6 +32,7 @@ import com.sigma.prouds.network.ApiUtils;
 import com.sigma.prouds.network.response.MyPerformanceResponse;
 import com.sigma.prouds.network.response.MyPerformanceYearlyResponse;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -51,7 +54,9 @@ public class ChartFragment extends BaseFragment
     private DonutProgress pbEntry, pbUtilization;
     private LineChart chartUtilization, chartEntry;
     private EditText etChartTsMonth, etChartTsYear, etChartUtil, etChartEntry;
-    private ProgressBar pbChartUtil, pbChartEntry;
+    private ProgressBar pbChartUtil, pbChartEntry, pbPerformance;
+    private LinearLayout llPerformance;
+    private TextView tvUtilStatus, tvEntryStatus;
 
     public static ChartFragment newInstance(Context context)
     {
@@ -81,11 +86,12 @@ public class ChartFragment extends BaseFragment
         etChartEntry = (EditText) view.findViewById(R.id.et_chart_entryyear);
         pbChartUtil = (ProgressBar) view.findViewById(R.id.pb_chart_util);
         pbChartEntry = (ProgressBar) view.findViewById(R.id.pb_chart_entry);
+        llPerformance = (LinearLayout) view.findViewById(R.id.ll_performance);
+        pbPerformance = (ProgressBar) view.findViewById(R.id.pb_performance);
+        tvEntryStatus = (TextView) view.findViewById(R.id.tv_entry_status);
+        tvUtilStatus = (TextView) view.findViewById(R.id.tv_util_status);
 
-        model = new PerformanceSendModel();
-        model.setBulan("8");
-        model.setTahun("2017");
-        getDataPerformance();
+        getDataPerformance("8", "2017");
 
         //chart util
         Calendar calendar = Calendar.getInstance();
@@ -93,6 +99,80 @@ public class ChartFragment extends BaseFragment
         etChartEntry.setText(calendar.get(Calendar.YEAR) + "");
         getChartUtilziationData(calendar.get(Calendar.YEAR) + "");
         getChartEntryData(calendar.get(Calendar.YEAR) + "");
+
+        final SimpleDateFormat monthDate = new SimpleDateFormat("MMMM");
+        etChartTsMonth.setText(monthDate.format(calendar.getTime()));
+        etChartTsYear.setText(calendar.get(Calendar.YEAR) + "");
+
+        etChartTsYear.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                AlertDialog.Builder builderSingle = new AlertDialog.Builder(ctx);
+                builderSingle.setTitle("Select year");
+                final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(ctx, android.R.layout.select_dialog_singlechoice);
+                for (int i=1990; i <= 2030; i++)
+                {
+                    arrayAdapter.add(i + "");
+                }
+                builderSingle.setNegativeButton("cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+                builderSingle.setAdapter(arrayAdapter, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int position) {
+                        etChartTsYear.setText(arrayAdapter.getItem(position));
+                        getDataPerformance(model.getBulan(), arrayAdapter.getItem(position));
+                        dialog.dismiss();
+                    }
+                });
+                builderSingle.show();
+            }
+        });
+
+        etChartTsMonth.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                AlertDialog.Builder builderSingle = new AlertDialog.Builder(ctx);
+                builderSingle.setTitle("Select month");
+                final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(ctx, android.R.layout.select_dialog_singlechoice);
+
+                arrayAdapter.add("January");
+                arrayAdapter.add("February");
+                arrayAdapter.add("March");
+                arrayAdapter.add("April");
+                arrayAdapter.add("May");
+                arrayAdapter.add("June");
+                arrayAdapter.add("July");
+                arrayAdapter.add("August");
+                arrayAdapter.add("September");
+                arrayAdapter.add("October");
+                arrayAdapter.add("November");
+                arrayAdapter.add("December");
+
+                builderSingle.setNegativeButton("cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+                builderSingle.setAdapter(arrayAdapter, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int position) {
+                        etChartTsMonth.setText(arrayAdapter.getItem(position));
+                        getDataPerformance(String.valueOf(position + 1), model.getTahun());
+                        dialog.dismiss();
+                    }
+                });
+                builderSingle.show();
+            }
+        });
 
         etChartUtil.setOnClickListener(new View.OnClickListener()
         {
@@ -155,8 +235,13 @@ public class ChartFragment extends BaseFragment
         });
     }
 
-    public void getDataPerformance()
+    public void getDataPerformance(final String month, String year)
     {
+        llPerformance.setVisibility(View.INVISIBLE);
+        pbPerformance.setVisibility(View.VISIBLE);
+        model = new PerformanceSendModel();
+        model.setBulan(month);
+        model.setTahun(year);
         service.getMyPerfomance(app.getSessionManager().getToken(), model).enqueue(new Callback<MyPerformanceResponse>()
         {
             @Override
@@ -169,6 +254,12 @@ public class ChartFragment extends BaseFragment
                 float progressUtil = Float.parseFloat(response.body().getEntry());
                 int finalProgressUtil = (int) progressUtil;
                 pbUtilization.setProgress(finalProgressUtil);
+
+                tvUtilStatus.setText(response.body().getStatusUtilization());
+                tvEntryStatus.setText(response.body().getStatus());
+
+                llPerformance.setVisibility(View.VISIBLE);
+                pbPerformance.setVisibility(View.GONE);
             }
 
             @Override

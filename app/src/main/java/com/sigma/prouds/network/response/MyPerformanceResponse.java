@@ -8,6 +8,8 @@ public class MyPerformanceResponse
 {
     private String entry;
     private String utilization;
+    private String status;
+    private String statusUtilization;
 
     public String getEntry() {
         return entry;
@@ -23,5 +25,21 @@ public class MyPerformanceResponse
 
     public void setUtilization(String utilization) {
         this.utilization = utilization;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getStatusUtilization() {
+        return statusUtilization;
+    }
+
+    public void setStatusUtilization(String statusUtilization) {
+        this.statusUtilization = statusUtilization;
     }
 }
