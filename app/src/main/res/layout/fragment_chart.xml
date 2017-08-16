@@ -36,17 +36,23 @@
                 </LinearLayout>
                 <EditText
                     android:layout_width="match_parent"
-                    android:layout_height="42dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginRight="12dp"
+                    android:padding="2dp"
                     android:background="@drawable/gray_box"
                     android:layout_weight="3"
-                    android:id="@+id/et_chart_tsmonth"/>
+                    android:id="@+id/et_chart_tsmonth"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"/>
                 <EditText
                     android:layout_width="match_parent"
-                    android:layout_height="42dp"
+                    android:layout_height="wrap_content"
+                    android:padding="2dp"
                     android:layout_weight="4"
                     android:background="@drawable/gray_box"
-                    android:id="@+id/et_chart_tsyear"/>
+                    android:id="@+id/et_chart_tsyear"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"/>
             </LinearLayout>
 
             <LinearLayout
@@ -98,17 +104,31 @@
                 </LinearLayout>
                 <EditText
                     android:layout_width="80dp"
-                    android:layout_height="42dp"
+                    android:layout_height="wrap_content"
+                    android:padding="2dp"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
                     android:background="@drawable/gray_box"
                     android:id="@+id/et_chart_utilyear"/>
             </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
             <com.github.mikephil.charting.charts.LineChart
                 android:id="@+id/chart_utilization"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
+                android:visibility="invisible"
                  />
 
+                <ProgressBar
+                    android:id="@+id/pb_chart_util"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"/>
+            </RelativeLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -135,16 +155,32 @@
                 <EditText
                     android:id="@+id/et_chart_entryyear"
                     android:layout_width="80dp"
-                    android:layout_height="42dp"
+                    android:layout_height="wrap_content"
+                    android:padding="2dp"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
                     android:background="@drawable/gray_box"/>
 
             </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
             <com.github.mikephil.charting.charts.LineChart
                 android:id="@+id/chart_entry"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
+                android:visibility="invisible"
                 />
+
+                <ProgressBar
+                    android:id="@+id/pb_chart_entry"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"/>
+
+            </RelativeLayout>
         </LinearLayout>
     </ScrollView>
 
