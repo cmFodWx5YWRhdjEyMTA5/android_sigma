@@ -1,11 +1,15 @@
 package com.sigma.prouds.fragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.RelativeLayout;
 
+import com.sigma.prouds.FormDocUploadActivity;
+import com.sigma.prouds.FormReportIssueActivity;
 import com.sigma.prouds.ProudsApplication;
 import com.sigma.prouds.R;
 import com.sigma.prouds.adapter.ProjectDocAdapter;
@@ -33,6 +37,7 @@ public class DocFileFragment extends BaseFragment
     private ProudsApplication app;
     private RecyclerView rvDoc;
     private ProjectDocAdapter adapter;
+    private RelativeLayout rlAddDoc;
 
     public static DocFileFragment newInstance(Context context, String projectId)
     {
@@ -56,6 +61,13 @@ public class DocFileFragment extends BaseFragment
         service = ApiUtils.apiService();
         projectId = getArguments().getString("project_id");
         rvDoc = (RecyclerView) view.findViewById(R.id.rv_doc);
+        rlAddDoc = (RelativeLayout) view.findViewById(R.id.rl_doc);
+        rlAddDoc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                toAddDoc();
+            }
+        });
         getDocFile();
 
     }
@@ -79,5 +91,12 @@ public class DocFileFragment extends BaseFragment
 
             }
         });
+    }
+
+    public void toAddDoc()
+    {
+        Intent intent = new Intent(getActivity(), FormDocUploadActivity.class);
+        intent.putExtra("project_id", projectId);
+        getActivity().startActivity(intent);
     }
 }

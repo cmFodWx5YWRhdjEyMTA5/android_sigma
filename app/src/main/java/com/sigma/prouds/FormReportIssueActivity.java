@@ -1,25 +1,52 @@
 package com.sigma.prouds;
 
+import android.Manifest;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.provider.MediaStore;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import com.sigma.prouds.base.BaseActivity;
+import com.sigma.prouds.network.ApiService;
+import com.sigma.prouds.network.ApiUtils;
+import com.sigma.prouds.network.response.UploadProjectIssueResponse;
+
+import java.io.File;
+
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class FormReportIssueActivity extends BaseActivity {
 
     public static int REQUEST_SELECT_IMAGE_IN_ALBUM = 0;
     private EditText etIssueUpload;
     private EditText etPriority;
-    private String imagePath;
+    private EditText etSubject;
+    private EditText etMessage;
+    private Uri imagePath;
+    private String projectId;
+    private ProgressDialog dialog;
+
+    private ProudsApplication app;
+    private ApiService service;
+
+    private RelativeLayout rlUploadIssue;
 
     @Override
     protected int getLayout()
@@ -30,6 +57,13 @@ public class FormReportIssueActivity extends BaseActivity {
     @Override
     protected void workingSpace()
     {
+        ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},1);
+
+        dialog = new ProgressDialog(this);
+        dialog.setMessage("Uploading...");
+        service = ApiUtils.apiService();
+        app = (ProudsApplication) getApplicationContext();
+        projectId = getIntent().getExtras().getString("project_id");
         assignXML();
         etIssueUpload.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -45,12 +79,22 @@ public class FormReportIssueActivity extends BaseActivity {
             }
         });
 
+        rlUploadIssue.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                uploadIssue();
+            }
+        });
+
     }
 
     public void assignXML()
     {
         etIssueUpload = (EditText) findViewById(R.id.et_issue_upload);
         etPriority = (EditText) findViewById(R.id.et_issue_priority);
+        rlUploadIssue = (RelativeLayout) findViewById(R.id.rl_report_issue);
+        etSubject = (EditText) findViewById(R.id.et_issue_subject);
+        etMessage = (EditText) findViewById(R.id.et_issue_msg);
     }
 
     public void getImage()
@@ -110,6 +154,7 @@ public class FormReportIssueActivity extends BaseActivity {
         {
             if (data != null) {
                 Uri contentURI = data.getData();
+                imagePath = contentURI;
                 try {
                     //Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), contentURI);
                     etIssueUpload.setText(contentURI.getLastPathSegment());
@@ -120,5 +165,52 @@ public class FormReportIssueActivity extends BaseActivity {
 
             }
         }
+    }
+
+    public void uploadIssue()
+    {
+        dialog.show();
+        File file = new File(imagePath.getPath());
+        final RequestBody requestFile =
+                RequestBody.create(MediaType.parse("multipart/form-data"), file);
+
+        MultipartBody.Part body =
+                MultipartBody.Part.createFormData("image", file.getName(), requestFile);
+
+        RequestBody id =
+                RequestBody.create(
+                        MediaType.parse("multipart/form-data"), projectId);
+
+        RequestBody subject =
+                RequestBody.create(
+                        MediaType.parse("multipart/form-data"), etSubject.getText().toString());
+
+        RequestBody message =
+                RequestBody.create(
+                        MediaType.parse("multipart/form-data"), etMessage.getText().toString());
+
+        RequestBody priority =
+                RequestBody.create(
+                        MediaType.parse("multipart/form-data"), etPriority.getText().toString());
+
+        service.uploadIssue(app.getSessionManager().getToken(), id, subject, message, priority, body).enqueue(new Callback<UploadProjectIssueResponse>() {
+            @Override
+            public void onResponse(Call<UploadProjectIssueResponse> call, Response<UploadProjectIssueResponse> response)
+            {
+                dialog.dismiss();
+                Toast.makeText(FormReportIssueActivity.this, "Upload succesful", Toast.LENGTH_SHORT).show();
+                FormReportIssueActivity.this.finish();
+                //Log.i("Upload status ", response.body().getStatus());
+            }
+
+            @Override
+            public void onFailure(Call<UploadProjectIssueResponse> call, Throwable t)
+            {
+                dialog.dismiss();
+                Toast.makeText(FormReportIssueActivity.this, "Upload failed, check internet connection", Toast.LENGTH_SHORT).show();
+                Log.i("Failed status ", t.toString());
+            }
+        });
+
     }
 }

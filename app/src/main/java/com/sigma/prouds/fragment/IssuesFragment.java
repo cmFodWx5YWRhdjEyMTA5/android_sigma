@@ -94,6 +94,7 @@ public class IssuesFragment extends BaseFragment
     public void toAddIssue()
     {
         Intent intent = new Intent(getActivity(), FormReportIssueActivity.class);
+        intent.putExtra("project_id", projectId);
         getActivity().startActivity(intent);
     }
 }

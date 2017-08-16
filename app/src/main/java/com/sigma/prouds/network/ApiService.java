@@ -22,10 +22,14 @@ import com.sigma.prouds.network.response.ProjectIssueResponse;
 import com.sigma.prouds.network.response.ProjectResponse;
 import com.sigma.prouds.network.response.TaskAddTimeSheetResponse;
 import com.sigma.prouds.network.response.TeamMemberResponse;
+import com.sigma.prouds.network.response.UploadProjectDocResponse;
+import com.sigma.prouds.network.response.UploadProjectIssueResponse;
 import com.sigma.prouds.network.response.UserProjectTimesheetResponse;
 
 import java.util.Map;
 
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.Field;
@@ -78,8 +82,6 @@ public interface ApiService
     @POST("dev/report/myperformances_yearly")
     Call<MyPerformanceYearlyResponse> getYearPerformance(@Header("token") String token, @Body PerformanceYearSendModel model);
 
-    @POST("dev/home/addissue")
-    Call<AddReportResponse> sendIssue(@Header("token") String token, @Body ReportIssueModel model);
 
     @POST("dev/timesheet/view/")
     Call<UserProjectTimesheetResponse> getUserProjectTimesheet(@Header("token") String token, @Body ProjectListTimesheetSenderModel model);
@@ -89,4 +91,13 @@ public interface ApiService
 
     @POST("dev/timesheet/addTimesheet/")
     Call<AddTimeSheetResponse> addTimeSheet(@Header("token") String token, @Body AddTimeSheetModel model);
+
+    @Multipart
+    @POST("dev/home/addissue")
+    Call<UploadProjectIssueResponse> uploadIssue(@Header("token") String token, @Part("PROJECT_ID") RequestBody id, @Part("SUBJECT") RequestBody subject, @Part("MESSAGE") RequestBody message,
+                                                 @Part("PRIORITY") RequestBody priority, @Part MultipartBody.Part image);
+
+    @Multipart
+    @POST("dev/home/documentupload/{project_id}")
+    Call<UploadProjectDocResponse> uploadDoc(@Header("token") String token, @Path("project_id") String projectId, @Part("desc") RequestBody desc, @Part MultipartBody.Part doc);
 }

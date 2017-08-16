@@ -48,6 +48,9 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     compile files('libs/android-query-full.0.26.8.jar')
+    compile('com.crashlytics.sdk.android:crashlytics:2.6.8@aar') {
+        transitive = true;
+    }
     compile 'com.android.support:appcompat-v7:25.3.1'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'de.greenrobot:eventbus:2.4.0'
@@ -66,8 +69,5 @@ dependencies {
     compile 'com.github.aakira:expandable-layout:1.6.0@aar'
     compile 'com.github.lzyzsd:circleprogress:1.2.1'
     compile 'com.github.PhilJay:MPAndroidChart:v2.2.4'
-    compile('com.crashlytics.sdk.android:crashlytics:2.6.8@aar') {
-        transitive = true;
-    }
     testCompile 'junit:junit:4.12'
 }
