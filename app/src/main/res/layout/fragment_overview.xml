@@ -6,16 +6,16 @@
               android:background="@color/background"
               android:orientation="vertical">
 
-    <ScrollView
-        android:id="@+id/sv_overview"
+    <!--<ScrollView-->
+        <!--android:id="@+id/sv_overview"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:visibility="gone"></ScrollView>-->
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="gone">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+        android:orientation="vertical">
 
         <!-- Project Detail -->
         <LinearLayout
@@ -31,9 +31,9 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
+                android:layout_marginBottom="16dp"
                 android:text="@string/ov_projectdetail"
-                android:textColor="@color/homeChild"
+                android:textColor="@color/homeParent"
                 android:textSize="14sp"/>
 
             <LinearLayout
@@ -43,13 +43,14 @@
                 android:orientation="horizontal">
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginRight="12dp"
                     android:layout_weight="1"
                     android:orientation="vertical">
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="3dp"
                         android:text="@string/ov_iwo"
@@ -58,21 +59,22 @@
 
                     <TextView
                         android:id="@+id/tv_iwo"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textColor="@color/btn"
-                        android:textSize="12sp"/>
+                        android:textSize="12sp" />
                 </LinearLayout>
 
                 <!-- iwo buo -->
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="12dp"
                     android:layout_weight="1"
                     android:orientation="vertical">
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="3dp"
                         android:text="@string/ov_buo"
@@ -81,7 +83,7 @@
 
                     <TextView
                         android:id="@+id/tv_buo"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textColor="@color/btn"
                         android:textSize="12sp"/>
@@ -513,8 +515,7 @@
             </LinearLayout>
 
         </LinearLayout>
-        </LinearLayout>
-    </ScrollView>
+    </LinearLayout>
 
     <ProgressBar
         android:id="@+id/pb_overview"

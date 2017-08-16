@@ -1,4 +1,4 @@
-package com.sigma.prouds.fragment;
+package com.sigma.prouds;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -9,25 +9,24 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.sigma.prouds.R;
 import com.sigma.prouds.adapter.NotifAdapter;
 
 /**
  * Created by goy on 7/7/2017.
  */
 
-public class NotifFragment extends Fragment {
+public class NotifActivity extends Fragment {
     static Context ctx;
 
     private RecyclerView rvNotif;
     private NotifAdapter adapter;
 
-    public NotifFragment() {
+    public NotifActivity() {
         // Required empty public constructor
     }
 
-    public static NotifFragment newInstance(Context context) {
-        NotifFragment fragment = new NotifFragment();
+    public static NotifActivity newInstance(Context context) {
+        NotifActivity fragment = new NotifActivity();
         ctx = context;
         return fragment;
     }
@@ -41,7 +40,7 @@ public class NotifFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View viewroot = inflater.inflate(R.layout.fragment_notif, container, false);
+        View viewroot = inflater.inflate(R.layout.activity_notif, container, false);
 
         rvNotif = (RecyclerView) viewroot.findViewById(R.id.rv_notif);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
