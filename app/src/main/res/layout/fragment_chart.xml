@@ -35,15 +35,17 @@
                         android:background="@color/btn"/>
                 </LinearLayout>
                 <EditText
-                    android:layout_width="128dp"
+                    android:layout_width="match_parent"
                     android:layout_height="42dp"
                     android:layout_marginRight="12dp"
-                    android:background="@color/background"
+                    android:background="@drawable/gray_box"
+                    android:layout_weight="3"
                     android:id="@+id/et_chart_tsmonth"/>
                 <EditText
-                    android:layout_width="80dp"
+                    android:layout_width="match_parent"
                     android:layout_height="42dp"
-                    android:background="@color/background"
+                    android:layout_weight="4"
+                    android:background="@drawable/gray_box"
                     android:id="@+id/et_chart_tsyear"/>
             </LinearLayout>
 
@@ -97,7 +99,7 @@
                 <EditText
                     android:layout_width="80dp"
                     android:layout_height="42dp"
-                    android:background="@color/background"
+                    android:background="@drawable/gray_box"
                     android:id="@+id/et_chart_utilyear"/>
             </LinearLayout>
 
@@ -129,11 +131,12 @@
                         android:layout_height="3dp"
                         android:background="@color/btn"/>
                 </LinearLayout>
+
                 <EditText
+                    android:id="@+id/et_chart_entryyear"
                     android:layout_width="80dp"
                     android:layout_height="42dp"
-                    android:background="@color/background"
-                    android:id="@+id/et_chart_entryyear"/>
+                    android:background="@drawable/gray_box"/>
 
             </LinearLayout>
 

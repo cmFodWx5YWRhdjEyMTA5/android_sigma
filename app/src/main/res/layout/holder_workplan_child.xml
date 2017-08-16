@@ -18,33 +18,37 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:gravity="center_vertical"
-            android:layout_marginBottom="8dp">
+            android:layout_marginBottom="12dp">
 
-            <RelativeLayout
+            <FrameLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="24dp">
-                <!--TODO circle image view -->
-                <ImageView
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/iv_wp_profile1"
                     android:layout_width="24dp"
                     android:layout_height="24dp"
-                    android:id="@+id/iv_wp_profile1"/>
-                <ImageView
+                    android:layout_marginLeft="24dp"
+                    android:src="@drawable/user"/>
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/iv_wp_profile2"
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:layout_marginLeft="12dp"
-                    android:id="@+id/iv_wp_profile2"/>
-                <ImageView
+                    android:src="@drawable/user"/>
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/iv_wp_profile3"
                     android:layout_width="24dp"
                     android:layout_height="24dp"
-                    android:layout_marginLeft="36dp"
-                    android:id="@+id/iv_wp_profile3" />
-            </RelativeLayout>
+                    android:src="@drawable/user"/>
+
+            </FrameLayout>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="16sp"
+                android:textSize="12sp"
+                android:textColor="@color/btn"
                 android:text="@string/wp_seeall"
                 android:id="@+id/tv_seeall"/>
 
@@ -65,19 +69,20 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:layout_marginBottom="16dp">
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="6dp"
+                        android:layout_marginBottom="3dp"
                         android:text="@string/ad_start"
                         android:textSize="12sp"
                         android:textColor="@color/homeParentDate"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="12sp"
-                        android:textColor="@color/homeChild"
+                        android:textSize="14sp"
+                        android:textColor="@color/homeParent"
                         android:id="@+id/tv_wp_startdate"/>
                 </LinearLayout>
 
@@ -85,20 +90,19 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
                     android:orientation="vertical">
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="6dp"
+                        android:layout_marginBottom="3dp"
                         android:text="@string/wp_duration"
                         android:textSize="12sp"
                         android:textColor="@color/homeParentDate"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="12sp"
-                        android:textColor="@color/homeChild"
+                        android:textSize="14sp"
+                        android:textColor="@color/homeParent"
                         android:id="@+id/tv_wp_duration"/>
                 </LinearLayout>
             </LinearLayout>
@@ -112,19 +116,20 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:layout_marginBottom="16dp">
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="6dp"
+                        android:layout_marginBottom="3dp"
                         android:text="@string/ad_end"
                         android:textSize="12sp"
                         android:textColor="@color/homeParentDate"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="12sp"
-                        android:textColor="@color/homeChild"
+                        android:textSize="14sp"
+                        android:textColor="@color/homeParent"
                         android:id="@+id/tv_wp_enddate"/>
                 </LinearLayout>
 
@@ -137,15 +142,15 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="6dp"
+                        android:layout_marginBottom="3dp"
                         android:text="@string/wp_work"
                         android:textSize="12sp"
                         android:textColor="@color/homeParentDate"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="12sp"
-                        android:textColor="@color/homeChild"
+                        android:textSize="14sp"
+                        android:textColor="@color/homeParent"
                         android:id="@+id/tv_wp_work"/>
                 </LinearLayout>
             </LinearLayout>

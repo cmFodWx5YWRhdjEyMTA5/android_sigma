@@ -18,18 +18,18 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp">
+            android:layout_marginBottom="12dp">
             <TextView
                 android:id="@+id/tv_workplan_parent_task"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/wp_monitoring"
-                android:textSize="16sp"
-                android:textColor="@color/homeChild"/>
+                android:textColor="@color/homeParent"
+                android:textSize="13sp"/>
             <ImageView
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                src="@drawable/dropdown"
+                android:layout_width="14dp"
+                android:layout_height="14dp"
+                android:src="@drawable/dropdown"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentEnd="true"
@@ -41,19 +41,20 @@
             <ProgressBar
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="14dp"
+                android:layout_marginRight="8dp"
                 style="?android:attr/progressBarStyleHorizontal"
                 android:id="@+id/pb_monitoring"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="14dp"
-                android:textSize="14sp"
+                android:layout_marginRight="8dp"
+                android:textSize="12sp"
                 android:id="@+id/tv_monitoring_percen"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="14sp"
+                android:textColor="@color/homeParent"
+                android:textSize="12sp"
                 android:id="@+id/tv_monitoring_status"/>
         </LinearLayout>
     </LinearLayout>
