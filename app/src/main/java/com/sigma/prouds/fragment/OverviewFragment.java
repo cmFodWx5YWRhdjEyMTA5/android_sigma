@@ -55,7 +55,7 @@ public class OverviewFragment extends BaseFragment
     protected void workingSpace(View view)
     {
         tvIwo = (TextView) view.findViewById(R.id.tv_iwo);
-//        svOverview = (ScrollView) view.findViewById(R.id.sv_overview);
+        svOverview = (ScrollView) view.findViewById(R.id.sv_overview);
         pbOverview = (ProgressBar) view.findViewById(R.id.pb_overview);
         app = (ProudsApplication) ctx.getApplicationContext();
         service = ApiUtils.apiService();
