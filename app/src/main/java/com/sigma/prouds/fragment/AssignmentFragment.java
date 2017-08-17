@@ -17,10 +17,14 @@ import com.sigma.prouds.R;
 import com.sigma.prouds.adapter.AssignmentAdapter;
 import com.sigma.prouds.base.BaseFragment;
 import com.sigma.prouds.model.ProjectAssignmentModel;
+import com.sigma.prouds.model.ProjectAssignmentNewModel;
+import com.sigma.prouds.model.ProjectDetailModel;
 import com.sigma.prouds.network.ApiService;
 import com.sigma.prouds.network.ApiUtils;
+import com.sigma.prouds.network.response.MyAssignmentNewResponse;
 import com.sigma.prouds.network.response.MyAssignmentResponse;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -38,6 +42,7 @@ public class AssignmentFragment extends BaseFragment
     private ApiService service;
     private RecyclerView rvAssigment;
     private AssignmentAdapter adapter;
+    private List<ProjectDetailModel> listItem;
 
     public AssignmentFragment()
     {
@@ -67,22 +72,31 @@ public class AssignmentFragment extends BaseFragment
     public void getAssignmentData()
     {
         service = ApiUtils.apiService();
-        service.getMyAssignmentResponse(app.getSessionManager().getToken()).enqueue(new Callback<MyAssignmentResponse>()
+        service.getMyAssignmentResponse(app.getSessionManager().getToken()).enqueue(new Callback<MyAssignmentNewResponse>()
         {
             @Override
-            public void onResponse(Call<MyAssignmentResponse> call, Response<MyAssignmentResponse> response)
+            public void onResponse(Call<MyAssignmentNewResponse> call, Response<MyAssignmentNewResponse> response)
             {
                 if (query != null)
                 {
                     query.id(R.id.pb_assignment).gone();
                 }
 
-                setAdapterView(response.body().getAssignment());
-                Log.i("Response", response.body().getAssignment().get(0).getProjectName().toString());
+                listItem = new ArrayList<ProjectDetailModel>();
+                for (int i = 0; i <= response.body().getAssignment().size() - 1;i++)
+                {
+                    for (int j = 0; j <= response.body().getAssignment().get(i).getProjectDetail().size() -1; j++)
+                    {
+                        //setAdapterView(response.body().getAssignment().get(i).getProjectDetail());
+                        listItem.add(response.body().getAssignment().get(i).getProjectDetail().get(j));
+                    }
+                }
+                setAdapterView(listItem);
+                //Log.i("Response", response.body().getAssignment().get(0).getProjectName().toString());
             }
 
             @Override
-            public void onFailure(Call<MyAssignmentResponse> call, Throwable t)
+            public void onFailure(Call<MyAssignmentNewResponse> call, Throwable t)
             {
                 if (query != null)
                 {
@@ -93,9 +107,12 @@ public class AssignmentFragment extends BaseFragment
         });
     }
 
-    public void setAdapterView(List<ProjectAssignmentModel> list)
+    public void setAdapterView(List<ProjectDetailModel> list)
     {
-        adapter = new AssignmentAdapter(ctx, list);
+        if (adapter == null)
+        {
+            adapter = new AssignmentAdapter(ctx, list);
+        }
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(ctx);
         rvAssigment.setLayoutManager(mLayoutManager);
         rvAssigment.setAdapter(adapter);

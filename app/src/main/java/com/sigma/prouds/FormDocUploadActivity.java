@@ -133,8 +133,16 @@ public class FormDocUploadActivity extends BaseActivity {
                 dialog.dismiss();
                 Log.i("title ", response.body().getTitle() + "");
                 Log.i("message ", response.body().getMessage() + "");
-                Toast.makeText(FormDocUploadActivity.this, "Upload succesful", Toast.LENGTH_SHORT).show();
-                FormDocUploadActivity.this.finish();
+                if (response.body().getTitle().equalsIgnoreCase("error"))
+                {
+                    Toast.makeText(FormDocUploadActivity.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                }
+                else
+                {
+                    Toast.makeText(FormDocUploadActivity.this, "Upload succesful", Toast.LENGTH_SHORT).show();
+                    FormDocUploadActivity.this.finish();
+                }
+
             }
 
             @Override

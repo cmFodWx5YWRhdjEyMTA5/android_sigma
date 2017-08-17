@@ -8,6 +8,8 @@ import android.widget.TextView;
 
 import com.sigma.prouds.R;
 import com.sigma.prouds.model.ProjectAssignmentModel;
+import com.sigma.prouds.model.ProjectAssignmentNewModel;
+import com.sigma.prouds.model.ProjectDetailModel;
 
 /**
  * Created by 1414 on 7/12/2017.
@@ -25,7 +27,7 @@ public class AssignmentHolder extends RecyclerView.ViewHolder
         tvHolderAssignment = (TextView) itemView.findViewById(R.id.tv_holder_assignment);
     }
 
-    public void bind(ProjectAssignmentModel model)
+    public void bind(ProjectDetailModel model)
     {
         tvHolderAssignment.setText(model.getProjectName());
         tvHolderAssignment.setTypeface(Typeface.createFromAsset(context.getAssets(), "lato_regular.ttf"));

@@ -9,6 +9,8 @@ import android.view.ViewGroup;
 import com.sigma.prouds.R;
 import com.sigma.prouds.holder.AssignmentHolder;
 import com.sigma.prouds.model.ProjectAssignmentModel;
+import com.sigma.prouds.model.ProjectAssignmentNewModel;
+import com.sigma.prouds.model.ProjectDetailModel;
 
 import java.util.List;
 
@@ -19,10 +21,10 @@ import java.util.List;
 public class AssignmentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 {
 
-    private List<ProjectAssignmentModel> list;
+    private List<ProjectDetailModel> list;
     private Context context;
 
-    public AssignmentAdapter(Context context, List<ProjectAssignmentModel> list)
+    public AssignmentAdapter(Context context, List<ProjectDetailModel> list)
     {
         this.list = list;
         this.context = context;

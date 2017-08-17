@@ -13,6 +13,7 @@ import com.sigma.prouds.network.response.AddTimeSheetResponse;
 import com.sigma.prouds.network.response.DetailProjectResponse;
 import com.sigma.prouds.network.response.LoginResponse;
 import com.sigma.prouds.network.response.MyActivityResponse;
+import com.sigma.prouds.network.response.MyAssignmentNewResponse;
 import com.sigma.prouds.network.response.MyAssignmentResponse;
 import com.sigma.prouds.network.response.MyPerformanceResponse;
 import com.sigma.prouds.network.response.MyPerformanceYearlyResponse;
@@ -74,7 +75,7 @@ public interface ApiService
     Call<MyActivityResponse> getMyActivity(@Header("token") String token);
 
     @GET("dev/home/myassignment")
-    Call<MyAssignmentResponse> getMyAssignmentResponse(@Header("token") String token);
+    Call<MyAssignmentNewResponse> getMyAssignmentResponse(@Header("token") String token);
 
     @POST("dev/report/myperformances")
     Call<MyPerformanceResponse> getMyPerfomance(@Header("token") String token, @Body PerformanceSendModel model);
