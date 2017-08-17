@@ -30,7 +30,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".AddTimesheetActivity" />
-        <activity android:name=".ProfileSettingActivity" />
+        <activity android:name=".ProfileSettingActivity"
+            android:windowSoftInputMode="adjustPan"/>
         <activity android:name=".FormReportIssueActivity" />
         <activity android:name=".SearchResultActivity" />
         <activity android:name=".NotifActivity" />

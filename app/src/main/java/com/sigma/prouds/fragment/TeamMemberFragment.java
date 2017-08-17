@@ -77,7 +77,7 @@ public class TeamMemberFragment extends BaseFragment
                 rvTeamMember.setLayoutManager(mLayoutManager);
                 rvTeamMember.setAdapter(adapter);
                 pbTeam.setVisibility(View.GONE);
-                
+
                 if (response.body().getProjectMember().size() == 0)
                 {
                     tvMemberEmpty.setVisibility(View.VISIBLE);

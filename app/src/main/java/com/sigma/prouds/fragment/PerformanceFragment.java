@@ -1,6 +1,7 @@
 package com.sigma.prouds.fragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -10,8 +11,10 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.sigma.prouds.ProfileSettingActivity;
 import com.sigma.prouds.ProudsApplication;
 import com.sigma.prouds.R;
 import com.sigma.prouds.adapter.MyActivityAdapter;
@@ -31,6 +34,7 @@ public class PerformanceFragment extends BaseFragment
     private TextView tvUserName;
     private ProudsApplication app;
     private TabLayout tabLayout;
+    private ImageView ivSetting;
 
     public static PerformanceFragment newInstance(Context context) {
         PerformanceFragment fragment = new PerformanceFragment();
@@ -56,6 +60,18 @@ public class PerformanceFragment extends BaseFragment
 
         tabLayout = (TabLayout) view.findViewById(R.id.tl_performance);
         tabLayout.setupWithViewPager(vpPerformance);
+
+        ivSetting = (ImageView) view.findViewById(R.id.iv_setting);
+        ivSetting.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                Intent intent = new Intent(getActivity(), ProfileSettingActivity.class);
+                intent.putExtra("user", tvUserName.getText().toString());
+                startActivity(intent);
+            }
+        });
 
     }
 
