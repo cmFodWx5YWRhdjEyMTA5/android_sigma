@@ -123,7 +123,7 @@ public class FormDocUploadActivity extends BaseActivity {
                 RequestBody.create(MediaType.parse("multipart/form-data"), file);
 
         MultipartBody.Part body =
-                MultipartBody.Part.createFormData("file", file.getName(), requestFile);
+                MultipartBody.Part.createFormData("document", file.getName(), requestFile);
 
         service.uploadDoc(app.getSessionManager().getToken(), projectId, desc, body).enqueue(new Callback<UploadProjectDocResponse>()
         {

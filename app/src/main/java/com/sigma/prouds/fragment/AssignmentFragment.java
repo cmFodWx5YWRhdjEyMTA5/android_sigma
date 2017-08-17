@@ -2,7 +2,9 @@ package com.sigma.prouds.fragment;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -12,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
 
+import com.sigma.prouds.AssignmentDetailsActivity;
 import com.sigma.prouds.ProudsApplication;
 import com.sigma.prouds.R;
 import com.sigma.prouds.adapter.AssignmentAdapter;
@@ -24,9 +27,11 @@ import com.sigma.prouds.network.ApiUtils;
 import com.sigma.prouds.network.response.MyAssignmentNewResponse;
 import com.sigma.prouds.network.response.MyAssignmentResponse;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import de.greenrobot.event.EventBus;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -114,5 +119,14 @@ public class AssignmentFragment extends BaseFragment
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(ctx);
         rvAssigment.setLayoutManager(mLayoutManager);
         rvAssigment.setAdapter(adapter);
+    }
+
+    public void onEvent(ProjectDetailModel model)
+    {
+        /*Log.i("Data", model.getAssignmentList().get(0).getProjectName());
+        Intent intent = new Intent(getActivity(), AssignmentDetailsActivity.class);
+        //intent.putParcelableArrayListExtra("data", (ArrayList<? extends Parcelable>) model.getAssignmentList());
+        intent.putExtra("data", model);
+        startActivity(intent);*/
     }
 }
