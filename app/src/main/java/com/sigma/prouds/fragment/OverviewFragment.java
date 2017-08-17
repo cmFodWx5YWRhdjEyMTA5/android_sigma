@@ -35,7 +35,6 @@ public class OverviewFragment extends BaseFragment
     private ProudsApplication app;
     private ScrollView svOverview;
     private ProgressBar pbOverview;
-    private Typeface latoBold, latoRegular;
     private TextView tvIwo;
 
     public static OverviewFragment newInstance(Context context, String projectId) {
