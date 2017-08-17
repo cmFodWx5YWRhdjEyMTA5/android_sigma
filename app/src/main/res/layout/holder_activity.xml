@@ -42,12 +42,14 @@
                 android:textSize="12dp"
                 android:textColor="@color/homeParentDate"
                 android:id="@+id/tv_act_position"/>
+
             <!-- project name -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="8dp"
+                android:layout_marginBottom="12dp"
                 android:textSize="14dp"
+                android:textColor="@color/btn"
                 android:id="@+id/tv_act_project_name"/>
 
             <!-- activity name -->
@@ -56,25 +58,24 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
                 android:textSize="14dp"
+                android:textColor="@color/homeParent"
                 android:id="@+id/tv_act_name"/>
 
-            <LinearLayout
-                android:layout_width="match_parent"
+            <!-- error msg -->
+            <TextView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="4dp"
-                    android:textSize="14sp"
-                    android:id="@+id/tv_act_errormsg" />
-            </LinearLayout>
+                android:layout_marginBottom="8dp"
+                android:textSize="14sp"
+                android:textColor="@color/homeParent"
+                android:id="@+id/tv_act_errormsg" />
 
             <!-- desc-->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="14dp"
+                android:layout_marginBottom="16dp"
                 android:textColor="@color/homeParent"
                 android:id="@+id/tv_act_desc"/>
 
@@ -82,8 +83,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:textSize="12dp"
+                android:layout_marginBottom="16dp"
+                android:textSize="10sp"
                 android:textColor="@color/homeParentDate"
                 android:id="@+id/tv_act_footer"/>
 
@@ -101,7 +102,6 @@
                     android:layout_toLeftOf="@+id/tv_act_approve"
                     android:textSize="12dp"
                     android:textColor="@color/btn"
-                    android:textStyle="bold"
                     android:text="@string/act_denied"
                     android:id="@+id/tv_act_deny"
                     android:visibility="gone"/>
@@ -112,7 +112,6 @@
                     android:layout_alignParentRight="true"
                     android:textSize="12dp"
                     android:textColor="@color/actApprove"
-                    android:textStyle="bold"
                     android:text="@string/act_approve"
                     android:id="@+id/tv_act_approve"
                     android:visibility="gone"/>
@@ -123,7 +122,6 @@
                     android:layout_alignParentRight="true"
                     android:textSize="12dp"
                     android:textColor="@color/inactiveText"
-                    android:textStyle="bold"
                     android:text="WAITING TO APPROVAL"
                     android:id="@+id/tv_act_wait_approval"
                     android:visibility="gone"/>

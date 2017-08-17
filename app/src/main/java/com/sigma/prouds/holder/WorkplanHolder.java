@@ -65,7 +65,7 @@ public class WorkplanHolder extends RecyclerView.ViewHolder
     }
 
     public void setTypeFace() {
-                tvTask.setTypeface(latoRegular);
+        tvTask.setTypeface(latoRegular);
         tvMonitoringPercent.setTypeface(latoBlack);
         tvMonitoringStatus.setTypeface(latoRegular);
         tvSeeAll.setTypeface(latoBold);
