@@ -81,7 +81,7 @@
                     android:textColor="@color/assignmentDue"
                     android:layout_below="@+id/iv_add_timesheet"
                     android:gravity="bottom|right"
-                    android:text="aaaa"
+                    android:text=""
                     android:id="@+id/tv_assignment_due" />
             </LinearLayout>
         </LinearLayout>

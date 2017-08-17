@@ -175,7 +175,7 @@ public class FormReportIssueActivity extends BaseActivity {
                 RequestBody.create(MediaType.parse("multipart/form-data"), file);
 
         MultipartBody.Part body =
-                MultipartBody.Part.createFormData("image", file.getName(), requestFile);
+                MultipartBody.Part.createFormData("file_upload", file.getName(), requestFile);
 
         RequestBody id =
                 RequestBody.create(
