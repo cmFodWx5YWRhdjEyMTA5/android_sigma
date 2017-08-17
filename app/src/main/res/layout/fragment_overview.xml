@@ -36,7 +36,8 @@
                     android:text="@string/ov_projectdetail"
                     android:textColor="@color/homeParent"
                     android:textSize="16sp"
-                    android:layout_marginBottom="16dp"/>
+                    android:layout_marginBottom="16dp"
+                    android:id="@+id/tv_overview_title_project_detail"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -57,7 +58,8 @@
                             android:layout_marginBottom="3dp"
                             android:text="@string/ov_iwo"
                             android:textColor="@color/homeParentDate"
-                            android:textSize="12sp"/>
+                            android:textSize="12sp"
+                            android:id="@+id/tv_overview_title_iwo"/>
 
                         <TextView
                             android:id="@+id/tv_iwo"
@@ -81,7 +83,8 @@
                             android:layout_marginBottom="3dp"
                             android:text="@string/ov_buo"
                             android:textColor="@color/homeParentDate"
-                            android:textSize="12sp"/>
+                            android:textSize="12sp"
+                            android:id="@+id/tv_overview_title_buo"/>
 
                         <TextView
                             android:id="@+id/tv_buo"
@@ -94,13 +97,14 @@
 
                 <!-- description-->
                 <TextView
-                    android:id="@+id/textView"
+                    android:id="@+id/tv_overview_title_desc"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
                     android:text="@string/ov_desc"
                     android:textColor="@color/homeParentDate"
-                    android:textSize="12sp"/>
+                    android:textSize="12sp"
+                    />
 
                 <TextView
                     android:id="@+id/tv_desc"
@@ -117,7 +121,7 @@
                     android:layout_marginBottom="16dp">
 
                     <TextView
-                        android:id="@+id/more"
+                        android:id="@+id/tv_overview_more"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_toLeftOf="@+id/iv_ov_dropdown"
@@ -152,7 +156,8 @@
                     android:text="@string/ov_workplan"
                     android:textColor="@color/homeParent"
                     android:textSize="16sp"
-                    android:layout_marginBottom="16dp"/>
+                    android:layout_marginBottom="16dp"
+                    android:id="@+id/tv_overview_title_workplan"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -188,7 +193,8 @@
                                         android:layout_marginRight="6dp"
                                         android:text="@string/ov_completed"
                                         android:textColor="@color/homeParentDate"
-                                        android:textSize="12sp"/>
+                                        android:textSize="12sp"
+                                        android:id="@+id/tv_overview_title_completed"/>
 
                                     <TextView
                                         android:id="@+id/tv_completed"
@@ -226,7 +232,8 @@
                                         android:layout_marginRight="6dp"
                                         android:text="@string/ov_inprogress"
                                         android:textColor="@color/homeParentDate"
-                                        android:textSize="12sp"/>
+                                        android:textSize="12sp"
+                                        android:id="@+id/tv_overview_title_inprogress"/>
 
                                     <TextView
                                         android:id="@+id/tv_inprogress"
@@ -264,6 +271,7 @@
                                         android:layout_marginRight="6dp"
                                         android:text="@string/ov_notstarted"
                                         android:textColor="@color/homeParentDate"
+                                        android:id="@+id/tv_overview_title_notstarted"
                                         android:textSize="12sp"/>
 
                                     <TextView
@@ -308,7 +316,8 @@
                                         android:layout_marginRight="6dp"
                                         android:text="@string/ov_ondue"
                                         android:textColor="@color/homeParentDate"
-                                        android:textSize="12sp"/>
+                                        android:textSize="12sp"
+                                        android:id="@+id/tv_overview_title_ondue"/>
 
                                     <TextView
                                         android:id="@+id/tv_ondue"
@@ -346,7 +355,8 @@
                                         android:layout_marginRight="6dp"
                                         android:text="@string/ov_overdue"
                                         android:textColor="@color/homeParentDate"
-                                        android:textSize="12sp"/>
+                                        android:textSize="12sp"
+                                        android:id="@+id/tv_overview_title_overdue"/>
 
                                     <TextView
                                         android:id="@+id/tv_overdue"
@@ -363,7 +373,7 @@
 
             </LinearLayout>
 
-            <!-- Workplan Status -->
+            <!-- Performance Status -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -378,7 +388,8 @@
                     android:text="@string/ov_perform"
                     android:textColor="@color/homeParent"
                     android:textSize="14sp"
-                    android:layout_marginBottom="16dp"/>
+                    android:layout_marginBottom="16dp"
+                    android:id="@+id/tv_overview_title_performance"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -402,7 +413,8 @@
                                 android:layout_marginBottom="3dp"
                                 android:text="@string/ov_ev"
                                 android:textColor="@color/homeParentDate"
-                                android:textSize="12sp"/>
+                                android:textSize="12sp"
+                                android:id="@+id/tv_overview_title_ev"/>
 
                             <TextView
                                 android:id="@+id/tv_ev"
@@ -410,7 +422,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginBottom="8dp"
                                 android:textColor="@color/homeParent"
-                                android:textSize="14sp"/>
+                                android:textSize="14sp" />
                         </LinearLayout>
                         <!-- spi -->
                         <LinearLayout
@@ -424,7 +436,8 @@
                                 android:layout_marginBottom="3dp"
                                 android:text="@string/ov_spi"
                                 android:textColor="@color/homeParentDate"
-                                android:textSize="12sp"/>
+                                android:textSize="12sp"
+                                android:id="@+id/tv_overview_title_spi"/>
 
                             <TextView
                                 android:id="@+id/tv_spi"
@@ -453,7 +466,8 @@
                                 android:layout_marginBottom="3dp"
                                 android:text="@string/ov_pv"
                                 android:textColor="@color/homeParentDate"
-                                android:textSize="12sp"/>
+                                android:textSize="12sp"
+                                android:id="@+id/tv_overview_title_pv"/>
 
                             <TextView
                                 android:id="@+id/tv_pv"
@@ -475,7 +489,8 @@
                                 android:layout_marginBottom="3dp"
                                 android:text="@string/ov_cpi"
                                 android:textColor="@color/homeParentDate"
-                                android:textSize="12sp"/>
+                                android:textSize="12sp"
+                                android:id="@+id/tv_overview_title_cpi"/>
 
                             <TextView
                                 android:id="@+id/tv_cpi"
@@ -503,7 +518,8 @@
                                 android:layout_marginBottom="3dp"
                                 android:text="@string/ov_ac"
                                 android:textColor="@color/homeParentDate"
-                                android:textSize="14sp"/>
+                                android:textSize="14sp"
+                                android:id="@+id/tv_overview_title_ac"/>
 
                             <TextView
                                 android:id="@+id/tv_ac"
