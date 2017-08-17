@@ -6,7 +6,9 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.sigma.prouds.FormDocUploadActivity;
 import com.sigma.prouds.FormReportIssueActivity;
@@ -38,6 +40,8 @@ public class DocFileFragment extends BaseFragment
     private RecyclerView rvDoc;
     private ProjectDocAdapter adapter;
     private RelativeLayout rlAddDoc;
+    private ProgressBar pbDocFile;
+    private TextView tvEmptyDocument;
 
     public static DocFileFragment newInstance(Context context, String projectId)
     {
@@ -62,6 +66,8 @@ public class DocFileFragment extends BaseFragment
         projectId = getArguments().getString("project_id");
         rvDoc = (RecyclerView) view.findViewById(R.id.rv_doc);
         rlAddDoc = (RelativeLayout) view.findViewById(R.id.rl_doc);
+        pbDocFile = (ProgressBar) view.findViewById(R.id.pb_doc_file);
+        tvEmptyDocument = (TextView) view.findViewById(R.id.tv_empty_document);
         rlAddDoc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -74,6 +80,8 @@ public class DocFileFragment extends BaseFragment
 
     public void getDocFile()
     {
+        pbDocFile.setVisibility(View.VISIBLE);
+        tvEmptyDocument.setVisibility(View.GONE);
         service.getProjectDoc(projectId, app.getSessionManager().getToken()).enqueue(new Callback<ProjectDocResponse>()
         {
             @Override
@@ -83,12 +91,18 @@ public class DocFileFragment extends BaseFragment
                 RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(ctx);
                 rvDoc.setLayoutManager(mLayoutManager);
                 rvDoc.setAdapter(adapter);
+                pbDocFile.setVisibility(View.GONE);
+
+                if (response.body().getProjectDocList().size() == 0)
+                {
+                    tvEmptyDocument.setVisibility(View.VISIBLE);
+                }
             }
 
             @Override
             public void onFailure(Call<ProjectDocResponse> call, Throwable t)
             {
-
+                pbDocFile.setVisibility(View.GONE);
             }
         });
     }

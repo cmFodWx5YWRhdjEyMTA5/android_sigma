@@ -87,12 +87,10 @@ public class AssignmentFragment extends BaseFragment
                 {
                     for (int j = 0; j <= response.body().getAssignment().get(i).getProjectDetail().size() -1; j++)
                     {
-                        //setAdapterView(response.body().getAssignment().get(i).getProjectDetail());
                         listItem.add(response.body().getAssignment().get(i).getProjectDetail().get(j));
                     }
                 }
                 setAdapterView(listItem);
-                //Log.i("Response", response.body().getAssignment().get(0).getProjectName().toString());
             }
 
             @Override

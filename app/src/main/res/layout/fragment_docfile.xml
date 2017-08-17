@@ -6,12 +6,33 @@
     android:layout_height="match_parent"
     android:background="@color/background">
 
+    <RelativeLayout
+        android:layout_above="@+id/rl_doc"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ProgressBar
+            android:id="@+id/pb_doc_file"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            />
+
+        <TextView
+            android:id="@+id/tv_empty_document"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="There is no document yet"
+            android:layout_centerInParent="true"
+            android:visibility="gone"/>
+
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/rl_doc"
         android:id="@+id/rv_doc">
     </android.support.v7.widget.RecyclerView>
+
+    </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
