@@ -8,7 +8,9 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.sigma.prouds.FormReportIssueActivity;
 import com.sigma.prouds.ProudsApplication;
@@ -37,6 +39,8 @@ public class IssuesFragment extends BaseFragment
     private ProjectIssueAdapter adapter;
     private RecyclerView rvIssue;
     private RelativeLayout rlAddIssue;
+    private ProgressBar pbIssue;
+    private TextView tvEmptyIssue;
 
     public static IssuesFragment newInstance(Context context, String projectId)
     {
@@ -61,6 +65,8 @@ public class IssuesFragment extends BaseFragment
         projectId = getArguments().getString("project_id");
         rvIssue = (RecyclerView) view.findViewById(R.id.rv_issues);
         rlAddIssue = (RelativeLayout) view.findViewById(R.id.rl_report_issue);
+        pbIssue = (ProgressBar) view.findViewById(R.id.pb_issue);
+        tvEmptyIssue = (TextView) view.findViewById(R.id.tv_empty_issue);
         getIssueData();
         rlAddIssue.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,6 +78,8 @@ public class IssuesFragment extends BaseFragment
 
     public void getIssueData()
     {
+        pbIssue.setVisibility(View.VISIBLE);
+        tvEmptyIssue.setVisibility(View.GONE);
         service.getProjectIssues(projectId, app.getSessionManager().getToken()).enqueue(new Callback<ProjectIssueResponse>()
         {
             @Override
@@ -81,6 +89,12 @@ public class IssuesFragment extends BaseFragment
                 RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(ctx);
                 rvIssue.setLayoutManager(mLayoutManager);
                 rvIssue.setAdapter(adapter);
+
+                pbIssue.setVisibility(View.GONE);
+                if (response.body().getProjectIssueList().size() == 0)
+                {
+                    tvEmptyIssue.setVisibility(View.VISIBLE);
+                }
             }
 
             @Override
