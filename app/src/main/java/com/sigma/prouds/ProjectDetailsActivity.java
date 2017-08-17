@@ -43,8 +43,7 @@ public class ProjectDetailsActivity extends BaseActivity {
     private Fragment pdFragment = null;
     private FragmentManager pdFragmentManager = getSupportFragmentManager();
     private ListView pdListView;
-    private Typeface latoBold;
-    private Typeface latoBlack;
+    private Typeface latoBold, latoBlack, latoRegular;
     private int[] items = {R.string.drawer_overview,
         R.string.drawer_workplan,
         R.string.drawer_activity,
@@ -84,6 +83,7 @@ public class ProjectDetailsActivity extends BaseActivity {
 
         latoBold = Typeface.createFromAsset(getAssets(), "lato_bold.ttf");
         latoBlack = Typeface.createFromAsset(getAssets(), "lato_black.ttf");
+        latoRegular = Typeface.createFromAsset(getAssets(), "lato_regular.ttf");
         setTypeFace();
     }
 
@@ -104,7 +104,7 @@ public class ProjectDetailsActivity extends BaseActivity {
         tvToolbarTitle.setTypeface(latoBlack);
         tvProject.setTypeface(latoBold);
         tvPercen.setTypeface(latoBlack);
-        tvStatus.setTypeface(latoBlack);
+        tvStatus.setTypeface(latoRegular);
     }
 
     public void getDataFromHome()

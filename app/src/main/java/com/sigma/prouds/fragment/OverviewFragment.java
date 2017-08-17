@@ -1,6 +1,7 @@
 package com.sigma.prouds.fragment;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -34,7 +35,7 @@ public class OverviewFragment extends BaseFragment
     private ProudsApplication app;
     private ScrollView svOverview;
     private ProgressBar pbOverview;
-
+    private Typeface latoBold, latoRegular;
     private TextView tvIwo;
 
     public static OverviewFragment newInstance(Context context, String projectId) {
@@ -62,6 +63,8 @@ public class OverviewFragment extends BaseFragment
         projectId = getArguments().getString("project_id");
         Log.i("Project id frg : ", getArguments().getString("project_id"));
         getProjectDetailData();
+        setTypeFace();
+
     }
 
     public void getProjectDetailData()
@@ -98,5 +101,33 @@ public class OverviewFragment extends BaseFragment
         query.id(R.id.tv_ac).text(model.getProjectPerformanceIndex().getAc());
         query.id(R.id.tv_spi).text(model.getProjectPerformanceIndex().getSpi() + "");
         query.id(R.id.tv_cpi).text(model.getProjectPerformanceIndex().getCpi() + "");
+    }
+
+    public void setTypeFace() {
+        query.id(R.id.tv_iwo).typeface(Typeface.createFromAsset(ctx.getAssets(), "lato_regular.ttf"));
+        query.id(R.id.tv_buo).typeface(Typeface.createFromAsset(ctx.getAssets(), "lato_regular.ttf"));
+        query.id(R.id.tv_desc).typeface(Typeface.createFromAsset(ctx.getAssets(), "lato_regular.ttf"));
+        query.id(R.id.tv_ev).typeface(Typeface.createFromAsset(ctx.getAssets(), "lato_regular.ttf"));
+        query.id(R.id.tv_pv).typeface(Typeface.createFromAsset(ctx.getAssets(), "lato_regular.ttf"));
+        query.id(R.id.tv_ac).typeface(Typeface.createFromAsset(ctx.getAssets(), "lato_regular.ttf"));
+        query.id(R.id.tv_spi).typeface(Typeface.createFromAsset(ctx.getAssets(), "lato_regular.ttf"));
+        query.id(R.id.tv_cpi).typeface(Typeface.createFromAsset(ctx.getAssets(), "lato_regular.ttf"));
+        query.id(R.id.tv_overview_title_iwo).typeface(Typeface.createFromAsset(ctx.getAssets(), "lato_bold.ttf"));
+        query.id(R.id.tv_overview_title_buo).typeface(Typeface.createFromAsset(ctx.getAssets(), "lato_bold.ttf"));
+        query.id(R.id.tv_overview_title_desc).typeface(Typeface.createFromAsset(ctx.getAssets(), "lato_bold.ttf"));
+        query.id(R.id.tv_overview_title_ev).typeface(Typeface.createFromAsset(ctx.getAssets(), "lato_bold.ttf"));
+        query.id(R.id.tv_overview_title_pv).typeface(Typeface.createFromAsset(ctx.getAssets(), "lato_bold.ttf"));
+        query.id(R.id.tv_overview_title_ac).typeface(Typeface.createFromAsset(ctx.getAssets(), "lato_bold.ttf"));
+        query.id(R.id.tv_overview_title_spi).typeface(Typeface.createFromAsset(ctx.getAssets(), "lato_bold.ttf"));
+        query.id(R.id.tv_overview_title_cpi).typeface(Typeface.createFromAsset(ctx.getAssets(), "lato_bold.ttf"));
+        query.id(R.id.tv_overview_title_project_detail).typeface(Typeface.createFromAsset(ctx.getAssets(), "lato_bold.ttf"));
+        query.id(R.id.tv_overview_more).typeface(Typeface.createFromAsset(ctx.getAssets(), "lato_bold.ttf"));
+        query.id(R.id.tv_overview_title_workplan).typeface(Typeface.createFromAsset(ctx.getAssets(), "lato_bold.ttf"));
+        query.id(R.id.tv_overview_title_completed).typeface(Typeface.createFromAsset(ctx.getAssets(), "lato_bold.ttf"));
+        query.id(R.id.tv_overview_title_inprogress).typeface(Typeface.createFromAsset(ctx.getAssets(), "lato_bold.ttf"));
+        query.id(R.id.tv_overview_title_notstarted).typeface(Typeface.createFromAsset(ctx.getAssets(), "lato_bold.ttf"));
+        query.id(R.id.tv_overview_title_ondue).typeface(Typeface.createFromAsset(ctx.getAssets(), "lato_bold.ttf"));
+        query.id(R.id.tv_overview_title_overdue).typeface(Typeface.createFromAsset(ctx.getAssets(), "lato_bold.ttf"));
+        query.id(R.id.tv_overview_title_project_detail).typeface(Typeface.createFromAsset(ctx.getAssets(), "lato_bold.ttf"));
     }
 }
