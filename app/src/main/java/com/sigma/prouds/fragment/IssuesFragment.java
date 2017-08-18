@@ -2,6 +2,7 @@ package com.sigma.prouds.fragment;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -67,6 +68,8 @@ public class IssuesFragment extends BaseFragment
         rlAddIssue = (RelativeLayout) view.findViewById(R.id.rl_report_issue);
         pbIssue = (ProgressBar) view.findViewById(R.id.pb_issue);
         tvEmptyIssue = (TextView) view.findViewById(R.id.tv_empty_issue);
+        query.id(R.id.tv_empty_issue).typeface(Typeface.createFromAsset(ctx.getAssets(), "lato_regular.ttf"));
+        query.id(R.id.tv_report_issue).typeface(Typeface.createFromAsset(ctx.getAssets(), "lato_regular.ttf"));
         getIssueData();
         rlAddIssue.setOnClickListener(new View.OnClickListener() {
             @Override

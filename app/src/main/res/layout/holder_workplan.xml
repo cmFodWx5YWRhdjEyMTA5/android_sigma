@@ -146,7 +146,7 @@
                                 android:layout_marginBottom="3dp"
                                 android:text="@string/ad_start"
                                 android:textSize="12sp"
-                                android:textColor="@color/homeParentDate"
+                                android:textColor="@color/inactiveText"
                                 android:id="@+id/tv_wp_title_startdate"/>
                             <TextView
                                 android:layout_width="wrap_content"
@@ -167,7 +167,7 @@
                                 android:layout_marginBottom="3dp"
                                 android:text="@string/wp_duration"
                                 android:textSize="12sp"
-                                android:textColor="@color/homeParentDate"
+                                android:textColor="@color/inactiveText"
                                 android:id="@+id/tv_wp_title_duration"/>
                             <TextView
                                 android:layout_width="wrap_content"
@@ -195,7 +195,7 @@
                                 android:layout_marginBottom="3dp"
                                 android:text="@string/ad_end"
                                 android:textSize="12sp"
-                                android:textColor="@color/homeParentDate"
+                                android:textColor="@color/inactiveText"
                                 android:id="@+id/tv_wp_title_enddate"/>
                             <TextView
                                 android:layout_width="wrap_content"
@@ -217,7 +217,7 @@
                                 android:layout_marginBottom="3dp"
                                 android:text="@string/wp_work"
                                 android:textSize="12sp"
-                                android:textColor="@color/homeParentDate"
+                                android:textColor="@color/inactiveText"
                                 android:id="@+id/tv_wp_title_work"/>
                             <TextView
                                 android:layout_width="wrap_content"

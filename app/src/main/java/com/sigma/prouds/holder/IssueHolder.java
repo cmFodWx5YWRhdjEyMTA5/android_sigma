@@ -1,6 +1,7 @@
 package com.sigma.prouds.holder;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
@@ -21,6 +22,7 @@ public class IssueHolder extends RecyclerView.ViewHolder
     private TextView tvIssue;
     private TextView tvDateIssue;
     private TextView tvIssuePriority;
+    private Typeface latoBold, latoRegular;
 
     public IssueHolder(Context context, View itemView)
     {
@@ -32,15 +34,28 @@ public class IssueHolder extends RecyclerView.ViewHolder
         tvIssue = (TextView) itemView.findViewById(R.id.tv_issue);
         tvDateIssue = (TextView) itemView.findViewById(R.id.tv_date_issue);
         tvIssuePriority = (TextView) itemView.findViewById(R.id.tv_issue_priority);
+
+        latoBold = Typeface.createFromAsset(itemView.getContext().getAssets(), "lato_bold.ttf");
+        latoRegular = Typeface.createFromAsset(itemView.getContext().getAssets(), "lato_regular.ttf");
     }
 
     public void bind(ProjectIssueModel model)
     {
         tvSubject.setText(model.getSubject());
-        tvReporter.setText(model.getReportedBy());
+        tvReporter.setText("reported by " + model.getReportedBy());
         tvIssueStatus.setText(model.getStatus());
         tvIssue.setText(model.getNote() + "");
         tvDateIssue.setText(model.getDateIssue());
         tvIssuePriority.setText(model.getPriority());
+        setTypeFace();
+    }
+
+    public void setTypeFace() {
+        tvSubject.setTypeface(latoRegular);
+        tvReporter.setTypeface(latoRegular);
+        tvIssueStatus.setTypeface(latoRegular);
+        tvIssue.setTypeface(latoRegular);
+        tvDateIssue.setTypeface(latoBold);
+        tvIssuePriority.setTypeface(latoBold);
     }
 }

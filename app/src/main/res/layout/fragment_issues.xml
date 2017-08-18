@@ -55,6 +55,7 @@
             android:textColor="@color/btn"
             android:textSize="16dp"
             android:layout_toRightOf="@+id/iv_report_issue"
-            android:layout_centerVertical="true"/>
+            android:layout_centerVertical="true"
+            android:id="@+id/tv_report_issue"/>
     </RelativeLayout>
 </RelativeLayout>

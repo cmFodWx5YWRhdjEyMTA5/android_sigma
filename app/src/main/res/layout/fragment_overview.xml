@@ -57,7 +57,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="3dp"
                             android:text="@string/ov_iwo"
-                            android:textColor="@color/homeParentDate"
+                            android:textColor="@color/inactiveText"
                             android:textSize="12sp"
                             android:id="@+id/tv_overview_title_iwo"/>
 
@@ -82,7 +82,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="3dp"
                             android:text="@string/ov_buo"
-                            android:textColor="@color/homeParentDate"
+                            android:textColor="@color/inactiveText"
                             android:textSize="12sp"
                             android:id="@+id/tv_overview_title_buo"/>
 
@@ -102,7 +102,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
                     android:text="@string/ov_desc"
-                    android:textColor="@color/homeParentDate"
+                    android:textColor="@color/inactiveText"
                     android:textSize="12sp"
                     />
 
@@ -192,7 +192,7 @@
                                         android:layout_height="wrap_content"
                                         android:layout_marginRight="6dp"
                                         android:text="@string/ov_completed"
-                                        android:textColor="@color/homeParentDate"
+                                        android:textColor="@color/inactiveText"
                                         android:textSize="12sp"
                                         android:id="@+id/tv_overview_title_completed"/>
 
@@ -231,7 +231,7 @@
                                         android:layout_height="wrap_content"
                                         android:layout_marginRight="6dp"
                                         android:text="@string/ov_inprogress"
-                                        android:textColor="@color/homeParentDate"
+                                        android:textColor="@color/inactiveText"
                                         android:textSize="12sp"
                                         android:id="@+id/tv_overview_title_inprogress"/>
 
@@ -270,7 +270,7 @@
                                         android:layout_height="wrap_content"
                                         android:layout_marginRight="6dp"
                                         android:text="@string/ov_notstarted"
-                                        android:textColor="@color/homeParentDate"
+                                        android:textColor="@color/inactiveText"
                                         android:id="@+id/tv_overview_title_notstarted"
                                         android:textSize="12sp"/>
 
@@ -315,7 +315,7 @@
                                         android:layout_height="wrap_content"
                                         android:layout_marginRight="6dp"
                                         android:text="@string/ov_ondue"
-                                        android:textColor="@color/homeParentDate"
+                                        android:textColor="@color/inactiveText"
                                         android:textSize="12sp"
                                         android:id="@+id/tv_overview_title_ondue"/>
 
@@ -354,7 +354,7 @@
                                         android:layout_height="wrap_content"
                                         android:layout_marginRight="6dp"
                                         android:text="@string/ov_overdue"
-                                        android:textColor="@color/homeParentDate"
+                                        android:textColor="@color/inactiveText"
                                         android:textSize="12sp"
                                         android:id="@+id/tv_overview_title_overdue"/>
 
@@ -412,7 +412,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginBottom="3dp"
                                 android:text="@string/ov_ev"
-                                android:textColor="@color/homeParentDate"
+                                android:textColor="@color/inactiveText"
                                 android:textSize="12sp"
                                 android:id="@+id/tv_overview_title_ev"/>
 
@@ -435,7 +435,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginBottom="3dp"
                                 android:text="@string/ov_spi"
-                                android:textColor="@color/homeParentDate"
+                                android:textColor="@color/inactiveText"
                                 android:textSize="12sp"
                                 android:id="@+id/tv_overview_title_spi"/>
 
@@ -465,7 +465,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginBottom="3dp"
                                 android:text="@string/ov_pv"
-                                android:textColor="@color/homeParentDate"
+                                android:textColor="@color/inactiveText"
                                 android:textSize="12sp"
                                 android:id="@+id/tv_overview_title_pv"/>
 
@@ -488,7 +488,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginBottom="3dp"
                                 android:text="@string/ov_cpi"
-                                android:textColor="@color/homeParentDate"
+                                android:textColor="@color/inactiveText"
                                 android:textSize="12sp"
                                 android:id="@+id/tv_overview_title_cpi"/>
 
@@ -517,7 +517,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginBottom="3dp"
                                 android:text="@string/ov_ac"
-                                android:textColor="@color/homeParentDate"
+                                android:textColor="@color/inactiveText"
                                 android:textSize="14sp"
                                 android:id="@+id/tv_overview_title_ac"/>
 

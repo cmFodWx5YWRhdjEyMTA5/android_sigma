@@ -59,8 +59,10 @@
     <string name="wp_work">WORK</string>
 
     <string name="issues_report">REPORT AN ISSUE</string>
-    <string name="issues">Issues</string>
+    <string name="issues">#Issue</string>
     <string name="issues_reporter">reported by</string>
+    <string name="issues_resolved">resolved</string>
+    <string name="issues_not_resolved">not_resolved</string>
 
     <string name="doc_upload">UPLOAD DOCUMENT</string>
     <string name="doc_uploader">uploaded by</string>

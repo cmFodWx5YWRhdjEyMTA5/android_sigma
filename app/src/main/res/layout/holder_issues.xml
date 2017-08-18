@@ -13,48 +13,79 @@
         android:padding="16dp"
         android:background="@color/white"
         android:orientation="vertical">
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
+            android:layout_marginBottom="12dp"
             android:orientation="horizontal">
+            <!-- high priority -->
             <ImageView
-                android:layout_width="10dp"
-                android:layout_height="10dp"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
                 android:layout_marginRight="12dp"
-                android:src="@drawable/circle"
-                android:id="@+id/iv_issue_priority"/>
+                android:src="@drawable/issue_highpriority"
+                android:visibility="invisible"
+                android:id="@+id/iv_issue_highpriority"/>
+            <!-- med priority -->
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginRight="12dp"
+                android:src="@drawable/issue_mediumpriority"
+                android:visibility="invisible"
+                android:id="@+id/iv_issue_mediumpriority"/>
+            <!-- low priority -->
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginRight="12dp"
+                android:src="@drawable/issue_lowpriority"
+                android:visibility="visible"
+                android:id="@+id/iv_issue_lowpriority"/>
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/iv_issue_highpriority"
                 android:textSize="12sp"
                 android:id="@+id/tv_issue_priority"
-                android:layout_gravity="center_vertical"
-                android:textColor="@color/homeParentDate"/>
+                android:layout_centerVertical="true"
+                android:textColor="@color/inactiveText"/>
 
-            <!--TODO rata kanan, image status-->
             <RelativeLayout
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="end">
+                android:layout_alignParentRight="true"
+                android:layout_marginLeft="12dp">
+                <!--TODO java-->
+                <!-- resolved -->
                 <ImageView
                     android:layout_width="100dp"
                     android:layout_height="24dp"
-                    android:layout_centerInParent="true"
-                    android:id="@+id/iv_issue_status"/>
+                    android:src="@drawable/round_green"
+                    android:visibility="invisible"
+                    android:id="@+id/iv_issue_resolved"/>
+                <!-- not resolved -->
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/round_red"
+                    android:visibility="visible"
+                    android:id="@+id/iv_issue_notresolved"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
                     android:textSize="12sp"
-                    android:textColor="@color/notifText"
+                    android:textColor="@color/white"
                     android:id="@+id/tv_issue_status" />
             </RelativeLayout>
-        </LinearLayout>
+
+        </RelativeLayout>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp">
+            android:layout_marginBottom="12dp">
             <TextView
                 android:id="@+id/tv_subject"
                 android:layout_width="wrap_content"
@@ -66,40 +97,24 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="8dp"
-                android:textSize="14sp"
-                android:textColor="@color/btn"
-                android:id="@+id/tv_issue_number"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
-                android:layout_marginRight="8dp"
-                android:text="@string/issues_reporter"
                 android:textSize="12sp"
-                android:textColor="@color/homeParent" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
-                android:layout_marginRight="8dp"
-                android:textSize="12sp"
-                android:textColor="@color/homeParent"
+                android:textColor="@color/issueReport"
                 android:id="@+id/tv_issue_reporter"/>
         </LinearLayout>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:maxLines="5"
+            android:layout_marginBottom="14dp"
+            android:textSize="14sp"
+            android:textColor="@color/homeParent"
             android:id="@+id/tv_issue"/>
-        <!--TODO ask dipisah atau gabung-->
+
         <TextView
             android:id="@+id/tv_date_issue"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="12sp"
-            android:textColor="@color/homeParentDate"/>
+            android:textColor="@color/inactiveText"/>
     </LinearLayout>
 
 </LinearLayout>

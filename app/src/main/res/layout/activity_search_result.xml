@@ -86,7 +86,7 @@
         android:layout_marginLeft="16dp"
         android:text="@string/search_result"
         android:textSize="12sp"
-        android:textColor="@color/homeParentDate"/>
+        android:textColor="@color/inactiveText"/>
 
     <!--Recycler View start-->
     <android.support.v7.widget.RecyclerView

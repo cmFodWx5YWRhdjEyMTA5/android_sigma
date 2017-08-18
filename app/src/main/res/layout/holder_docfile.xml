@@ -53,27 +53,27 @@
                     android:layout_height="wrap_content"
                     android:layout_marginRight="6dp"
                     android:textSize="12sp"
-                    android:textColor="@color/homeParentDate"
+                    android:textColor="@color/inactiveText"
                     android:text="@string/doc_uploader" />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="6dp"
                     android:textSize="12sp"
-                    android:textColor="@color/homeParentDate"
+                    android:textColor="@color/inactiveText"
                     android:id="@+id/tv_doc_uploader"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="6dp"
                     android:textSize="12sp"
-                    android:textColor="@color/homeParentDate"
+                    android:textColor="@color/inactiveText"
                     android:text="@string/doc_date" />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="12sp"
-                    android:textColor="@color/homeParentDate"
+                    android:textColor="@color/inactiveText"
                     android:id="@+id/tv_doc_date"/>
             </LinearLayout>
             <!-- desc -->
