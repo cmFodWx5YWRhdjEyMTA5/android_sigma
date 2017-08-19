@@ -22,7 +22,7 @@
             android:paddingLeft="16dp"
             android:textSize="14sp"
             android:background="@color/white"
-            android:hint="@string/search_hint"
+            android:hint="@string/search_assignment"
             android:id="@+id/et_search" />
         <ImageView
             android:layout_width="36dp"

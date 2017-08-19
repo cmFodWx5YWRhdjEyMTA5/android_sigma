@@ -5,7 +5,6 @@
     <color name="colorAccent">#FF4081</color>
 
     <color name="white">#fff</color>
-    <color name="greyBg">#f6f6f6</color>
     <color name="green">#05be3d</color>
 
     <color name="btn">#fa5962</color>
@@ -27,5 +26,7 @@
 
     <color name="assignmentDue">#f0c132</color>
 
-    <color name="actApprove">#0bbdc3</color>
+    <color name="blue">#0bbdc3</color>
+    <color name="yellow">#ffba00</color>
+    <color name="grey">#6b6b6b</color>
 </resources>

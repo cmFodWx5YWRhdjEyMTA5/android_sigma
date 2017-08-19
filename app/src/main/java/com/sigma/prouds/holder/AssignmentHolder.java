@@ -5,6 +5,7 @@ import android.graphics.Typeface;
 import android.support.v4.app.BundleCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -24,6 +25,7 @@ public class AssignmentHolder extends RecyclerView.ViewHolder
     private Context context;
     private TextView tvHolderAssignment;
     private LinearLayout llAssignment;
+    private Typeface latoRegular;
 
     public AssignmentHolder(Context context, View itemView)
     {
@@ -44,5 +46,21 @@ public class AssignmentHolder extends RecyclerView.ViewHolder
                 EventBus.getDefault().post(model);
             }
         });
+
+        latoRegular = Typeface.createFromAsset(context.getAssets(), "lato_regular.ttf");
+        setFontForContainer(llAssignment);
+    }
+
+    // set typeface for all text
+    private void setFontForContainer(ViewGroup contentLayout) {
+        for (int i=0; i < contentLayout.getChildCount(); i++) {
+            View view = contentLayout.getChildAt(i);
+            if (view instanceof TextView) {
+                ((TextView)view).setTypeface(latoRegular);
+            }
+            else if (view instanceof ViewGroup) {
+                setFontForContainer((ViewGroup) view);
+            }
+        }
     }
 }
