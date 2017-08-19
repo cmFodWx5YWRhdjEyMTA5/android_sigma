@@ -13,6 +13,7 @@
         android:padding="16dp"
         android:background="@color/white"
         android:orientation="horizontal">
+        <!-- TODO java -->
         <ImageView
             android:layout_width="24dp"
             android:layout_height="24dp"
@@ -26,17 +27,16 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp">
+                android:layout_marginBottom="12dp">
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
                     android:textSize="14sp"
                     android:textColor="@color/btn"
                     android:id="@+id/tv_doc_name"/>
                 <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
                     android:layout_marginLeft="12dp"
                     android:layout_alignParentRight="true"
                     android:id="@+id/iv_doc_download"
@@ -46,29 +46,14 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
+                android:layout_marginBottom="14dp"
                 android:orientation="horizontal">
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="6dp"
-                    android:textSize="12sp"
-                    android:textColor="@color/inactiveText"
-                    android:text="@string/doc_uploader" />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="6dp"
                     android:textSize="12sp"
                     android:textColor="@color/inactiveText"
                     android:id="@+id/tv_doc_uploader"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="6dp"
-                    android:textSize="12sp"
-                    android:textColor="@color/inactiveText"
-                    android:text="@string/doc_date" />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -82,7 +67,6 @@
                 android:layout_height="wrap_content"
                 android:textSize="14sp"
                 android:textColor="@color/homeParent"
-                android:maxLines="5"
                 android:id="@+id/tv_doc_desc"/>
         </LinearLayout>
 

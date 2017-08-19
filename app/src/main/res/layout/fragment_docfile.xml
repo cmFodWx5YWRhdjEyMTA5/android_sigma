@@ -41,10 +41,9 @@
         android:background="@color/white"
         android:id="@+id/rl_doc"
         android:gravity="center_horizontal|center_vertical">
-        <!--TODO plus icon-->
         <ImageView
-            android:layout_width="24dp"
-            android:layout_height="24dp"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
             android:layout_margin="12dp"
             android:src="@drawable/add"
             android:id="@+id/iv_doc_upload"
@@ -56,6 +55,7 @@
             android:textColor="@color/btn"
             android:textSize="16dp"
             android:layout_toRightOf="@+id/iv_doc_upload"
-            android:layout_centerVertical="true"/>
+            android:layout_centerVertical="true"
+            android:id="@+id/tv_doc_upload"/>
     </RelativeLayout>
 </RelativeLayout>

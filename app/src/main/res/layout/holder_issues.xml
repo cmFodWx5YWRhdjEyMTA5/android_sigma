@@ -18,35 +18,17 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="12dp"
             android:orientation="horizontal">
-            <!-- high priority -->
+
             <ImageView
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:layout_marginRight="12dp"
-                android:src="@drawable/issue_highpriority"
-                android:visibility="invisible"
-                android:id="@+id/iv_issue_highpriority"/>
-            <!-- med priority -->
-            <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_marginRight="12dp"
-                android:src="@drawable/issue_mediumpriority"
-                android:visibility="invisible"
-                android:id="@+id/iv_issue_mediumpriority"/>
-            <!-- low priority -->
-            <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_marginRight="12dp"
-                android:src="@drawable/issue_lowpriority"
-                android:visibility="visible"
-                android:id="@+id/iv_issue_lowpriority"/>
+                android:id="@+id/iv_issue_priority"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/iv_issue_highpriority"
+                android:layout_toRightOf="@+id/iv_issue_priority"
                 android:textSize="12sp"
                 android:id="@+id/tv_issue_priority"
                 android:layout_centerVertical="true"
@@ -62,16 +44,7 @@
                 <ImageView
                     android:layout_width="100dp"
                     android:layout_height="24dp"
-                    android:src="@drawable/round_green"
-                    android:visibility="invisible"
-                    android:id="@+id/iv_issue_resolved"/>
-                <!-- not resolved -->
-                <ImageView
-                    android:layout_width="100dp"
-                    android:layout_height="24dp"
-                    android:src="@drawable/round_red"
-                    android:visibility="visible"
-                    android:id="@+id/iv_issue_notresolved"/>
+                    android:id="@+id/iv_issue_status"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

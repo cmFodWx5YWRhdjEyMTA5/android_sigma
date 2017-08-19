@@ -54,7 +54,7 @@
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_marginBottom="12dp"
-            android:background="@color/white"
+            android:background="@drawable/white_box"
             android:hint="@string/issue_subject"
             android:paddingLeft="16dp"
             android:textSize="14sp" />
@@ -64,7 +64,7 @@
             android:layout_width="match_parent"
             android:layout_height="80dp"
             android:layout_marginBottom="12dp"
-            android:background="@color/white"
+            android:background="@drawable/white_box"
             android:gravity="top"
             android:hint="@string/addts_message"
             android:paddingLeft="16dp"
@@ -76,31 +76,54 @@
             android:layout_height="48dp"
             android:layout_marginBottom="12dp"
             android:orientation="horizontal">
-
-            <EditText
-                android:id="@+id/et_issue_priority"
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:layout_marginRight="10dp"
-                android:layout_weight="1"
-                android:background="@color/white"
-                android:hint="@string/issue_priority"
-                android:paddingLeft="16dp"
-                android:textSize="14sp"
-                android:focusable="false"
-                android:focusableInTouchMode="false"/>
+                android:layout_weight="1">
+                <EditText
+                    android:id="@+id/et_issue_priority"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:background="@drawable/white_box"
+                    android:hint="@string/issue_priority"
+                    android:paddingLeft="16dp"
+                    android:textSize="14sp"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false" />
+                <ImageView
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:layout_margin="12dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/dropdown"/>
+            </RelativeLayout>
 
-            <EditText
-                android:id="@+id/et_issue_upload"
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
-                android:layout_weight="1"
-                android:background="@color/white"
-                android:hint="@string/issue_upload"
-                android:paddingLeft="16dp"
-                android:focusable="false"
-                android:focusableInTouchMode="false"
-                android:textSize="14sp" />
+                android:layout_marginRight="10dp"
+                android:layout_weight="1">
+                <EditText
+                    android:id="@+id/et_issue_upload"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:background="@drawable/white_box"
+                    android:hint="@string/issue_upload"
+                    android:paddingLeft="16dp"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:textSize="14sp" />
+                <ImageView
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:layout_margin="12dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/upload"/>
+            </RelativeLayout>
+
         </LinearLayout>
 
     </LinearLayout>
