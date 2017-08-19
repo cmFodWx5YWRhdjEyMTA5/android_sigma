@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Parcelable;
+import android.support.v4.app.BundleCompat;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -123,10 +124,11 @@ public class AssignmentFragment extends BaseFragment
 
     public void onEvent(ProjectDetailModel model)
     {
-        /*Log.i("Data", model.getAssignmentList().get(0).getProjectName());
+        Log.i("Data", model.getAssignmentList().get(0).getProjectName());
         Intent intent = new Intent(getActivity(), AssignmentDetailsActivity.class);
-        //intent.putParcelableArrayListExtra("data", (ArrayList<? extends Parcelable>) model.getAssignmentList());
-        intent.putExtra("data", model);
-        startActivity(intent);*/
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("data", model);
+        intent.putExtra("data", bundle);
+        startActivity(intent);
     }
 }

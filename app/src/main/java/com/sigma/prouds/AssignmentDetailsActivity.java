@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.widget.TextView;
 
 import com.sigma.prouds.adapter.AssignmentAdapter;
 import com.sigma.prouds.adapter.AssignmentDetailsAdapter;
@@ -20,6 +21,7 @@ public class AssignmentDetailsActivity extends BaseActivity
     private ProjectDetailModel model;
     private List<ProjectAssignmentModel> list;
     private AssignmentDetailsAdapter adapter;
+    private TextView tvAssignment;
 
     @Override
     protected int getLayout() {
@@ -29,14 +31,19 @@ public class AssignmentDetailsActivity extends BaseActivity
     @Override
     protected void workingSpace()
     {
-        model = new ProjectDetailModel(null);
-        model = getIntent().getParcelableExtra("data");
+        model = new ProjectDetailModel();
+        Bundle bundle = new Bundle();
+        bundle = getIntent().getBundleExtra("data");
+        model = (ProjectDetailModel) bundle.getSerializable("data");
         list = model.getAssignmentList();
-        //Log.i("coba", getIntent().getExtras().getParcelableArrayList("data").get(0).toString());
+        Log.i("coba", model.getProjectName());
         rvAssignmentDetails = (RecyclerView) findViewById(R.id.rv_assignment_details);
-        adapter = new AssignmentDetailsAdapter(list, this);
+        tvAssignment = (TextView) findViewById(R.id.tv_assignment_details);
+        adapter = new AssignmentDetailsAdapter(model.getAssignmentList(), this);
         RecyclerView.LayoutManager manager = new LinearLayoutManager(this);
         rvAssignmentDetails.setLayoutManager(manager);
         rvAssignmentDetails.setAdapter(adapter);
+
+        tvAssignment.setText(model.getProjectName());
     }
 }

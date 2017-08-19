@@ -1,12 +1,13 @@
 package com.sigma.prouds.model;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * Created by 1414 on 7/10/2017.
  */
 
-public class ProjectAssignmentModel
+public class ProjectAssignmentModel implements Serializable
 {
     private String userId;
     private String userName;
