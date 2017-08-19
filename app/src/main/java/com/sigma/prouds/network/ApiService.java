@@ -21,6 +21,7 @@ import com.sigma.prouds.network.response.ProjectActivityResponse;
 import com.sigma.prouds.network.response.ProjectDocResponse;
 import com.sigma.prouds.network.response.ProjectIssueResponse;
 import com.sigma.prouds.network.response.ProjectResponse;
+import com.sigma.prouds.network.response.ProjectSettingResponse;
 import com.sigma.prouds.network.response.TaskAddTimeSheetResponse;
 import com.sigma.prouds.network.response.TeamMemberResponse;
 import com.sigma.prouds.network.response.UploadProjectDocResponse;
@@ -101,4 +102,7 @@ public interface ApiService
     @Multipart
     @POST("dev/home/documentupload/{project_id}")
     Call<UploadProjectDocResponse> uploadDoc(@Header("token") String token, @Path("project_id") String projectId, @Part("desc") RequestBody desc, @Part MultipartBody.Part doc);
+
+    @GET("dev/project/editProject_view/{project_id}")
+    Call<ProjectSettingResponse> getProjectSetting(@Header("token") String token, @Path("project_id") String projectId);
 }
