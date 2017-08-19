@@ -9,6 +9,8 @@ import android.widget.TextView;
 import com.sigma.prouds.R;
 import com.sigma.prouds.model.ProjectAssignmentModel;
 
+import de.greenrobot.event.EventBus;
+
 /**
  * Created by lucgu.qolfiera on 8/17/2017.
  */
@@ -30,10 +32,16 @@ public class AssignmentDetailHolder extends RecyclerView.ViewHolder
 
     }
 
-    public void bind(ProjectAssignmentModel model)
+    public void bind(final ProjectAssignmentModel model)
     {
         tvTask.setText(model.getWbsName());
         tvStartDate.setText(model.getStartDate());
         tvEndDate.setText(model.getFinishDate());
+        ivAddTimesheet.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                EventBus.getDefault().post(model);
+            }
+        });
     }
 }

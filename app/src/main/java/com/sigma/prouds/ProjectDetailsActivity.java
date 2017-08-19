@@ -165,7 +165,7 @@ public class ProjectDetailsActivity extends BaseActivity {
                     tvToolbarTitle.setText("TEAM MEMBER");
                     break;
                 case R.string.drawer_setting:
-                    pdFragment = new ProjectSettingFragment();
+                    pdFragment = new ProjectSettingFragment().newInstance(this, projectId);
                     tvToolbarTitle.setText("PROJECT SETTING");
                     break;
             }
