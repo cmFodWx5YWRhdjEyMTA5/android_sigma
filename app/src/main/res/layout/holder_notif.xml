@@ -48,7 +48,7 @@
                 android:id="@+id/tv_time"
                 android:textSize="12sp"
                 android:text="here"
-                android:textColor="@color/homeParentDate"/>
+                android:textColor="@color/inactiveText"/>
         </LinearLayout>
     </LinearLayout>
     <View
