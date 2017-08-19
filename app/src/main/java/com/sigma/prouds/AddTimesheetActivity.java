@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import com.sigma.prouds.base.BaseActivity;
 import com.sigma.prouds.model.AddTimeSheetModel;
+import com.sigma.prouds.model.ProjectAssignmentModel;
 import com.sigma.prouds.model.ProjectListTimesheetSenderModel;
 import com.sigma.prouds.model.TaskListTimesheetSenderModel;
 import com.sigma.prouds.network.ApiService;
@@ -42,6 +43,8 @@ public class AddTimesheetActivity extends BaseActivity {
     private String wpId;
     private ProgressDialog dialog;
 
+    private ProjectAssignmentModel projectModel;
+
     @Override
     protected int getLayout()
     {
@@ -51,11 +54,25 @@ public class AddTimesheetActivity extends BaseActivity {
     @Override
     protected void workingSpace()
     {
+        assignXML();
+
+        projectModel = new ProjectAssignmentModel();
+
+        if (getIntent().getBundleExtra("model") != null)
+        {
+            Bundle bundle = new Bundle();
+            bundle = getIntent().getBundleExtra("model");
+            projectModel = (ProjectAssignmentModel) bundle.getSerializable("model");
+            etProject.setText(projectModel.getProjectName());
+            etTask.setText(projectModel.getWbsName());
+            projectId = projectModel.getProjectId();
+            wpId = projectModel.getWpId();
+        }
+
         dialog = new ProgressDialog(this);
         dialog.setMessage("Please wait");
         app = (ProudsApplication) getApplicationContext();
         service = ApiUtils.apiService();
-        assignXML();
         model = new ProjectListTimesheetSenderModel();
         getTodayDate();
         etProject.setOnClickListener(new View.OnClickListener() {

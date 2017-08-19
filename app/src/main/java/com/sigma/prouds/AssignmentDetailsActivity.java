@@ -1,5 +1,6 @@
 package com.sigma.prouds;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -43,7 +44,15 @@ public class AssignmentDetailsActivity extends BaseActivity
         RecyclerView.LayoutManager manager = new LinearLayoutManager(this);
         rvAssignmentDetails.setLayoutManager(manager);
         rvAssignmentDetails.setAdapter(adapter);
-
         tvAssignment.setText(model.getProjectName());
+    }
+
+    public void onEvent(ProjectAssignmentModel model)
+    {
+        Intent intent = new Intent(this, AddTimesheetActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("model", model);
+        intent.putExtra("model", bundle);
+        startActivity(intent);
     }
 }
