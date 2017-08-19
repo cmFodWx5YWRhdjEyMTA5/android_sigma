@@ -56,6 +56,7 @@ public class ActivityHolder extends RecyclerView.ViewHolder
         tvActName.setText(model.getWbsName());
         tvDesc.setText(model.getMessage());
 
+        // set multiple font color
         String project = "<font color=#3a424c>Project </font>";
         String projectName = model.getProjectName();
         if (Build.VERSION.SDK_INT >= 24) {
@@ -66,16 +67,14 @@ public class ActivityHolder extends RecyclerView.ViewHolder
             tvProjectName.setText(Html.fromHtml(project+projectName));// or for older api
         }
 
+        // set multiple font style
         String errorMsgBefore = "left a ";
         String errorMsg = model.getSubject();
         String errorMsgAfter = " message";
-        // Create a new spannable with the two strings
         Spannable spannable = new SpannableString(errorMsgBefore + errorMsg + errorMsgAfter);
-        // Set the custom typeface to span over a section of the spannable object
         spannable.setSpan( new CustomTypefaceSpan("sans", latoRegular), 0, errorMsgBefore.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
         spannable.setSpan( new CustomTypefaceSpan("sans", latoBlack), errorMsgBefore.length(), errorMsgBefore.length() + errorMsg.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
         spannable.setSpan( new CustomTypefaceSpan("sans", latoRegular), errorMsgBefore.length() + errorMsg.length(), errorMsgBefore.length() + errorMsg.length() + errorMsgAfter.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-        // Set the text of a textView with the spannable object
         tvSubject.setText(spannable);
 
 

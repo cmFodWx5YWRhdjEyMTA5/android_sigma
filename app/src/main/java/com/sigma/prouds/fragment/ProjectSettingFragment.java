@@ -1,10 +1,14 @@
 package com.sigma.prouds.fragment;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.sigma.prouds.ProudsApplication;
 import com.sigma.prouds.R;
@@ -43,6 +47,8 @@ public class ProjectSettingFragment extends BaseFragment
     private EditText etProjectStatus;
     private EditText etStartDate;
     private EditText etEndDate;
+    private Typeface latoRegular;
+    private RelativeLayout rlProjectSetting;
 
     public static ProjectSettingFragment newInstance(Context context, String projectId)
     {
@@ -82,7 +88,22 @@ public class ProjectSettingFragment extends BaseFragment
         etProjectStatus = (EditText) view.findViewById(R.id.et_project_status);
         etStartDate = (EditText) view.findViewById(R.id.et_start_date);
         etEndDate = (EditText) view.findViewById(R.id.et_end_date);
+        rlProjectSetting = (RelativeLayout) view.findViewById(R.id.rl_project_setting);
 
+        latoRegular = Typeface.createFromAsset(ctx.getAssets(), "lato_regular.ttf");
+        setFontForContainer(rlProjectSetting);
+    }
 
+    // set typeface for all text
+    private void setFontForContainer(ViewGroup contentLayout) {
+        for (int i=0; i < contentLayout.getChildCount(); i++) {
+            View view = contentLayout.getChildAt(i);
+            if (view instanceof TextView) {
+                ((TextView)view).setTypeface(latoRegular);
+            }
+            else if (view instanceof ViewGroup) {
+                setFontForContainer((ViewGroup) view);
+            }
+        }
     }
 }

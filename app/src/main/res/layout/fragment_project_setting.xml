@@ -2,8 +2,9 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background">
-<!--TODO import icon-->
+    android:background="@color/background"
+    android:id="@+id/rl_project_setting">
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -26,6 +27,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
+                    android:id="@+id/tv_title_iwo"
                     android:text="@string/set_iwo"
                     android:textSize="16sp"
                     android:textColor="@color/homeParent"/>
@@ -35,42 +37,59 @@
                     android:layout_marginBottom="16dp"
                     android:background="@color/btn"/>
 
-                <EditText
+                <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
-                    android:background="@color/white"
-                    android:padding="10dp"
-                    android:textSize="12sp"
-                    android:hint="@string/set_projectid"
-                    android:id="@+id/et_projectid"/>
+                    android:layout_marginBottom="8dp">
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/white_box"
+                        android:padding="10dp"
+                        android:textSize="14sp"
+                        android:paddingLeft="16dp"
+                        android:paddingRight="40dp"
+                        android:hint="@string/set_projectid"
+                        android:id="@+id/et_projectid"/>
+                    <ImageView
+                        android:layout_width="14dp"
+                        android:layout_height="14dp"
+                        android:layout_margin="12dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/dropdown"/>
+                </RelativeLayout>
+
 
                 <EditText
                     android:id="@+id/et_project_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
-                    android:background="@color/white"
+                    android:background="@drawable/white_box"
                     android:hint="@string/set_project_name"
                     android:padding="10dp"
-                    android:textSize="12sp" />
+                    android:textSize="14sp"
+                    android:paddingLeft="16dp" />
 
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
-                    android:background="@color/white"
+                    android:background="@drawable/white_box"
                     android:padding="10dp"
-                    android:textSize="12sp"
+                    android:textSize="14sp"
+                    android:paddingLeft="16dp"
                     android:hint="@string/set_business_unit"
                     android:id="@+id/et_business_unit"/>
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
-                    android:background="@color/white"
+                    android:background="@drawable/white_box"
                     android:padding="10dp"
-                    android:textSize="12sp"
+                    android:textSize="14sp"
+                    android:paddingLeft="16dp"
                     android:hint="@string/set_related_business"
                     android:id="@+id/et_related_business_unit"/>
                 <LinearLayout
@@ -82,18 +101,20 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="8dp"
-                        android:background="@color/white"
+                        android:background="@drawable/white_box"
                         android:padding="10dp"
-                        android:textSize="12sp"
+                        android:textSize="14sp"
+                        android:paddingLeft="16dp"
                         android:hint="@string/set_customer"
-                        android:layout_weight="3"
+                        android:layout_weight="2"
                         android:id="@+id/et_customer"/>
                     <EditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@color/white"
+                        android:background="@drawable/white_box"
                         android:padding="10dp"
-                        android:textSize="12sp"
+                        android:textSize="14sp"
+                        android:paddingLeft="16dp"
                         android:hint="@string/set_end_customer"
                         android:layout_weight="1"
                         android:id="@+id/et_end_customer"/>
@@ -107,20 +128,22 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="8dp"
-                        android:background="@color/white"
+                        android:background="@drawable/white_box"
                         android:padding="10dp"
-                        android:textSize="12sp"
+                        android:textSize="14sp"
+                        android:paddingLeft="16dp"
                         android:hint="@string/set_project_val"
                         android:layout_weight="1"
                         android:id="@+id/et_project_val"/>
                     <EditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@color/white"
+                        android:background="@drawable/white_box"
                         android:padding="10dp"
-                        android:textSize="12sp"
+                        android:textSize="14sp"
+                        android:paddingLeft="16dp"
                         android:hint="@string/set_margin"
-                        android:layout_weight="3"
+                        android:layout_weight="2"
                         android:id="@+id/et_margin"/>
                 </LinearLayout>
 
@@ -132,20 +155,21 @@
                     android:layout_marginBottom="8dp"
                     android:text="@string/set_product"
                     android:textSize="16sp"
-                    android:textColor="@color/homeParent"/>
+                    android:textColor="@color/homeParent"
+                    android:id="@+id/tv_title_product"/>
                 <View
                     android:layout_width="90dp"
                     android:layout_height="4dp"
                     android:layout_marginBottom="16dp"
                     android:background="@color/btn"/>
-                <!--TODO multiline-->
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="70dp"
                     android:layout_marginBottom="8dp"
-                    android:background="@color/white"
+                    android:background="@drawable/white_box"
                     android:padding="10dp"
-                    android:textSize="12sp"
+                    android:textSize="14sp"
+                    android:paddingLeft="16dp"
                     android:hint="@string/set_desc"
                     android:gravity="top"
                     android:id="@+id/et_desc"/>
@@ -155,7 +179,8 @@
                     android:layout_marginBottom="8dp"
                     android:text="@string/set_project_type"
                     android:textSize="12sp"
-                    android:textColor="@color/homeParent"/>
+                    android:textColor="@color/homeParent"
+                    android:id="@+id/tv_title_project_type"/>
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -177,7 +202,8 @@
                             android:text="@string/set_project"
                             android:textSize="12sp"
                             android:textColor="@color/homeParent"
-                            android:gravity="center_vertical"/>
+                            android:gravity="center_vertical"
+                            android:id="@+id/tv_title_project"/>
                     </LinearLayout>
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -195,7 +221,8 @@
                             android:text="@string/set_non_project"
                             android:textSize="12sp"
                             android:textColor="@color/homeParent"
-                            android:gravity="center_vertical"/>
+                            android:gravity="center_vertical"
+                            android:id="@+id/tv_title_non_project"/>
                     </LinearLayout>
                 </LinearLayout>
                 <TextView
@@ -204,7 +231,8 @@
                     android:layout_marginBottom="8dp"
                     android:text="@string/set_HO"
                     android:textSize="12sp"
-                    android:textColor="@color/homeParent"/>
+                    android:textColor="@color/homeParent"
+                    android:id="@+id/tv_title_ho_operation"/>
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -247,40 +275,85 @@
                             android:gravity="center_vertical"/>
                     </LinearLayout>
                 </LinearLayout>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp">
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:background="@drawable/white_box"
+                        android:padding="10dp"
+                        android:textSize="14sp"
+                        android:paddingLeft="16dp"
+                        android:paddingRight="40dp"
+                        android:hint="@string/set_pm"
+                        android:id="@+id/et_pm"/>
+                    <ImageView
+                        android:layout_width="14dp"
+                        android:layout_height="14dp"
+                        android:layout_margin="12dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/dropdown"/>
+                </RelativeLayout>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp">
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:background="@drawable/white_box"
+                        android:padding="10dp"
+                        android:textSize="14sp"
+                        android:paddingLeft="16dp"
+                        android:paddingRight="40dp"
+                        android:hint="@string/set_acc_manager"
+                        android:id="@+id/et_account_manager"/>
+                    <ImageView
+                        android:layout_width="14dp"
+                        android:layout_height="14dp"
+                        android:layout_margin="12dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/dropdown"/>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp">
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:background="@drawable/white_box"
+                        android:padding="10dp"
+                        android:textSize="14sp"
+                        android:paddingLeft="16dp"
+                        android:paddingRight="40dp"
+                        android:hint="@string/set_type_effort"
+                        android:id="@+id/et_type_effort"/>
+                    <ImageView
+                        android:layout_width="14dp"
+                        android:layout_height="14dp"
+                        android:layout_margin="12dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/dropdown"/>
+                </RelativeLayout>
+
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
-                    android:background="@color/white"
+                    android:background="@drawable/white_box"
                     android:padding="10dp"
-                    android:textSize="12sp"
-                    android:hint="@string/set_pm"
-                    android:id="@+id/et_pm"/>
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
-                    android:background="@color/white"
-                    android:padding="10dp"
-                    android:textSize="12sp"
-                    android:hint="@string/set_acc_manager"
-                    android:id="@+id/et_account_manager"/>
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
-                    android:background="@color/white"
-                    android:padding="10dp"
-                    android:textSize="12sp"
-                    android:hint="@string/set_type_effort"
-                    android:id="@+id/et_type_effort"/>
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
-                    android:background="@color/white"
-                    android:padding="10dp"
-                    android:textSize="12sp"
+                    android:textSize="14sp"
+                    android:paddingLeft="16dp"
                     android:hint="@string/set_product_type"
                     android:id="@+id/et_product_type"/>
 
@@ -297,48 +370,89 @@
                     android:layout_height="4dp"
                     android:layout_marginBottom="16dp"
                     android:background="@color/btn"/>
-                <EditText
+                <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
-                    android:background="@color/white"
-                    android:padding="10dp"
-                    android:textSize="12sp"
-                    android:hint="@string/set_project_status"
-                    android:id="@+id/et_project_status"/>
+                    android:layout_marginBottom="8dp">
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:background="@drawable/white_box"
+                        android:padding="10dp"
+                        android:textSize="14sp"
+                        android:paddingLeft="16dp"
+                        android:paddingRight="40dp"
+                        android:hint="@string/set_project_status"
+                        android:id="@+id/et_project_status"/>
+                    <ImageView
+                        android:layout_width="14dp"
+                        android:layout_height="14dp"
+                        android:layout_margin="12dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/dropdown"/>
+                </RelativeLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
-                    <EditText
+                    <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
                         android:layout_marginBottom="8dp"
-                        android:layout_marginRight="8dp"
-                        android:background="@color/white"
-                        android:padding="10dp"
-                        android:textSize="12sp"
-                        android:hint="@string/set_start"
-                        android:id="@+id/et_start_date"/>
-                    <EditText
+                        android:layout_weight="1"
+                        android:layout_marginRight="8dp">
+                        <EditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/white_box"
+                            android:padding="10dp"
+                            android:textSize="14sp"
+                            android:paddingLeft="16dp"
+                            android:paddingRight="40dp"
+                            android:hint="@string/set_start"
+                            android:id="@+id/et_start_date"/>
+                        <ImageView
+                            android:layout_width="14dp"
+                            android:layout_height="14dp"
+                            android:layout_margin="12dp"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:src="@drawable/calendar"/>
+                    </RelativeLayout>
+                    <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
                         android:layout_marginBottom="8dp"
-                        android:layout_marginRight="8dp"
-                        android:background="@color/white"
-                        android:padding="10dp"
-                        android:textSize="12sp"
-                        android:hint="@string/set_end"
-                        android:id="@+id/et_end_date"/>
+                        android:layout_weight="1">
+                        <EditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/white_box"
+                            android:padding="10dp"
+                            android:textSize="14sp"
+                            android:paddingLeft="16dp"
+                            android:paddingRight="40dp"
+                            android:hint="@string/set_end"
+                            android:id="@+id/et_end_date"/>
+                        <ImageView
+                            android:layout_width="14dp"
+                            android:layout_height="14dp"
+                            android:layout_margin="12dp"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:src="@drawable/calendar"/>
+                    </RelativeLayout>
+
                 </LinearLayout>
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginBottom="8dp"
                     android:text="@string/set_visibility"
-                    android:textSize="12sp"
+                    android:textSize="14sp"
                     android:textColor="@color/homeParent"
                     android:visibility="gone"/>
                 <LinearLayout
@@ -356,7 +470,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="8dp"
                         android:text="@string/set_own_business"
-                        android:textSize="12sp"
+                        android:textSize="14sp"
                         android:textColor="@color/homeParent"
                         android:gravity="center_vertical"/>
                 </LinearLayout>
@@ -375,7 +489,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="8dp"
                         android:text="@string/set_project_member"
-                        android:textSize="12sp"
+                        android:textSize="14sp"
                         android:textColor="@color/homeParent"
                         android:gravity="center_vertical"/>
                 </LinearLayout>
@@ -399,40 +513,57 @@
                     android:layout_height="4dp"
                     android:layout_marginBottom="16dp"
                     android:background="@color/btn"/>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp">
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/white_box"
+                        android:padding="10dp"
+                        android:textSize="14sp"
+                        android:paddingLeft="16dp"
+                        android:paddingRight="40dp"
+                        android:hint="@string/set_cap_expense"
+                        android:id="@+id/et_cap_expense"/>
+                    <ImageView
+                        android:layout_width="14dp"
+                        android:layout_height="14dp"
+                        android:layout_margin="12dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/dropdown"/>
+                </RelativeLayout>
+
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
-                    android:background="@color/white"
+                    android:background="@drawable/white_box"
                     android:padding="10dp"
-                    android:textSize="12sp"
-                    android:hint="@string/set_cap_expense"
-                    android:id="@+id/et_cap_expense"/>
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
-                    android:background="@color/white"
-                    android:padding="10dp"
-                    android:textSize="12sp"
+                    android:textSize="14sp"
+                    android:paddingLeft="16dp"
                     android:hint="@string/set_project_overhead"
                     android:id="@+id/et_project_overhead"/>
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
-                    android:background="@color/white"
+                    android:background="@drawable/white_box"
                     android:padding="10dp"
-                    android:textSize="12sp"
+                    android:textSize="14sp"
+                    android:paddingLeft="16dp"
                     android:hint="@string/set_actual_cost"
                     android:id="@+id/et_actual_cost"/>
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
-                    android:background="@color/white"
+                    android:background="@drawable/white_box"
                     android:padding="10dp"
-                    android:textSize="12sp"
+                    android:textSize="14sp"
+                    android:paddingLeft="16dp"
                     android:hint="@string/set_cogs"
                     android:id="@+id/et_cogs"/>
 
