@@ -5,6 +5,7 @@ import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.provider.MediaStore;
 import android.support.v4.app.ActivityCompat;
@@ -95,6 +96,7 @@ public class FormReportIssueActivity extends BaseActivity {
         rlUploadIssue = (RelativeLayout) findViewById(R.id.rl_report_issue);
         etSubject = (EditText) findViewById(R.id.et_issue_subject);
         etMessage = (EditText) findViewById(R.id.et_issue_msg);
+        query.id(R.id.tv_title_toolbar_report_issue).typeface(Typeface.createFromAsset(getAssets(), "lato_black.ttf"));
     }
 
     public void getImage()

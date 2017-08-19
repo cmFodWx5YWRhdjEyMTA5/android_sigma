@@ -28,7 +28,7 @@
                 android:src="@drawable/back" />
 
             <TextView
-                android:id="@+id/tv_title_toolbar_assignment"
+                android:id="@+id/tv_title_toolbar_report_issue"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
@@ -88,6 +88,7 @@
                     android:background="@drawable/white_box"
                     android:hint="@string/issue_priority"
                     android:paddingLeft="16dp"
+                    android:paddingRight="40dp"
                     android:textSize="14sp"
                     android:focusable="false"
                     android:focusableInTouchMode="false" />
@@ -103,7 +104,6 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
-                android:layout_marginRight="10dp"
                 android:layout_weight="1">
                 <EditText
                     android:id="@+id/et_issue_upload"
@@ -112,6 +112,7 @@
                     android:background="@drawable/white_box"
                     android:hint="@string/issue_upload"
                     android:paddingLeft="16dp"
+                    android:paddingRight="40dp"
                     android:focusable="false"
                     android:focusableInTouchMode="false"
                     android:textSize="14sp" />
