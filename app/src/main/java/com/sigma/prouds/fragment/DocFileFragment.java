@@ -2,6 +2,7 @@ package com.sigma.prouds.fragment;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -68,6 +69,8 @@ public class DocFileFragment extends BaseFragment
         rlAddDoc = (RelativeLayout) view.findViewById(R.id.rl_doc);
         pbDocFile = (ProgressBar) view.findViewById(R.id.pb_doc_file);
         tvEmptyDocument = (TextView) view.findViewById(R.id.tv_empty_document);
+        query.id(R.id.tv_empty_document).typeface(Typeface.createFromAsset(ctx.getAssets(), "lato_regular.ttf"));
+        query.id(R.id.tv_doc_upload).typeface(Typeface.createFromAsset(ctx.getAssets(), "lato_regular.ttf"));
         rlAddDoc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

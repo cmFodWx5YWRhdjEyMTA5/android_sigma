@@ -1,6 +1,7 @@
 package com.sigma.prouds.holder;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
@@ -24,6 +25,7 @@ public class ProjectDocHolder extends RecyclerView.ViewHolder
     private TextView tvDocUploader;
     private TextView tvDocDate;
     private TextView tvDocDesc;
+    private Typeface latoRegular;
 
     public ProjectDocHolder(Context context, View itemView)
     {
@@ -35,13 +37,23 @@ public class ProjectDocHolder extends RecyclerView.ViewHolder
         tvDocUploader = (TextView) itemView.findViewById(R.id.tv_doc_uploader);
         tvDocDate = (TextView) itemView.findViewById(R.id.tv_doc_date);
         tvDocDesc = (TextView) itemView.findViewById(R.id.tv_doc_desc);
+
+        latoRegular = Typeface.createFromAsset(itemView.getContext().getAssets(), "lato_regular.ttf");
     }
 
     public void bind(ProjectDocModel model)
     {
         tvDocName.setText(model.getDocName());
-        tvDocUploader.setText(model.getUploadBy());
-        tvDocDate.setText(model.getDateUpload());
+        tvDocUploader.setText("uploaded by " + model.getUploadBy());
+        tvDocDate.setText(" at " + model.getDateUpload());
         tvDocDesc.setText(model.getDocDesc());
+        setTypeFace();
+    }
+
+    public void setTypeFace() {
+        tvDocName.setTypeface(latoRegular);
+        tvDocUploader.setTypeface(latoRegular);
+        tvDocDate.setTypeface(latoRegular);
+        tvDocDesc.setTypeface(latoRegular);
     }
 }

@@ -40,10 +40,9 @@
         android:background="@color/white"
         android:id="@+id/rl_report_issue"
         android:gravity="center_horizontal|center_vertical">
-        <!--TODO plus icon-->
         <ImageView
-            android:layout_width="24dp"
-            android:layout_height="24dp"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
             android:layout_margin="12dp"
             android:src="@drawable/add"
             android:id="@+id/iv_report_issue"

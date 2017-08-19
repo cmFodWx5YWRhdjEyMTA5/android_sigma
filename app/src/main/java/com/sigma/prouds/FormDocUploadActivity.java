@@ -3,6 +3,7 @@ package com.sigma.prouds;
 import android.Manifest;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -79,6 +80,7 @@ public class FormDocUploadActivity extends BaseActivity {
         rlUploadDoc = (RelativeLayout) findViewById(R.id.rl_upload_doc);
         etDesc = (EditText) findViewById(R.id.et_doc_desc);
         etDocUpload = (EditText) findViewById(R.id.et_doc_upload);
+        query.id(R.id.tv_title_toolbar_add_doc).typeface(Typeface.createFromAsset(getAssets(), "lato_black.ttf"));
     }
 
     public void getFile()
