@@ -251,7 +251,7 @@ public class ChartFragment extends BaseFragment
                 int finalProgressEntry = (int) progressEntry;
                 pbEntry.setProgress(finalProgressEntry);
 
-                float progressUtil = Float.parseFloat(response.body().getEntry());
+                float progressUtil = Float.parseFloat(response.body().getUtilization());
                 int finalProgressUtil = (int) progressUtil;
                 pbUtilization.setProgress(finalProgressUtil);
 
