@@ -18,7 +18,8 @@
     <string name="tab_perform_act">My Activity</string>
     <string name="tab_perform_performance">Performance</string>
 
-    <string name="search_hint">Search business unit or project …</string>
+    <string name="search_home">Search business unit or project …</string>
+    <string name="search_assignment">Search project or task …</string>
     <string name="search_recents">RECENTS</string>
     <string name="search_result">SEARCH RESULT</string>
 
@@ -155,5 +156,7 @@
 
     <string name="dayoff_enjoy">Enjoy Your Day-off !</string>
     <string name="dayoff_update">You don\'t have to update anything today</string>
+
+    <string name="assign_details_due">Due soon</string>
 
 </resources>

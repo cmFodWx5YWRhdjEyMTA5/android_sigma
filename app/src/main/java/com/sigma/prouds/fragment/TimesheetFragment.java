@@ -3,6 +3,7 @@ package com.sigma.prouds.fragment;
 import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -51,9 +52,7 @@ import retrofit2.Response;
 public class TimesheetFragment extends BaseFragment {
     static Context ctx;
     private CalendarView cvDate;
-    private TextView tvDate;
-    private TextView tvHour;
-    private TextView tvEmpty;
+    private TextView tvDate, tvHour, tvEmpty, tvChooseDate, tvNewTimesheet, tvDateBelow;
     private LinearLayout  llChooseDate;
     private RelativeLayout llAddTimesheet;
     private ProgressBar pbTimeSheet;
@@ -61,6 +60,7 @@ public class TimesheetFragment extends BaseFragment {
     private ProudsApplication app;
     private TimesheetAdapter adapter;
     private RecyclerView rvTimesheet;
+    private LinearLayout llDayOff;
 
     public static TimesheetFragment newInstance(Context context) {
         TimesheetFragment fragment = new TimesheetFragment();
@@ -77,10 +77,17 @@ public class TimesheetFragment extends BaseFragment {
     protected void workingSpace(View view) {
         app = (ProudsApplication) ctx.getApplicationContext();
         service = ApiUtils.apiService();
+        llDayOff = (LinearLayout) view.findViewById(R.id.ll_ts_dayoff);
         rvTimesheet = (RecyclerView) view.findViewById(R.id.rv_timesheet);
-        tvDate = (TextView) view.findViewById(R.id.tv_ts_date);
         pbTimeSheet = (ProgressBar) view.findViewById(R.id.pb_timesheet);
+        tvDate = (TextView) view.findViewById(R.id.tv_ts_date);
+        tvHour = (TextView) view.findViewById(R.id.tv_ts_hour);
+        tvChooseDate = (TextView) view.findViewById(R.id.tv_ts_choose_date);
+        tvNewTimesheet = (TextView) view.findViewById(R.id.tv_ts_new);
+        tvDateBelow = (TextView) view.findViewById(R.id.tv_ts_date_below);
         tvEmpty = (TextView) view.findViewById(R.id.tv_empty_timesheet);
+
+        setTypeFace();
 
         final Calendar calendar = Calendar.getInstance();
         final DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
@@ -90,12 +97,17 @@ public class TimesheetFragment extends BaseFragment {
                 calendar.set(Calendar.MONTH, month);
                 calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
 
-                String myFormat = "EEE, MMM d yyyy";
-                SimpleDateFormat sdf = new SimpleDateFormat(myFormat);
+                String fullFormat = "EEE, MMM d yyyy";
+                String halfFormat = "EEE, MMM d";
+                String dataFormat = "yyy-MM-dd";
+                SimpleDateFormat sdf = new SimpleDateFormat(fullFormat);
+                SimpleDateFormat sdfHalf = new SimpleDateFormat(halfFormat);
+                SimpleDateFormat sdfData = new SimpleDateFormat(dataFormat);
                 String form = year + "-" + String.valueOf(month + 1)+ "-" + dayOfMonth;
                 tvDate.setText(sdf.format(calendar.getTime()));
-                Log.i("Date selected : ", form);
-                getData(form);
+                tvDateBelow.setText(sdfHalf.format(calendar.getTime()).toUpperCase());
+                Log.i("Date selected : ", sdfData.format(calendar.getTime()));
+                getData(sdfData.format(calendar.getTime()));
 
             }
         };
@@ -119,13 +131,25 @@ public class TimesheetFragment extends BaseFragment {
             }
         });
 
-        String myFormat = "EEE, MMM d yyyy";
-        SimpleDateFormat sdf = new SimpleDateFormat(myFormat);
-        tvDate.setText(sdf.format(calendar.getTime()));
+        String fullFormat = "EEE, MMM d yyyy";
+        String halfFormat = "EEE, MMM d";
+        SimpleDateFormat sdfFull = new SimpleDateFormat(fullFormat);
+        SimpleDateFormat sdfHalf = new SimpleDateFormat(halfFormat);
+        tvDate.setText(sdfFull.format(calendar.getTime()));
+        tvDateBelow.setText(sdfHalf.format(calendar.getTime()).toUpperCase());
         Date cDate = new Date();
         String fDate = new SimpleDateFormat("yyyy-MM-dd").format(cDate);
         Log.i("Date today : ", fDate);
         getData(fDate);
+    }
+
+    private void setTypeFace() {
+        query.id(R.id.tv_ts_date).typeface(Typeface.createFromAsset(ctx.getAssets(), "lato_bold.ttf"));
+        query.id(R.id.tv_ts_hour).typeface(Typeface.createFromAsset(ctx.getAssets(), "lato_regular.ttf"));
+        query.id(R.id.tv_ts_choose_date).typeface(Typeface.createFromAsset(ctx.getAssets(), "lato_regular.ttf"));
+        query.id(R.id.tv_ts_new).typeface(Typeface.createFromAsset(ctx.getAssets(), "lato_regular.ttf"));
+        query.id(R.id.tv_ts_date_below).typeface(Typeface.createFromAsset(ctx.getAssets(), "lato_regular.ttf"));
+        query.id(R.id.tv_empty_timesheet).typeface(Typeface.createFromAsset(ctx.getAssets(), "lato_regular.ttf"));
     }
 
     public void toAddTimesheet()
@@ -134,7 +158,7 @@ public class TimesheetFragment extends BaseFragment {
         startActivity(intent);
     }
 
-    public void getData(String date)
+    public void getData(final String date)
     {
         rvTimesheet.setVisibility(View.INVISIBLE);
         pbTimeSheet.setVisibility(View.VISIBLE);
@@ -163,6 +187,14 @@ public class TimesheetFragment extends BaseFragment {
                     hour += Integer.parseInt(response.body().getUserActivities().get(i).getHourTotal());
                 }
                 tvHour.setText(hour + "Hours");*/
+
+                // SET DAYOFF LAYOUT
+                for (int i = 0; i < response.body().getHolidays().size()-1; i++) {
+                    Log.i("holiday",response.body().getHolidays().get(i).getHolidayDate().equals(date)+"");
+                    if (response.body().getHolidays().get(i).getHolidayDate().equals(date)) {
+                        llDayOff.setVisibility(View.VISIBLE);
+                    }
+                }
             }
 
             @Override

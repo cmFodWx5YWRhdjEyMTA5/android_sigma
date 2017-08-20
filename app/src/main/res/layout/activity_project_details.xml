@@ -13,7 +13,6 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <!--TODO ganti toolbar tiap fragment-->
         <!-- Toolbar start -->
         <android.support.v7.widget.Toolbar
             android:layout_width="match_parent"

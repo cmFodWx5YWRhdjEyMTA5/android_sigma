@@ -2,9 +2,12 @@ package com.sigma.prouds.fragment;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -55,8 +58,9 @@ public class ChartFragment extends BaseFragment
     private LineChart chartUtilization, chartEntry;
     private EditText etChartTsMonth, etChartTsYear, etChartUtil, etChartEntry;
     private ProgressBar pbChartUtil, pbChartEntry, pbPerformance;
-    private LinearLayout llPerformance;
+    private LinearLayout llPerformance, llChart;
     private TextView tvUtilStatus, tvEntryStatus;
+    private Typeface latoRegular;
 
     public static ChartFragment newInstance(Context context)
     {
@@ -87,10 +91,12 @@ public class ChartFragment extends BaseFragment
         pbChartUtil = (ProgressBar) view.findViewById(R.id.pb_chart_util);
         pbChartEntry = (ProgressBar) view.findViewById(R.id.pb_chart_entry);
         llPerformance = (LinearLayout) view.findViewById(R.id.ll_performance);
+        llChart = (LinearLayout) view.findViewById(R.id.ll_chart);
         pbPerformance = (ProgressBar) view.findViewById(R.id.pb_performance);
         tvEntryStatus = (TextView) view.findViewById(R.id.tv_entry_status);
         tvUtilStatus = (TextView) view.findViewById(R.id.tv_util_status);
-
+        latoRegular = Typeface.createFromAsset(ctx.getAssets(), "lato_regular.ttf");
+        setFontForContainer(llChart);
         getDataPerformance("8", "2017");
 
         //chart util
@@ -296,6 +302,8 @@ public class ChartFragment extends BaseFragment
 
                 chartUtilization.setData(data);
                 chartUtilization.getXAxis().setLabelsToSkip(0);
+                dataset.setColor(R.color.btn);
+                dataset.setCircleColor(R.color.splash);
 
                 pbChartUtil.setVisibility(View.GONE);
                 chartUtilization.setVisibility(View.VISIBLE);
@@ -332,6 +340,8 @@ public class ChartFragment extends BaseFragment
 
                 chartEntry.setData(dataEntry);
                 chartEntry.getXAxis().setLabelsToSkip(0);
+                datasetEntry.setColor(R.color.btn);
+                datasetEntry.setCircleColor(R.color.splash);
 
                 pbChartEntry.setVisibility(View.GONE);
                 chartEntry.setVisibility(View.VISIBLE);
@@ -344,5 +354,17 @@ public class ChartFragment extends BaseFragment
 
             }
         });
+    }
+
+    private void setFontForContainer(ViewGroup contentLayout) {
+        for (int i=0; i < contentLayout.getChildCount(); i++) {
+            View view = contentLayout.getChildAt(i);
+            if (view instanceof TextView) {
+                ((TextView)view).setTypeface(latoRegular);
+            }
+            else if (view instanceof ViewGroup) {
+                setFontForContainer((ViewGroup) view);
+            }
+        }
     }
 }

@@ -9,13 +9,41 @@
         android:layout_height="wrap_content"
         android:background="@color/background"
         android:orientation="vertical"
-        android:padding="16dp">
-        <ImageView
+        android:padding="16dp"
+        android:visibility="visible">
+        <RelativeLayout
             android:layout_width="wrap_content"
-            android:layout_height="24dp"
-            android:layout_marginBottom="24dp"
-            android:layout_gravity="center"
-            android:id="@+id/iv_ts_status"/>
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="16dp">
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="24dp"
+                android:id="@+id/iv_ts_status"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                android:layout_centerInParent="true"
+                android:id="@+id/tv_ts_isapproved"/>
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:textSize="14sp"
+            android:textColor="@color/homeParent"
+            android:id="@+id/tv_ts_time"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:textSize="14sp"
+            android:textColor="@color/homeParent"
+            android:id="@+id/tv_ts_submit"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -23,28 +51,6 @@
             android:layout_marginBottom="8dp"
             android:textSize="14sp"
             android:textColor="@color/homeParent"
-            android:id="@+id/tv_ts_time"/>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginBottom="16dp">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="14sp"
-                android:textColor="@color/homeParent"
-                android:layout_marginRight="4dp"
-                android:id="@+id/tv_ts_submit"/>
-
-        </LinearLayout>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="4dp"
-            android:textSize="14sp"
             android:id="@+id/tv_ts_errormsg" />
 
         <TextView
@@ -62,7 +68,8 @@
             android:text="@string/ts_resubmit"
             android:textSize="14sp"
             android:textColor="@color/btn"
-            android:visibility="visible"/>
+            android:visibility="visible"
+            android:id="@+id/tv_ts_resubmit"/>
     </LinearLayout>
 
     <View

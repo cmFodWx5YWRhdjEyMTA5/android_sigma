@@ -3,9 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    android:paddingLeft="16dp"
-    android:paddingRight="16dp">
+    android:orientation="horizontal">
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -22,8 +20,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
-                android:textSize="12sp"
-                android:textColor="@color/notifText"
+                android:textSize="14sp"
+                android:textColor="@color/homeParent"
                 android:id="@+id/tv_task"/>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -41,7 +39,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="2dp"
                         android:textSize="11sp"
-                        android:textColor="@color/notifTime"
+                        android:textColor="@color/inactiveText"
+                        android:id="@+id/tv_ad_title_startdate"
                         android:text="@string/ad_start"/>
                     <TextView
                         android:layout_width="wrap_content"
@@ -63,26 +62,33 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="2dp"
                         android:textSize="11sp"
-                        android:textColor="@color/notifTime"
+                        android:textColor="@color/inactiveText"
+                        android:id="@+id/tv_ad_title_enddate"
                         android:text="@string/ad_end"/>
-                    <TextView
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="12sp"
-                        android:textColor="@color/notifText"
-                        android:id="@+id/tv_ad_enddate"/>
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="12dp"
+                            android:textSize="12sp"
+                            android:textColor="@color/homeParent"
+                            android:id="@+id/tv_ad_enddate"/>
+                        <!-- Due soon -->
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:textSize="12sp"
+                            android:textColor="@color/yellow"
+                            android:layout_below="@+id/iv_add_timesheet"
+                            android:text="@string/assign_details_due"
+                            android:visibility="invisible"
+                            android:id="@+id/tv_ad_due" />
+                    </LinearLayout>
                 </LinearLayout>
 
-                <!-- Due date -->
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:textSize="12sp"
-                    android:textColor="@color/assignmentDue"
-                    android:layout_below="@+id/iv_add_timesheet"
-                    android:gravity="bottom|right"
-                    android:text=""
-                    android:id="@+id/tv_assignment_due" />
             </LinearLayout>
         </LinearLayout>
         <ImageView
