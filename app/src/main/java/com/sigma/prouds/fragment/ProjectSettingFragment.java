@@ -1,8 +1,10 @@
 package com.sigma.prouds.fragment;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
@@ -14,6 +16,12 @@ import com.sigma.prouds.ProudsApplication;
 import com.sigma.prouds.R;
 import com.sigma.prouds.base.BaseFragment;
 import com.sigma.prouds.network.ApiService;
+import com.sigma.prouds.network.ApiUtils;
+import com.sigma.prouds.network.response.ProjectSettingResponse;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * Created by goy on 7/15/2017.
@@ -49,6 +57,7 @@ public class ProjectSettingFragment extends BaseFragment
     private EditText etEndDate;
     private Typeface latoRegular;
     private RelativeLayout rlProjectSetting;
+    private ProgressDialog dialog;
 
     public static ProjectSettingFragment newInstance(Context context, String projectId)
     {
@@ -68,6 +77,13 @@ public class ProjectSettingFragment extends BaseFragment
     @Override
     protected void workingSpace(View view)
     {
+        dialog = new ProgressDialog(ctx);
+        dialog.setMessage("Please wait...");
+
+        app = (ProudsApplication) ctx.getApplicationContext();
+        service = ApiUtils.apiService();
+        projectId = getArguments().getString("project_id");
+
         etprojectId = (EditText) view.findViewById(R.id.et_projectid);
         etProjectName = (EditText) view.findViewById(R.id.et_project_name);
         etBusinessUnit = (EditText) view.findViewById(R.id.et_business_unit);
@@ -92,6 +108,42 @@ public class ProjectSettingFragment extends BaseFragment
 
         latoRegular = Typeface.createFromAsset(ctx.getAssets(), "lato_regular.ttf");
         setFontForContainer(rlProjectSetting);
+
+        rbProject.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v)
+            {
+                rbNonProject.setChecked(false);
+                rbProject.setChecked(true);
+            }
+        });
+
+        rbNonProject.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v)
+            {
+                rbNonProject.setChecked(true);
+                rbProject.setChecked(false);
+            }
+        });
+
+        rbYesOperation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                rbYesOperation.setChecked(true);
+                rbNoOperation.setChecked(false);
+            }
+        });
+
+        rbNoOperation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                rbYesOperation.setChecked(false);
+                rbNoOperation.setChecked(true);
+            }
+        });
+
+        getProjectSettingData();
     }
 
     // set typeface for all text
@@ -105,5 +157,54 @@ public class ProjectSettingFragment extends BaseFragment
                 setFontForContainer((ViewGroup) view);
             }
         }
+    }
+
+    public void getProjectSettingData()
+    {
+        dialog.show();
+        service.getProjectSetting(app.getSessionManager().getToken(), projectId).enqueue(new Callback<ProjectSettingResponse>() {
+            @Override
+            public void onResponse(Call<ProjectSettingResponse> call, Response<ProjectSettingResponse> response)
+            {
+                dialog.dismiss();
+                etprojectId.setText(response.body().getProjectSetting().getProjectId());
+                etProjectName.setText(response.body().getProjectSetting().getProjectName());
+                etBusinessUnit.setText(response.body().getProjectSetting().getBuName());
+                etRelatedBusinessUnit.setText(response.body().getProjectSetting().getRelatedBu());
+                etCustomer.setText(response.body().getProjectSetting().getCustId());
+                etCustomer.setText(response.body().getProjectSetting().getCustEndId());
+                //etProjectValue.setText(response.body().getProjectSetting().getProje);
+                etMargin.setText(response.body().getProjectSetting().getMargin());
+                etDesc.setText(response.body().getProjectSetting().getProjectDesc());
+                etPm.setText(response.body().getProjectSetting().getPmId());
+                //etAccountManager.setText(response.body().getProjectSetting().getAc);
+                etTypeEffort.setText(response.body().getProjectSetting().getTypeOfEffort());
+                etProductType.setText(response.body().getProjectSetting().getProductType());
+                etProjectStatus.setText(response.body().getProjectSetting().getProjectStatus());
+                etStartDate.setText(response.body().getProjectSetting().getScheduleStart());
+                etEndDate.setText(response.body().getProjectSetting().getScheduleEnd());
+
+                if (response.body().getProjectSetting().getProjectTypeId().equalsIgnoreCase("non project"))
+                {
+                    rbProject.setChecked(false);
+                    rbNonProject.setChecked(true);
+                }
+                else
+                {
+                    rbNonProject.setChecked(false);
+                    rbProject.setChecked(true);
+                }
+
+                //if (response.body().getProjectSetting().)
+
+            }
+
+            @Override
+            public void onFailure(Call<ProjectSettingResponse> call, Throwable t)
+            {
+                dialog.dismiss();
+                Log.i("Fail", t.toString());
+            }
+        });
     }
 }
