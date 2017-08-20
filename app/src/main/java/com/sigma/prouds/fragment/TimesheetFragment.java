@@ -60,6 +60,7 @@ public class TimesheetFragment extends BaseFragment {
     private ProudsApplication app;
     private TimesheetAdapter adapter;
     private RecyclerView rvTimesheet;
+    private LinearLayout llDayOff;
 
     public static TimesheetFragment newInstance(Context context) {
         TimesheetFragment fragment = new TimesheetFragment();
@@ -76,6 +77,7 @@ public class TimesheetFragment extends BaseFragment {
     protected void workingSpace(View view) {
         app = (ProudsApplication) ctx.getApplicationContext();
         service = ApiUtils.apiService();
+        llDayOff = (LinearLayout) view.findViewById(R.id.ll_ts_dayoff);
         rvTimesheet = (RecyclerView) view.findViewById(R.id.rv_timesheet);
         pbTimeSheet = (ProgressBar) view.findViewById(R.id.pb_timesheet);
         tvDate = (TextView) view.findViewById(R.id.tv_ts_date);
@@ -97,13 +99,15 @@ public class TimesheetFragment extends BaseFragment {
 
                 String fullFormat = "EEE, MMM d yyyy";
                 String halfFormat = "EEE, MMM d";
+                String dataFormat = "yyy-MM-dd";
                 SimpleDateFormat sdf = new SimpleDateFormat(fullFormat);
                 SimpleDateFormat sdfHalf = new SimpleDateFormat(halfFormat);
+                SimpleDateFormat sdfData = new SimpleDateFormat(dataFormat);
                 String form = year + "-" + String.valueOf(month + 1)+ "-" + dayOfMonth;
                 tvDate.setText(sdf.format(calendar.getTime()));
                 tvDateBelow.setText(sdfHalf.format(calendar.getTime()).toUpperCase());
-                Log.i("Date selected : ", form);
-                getData(form);
+                Log.i("Date selected : ", sdfData.format(calendar.getTime()));
+                getData(sdfData.format(calendar.getTime()));
 
             }
         };
@@ -154,7 +158,7 @@ public class TimesheetFragment extends BaseFragment {
         startActivity(intent);
     }
 
-    public void getData(String date)
+    public void getData(final String date)
     {
         rvTimesheet.setVisibility(View.INVISIBLE);
         pbTimeSheet.setVisibility(View.VISIBLE);
@@ -183,6 +187,14 @@ public class TimesheetFragment extends BaseFragment {
                     hour += Integer.parseInt(response.body().getUserActivities().get(i).getHourTotal());
                 }
                 tvHour.setText(hour + "Hours");*/
+
+                // SET DAYOFF LAYOUT
+                for (int i = 0; i < response.body().getHolidays().size()-1; i++) {
+                    Log.i("holiday",response.body().getHolidays().get(i).getHolidayDate().equals(date)+"");
+                    if (response.body().getHolidays().get(i).getHolidayDate().equals(date)) {
+                        llDayOff.setVisibility(View.VISIBLE);
+                    }
+                }
             }
 
             @Override

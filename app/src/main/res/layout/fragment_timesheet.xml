@@ -145,11 +145,40 @@
             android:layout_centerInParent="true"
             android:visibility="gone"/>
 
-    <android.support.v7.widget.RecyclerView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/rv_timesheet">
-    </android.support.v7.widget.RecyclerView>
+        <!-- DAY OFF LAYOUT -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center_horizontal|center_vertical"
+            android:visibility="gone"
+            android:id="@+id/ll_ts_dayoff">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="@string/dayoff_enjoy"
+                android:textColor="@color/homeParent"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="@string/dayoff_update"
+                android:textColor="@color/homeParent"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="100dp"
+                android:src="@drawable/dayoff"/>
+        </LinearLayout>
+
+        <android.support.v7.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/rv_timesheet"
+            android:visibility="visible">
+        </android.support.v7.widget.RecyclerView>
     </RelativeLayout>
 
 </LinearLayout>
