@@ -2,6 +2,7 @@ package com.sigma.prouds;
 
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
+import android.graphics.Typeface;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -114,6 +115,8 @@ public class AddTimesheetActivity extends BaseActivity {
         etMessage = (EditText) findViewById(R.id.et_addts_msg);
         rlAdd = (RelativeLayout) findViewById(R.id.rl_addts);
 
+        query.id(R.id.tv_title_toolbar_addts).typeface(Typeface.createFromAsset(getAssets(), "lato_black.ttf"));
+        query.id(R.id.tv_addts_new).typeface(Typeface.createFromAsset(getAssets(), "lato_regular.ttf"));
     }
 
     public void getTodayDate()

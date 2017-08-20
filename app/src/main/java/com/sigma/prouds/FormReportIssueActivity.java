@@ -97,6 +97,7 @@ public class FormReportIssueActivity extends BaseActivity {
         etSubject = (EditText) findViewById(R.id.et_issue_subject);
         etMessage = (EditText) findViewById(R.id.et_issue_msg);
         query.id(R.id.tv_title_toolbar_report_issue).typeface(Typeface.createFromAsset(getAssets(), "lato_black.ttf"));
+        query.id(R.id.tv_report_issue).typeface(Typeface.createFromAsset(getAssets(), "lato_regular.ttf"));
     }
 
     public void getImage()

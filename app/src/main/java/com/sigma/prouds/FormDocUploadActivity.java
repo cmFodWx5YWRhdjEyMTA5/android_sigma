@@ -81,6 +81,7 @@ public class FormDocUploadActivity extends BaseActivity {
         etDesc = (EditText) findViewById(R.id.et_doc_desc);
         etDocUpload = (EditText) findViewById(R.id.et_doc_upload);
         query.id(R.id.tv_title_toolbar_add_doc).typeface(Typeface.createFromAsset(getAssets(), "lato_black.ttf"));
+        query.id(R.id.tv_doc_upload).typeface(Typeface.createFromAsset(getAssets(), "lato_regular.ttf"));
     }
 
     public void getFile()
