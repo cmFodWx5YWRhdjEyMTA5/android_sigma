@@ -60,8 +60,6 @@
         android:layout_width="match_parent"
         android:layout_height="56dp"
         android:background="@color/white"
-        android:paddingLeft="16dp"
-        android:paddingRight="16dp"
         app:tabMode="fixed"
         app:tabGravity="fill"
         app:tabIndicatorHeight="3dp"

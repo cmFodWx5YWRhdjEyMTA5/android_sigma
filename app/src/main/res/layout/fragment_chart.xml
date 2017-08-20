@@ -3,7 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:custom="http://schemas.android.com/apk/res-auto"
-    android:background="@color/background">
+    android:background="@color/background"
+    android:id="@+id/ll_chart">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -28,7 +29,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="8dp"
                         android:text="@string/chart_ts"
-                        android:textSize="16sp"/>
+                        android:textSize="16sp"
+                        android:textColor="@color/homeParent"/>
                     <View
                         android:layout_width="45dp"
                         android:layout_height="3dp"
@@ -49,7 +51,7 @@
                             android:layout_height="38dp"
                             android:paddingLeft="10dp"
                             android:paddingRight="24dp"
-                            android:textSize="12sp"
+                            android:textSize="14sp"
                             android:textColor="@color/homeParent"
                             android:gravity="center_vertical"
                             android:background="@drawable/gray_box"
@@ -75,11 +77,11 @@
                             android:paddingRight="24dp"
                             android:gravity="center_vertical"
                             android:background="@drawable/gray_box"
-                            android:textSize="12sp"
+                            android:textSize="14sp"
                             android:textColor="@color/homeParent"
-                            android:id="@+id/et_chart_tsyear"
                             android:focusable="false"
-                            android:focusableInTouchMode="false"/>
+                            android:focusableInTouchMode="false"
+                            android:id="@+id/et_chart_tsyear"/>
                         <ImageView
                             android:layout_width="12dp"
                             android:layout_height="12dp"
@@ -93,7 +95,8 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp">
 
                 <ProgressBar
                     android:id="@+id/pb_performance"
@@ -135,7 +138,9 @@
                         android:layout_below="@+id/pb_user_entry"
                         android:layout_centerHorizontal="true"
                         android:layout_marginTop="4dp"
-                        android:text="USER ENTRY"/>
+                        android:text="USER ENTRY"
+                        android:textSize="14sp"
+                        android:textColor="@color/homeParent"/>
 
                     <TextView
                         android:id="@+id/tv_entry_status"
@@ -145,7 +150,8 @@
                         android:layout_centerHorizontal="true"
                         android:textSize="11sp"
                         android:layout_marginTop="4dp"
-                        android:text="USER ENTRY"/>
+                        android:text="USER ENTRY"
+                        android:textColor="@color/homeParent"/>
 
 
                 </RelativeLayout>
@@ -177,7 +183,9 @@
                         android:layout_below="@+id/pb_user_utilization"
                         android:layout_centerHorizontal="true"
                         android:layout_marginTop="4dp"
-                        android:text="USER UTILIZATION"/>
+                        android:text="USER UTILIZATION"
+                        android:textSize="14sp"
+                        android:textColor="@color/homeParent"/>
 
                     <TextView
                         android:id="@+id/tv_util_status"
@@ -187,7 +195,8 @@
                         android:layout_centerHorizontal="true"
                         android:textSize="11sp"
                         android:layout_marginTop="4dp"
-                        android:text="USER ENTRY"/>
+                        android:text="USER ENTRY"
+                        android:textColor="@color/homeParent"/>
 
                 </RelativeLayout>
 
@@ -203,42 +212,56 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:layout_marginRight="12dp">
+                    android:layout_marginRight="18dp">
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="8dp"
                         android:text="@string/chart_util"
-                        android:textSize="18sp"/>
+                        android:textSize="16sp"
+                        android:textColor="@color/homeParent"/>
                     <View
                         android:layout_width="45dp"
                         android:layout_height="3dp"
                         android:background="@color/btn"
                         android:layout_marginBottom="12dp"/>
 
-
-
                 </LinearLayout>
-                <EditText
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:padding="2dp"
-                    android:focusable="false"
-                    android:focusableInTouchMode="false"
-                    android:background="@drawable/gray_box"
-                    android:id="@+id/et_chart_utilyear"/>
+                <RelativeLayout
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content">
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="38dp"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="24dp"
+                        android:gravity="center_vertical"
+                        android:background="@drawable/gray_box"
+                        android:textSize="14sp"
+                        android:textColor="@color/homeParent"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:id="@+id/et_chart_utilyear"/>
+                    <ImageView
+                        android:layout_width="12dp"
+                        android:layout_height="12dp"
+                        android:layout_margin="12dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/dropdown"/>
+                </RelativeLayout>
             </LinearLayout>
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp">
 
             <com.github.mikephil.charting.charts.LineChart
                 android:id="@+id/chart_utilization"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
-                android:visibility="invisible"
-                 />
+                android:visibility="invisible" />
 
                 <ProgressBar
                     android:id="@+id/pb_chart_util"
@@ -256,27 +279,43 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:layout_marginRight="12dp">
+                    android:layout_marginRight="18dp">
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="8dp"
                         android:text="@string/chart_entry"
-                        android:textSize="18sp"/>
+                        android:textSize="16sp"
+                        android:textColor="@color/homeParent"/>
                     <View
                         android:layout_width="45dp"
                         android:layout_height="3dp"
                         android:background="@color/btn"/>
                 </LinearLayout>
 
-                <EditText
-                    android:id="@+id/et_chart_entryyear"
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:padding="2dp"
-                    android:focusable="false"
-                    android:focusableInTouchMode="false"
-                    android:background="@drawable/gray_box"/>
+                <RelativeLayout
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content">
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="38dp"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="24dp"
+                        android:gravity="center_vertical"
+                        android:background="@drawable/gray_box"
+                        android:textSize="14sp"
+                        android:textColor="@color/homeParent"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:id="@+id/et_chart_entryyear"/>
+                    <ImageView
+                        android:layout_width="12dp"
+                        android:layout_height="12dp"
+                        android:layout_margin="12dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/dropdown"/>
+                </RelativeLayout>
 
             </LinearLayout>
 
