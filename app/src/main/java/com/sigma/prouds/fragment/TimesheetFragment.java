@@ -61,6 +61,7 @@ public class TimesheetFragment extends BaseFragment {
     private TimesheetAdapter adapter;
     private RecyclerView rvTimesheet;
     private LinearLayout llDayOff;
+    private boolean isHoliday;
 
     public static TimesheetFragment newInstance(Context context) {
         TimesheetFragment fragment = new TimesheetFragment();
@@ -162,7 +163,9 @@ public class TimesheetFragment extends BaseFragment {
     {
         rvTimesheet.setVisibility(View.INVISIBLE);
         pbTimeSheet.setVisibility(View.VISIBLE);
+        llDayOff.setVisibility(View.GONE);
         tvEmpty.setVisibility(View.GONE);
+        isHoliday = false;
         ProjectListTimesheetSenderModel model = new ProjectListTimesheetSenderModel();
         model.setMobile("1");
         model.setDate(date);
@@ -170,10 +173,23 @@ public class TimesheetFragment extends BaseFragment {
             @Override
             public void onResponse(Call<UserProjectTimesheetResponse> call, Response<UserProjectTimesheetResponse> response)
             {
+                // SET DAYOFF LAYOUT
+                for (int i = 0; i < response.body().getHolidays().size(); i++) {
+                    if (response.body().getHolidays().get(i).getHolidayDate().equals(date)) {
+                        isHoliday = true;
+                    }
+                }
+
                 if (response.body().getUserActivities().size() == 0)
                 {
-                    tvEmpty.setVisibility(View.VISIBLE);
+                    if (isHoliday == true) {
+                        llDayOff.setVisibility(View.VISIBLE);
+                    }
+                    else {
+                        tvEmpty.setVisibility(View.VISIBLE);
+                    }
                 }
+
                 rvTimesheet.setVisibility(View.VISIBLE);
                 pbTimeSheet.setVisibility(View.GONE);
                 Log.i("Succes : ", response.body().getUserActivities().size() + "");
@@ -188,13 +204,6 @@ public class TimesheetFragment extends BaseFragment {
                 }
                 tvHour.setText(hour + "Hours");*/
 
-                // SET DAYOFF LAYOUT
-                for (int i = 0; i < response.body().getHolidays().size()-1; i++) {
-                    Log.i("holiday",response.body().getHolidays().get(i).getHolidayDate().equals(date)+"");
-                    if (response.body().getHolidays().get(i).getHolidayDate().equals(date)) {
-                        llDayOff.setVisibility(View.VISIBLE);
-                    }
-                }
             }
 
             @Override
@@ -203,6 +212,10 @@ public class TimesheetFragment extends BaseFragment {
 
             }
         });
+    }
+
+    public void dataIsEmpty() {
+
     }
 
 

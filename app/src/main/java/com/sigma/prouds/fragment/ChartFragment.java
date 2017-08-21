@@ -288,7 +288,7 @@ public class ChartFragment extends BaseFragment
             @Override
             public void onResponse(Call<MyPerformanceYearlyResponse> call, Response<MyPerformanceYearlyResponse> response)
             {
-                Log.i("Response", response.body().getAllhour().get(0).getLabel());
+//                Log.i("Response", response.body().getAllhour().get(0).getLabel());
                 ArrayList<Entry> utilValue = new ArrayList<>();
                 ArrayList<String> utilLabel = new ArrayList<String>();
                 for (int i=0; i<= response.body().getAllhour().size()-1;i++)
