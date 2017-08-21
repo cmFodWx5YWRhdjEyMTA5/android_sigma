@@ -34,7 +34,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="18sp"
+                android:textSize="16sp"
                 android:textColor="@color/homeParent"
                 android:id="@+id/tv_username"/>
             <TextView
@@ -64,7 +64,8 @@
         app:tabGravity="fill"
         app:tabIndicatorHeight="3dp"
         app:tabIndicatorColor="@color/header"
-        android:id="@+id/tl_performance">
+        android:id="@+id/tl_performance"
+        >
     </android.support.design.widget.TabLayout>
 
     <FrameLayout

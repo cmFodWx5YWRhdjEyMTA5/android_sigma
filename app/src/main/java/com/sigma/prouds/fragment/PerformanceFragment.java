@@ -2,6 +2,7 @@ package com.sigma.prouds.fragment;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -72,6 +73,9 @@ public class PerformanceFragment extends BaseFragment
                 startActivity(intent);
             }
         });
+
+        query.id(R.id.tv_username).typeface(Typeface.createFromAsset(ctx.getAssets(), "lato_black.ttf"));
+        query.id(R.id.tv_role).typeface(Typeface.createFromAsset(ctx.getAssets(), "lato_regular.ttf"));
 
     }
 
