@@ -1,10 +1,13 @@
 package com.sigma.prouds;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.sigma.prouds.base.BaseActivity;
@@ -14,6 +17,8 @@ public class ProfileSettingActivity extends BaseActivity {
     private TextView tvUsername;
     private LinearLayout llLogout;
     private ProudsApplication app;
+    private Typeface latoRegular;
+    private RelativeLayout rlProfileSetting;
 
     @Override
     protected int getLayout() {
@@ -34,12 +39,17 @@ public class ProfileSettingActivity extends BaseActivity {
             }
         });
 
+        latoRegular = Typeface.createFromAsset(this.getAssets(), "lato_regular.ttf");
+        setFontForContainer(rlProfileSetting);
+        query.id(R.id.tv_username).typeface(Typeface.createFromAsset(this.getAssets(), "lato_black.ttf"));
+
     }
 
     public void assignXML()
     {
         tvUsername = (TextView) findViewById(R.id.tv_username);
         llLogout = (LinearLayout) findViewById(R.id.ll_profset_logout);
+        rlProfileSetting = (RelativeLayout) findViewById(R.id.rl_profile_setting);
     }
 
     public void logout()
@@ -49,6 +59,18 @@ public class ProfileSettingActivity extends BaseActivity {
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
         ProfileSettingActivity.this.finish();
+    }
+
+    private void setFontForContainer(ViewGroup contentLayout) {
+        for (int i=0; i < contentLayout.getChildCount(); i++) {
+            View view = contentLayout.getChildAt(i);
+            if (view instanceof TextView) {
+                ((TextView)view).setTypeface(latoRegular);
+            }
+            else if (view instanceof ViewGroup) {
+                setFontForContainer((ViewGroup) view);
+            }
+        }
     }
 
 }

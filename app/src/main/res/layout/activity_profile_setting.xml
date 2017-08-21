@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.sigma.prouds.ProfileSettingActivity"
-    android:background="@color/background">
+    android:background="@color/background"
+    android:id="@+id/rl_profile_setting">
     <!-- Toolbar start -->
     <android.support.v7.widget.Toolbar
         android:layout_width="match_parent"
@@ -71,22 +72,20 @@
                     android:orientation="horizontal"
                     android:layout_marginBottom="36dp">
                     <RelativeLayout
-                        android:layout_width="72dp"
-                        android:layout_height="72dp"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
                         android:layout_marginRight="16dp"
                         android:id="@+id/rl_dp">
                         <de.hdodenhof.circleimageview.CircleImageView
-                            android:layout_width="72dp"
-                            android:layout_height="72dp"
-                            android:layout_marginRight="12dp"
-                            android:layout_marginLeft="12dp"
+                            android:layout_width="80dp"
+                            android:layout_height="80dp"
                             android:layout_alignParentLeft="true"
                             android:layout_centerVertical="true"
                             android:src="@drawable/user"
                             android:id="@+id/iv_dp"/>
                         <ImageView
-                            android:layout_width="36dp"
-                            android:layout_height="36dp"
+                            android:layout_width="28dp"
+                            android:layout_height="28dp"
                             android:src="@drawable/change_photo"
                             android:layout_alignParentBottom="true"
                             android:layout_alignParentRight="true"
@@ -100,14 +99,13 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textSize="24sp"
-                            android:textStyle="bold"
+                            android:textSize="16sp"
                             android:textColor="@color/homeParent"
                             android:id="@+id/tv_username"/>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textSize="16sp"
+                            android:textSize="12sp"
                             android:textColor="@color/homeParent"
                             android:id="@+id/tv_role"/>
                     </LinearLayout>
@@ -230,7 +228,7 @@
         </RelativeLayout>
 
     </ScrollView>
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="128dp"
         android:orientation="vertical"
@@ -239,29 +237,27 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="56dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
             android:background="@color/btn"
             android:text="@string/profset_save"
             android:textColor="@color/white"
             android:textSize="18sp"
             android:gravity="center_horizontal|center_vertical"
+            android:layout_above="@+id/ll_profset_logout"
             android:id="@+id/tv_profset_save"/>
 
         <LinearLayout
             android:id="@+id/ll_profset_logout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
             android:gravity="center_horizontal|center_vertical"
-            android:orientation="horizontal"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp">
+            android:orientation="horizontal">
 
             <ImageView
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:layout_marginRight="12dp"
-                android:src="@drawable/change_photo" />
+                android:src="@drawable/logout" />
 
             <TextView
                 android:id="@+id/tv_profset_logout"
@@ -273,5 +269,5 @@
                 android:textSize="18sp" />
         </LinearLayout>
 
-    </LinearLayout>
+    </RelativeLayout>
 </RelativeLayout>
