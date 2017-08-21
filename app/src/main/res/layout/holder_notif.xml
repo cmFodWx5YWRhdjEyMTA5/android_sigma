@@ -21,31 +21,25 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_marginRight="16dp">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="14sp"
-                    android:textColor="@color/homeParent"
-                    android:text="something"
-                    android:id="@+id/tv_notif"/>
-            </LinearLayout>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="14dp"
+                android:layout_marginBottom="6dp"
                 android:textSize="14sp"
                 android:textColor="@color/homeParent"
-                android:text="something"
+                android:id="@+id/tv_notif"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:textSize="14sp"
+                android:textColor="@color/homeParent"
+                android:visibility="gone"
                 android:id="@+id/tv_notif_acc"/>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/tv_time"
+                android:id="@+id/tv_notif_time"
                 android:textSize="12sp"
                 android:text="here"
                 android:textColor="@color/inactiveText"/>
