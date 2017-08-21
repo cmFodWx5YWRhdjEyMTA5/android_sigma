@@ -1,6 +1,7 @@
 package com.sigma.prouds.holder;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
@@ -20,7 +21,8 @@ public class TeamMemberHolder extends RecyclerView.ViewHolder
     private CircleImageView ivTeamMember;
     private TextView tvNameMember;
     private TextView tvEmailMember;
-
+    private TextView tvLastSeen;
+    private Typeface latoRegular, latoBold;
     public TeamMemberHolder(Context context, View itemView)
     {
         super(itemView);
@@ -28,11 +30,19 @@ public class TeamMemberHolder extends RecyclerView.ViewHolder
         ivTeamMember = (CircleImageView) itemView.findViewById(R.id.iv_team_member);
         tvNameMember = (TextView) itemView.findViewById(R.id.tv_name_member);
         tvEmailMember = (TextView) itemView.findViewById(R.id.tv_email_member);
+        tvLastSeen = (TextView) itemView.findViewById(R.id.tv_last_seen);
+
+        latoRegular = Typeface.createFromAsset(itemView.getContext().getAssets(), "lato_regular.ttf");
+        latoBold = Typeface.createFromAsset(itemView.getContext().getAssets(), "lato_bold.ttf");
     }
 
     public void bind(TeamModel model)
     {
         tvNameMember.setText(model.getUserName());
         tvEmailMember.setText(model.getEmail());
+
+        tvNameMember.setTypeface(latoRegular);
+        tvEmailMember.setTypeface(latoBold);
+        tvLastSeen.setTypeface(latoRegular);
     }
 }

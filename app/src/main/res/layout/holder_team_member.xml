@@ -1,42 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:layout_width="match_parent"
-              android:layout_height="wrap_content">
+              android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="90dp"
         android:orientation="horizontal"
-        android:padding="12dp"
+        android:padding="16dp"
         android:background="@color/white">
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/iv_team_member"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:src="@drawable/user"/>
+        <RelativeLayout
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            android:layout_gravity="center_vertical">
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/iv_team_member"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/user"/>
+            <ImageView
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:id="@+id/iv_isonline"
+                android:visibility="invisible"
+                android:src="@drawable/online"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentBottom="true"/>
+        </RelativeLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_marginLeft="8dp">
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="16dp">
 
             <TextView
                 android:id="@+id/tv_name_member"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="16dp"
-                />
+                android:textSize="14sp"
+                android:textColor="@color/homeParent"/>
 
             <TextView
                 android:id="@+id/tv_email_member"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="14dp"/>
+                android:layout_marginBottom="8dp"
+                android:textSize="13sp"
+                android:textColor="@color/inactiveText"/>
 
+            <TextView
+                android:id="@+id/tv_last_seen"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="11sp"
+                android:textColor="@color/inactiveText"/>
         </LinearLayout>
-
     </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/background"/>
 
 </LinearLayout>

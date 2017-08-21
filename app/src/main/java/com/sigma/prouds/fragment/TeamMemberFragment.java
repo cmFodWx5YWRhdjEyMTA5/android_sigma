@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -57,6 +58,7 @@ public class TeamMemberFragment extends BaseFragment
         app = (ProudsApplication) ctx.getApplicationContext();
         service = ApiUtils.apiService();
         projectId = getArguments().getString("project_id");
+        Log.i("projectid", projectId);
         rvTeamMember = (RecyclerView) view.findViewById(R.id.rv_team_member);
         tvMemberEmpty = (TextView) view.findViewById(R.id.tv_empty_team);
         pbTeam = (ProgressBar) view.findViewById(R.id.pb_team);
