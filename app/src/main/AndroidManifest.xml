@@ -33,9 +33,9 @@
         <activity android:name=".ProfileSettingActivity"
             android:windowSoftInputMode="adjustPan"/>
         <activity android:name=".FormReportIssueActivity" />
-        <activity android:name=".SearchResultActivity" />
+        <activity android:name=".HomeSearchResultActivity" />
         <activity android:name=".NotifActivity" />
-        <activity android:name=".SearchActivity"></activity>
+        <activity android:name=".HomeSearchActivity"></activity>
 
         <meta-data
             android:name="io.fabric.ApiKey"

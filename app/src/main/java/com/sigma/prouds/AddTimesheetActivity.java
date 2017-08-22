@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
@@ -43,7 +44,7 @@ public class AddTimesheetActivity extends BaseActivity {
     private String projectId;
     private String wpId;
     private ProgressDialog dialog;
-
+    private ImageView ivBack;
     private ProjectAssignmentModel projectModel;
 
     @Override
@@ -103,6 +104,13 @@ public class AddTimesheetActivity extends BaseActivity {
                 }
             }
         });
+
+        ivBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AddTimesheetActivity.this.finish();
+            }
+        });
     }
 
     public void assignXML()
@@ -114,7 +122,7 @@ public class AddTimesheetActivity extends BaseActivity {
         etSubject = (EditText) findViewById(R.id.et_addts_subject);
         etMessage = (EditText) findViewById(R.id.et_addts_msg);
         rlAdd = (RelativeLayout) findViewById(R.id.rl_addts);
-
+        ivBack = (ImageView) findViewById(R.id.iv_back);
         query.id(R.id.tv_title_toolbar_addts).typeface(Typeface.createFromAsset(getAssets(), "lato_black.ttf"));
         query.id(R.id.tv_addts_new).typeface(Typeface.createFromAsset(getAssets(), "lato_regular.ttf"));
     }

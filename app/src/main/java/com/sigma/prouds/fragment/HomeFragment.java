@@ -1,6 +1,7 @@
 package com.sigma.prouds.fragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -10,8 +11,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import com.bignerdranch.expandablerecyclerview.Model.ParentObject;
+import com.sigma.prouds.HomeSearchActivity;
 import com.sigma.prouds.ProudsApplication;
 import com.sigma.prouds.R;
 import com.sigma.prouds.adapter.HomeExpandableAdapter;
@@ -43,6 +46,7 @@ public class HomeFragment extends BaseFragment {
     private RecyclerView rvHome;
     private HomeExpandableAdapter adapter;
     private  List<BusinessUnitExpendableModel> listResult;
+    private ImageView ivSearch;
     ArrayList<BusinessUnitExpendableModel> arrayList;
     public HomeFragment() {
         // Required empty public constructor

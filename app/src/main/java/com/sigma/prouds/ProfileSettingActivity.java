@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -19,6 +20,7 @@ public class ProfileSettingActivity extends BaseActivity {
     private ProudsApplication app;
     private Typeface latoRegular;
     private RelativeLayout rlProfileSetting;
+    private ImageView ivBack, ivNotif;
 
     @Override
     protected int getLayout() {
@@ -43,6 +45,22 @@ public class ProfileSettingActivity extends BaseActivity {
         setFontForContainer(rlProfileSetting);
         query.id(R.id.tv_username).typeface(Typeface.createFromAsset(this.getAssets(), "lato_black.ttf"));
 
+        ivBack.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                ProfileSettingActivity.this.finish();
+            }
+        });
+
+        ivNotif.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                toNotif();
+            }
+        });
+
     }
 
     public void assignXML()
@@ -50,6 +68,13 @@ public class ProfileSettingActivity extends BaseActivity {
         tvUsername = (TextView) findViewById(R.id.tv_username);
         llLogout = (LinearLayout) findViewById(R.id.ll_profset_logout);
         rlProfileSetting = (RelativeLayout) findViewById(R.id.rl_profile_setting);
+        ivBack = (ImageView) findViewById(R.id.iv_back);
+        ivNotif = (ImageView) findViewById(R.id.iv_notif);
+    }
+
+    public void toNotif() {
+        Intent intent = new Intent(this, NotifActivity.class);
+        startActivity(intent);
     }
 
     public void logout()

@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.sigma.prouds.adapter.AssignmentAdapter;
@@ -23,6 +25,7 @@ public class AssignmentDetailsActivity extends BaseActivity
     private List<ProjectAssignmentModel> list;
     private AssignmentDetailsAdapter adapter;
     private TextView tvAssignment;
+    private ImageView ivBack;
 
     @Override
     protected int getLayout() {
@@ -45,6 +48,16 @@ public class AssignmentDetailsActivity extends BaseActivity
         rvAssignmentDetails.setLayoutManager(manager);
         rvAssignmentDetails.setAdapter(adapter);
         tvAssignment.setText(model.getProjectName());
+
+        ivBack = (ImageView) findViewById(R.id.iv_back);
+        ivBack.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                AssignmentDetailsActivity.this.finish();
+            }
+        });
     }
 
     public void onEvent(ProjectAssignmentModel model)
@@ -55,4 +68,6 @@ public class AssignmentDetailsActivity extends BaseActivity
         intent.putExtra("model", bundle);
         startActivity(intent);
     }
+
+
 }

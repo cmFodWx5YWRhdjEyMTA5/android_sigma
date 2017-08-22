@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.sigma.prouds.adapter.NotifAdapter;
@@ -24,6 +25,7 @@ public class NotifActivity extends BaseActivity {
     private RecyclerView rvNotif;
     private NotifAdapter adapter;
     private TextView tvEmptyNotif;
+    private ImageView ivBack;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -47,6 +49,16 @@ public class NotifActivity extends BaseActivity {
 
         tvEmptyNotif = (TextView) findViewById(R.id.tv_notif_empty);
         tvEmptyNotif.setVisibility(View.VISIBLE);
+
+        ivBack = (ImageView) findViewById(R.id.iv_back);
+        ivBack.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                NotifActivity.this.finish();
+            }
+        });
     }
 
 

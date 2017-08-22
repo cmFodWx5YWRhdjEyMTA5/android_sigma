@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Typeface;
+import android.media.Image;
 import android.net.Uri;
 import android.provider.MediaStore;
 import android.support.v4.app.ActivityCompat;
@@ -16,6 +17,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
@@ -43,6 +45,7 @@ public class FormReportIssueActivity extends BaseActivity {
     private Uri imagePath;
     private String projectId;
     private ProgressDialog dialog;
+    private ImageView ivBack;
 
     private ProudsApplication app;
     private ApiService service;
@@ -87,6 +90,13 @@ public class FormReportIssueActivity extends BaseActivity {
             }
         });
 
+        ivBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FormReportIssueActivity.this.finish();
+            }
+        });
+
     }
 
     public void assignXML()
@@ -96,6 +106,7 @@ public class FormReportIssueActivity extends BaseActivity {
         rlUploadIssue = (RelativeLayout) findViewById(R.id.rl_report_issue);
         etSubject = (EditText) findViewById(R.id.et_issue_subject);
         etMessage = (EditText) findViewById(R.id.et_issue_msg);
+        ivBack = (ImageView) findViewById(R.id.iv_back);
         query.id(R.id.tv_title_toolbar_report_issue).typeface(Typeface.createFromAsset(getAssets(), "lato_black.ttf"));
         query.id(R.id.tv_report_issue).typeface(Typeface.createFromAsset(getAssets(), "lato_regular.ttf"));
     }

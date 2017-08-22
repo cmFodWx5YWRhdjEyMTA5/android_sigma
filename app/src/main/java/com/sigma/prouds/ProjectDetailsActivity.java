@@ -36,7 +36,7 @@ public class ProjectDetailsActivity extends BaseActivity {
 
     public static final String KEY_DRAWER_ITEM = "key_drawer_item";
 
-    private ImageView ivMenu, ivDrawerClose, ivBack;
+    private ImageView ivMenu, ivDrawerClose, ivBack, ivNotif;
     private TextView tvToolbarTitle, tvProject, tvPercen, tvStatus;
     private DrawerAdapter adapter;
     private DrawerLayout pdDrawer;
@@ -73,6 +73,13 @@ public class ProjectDetailsActivity extends BaseActivity {
             }
         });
 
+        ivNotif.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                toNotif();
+            }
+        });
+
         getDataFromHome();
         pdFragment = new OverviewFragment().newInstance(this, projectId);
         pdFragmentManager.beginTransaction().replace(R.id.pd_container, pdFragment).commit();
@@ -87,8 +94,14 @@ public class ProjectDetailsActivity extends BaseActivity {
         setTypeFace();
     }
 
+    public void toNotif() {
+        Intent intent = new Intent(this, NotifActivity.class);
+        startActivity(intent);
+    }
+
     public void assignXML() {
         ivMenu = (ImageView) findViewById(R.id.iv_menu);
+        ivNotif = (ImageView) findViewById(R.id.iv_notif);
         ivDrawerClose = (ImageView) findViewById(R.id.iv_drawerclose);
         pdDrawer = (DrawerLayout) findViewById(R.id.pd_drawer);
         pdListView = (ListView) findViewById(R.id.lv_pd_drawer);

@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
@@ -40,6 +41,7 @@ public class FormDocUploadActivity extends BaseActivity {
     private ProgressDialog dialog;
     private ProudsApplication app;
     private ApiService service;
+    private ImageView ivBack;
 
     @Override
     protected int getLayout()
@@ -73,6 +75,13 @@ public class FormDocUploadActivity extends BaseActivity {
                 uploadDoc();
             }
         });
+
+        ivBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FormDocUploadActivity.this.finish();
+            }
+        });
     }
 
     public void assignXML()
@@ -80,6 +89,7 @@ public class FormDocUploadActivity extends BaseActivity {
         rlUploadDoc = (RelativeLayout) findViewById(R.id.rl_upload_doc);
         etDesc = (EditText) findViewById(R.id.et_doc_desc);
         etDocUpload = (EditText) findViewById(R.id.et_doc_upload);
+        ivBack = (ImageView) findViewById(R.id.iv_back);
         query.id(R.id.tv_title_toolbar_add_doc).typeface(Typeface.createFromAsset(getAssets(), "lato_black.ttf"));
         query.id(R.id.tv_doc_upload).typeface(Typeface.createFromAsset(getAssets(), "lato_regular.ttf"));
     }
