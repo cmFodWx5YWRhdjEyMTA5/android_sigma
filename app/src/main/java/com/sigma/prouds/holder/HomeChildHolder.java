@@ -56,6 +56,7 @@ public class HomeChildHolder extends ChildViewHolder
                 EventBus.getDefault().post(bundle);
             }
         });
+
         float progress = Float.parseFloat(model.getProjectComplete());
         int finalProgress = (int) progress;
         progressBar.setProgress(finalProgress);

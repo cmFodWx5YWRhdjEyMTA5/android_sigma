@@ -1,13 +1,21 @@
 package com.sigma.prouds;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
+import android.util.Log;
 
-public class HomeSearchResultActivity extends AppCompatActivity {
+import com.sigma.prouds.base.BaseActivity;
+
+public class HomeSearchResultActivity extends BaseActivity {
+
+    private String searchResult;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_search_result);
+    protected int getLayout() {
+        return R.layout.activity_search_result;
+    }
+
+    @Override
+    protected void workingSpace() {
+        searchResult = getIntent().getExtras().getString("search_result");
+        Log.i("search", searchResult);
     }
 }

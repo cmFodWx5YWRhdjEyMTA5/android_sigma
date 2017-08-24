@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -18,10 +19,12 @@ import com.sigma.prouds.fragment.TimesheetFragment;
 public class PagerActivity extends BaseFragmentActivity {
 
     public static final String KEY_TO_DETAIL_PROJECT = "key_to_detail-project";
+    public static final String KEY_TO_HOME_SEARCH = "key_to_home_search";
     public static final String KEY_PROJECT_ID = "key_project_id";
     public static final String KEY_PROJECT_NAME = "key_project_name";
     public static final String KEY_PROJECT_STATUS = "key_project_status";
     public static final String KEY_PROJECT_COMPLETED = "key_project_completed";
+    public static final String KEY_SEARCH_LIST = "key_search_list";
 
     private TabLayout tabLayout;
     private Toolbar tbHome, tbAssignment, tbTimesheet, tbPerformance;
@@ -190,6 +193,11 @@ public class PagerActivity extends BaseFragmentActivity {
             //Log.i("project_id", bundle.getString(KEY_TO_DETAIL_PROJECT));
             Intent intent = new Intent(this, ProjectDetailsActivity.class);
             intent.putExtra(KEY_TO_DETAIL_PROJECT, bundle);
+            startActivity(intent);
+        }
+        if (bundle.containsKey(KEY_SEARCH_LIST)) {
+            Intent intent = new Intent(this, HomeSearchActivity.class);
+            intent.putExtra(KEY_TO_HOME_SEARCH, bundle);
             startActivity(intent);
         }
     }
