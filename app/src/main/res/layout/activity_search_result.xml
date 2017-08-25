@@ -32,7 +32,8 @@
                 android:src="@drawable/logo_white"
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
-                android:layout_centerVertical="true" />
+                android:layout_centerVertical="true"
+                android:visibility="invisible"/>
 
             <ImageView
                 android:id="@+id/iv_notif"
@@ -41,7 +42,7 @@
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
-                android:visibility="visible"
+                android:visibility="invisible"
                 android:src="@drawable/notif" />
 
         </RelativeLayout>
@@ -91,6 +92,19 @@
         android:textColor="@color/inactiveText"/>
 
     <!--Recycler View start-->
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/tv_not_found"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Search result not found"
+            android:layout_centerInParent="true"
+            android:visibility="gone"/>
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_search_result"
         android:layout_width="match_parent"
@@ -99,6 +113,8 @@
         android:layout_marginRight="16dp"></android.support.v7.widget.RecyclerView>
     <!--Recycler View end-->
 
+
+</RelativeLayout>
 
 
 </LinearLayout>

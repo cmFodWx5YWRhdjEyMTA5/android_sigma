@@ -72,6 +72,7 @@ public class HomeFragment extends BaseFragment {
         app = (ProudsApplication) ctx.getApplicationContext();
         rvHome = (RecyclerView) viewRoot.findViewById(R.id.rv_home);
         etSearch = (EditText) view.findViewById(R.id.et_search);
+        ivSearch = (ImageView) view.findViewById(R.id.iv_search);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
         rvHome.setLayoutManager(layoutManager);
         final RecyclerView.ItemAnimator animator = rvHome.getItemAnimator();
@@ -80,7 +81,7 @@ public class HomeFragment extends BaseFragment {
         }
         getData();
 
-        ivSearch = (ImageView) view.findViewById(R.id.iv_search);
+
         etSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -117,6 +118,8 @@ public class HomeFragment extends BaseFragment {
 
     public void getData()
     {
+        etSearch.setVisibility(View.GONE);
+        ivSearch.setVisibility(View.GONE);
         query.id(R.id.pb_home).visible();
         service = ApiUtils.apiService();
         service.getHome(app.getSessionManager().getToken()).enqueue(new Callback<ProjectResponse>()
@@ -146,6 +149,8 @@ public class HomeFragment extends BaseFragment {
 
                 adapter = new HomeExpandableAdapter(ctx, arrayList);
                 rvHome.setAdapter(adapter);
+                etSearch.setVisibility(View.VISIBLE);
+                ivSearch.setVisibility(View.VISIBLE);
             }
 
             @Override

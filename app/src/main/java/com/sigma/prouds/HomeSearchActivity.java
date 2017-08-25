@@ -55,7 +55,7 @@ public class HomeSearchActivity extends BaseActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 selected = (String)parent.getItemAtPosition(position);
-                clickPosition = listProjectBu.indexOf(selected);
+                //clickPosition = listProjectBu.indexOf(selected);
                 Log.i("position_1", clickPosition + "");
                 Log.i("search", selected);
             }
@@ -66,6 +66,7 @@ public class HomeSearchActivity extends BaseActivity {
         ivSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                clickPosition = listProjectBu.indexOf(actvSearch.getText().toString());
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("search", listRaw);
                 bundle.putInt("search_position", clickPosition);
