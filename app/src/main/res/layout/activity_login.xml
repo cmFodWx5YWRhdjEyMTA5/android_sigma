@@ -39,7 +39,7 @@
             android:hint="Username"
             android:background="@drawable/round_et"
             android:id="@+id/et_username"
-            android:text="gina.nufus@sigma.co.id"/>
+            />
 
 
         <EditText
@@ -51,7 +51,7 @@
             android:inputType="textPassword"
             android:background="@drawable/round_et"
             android:id="@+id/et_password"
-            android:text="S201502162"/>
+            />
             <!--android:text="S201502162"-->
         <Button
             android:layout_width="240dp"

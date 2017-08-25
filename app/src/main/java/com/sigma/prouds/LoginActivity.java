@@ -57,15 +57,24 @@ public class LoginActivity extends BaseActivity
             @Override
             public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response)
             {
-                dialog.dismiss();
-                app.getSessionManager().setLogin(true);
-                app.getSessionManager().setToken(response.body().getToken());
-                app.getSessionManager().setUserName(model.getUserId());
-                app.getSessionManager().setPassword(model.getPassword());
-                Log.i("Token", app.getSessionManager().getToken());
-                Intent intent = new Intent(LoginActivity.this, PagerActivity.class);
-                startActivity(intent);
-                LoginActivity.this.finish();
+                if (response.code() == 200)
+                {
+                    dialog.dismiss();
+                    app.getSessionManager().setLogin(true);
+                    app.getSessionManager().setToken(response.body().getToken());
+                    app.getSessionManager().setUserName(model.getUserId());
+                    app.getSessionManager().setPassword(model.getPassword());
+                    Log.i("Token", app.getSessionManager().getToken());
+                    Intent intent = new Intent(LoginActivity.this, PagerActivity.class);
+                    startActivity(intent);
+                    LoginActivity.this.finish();
+                }
+                else if (response.code() == 400)
+                {
+                    dialog.dismiss();
+                    Toast.makeText(getApplicationContext(), "Username Atau Password salah", Toast.LENGTH_SHORT).show();
+                }
+
             }
 
             @Override
