@@ -26,7 +26,7 @@ public class HomeSearchActivity extends BaseActivity {
     private AutoCompleteTextView actvSearch;
     private ImageView ivSearch;
     private String selected;
-    public ArrayList<ProjectModel> list = new ArrayList<ProjectModel>();
+    public ArrayList<BusinessUnitExpendableModel> list;
     public List<String> listProjectBu = new ArrayList<String>();
     Set<String> hashSet = new HashSet<>();
 
@@ -40,7 +40,7 @@ public class HomeSearchActivity extends BaseActivity {
         getDataFromHomeFragment();
         getListProjectBu();
 
-        
+
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, listProjectBu);
         actvSearch = (AutoCompleteTextView) findViewById(R.id.actv_search);
         actvSearch.setAdapter(adapter);
@@ -68,13 +68,14 @@ public class HomeSearchActivity extends BaseActivity {
     public void getDataFromHomeFragment() {
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras().getBundle(PagerActivity.KEY_TO_HOME_SEARCH);
-        list = bundle.getParcelableArrayList(PagerActivity.KEY_SEARCH_LIST);
+        list = (ArrayList<BusinessUnitExpendableModel>)bundle.getSerializable(PagerActivity.KEY_SEARCH_LIST);
+//        Log.i("search", list.get(0).getBuName());
     }
 
     public void getListProjectBu() {
         for (int i = 0; i <= list.size()-1; i++) {
-            listProjectBu.add(list.get(i).getBuName());
-            listProjectBu.add(list.get(i).getProjectName());
+//            listProjectBu.add(list.get(i).getTitle());
+//            listProjectBu.add(list.get(i).getProjectName());
         }
         hashSet.addAll(listProjectBu);
         listProjectBu.clear();

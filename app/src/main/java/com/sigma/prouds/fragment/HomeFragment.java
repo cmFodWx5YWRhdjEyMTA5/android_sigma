@@ -79,7 +79,7 @@ public class HomeFragment extends BaseFragment {
             @Override
             public void onClick(View v) {
                 Bundle bundle = new Bundle();
-                bundle.putParcelableArrayList(PagerActivity.KEY_SEARCH_LIST, list);
+                bundle.putSerializable(PagerActivity.KEY_SEARCH_LIST, arrayList);
                 EventBus.getDefault().post(bundle);
             }
         });
