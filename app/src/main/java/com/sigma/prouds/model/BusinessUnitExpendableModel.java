@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 
 import com.thoughtbot.expandablerecyclerview.models.ExpandableGroup;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**

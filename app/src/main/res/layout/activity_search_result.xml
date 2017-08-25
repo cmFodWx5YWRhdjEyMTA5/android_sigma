@@ -66,11 +66,13 @@
             android:textSize="14sp"
             android:background="@color/white"
             android:hint="@string/search_home"
-            android:id="@+id/et_search" />
+            android:focusableInTouchMode="false"
+            android:focusable="false"
+            android:id="@+id/et_search_result" />
         <ImageView
             android:layout_width="36dp"
             android:layout_height="36dp"
-            android:layout_toRightOf="@id/et_search"
+            android:layout_toRightOf="@id/et_search_result"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:layout_marginLeft="12dp"
@@ -90,12 +92,11 @@
 
     <!--Recycler View start-->
     <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_search_result"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        android:id="@+id/rv_search_result">
-    </android.support.v7.widget.RecyclerView>
+        android:layout_marginRight="16dp"></android.support.v7.widget.RecyclerView>
     <!--Recycler View end-->
 
 
