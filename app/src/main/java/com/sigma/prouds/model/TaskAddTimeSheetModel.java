@@ -7,7 +7,7 @@ package com.sigma.prouds.model;
 public class TaskAddTimeSheetModel
 {
     private String wpId;
-    private String taskName;
+    private String wbsName;
 
     public String getWpId() {
         return wpId;
@@ -17,11 +17,11 @@ public class TaskAddTimeSheetModel
         this.wpId = wpId;
     }
 
-    public String getTaskName() {
-        return taskName;
+    public String getWbsName() {
+        return wbsName;
     }
 
-    public void setTaskName(String taskName) {
-        this.taskName = taskName;
+    public void setWbsName(String wbsName) {
+        this.wbsName = wbsName;
     }
 }

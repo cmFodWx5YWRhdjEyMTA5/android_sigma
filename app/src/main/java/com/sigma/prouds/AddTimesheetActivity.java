@@ -228,7 +228,7 @@ public class AddTimesheetActivity extends BaseActivity {
                 final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(AddTimesheetActivity.this, android.R.layout.select_dialog_singlechoice);
                 for (int i=0; i<= response.body().getTask().size()-1;i++)
                 {
-                    arrayAdapter.add(response.body().getTask().get(i).getTaskName());
+                    arrayAdapter.add(response.body().getTask().get(i).getWbsName());
                 }
 
                 builderSingle.setNegativeButton("cancel", new DialogInterface.OnClickListener() {
