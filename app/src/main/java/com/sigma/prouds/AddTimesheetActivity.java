@@ -97,7 +97,7 @@ public class AddTimesheetActivity extends BaseActivity {
             @Override
             public void onClick(View v)
             {
-                if (etProject.getText().length() == 0 && etTask.getText().length() == 0 && etSubject.length() == 0 && etMessage.length() == 0 && etWorkHour.length() == 0)
+                if (etProject.getText().length() == 0 || etTask.getText().length() == 0 || etSubject.getText().length() == 0 || etMessage.getText().length() == 0 || etWorkHour.getText().length() == 0)
                 {
                     Toast.makeText(AddTimesheetActivity.this, "Form must be filled", Toast.LENGTH_SHORT).show();
                 }
