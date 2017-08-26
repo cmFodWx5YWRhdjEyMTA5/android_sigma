@@ -413,7 +413,9 @@
                             android:paddingLeft="16dp"
                             android:paddingRight="40dp"
                             android:hint="@string/set_start"
-                            android:id="@+id/et_start_date"/>
+                            android:id="@+id/et_start_date"
+                            android:focusableInTouchMode="false"
+                            android:clickable="true"/>
                         <ImageView
                             android:layout_width="14dp"
                             android:layout_height="14dp"
@@ -436,7 +438,9 @@
                             android:paddingLeft="16dp"
                             android:paddingRight="40dp"
                             android:hint="@string/set_end"
-                            android:id="@+id/et_end_date"/>
+                            android:id="@+id/et_end_date"
+                            android:focusableInTouchMode="false"
+                            android:clickable="true"/>
                         <ImageView
                             android:layout_width="14dp"
                             android:layout_height="14dp"

@@ -32,6 +32,7 @@ public class TimesheetHolder extends RecyclerView.ViewHolder
     private TextView tvIsAproved;
     private TextView tvReSubmit;
     private Typeface latoBold, latoRegular;
+    String hour, projectName, wbs;
 
 
     public TimesheetHolder(Context context, View itemView)
@@ -57,12 +58,28 @@ public class TimesheetHolder extends RecyclerView.ViewHolder
         tvTsSubject.setText(model.getSubject());
         tvTsSubject.setTypeface(latoRegular);
 
+        if (model.getHourTotal() != null) {
+            hour = model.getHourTotal();
+        }
+        else {
+            hour = "(not set)";
+        }
+        if (model.getProjectName() != null) {
+            projectName = model.getProjectName();
+        }
+        else {
+            projectName = "(not set)";
+        }
+        if (model.getWbsName() != null) {
+            wbs = "for " + model.getWbsName();
+        }
+        else {
+            wbs = "(not set)";
+        }
         String submit = "Submitted " ;
-        String hour = model.getHourTotal();
         String hoursWork = " hours work ";
-        String wbs = "for " + model.getWbsName();
         String in = " in ";
-        String projectName = model.getProjectName();
+
         Spannable spannable = new SpannableString(submit + hour + hoursWork + wbs + in + projectName);
         spannable.setSpan( new CustomTypefaceSpan("sans", latoRegular),
                 0,

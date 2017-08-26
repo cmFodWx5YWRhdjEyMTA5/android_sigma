@@ -28,6 +28,7 @@ public class ActivityHolder extends RecyclerView.ViewHolder
     private CircleImageView ivProfile;
     private TextView tvUser, tvPosition, tvProjectName, tvActName, tvSubject, tvDesc, tvFooter, tvApprove, tvDenied, tvWait;
     private Typeface latoBold, latoBlack, latoRegular;
+    private String errorMsg;
 
     public ActivityHolder(Context context, View itemView)
     {
@@ -68,8 +69,13 @@ public class ActivityHolder extends RecyclerView.ViewHolder
         }
 
         // set multiple font style
+        if (model.getWbsName() != null) {
+            errorMsg = model.getSubject();
+        }
+        else {
+            errorMsg = "";
+        }
         String errorMsgBefore = "left a ";
-        String errorMsg = model.getSubject();
         String errorMsgAfter = " message";
         Spannable spannable = new SpannableString(errorMsgBefore + errorMsg + errorMsgAfter);
         spannable.setSpan( new CustomTypefaceSpan("sans", latoRegular), 0, errorMsgBefore.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);

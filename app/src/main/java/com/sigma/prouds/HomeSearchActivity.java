@@ -46,7 +46,7 @@ public class HomeSearchActivity extends BaseActivity {
         getDataFromHomeFragment();
         getListProjectBu();
 
-        
+
         final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, listProjectBu);
         actvSearch = (AutoCompleteTextView) findViewById(R.id.actv_search);
         actvSearch.setAdapter(adapter);
