@@ -13,6 +13,7 @@ public class AddTimeSheetModel
     private String tsMessage;
     private String latitude;
     private String longtitude;
+    private String projectId;
     private String mobile;
 
     public String getWpId() {
@@ -77,5 +78,13 @@ public class AddTimeSheetModel
 
     public void setMobile(String mobile) {
         this.mobile = mobile;
+    }
+
+    public String getProjectId() {
+        return projectId;
+    }
+
+    public void setProjectId(String projectId) {
+        this.projectId = projectId;
     }
 }

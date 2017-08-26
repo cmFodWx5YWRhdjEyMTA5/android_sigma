@@ -271,16 +271,25 @@ public class AddTimesheetActivity extends BaseActivity {
         model.setTsMessage(etMessage.getText().toString());
         model.setTsSubject(etSubject.getText().toString());
         model.setWpId(wpId);
+        model.setProjectId(projectId);
 
         service.addTimeSheet(app.getSessionManager().getToken(), model).enqueue(new Callback<AddTimeSheetResponse>()
         {
             @Override
             public void onResponse(Call<AddTimeSheetResponse> call, Response<AddTimeSheetResponse> response)
             {
-                Log.i("success", response.body().getStatus());
+                //Log.i("success", response.body().getStatus());
                 dialog.dismiss();
-                Toast.makeText(AddTimesheetActivity.this, "Succesful add timesheet", Toast.LENGTH_SHORT).show();
-                AddTimesheetActivity.this.finish();
+                if (response.code() == 200)
+                {
+                    Toast.makeText(AddTimesheetActivity.this, "Succesful add timesheet", Toast.LENGTH_SHORT).show();
+                    AddTimesheetActivity.this.finish();
+                }
+                else if(response.code() == 400)
+                {
+                    Toast.makeText(AddTimesheetActivity.this, "Status project tidak dalam in progress atau on hold", Toast.LENGTH_SHORT).show();
+                }
+
             }
 
             @Override
