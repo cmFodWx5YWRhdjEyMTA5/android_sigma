@@ -1,12 +1,15 @@
 package com.sigma.prouds.model;
 
+import android.os.Parcelable;
+
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * Created by 1414 on 7/16/2017.
  */
 
-public class BusinessUnitModel
+public class BusinessUnitModel implements Serializable
 {
     private String buName;
     private List<ProjectModel> items;

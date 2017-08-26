@@ -3,11 +3,13 @@ package com.sigma.prouds.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.io.Serializable;
+
 /**
  * Created by 1414 on 7/18/2017.
  */
 
-public class ProjectModel implements Parcelable
+public class ProjectModel implements Parcelable, Serializable
 {
     private String projectId;
     private String projectName;

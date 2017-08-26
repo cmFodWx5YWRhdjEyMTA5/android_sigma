@@ -32,7 +32,8 @@
                 android:src="@drawable/logo_white"
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
-                android:layout_centerVertical="true" />
+                android:layout_centerVertical="true"
+                android:visibility="invisible"/>
 
             <ImageView
                 android:id="@+id/iv_notif"
@@ -41,7 +42,7 @@
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
-                android:visibility="visible"
+                android:visibility="invisible"
                 android:src="@drawable/notif" />
 
         </RelativeLayout>
@@ -66,11 +67,13 @@
             android:textSize="14sp"
             android:background="@color/white"
             android:hint="@string/search_home"
-            android:id="@+id/et_search" />
+            android:focusableInTouchMode="false"
+            android:focusable="false"
+            android:id="@+id/et_search_result" />
         <ImageView
             android:layout_width="36dp"
             android:layout_height="36dp"
-            android:layout_toRightOf="@id/et_search"
+            android:layout_toRightOf="@id/et_search_result"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:layout_marginLeft="12dp"
@@ -89,15 +92,29 @@
         android:textColor="@color/inactiveText"/>
 
     <!--Recycler View start-->
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/tv_not_found"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Search result not found"
+            android:layout_centerInParent="true"
+            android:visibility="gone"/>
+
     <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_search_result"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        android:id="@+id/rv_search_result">
-    </android.support.v7.widget.RecyclerView>
+        android:layout_marginRight="16dp"></android.support.v7.widget.RecyclerView>
     <!--Recycler View end-->
 
+
+</RelativeLayout>
 
 
 </LinearLayout>
