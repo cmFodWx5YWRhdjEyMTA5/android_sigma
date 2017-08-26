@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.ProgressBar;
 
 import com.sigma.prouds.ProudsApplication;
 import com.sigma.prouds.R;
@@ -31,6 +32,7 @@ public class WorkplanFragment extends BaseFragment {
     private ProjectWorkPlanAdapter adapter;
     private ProudsApplication app;
     private ApiService service;
+    private ProgressBar pbWorkplan;
 
     public static WorkplanFragment newInstance(Context context, String projectId)
     {
@@ -54,6 +56,7 @@ public class WorkplanFragment extends BaseFragment {
         app = (ProudsApplication) ctx.getApplicationContext();
         service = ApiUtils.apiService();
 
+        pbWorkplan = (ProgressBar) view.findViewById(R.id.pb_workplan);
         rvWorkplan = (RecyclerView) view.findViewById(R.id.rv_workplan);
         getWorkPlanData();
     }
@@ -65,6 +68,7 @@ public class WorkplanFragment extends BaseFragment {
             @Override
             public void onResponse(Call<DetailProjectResponse> call, Response<DetailProjectResponse> response)
             {
+                query.id(pbWorkplan).gone();
                 adapter = new ProjectWorkPlanAdapter(context, response.body().getProjectWorkplanStatus().getTask());
                 RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(ctx);
                 rvWorkplan.setLayoutManager(mLayoutManager);
