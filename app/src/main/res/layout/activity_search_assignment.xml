@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/background"
-    android:paddingLeft="16dp"
-    android:paddingRight="16dp">
+    android:padding="16dp">
 
     <!-- Search start -->
     <LinearLayout
@@ -15,40 +13,41 @@
         android:layout_marginBottom="12dp"
         android:orientation="horizontal"
         android:id="@+id/ll_search">
-        <EditText
+        <AutoCompleteTextView
             android:layout_width="wrap_content"
             android:layout_height="48dp"
             android:layout_weight="1"
             android:paddingLeft="16dp"
             android:textSize="14sp"
             android:background="@color/white"
-            android:focusable="false"
-            android:focusableInTouchMode="false"
-            android:hint="@string/search_assignment"
-            android:id="@+id/et_search" />
+            android:hint="@string/search_home"
+            android:inputType="textAutoComplete"
+            android:id="@+id/actv_search_assignment" />
         <ImageView
             android:layout_width="36dp"
             android:layout_height="36dp"
-            android:layout_toRightOf="@id/et_search"
+            android:layout_toRightOf="@id/actv_search_assignment"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:layout_marginLeft="12dp"
             android:layout_gravity="center_vertical"
-            android:src="@drawable/search" />
+            android:src="@drawable/search"
+            android:id="@+id/iv_search"/>
     </LinearLayout>
     <!-- Search stop -->
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rv_assignment"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/ll_search">
-    </android.support.v7.widget.RecyclerView>
-
-    <ProgressBar
-        android:id="@+id/pb_assignment"
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"/>
+        android:layout_marginBottom="8dp"
+        android:text="@string/search_recents"
+        android:textSize="12sp"
+        android:textColor="@color/inactiveText"/>
 
-</RelativeLayout>
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/rv_search">
+    </android.support.v7.widget.RecyclerView>
+
+</LinearLayout>

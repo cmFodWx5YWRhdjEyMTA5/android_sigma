@@ -13,11 +13,14 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 
 import com.sigma.prouds.AssignmentDetailsActivity;
 import com.sigma.prouds.ProudsApplication;
 import com.sigma.prouds.R;
+import com.sigma.prouds.SearchAssignmentActivity;
 import com.sigma.prouds.adapter.AssignmentAdapter;
 import com.sigma.prouds.base.BaseFragment;
 import com.sigma.prouds.model.ProjectAssignmentModel;
@@ -47,8 +50,10 @@ public class AssignmentFragment extends BaseFragment
     static Context ctx;
     private ApiService service;
     private RecyclerView rvAssigment;
+    private LinearLayout llSearch;
     private AssignmentAdapter adapter;
     private List<ProjectDetailModel> listItem;
+    private EditText etSearch;
 
     public AssignmentFragment()
     {
@@ -72,11 +77,27 @@ public class AssignmentFragment extends BaseFragment
     {
         app = (ProudsApplication) ctx.getApplicationContext();
         rvAssigment = (RecyclerView) view.findViewById(R.id.rv_assignment);
+        llSearch = (LinearLayout) view.findViewById(R.id.ll_search);
+        etSearch = (EditText) view.findViewById(R.id.et_search);
         getAssignmentData();
+
+        etSearch.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("data", (Serializable) listItem);
+                Intent intent = new Intent(getActivity(), SearchAssignmentActivity.class);
+                intent.putExtra(SearchAssignmentActivity.KEY_SEARCH_ASSIGNMENT, bundle);
+                startActivity(intent);
+            }
+        });
     }
 
     public void getAssignmentData()
     {
+        llSearch.setVisibility(View.GONE);
         service = ApiUtils.apiService();
         service.getMyAssignmentResponse(app.getSessionManager().getToken()).enqueue(new Callback<MyAssignmentNewResponse>()
         {
@@ -120,6 +141,7 @@ public class AssignmentFragment extends BaseFragment
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(ctx);
         rvAssigment.setLayoutManager(mLayoutManager);
         rvAssigment.setAdapter(adapter);
+        llSearch.setVisibility(View.VISIBLE);
     }
 
     public void onEvent(ProjectDetailModel model)

@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    >
+
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="@color/header"
+        android:paddingRight="16dp"
+        android:id="@+id/tb_search_result"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/back"
+                android:id="@+id/iv_back"/>
+
+            <ImageView
+                android:src="@drawable/logo_white"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_centerVertical="true"
+                android:visibility="invisible"/>
+
+            <ImageView
+                android:id="@+id/iv_notif"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:visibility="invisible"
+                android:src="@drawable/notif" />
+
+        </RelativeLayout>
+    </android.support.v7.widget.Toolbar>
+
+    <!-- Search start -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="12dp"
+        android:orientation="horizontal"
+        android:id="@+id/ll_search">
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:paddingLeft="16dp"
+            android:textSize="14sp"
+            android:background="@color/white"
+            android:hint="@string/search_assignment"
+            android:inputType="textAutoComplete"
+            android:id="@+id/et_search_assignment_result" />
+        <ImageView
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_toRightOf="@id/actv_search_assignment"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="12dp"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/search"
+            android:id="@+id/iv_search"/>
+    </LinearLayout>
+    <!-- Search stop -->
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="SEARCH RESULT"
+        android:layout_marginLeft="16dp"
+        android:textSize="12sp"
+        android:textColor="@color/inactiveText"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="16dp">
+
+        <TextView
+            android:id="@+id/tv_not_found_assignment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="No search result found"
+            android:layout_centerInParent="true"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/rv_search_assignment">
+    </android.support.v7.widget.RecyclerView>
+
+    </RelativeLayout>
+
+</LinearLayout>

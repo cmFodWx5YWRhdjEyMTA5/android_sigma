@@ -30,18 +30,21 @@
             </intent-filter>
         </activity>
         <activity android:name=".AddTimesheetActivity" />
-        <activity android:name=".ProfileSettingActivity"
-            android:windowSoftInputMode="adjustPan"/>
+        <activity
+            android:name=".ProfileSettingActivity"
+            android:windowSoftInputMode="adjustPan" />
         <activity android:name=".FormReportIssueActivity" />
         <activity android:name=".HomeSearchResultActivity" />
         <activity android:name=".NotifActivity" />
-        <activity android:name=".HomeSearchActivity"></activity>
+        <activity android:name=".HomeSearchActivity" />
 
         <meta-data
             android:name="io.fabric.ApiKey"
             android:value="61375f44bb9bc0ab906665b7bca9ee29eb698c48" />
 
-        <activity android:name=".FormDocUploadActivity"></activity>
+        <activity android:name=".FormDocUploadActivity" />
+        <activity android:name=".SearchAssignmentActivity" />
+        <activity android:name=".SearchAssignmentResultActivity"></activity>
     </application>
 
 </manifest>
