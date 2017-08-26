@@ -3,6 +3,9 @@ package com.sigma.prouds;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.sigma.prouds.base.BaseActivity;
@@ -22,6 +25,9 @@ public class LoginActivity extends BaseActivity
     private ApiService service;
     private ProgressDialog dialog;
     private ProudsApplication app;
+    private EditText etUserName;
+    private EditText etPassword;
+    private Button btLogin;
 
     @Override
     protected int getLayout()
@@ -33,7 +39,9 @@ public class LoginActivity extends BaseActivity
     protected void workingSpace()
     {
         this.app = (ProudsApplication) getApplication();
-
+        etUserName = (EditText) findViewById(R.id.et_username);
+        etPassword = (EditText) findViewById(R.id.et_password);
+        btLogin = (Button) findViewById(R.id.bt_signin);
         if (app.getSessionManager().isLogin())
         {
             Intent intent = new Intent(LoginActivity.this, PagerActivity.class);
@@ -42,7 +50,23 @@ public class LoginActivity extends BaseActivity
 
         service = ApiUtils.apiService();
         initDialog();
-        query.id(R.id.bt_signin).clicked(this, "sendLogin");
+
+            btLogin.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (etUserName.getText().length() == 0 || etPassword.getText().length() == 0)
+                    {
+                        Toast.makeText(LoginActivity.this, "Username and password must be filled", Toast.LENGTH_SHORT).show();
+                    }
+                    else
+                    {
+                        sendLogin();
+                    }
+
+                }
+            });
+
+        //query.id(R.id.bt_signin).clicked(this, "sendLogin");
     }
 
     public void sendLogin()

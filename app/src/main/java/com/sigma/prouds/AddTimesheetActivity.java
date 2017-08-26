@@ -1,8 +1,10 @@
 package com.sigma.prouds;
 
+import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -48,6 +50,7 @@ public class AddTimesheetActivity extends BaseActivity {
     private ProgressDialog dialog;
     private ImageView ivBack;
     private ProjectAssignmentModel projectModel;
+    private String returnDate;
 
     @Override
     protected int getLayout()
@@ -259,10 +262,11 @@ public class AddTimesheetActivity extends BaseActivity {
 
     public void addTimeSheet()
     {
+        returnDate = model.getDate();
         final ProgressDialog dialog = new ProgressDialog(this);
         dialog.setMessage("Sending...");
         dialog.show();
-        AddTimeSheetModel model = new AddTimeSheetModel();
+        final AddTimeSheetModel model = new AddTimeSheetModel();
         model.setMobile("1");
         model.setHour(etWorkHour.getText().toString() + "");
         model.setLatitude("0");
@@ -283,6 +287,9 @@ public class AddTimesheetActivity extends BaseActivity {
                 if (response.code() == 200)
                 {
                     Toast.makeText(AddTimesheetActivity.this, "Succesful add timesheet", Toast.LENGTH_SHORT).show();
+                    Intent returnIntent = new Intent();
+                    returnIntent.putExtra("date", returnDate);
+                    setResult(Activity.RESULT_OK,returnIntent);
                     AddTimesheetActivity.this.finish();
                 }
                 else if(response.code() == 400)

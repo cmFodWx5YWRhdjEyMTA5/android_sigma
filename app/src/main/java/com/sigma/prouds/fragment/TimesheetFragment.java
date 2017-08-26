@@ -1,5 +1,6 @@
 package com.sigma.prouds.fragment;
 
+import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -50,6 +51,9 @@ import retrofit2.Response;
  */
 
 public class TimesheetFragment extends BaseFragment {
+
+    public static final int REFRESH_REQ_CODE = 0;
+
     static Context ctx;
     private CalendarView cvDate;
     private TextView tvDate, tvHour, tvEmpty, tvChooseDate, tvNewTimesheet, tvDateBelow;
@@ -62,6 +66,7 @@ public class TimesheetFragment extends BaseFragment {
     private RecyclerView rvTimesheet;
     private LinearLayout llDayOff;
     private boolean isHoliday;
+    private String curDate;
 
     public static TimesheetFragment newInstance(Context context) {
         TimesheetFragment fragment = new TimesheetFragment();
@@ -140,6 +145,7 @@ public class TimesheetFragment extends BaseFragment {
         tvDateBelow.setText(sdfHalf.format(calendar.getTime()).toUpperCase());
         Date cDate = new Date();
         String fDate = new SimpleDateFormat("yyyy-MM-dd").format(cDate);
+        curDate = fDate;
         Log.i("Date today : ", fDate);
         getData(fDate);
     }
@@ -156,7 +162,7 @@ public class TimesheetFragment extends BaseFragment {
     public void toAddTimesheet()
     {
         Intent intent = new Intent(getActivity(), AddTimesheetActivity.class);
-        startActivity(intent);
+        startActivityForResult(intent, REFRESH_REQ_CODE);
     }
 
     public void getData(final String date)
@@ -220,6 +226,21 @@ public class TimesheetFragment extends BaseFragment {
 
     }
 
-
-
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data)
+    {
+        super.onActivityResult(requestCode, resultCode, data);
+        switch (requestCode)
+        {
+            case REFRESH_REQ_CODE:
+                if (resultCode == Activity.RESULT_OK)
+                {
+                    getData(curDate);
+                    /*String fullFormat = "EEE, MMM d yyyy";
+                    SimpleDateFormat sdfFull = new SimpleDateFormat(fullFormat);
+                    tvDate.setText(sdfFull.format(calendar.getTime()));*/
+                }
+                break;
+        }
+    }
 }
