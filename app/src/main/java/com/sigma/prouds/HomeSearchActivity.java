@@ -95,8 +95,8 @@ public class HomeSearchActivity extends BaseActivity {
                 list.add(arrayList.get(i).getProjectList());
             }*/
         }
-        hashSet.addAll(listProjectBu);
-        listProjectBu.clear();
-        listProjectBu.addAll(hashSet);
+        //hashSet.addAll(listProjectBu);
+        //listProjectBu.clear();
+        //listProjectBu.addAll(hashSet);
     }
 }
