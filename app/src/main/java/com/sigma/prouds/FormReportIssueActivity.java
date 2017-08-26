@@ -1,6 +1,7 @@
 package com.sigma.prouds;
 
 import android.Manifest;
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -85,8 +86,17 @@ public class FormReportIssueActivity extends BaseActivity {
 
         rlUploadIssue.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                uploadIssue();
+            public void onClick(View v)
+            {
+                if (etSubject.getText().length() == 0 || etMessage.getText().length() == 0 || etPriority.getText().length() == 0 || etIssueUpload.getText().length() == 0)
+                {
+                    Toast.makeText(getApplicationContext(), "Form must be filled", Toast.LENGTH_SHORT).show();
+                }
+                else
+                {
+                    uploadIssue();
+                }
+
             }
         });
 
@@ -213,6 +223,8 @@ public class FormReportIssueActivity extends BaseActivity {
             {
                 dialog.dismiss();
                 Toast.makeText(FormReportIssueActivity.this, "Upload succesful", Toast.LENGTH_SHORT).show();
+                Intent returnIntent = new Intent();
+                setResult(Activity.RESULT_OK, returnIntent);
                 FormReportIssueActivity.this.finish();
                 //Log.i("Upload status ", response.body().getStatus());
             }

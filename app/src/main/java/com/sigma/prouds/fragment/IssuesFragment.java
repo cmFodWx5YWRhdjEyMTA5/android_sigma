@@ -1,5 +1,6 @@
 package com.sigma.prouds.fragment;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
@@ -32,6 +33,7 @@ import retrofit2.Response;
 
 public class IssuesFragment extends BaseFragment
 {
+    public static final int REFRESH_ISSUE_REQ_CODE = 0;
 
     private ApiService service;
     static Context ctx;
@@ -112,6 +114,18 @@ public class IssuesFragment extends BaseFragment
     {
         Intent intent = new Intent(getActivity(), FormReportIssueActivity.class);
         intent.putExtra("project_id", projectId);
-        getActivity().startActivity(intent);
+        startActivityForResult(intent, REFRESH_ISSUE_REQ_CODE);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == REFRESH_ISSUE_REQ_CODE)
+        {
+            if (resultCode == Activity.RESULT_OK)
+            {
+                getIssueData();
+            }
+        }
     }
 }
