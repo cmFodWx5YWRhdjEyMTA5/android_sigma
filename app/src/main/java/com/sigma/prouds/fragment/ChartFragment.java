@@ -118,7 +118,7 @@ public class ChartFragment extends BaseFragment
                 AlertDialog.Builder builderSingle = new AlertDialog.Builder(ctx);
                 builderSingle.setTitle("Select year");
                 final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(ctx, android.R.layout.select_dialog_singlechoice);
-                for (int i=1990; i <= 2030; i++)
+                for (int i=1999; i <= 2018; i++)
                 {
                     arrayAdapter.add(i + "");
                 }
@@ -188,7 +188,7 @@ public class ChartFragment extends BaseFragment
                 AlertDialog.Builder builderSingle = new AlertDialog.Builder(ctx);
                 builderSingle.setTitle("Select year");
                 final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(ctx, android.R.layout.select_dialog_singlechoice);
-                for (int i=1990; i <= 2030; i++)
+                for (int i=1999; i <= 2018; i++)
                 {
                     arrayAdapter.add(i + "");
                 }
@@ -218,7 +218,7 @@ public class ChartFragment extends BaseFragment
                 AlertDialog.Builder builderSingle = new AlertDialog.Builder(ctx);
                 builderSingle.setTitle("Select year");
                 final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(ctx, android.R.layout.select_dialog_singlechoice);
-                for (int i=1990; i <= 2030; i++)
+                for (int i=1999; i <= 2018; i++)
                 {
                     arrayAdapter.add(i + "");
                 }
