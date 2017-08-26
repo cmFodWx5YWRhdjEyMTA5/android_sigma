@@ -7,6 +7,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.sigma.prouds.adapter.AssignmentDetailsAdapter;
@@ -22,6 +23,7 @@ public class SearchAssignmentResultActivity extends BaseActivity {
     private AssignmentDetailsAdapter adapter;
     private String searchResult;
     private EditText etSearch;
+    private ImageView ivBack;
     private TextView tvNotFound;
     private ArrayList<ProjectDetailModel> list;
     private int position;
@@ -58,6 +60,15 @@ public class SearchAssignmentResultActivity extends BaseActivity {
             tvNotFound.setVisibility(View.VISIBLE);
         }
 
+        ivBack.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                SearchAssignmentResultActivity.this.finish();
+            }
+        });
+
     }
 
     public void assignXML()
@@ -65,6 +76,7 @@ public class SearchAssignmentResultActivity extends BaseActivity {
         rvSearch = (RecyclerView) findViewById(R.id.rv_search_assignment);
         etSearch = (EditText) findViewById(R.id.et_search_assignment_result);
         tvNotFound = (TextView) findViewById(R.id.tv_not_found_assignment);
+        ivBack = (ImageView) findViewById(R.id.iv_back);
     }
 
     public void onEvent(ProjectAssignmentModel model)

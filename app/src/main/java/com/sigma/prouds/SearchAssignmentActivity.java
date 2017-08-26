@@ -65,6 +65,8 @@ public class SearchAssignmentActivity extends BaseActivity {
             {
                 clickPosition = listatc.indexOf(actvSearch.getText().toString());
                 Bundle bundle = new Bundle();
+                Log.i("Pos ", clickPosition + "");
+                //Log.i("Data ", list.get(clickPosition).getAssignmentList().get(0).getWbsName());
                 bundle.putSerializable("search", list);
                 bundle.putInt("search_position", clickPosition);
 
@@ -96,9 +98,9 @@ public class SearchAssignmentActivity extends BaseActivity {
         for (int i = 0; i <= list.size()-1; i++) {
             listatc.add(list.get(i).getProjectName());
         }
-        hashSet.addAll(listatc);
-        listatc.clear();
-        listatc.addAll(hashSet);
-        Log.i("List", listatc.get(0));
+        //hashSet.addAll(listatc);
+        //listatc.clear();
+        //listatc.addAll(hashSet);
+        //Log.i("List", listatc.get(0));
     }
 }
