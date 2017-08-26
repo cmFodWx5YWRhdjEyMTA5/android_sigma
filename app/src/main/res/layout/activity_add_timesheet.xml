@@ -53,7 +53,8 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="48dp"
-            android:layout_marginBottom="12dp">
+            android:layout_marginBottom="12dp"
+            android:id="@+id/rl_addts_date">
             <EditText
                 android:id="@+id/et_addts_date"
                 android:layout_width="match_parent"
@@ -63,7 +64,8 @@
                 android:paddingRight="40dp"
                 android:textSize="14sp"
                 android:focusableInTouchMode="false"
-                android:focusable="false"/>
+                android:focusable="false"
+                android:clickable="true"/>
             <ImageView
                 android:layout_width="16dp"
                 android:layout_height="16dp"

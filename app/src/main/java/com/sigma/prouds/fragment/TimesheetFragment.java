@@ -174,9 +174,11 @@ public class TimesheetFragment extends BaseFragment {
             public void onResponse(Call<UserProjectTimesheetResponse> call, Response<UserProjectTimesheetResponse> response)
             {
                 // SET DAYOFF LAYOUT
-                for (int i = 0; i < response.body().getHolidays().size(); i++) {
-                    if (response.body().getHolidays().get(i).getHolidayDate().equals(date)) {
-                        isHoliday = true;
+                if (response.body().getHolidays() != null) {
+                    for (int i = 0; i < response.body().getHolidays().size(); i++) {
+                        if (response.body().getHolidays().get(i).getHolidayDate().equals(date)) {
+                            isHoliday = true;
+                        }
                     }
                 }
 

@@ -1,5 +1,6 @@
 package com.sigma.prouds.fragment;
 
+import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.graphics.Typeface;
@@ -7,17 +8,22 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.sigma.prouds.AddTimesheetActivity;
 import com.sigma.prouds.ProudsApplication;
 import com.sigma.prouds.R;
 import com.sigma.prouds.base.BaseFragment;
 import com.sigma.prouds.network.ApiService;
 import com.sigma.prouds.network.ApiUtils;
 import com.sigma.prouds.network.response.ProjectSettingResponse;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -29,6 +35,9 @@ import retrofit2.Response;
 
 public class ProjectSettingFragment extends BaseFragment
 {
+
+    private static final int START_DATE = 1;
+    private static final int END_DATE = 2;
 
     private ApiService service;
     static Context ctx;
@@ -58,6 +67,8 @@ public class ProjectSettingFragment extends BaseFragment
     private Typeface latoRegular;
     private RelativeLayout rlProjectSetting;
     private ProgressDialog dialog;
+    final Calendar calendar = Calendar.getInstance();
+    DatePickerDialog.OnDateSetListener startDate, endDate;
 
     public static ProjectSettingFragment newInstance(Context context, String projectId)
     {
@@ -140,6 +151,50 @@ public class ProjectSettingFragment extends BaseFragment
             public void onClick(View v) {
                 rbYesOperation.setChecked(false);
                 rbNoOperation.setChecked(true);
+            }
+        });
+
+        startDate = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                calendar.set(Calendar.YEAR, year);
+                calendar.set(Calendar.MONTH, month);
+                calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+
+                String dataFormat = "yyy-MM-dd";
+                SimpleDateFormat sdfData = new SimpleDateFormat(dataFormat);
+                etStartDate.setText(sdfData.format(calendar.getTime()));
+            }
+        };
+
+        endDate = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                calendar.set(Calendar.YEAR, year);
+                calendar.set(Calendar.MONTH, month);
+                calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+
+                String dataFormat = "yyy-MM-dd";
+                SimpleDateFormat sdfData = new SimpleDateFormat(dataFormat);
+                etEndDate.setText(sdfData.format(calendar.getTime()));
+            }
+        };
+
+        etStartDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new DatePickerDialog(getActivity(), startDate, calendar.get(Calendar.YEAR),
+                        calendar.get(Calendar.MONTH),
+                        calendar.get(Calendar.DAY_OF_MONTH)).show();
+            }
+        });
+
+        etEndDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new DatePickerDialog(getActivity(), endDate, calendar.get(Calendar.YEAR),
+                        calendar.get(Calendar.MONTH),
+                        calendar.get(Calendar.DAY_OF_MONTH)).show();
             }
         });
 

@@ -101,19 +101,6 @@ public class HomeFragment extends BaseFragment {
             }
         });
 
-        /*etSearch.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-                Bundle bundle = new Bundle();
-                bundle.putSerializable("search", list);
-                Intent intent = new Intent(getActivity(), HomeSearchActivity.class);
-                intent.putExtra("search", bundle);
-                ctx.startActivity(intent);
-            }
-        });*/
-
     }
 
     public void getData()

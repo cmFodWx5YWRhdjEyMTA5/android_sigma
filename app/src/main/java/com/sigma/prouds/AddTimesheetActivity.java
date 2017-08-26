@@ -1,5 +1,6 @@
 package com.sigma.prouds;
 
+import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.graphics.Typeface;
@@ -10,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -40,7 +42,7 @@ public class AddTimesheetActivity extends BaseActivity {
     private ApiService service;
     private ProjectListTimesheetSenderModel model;
     private EditText etDate, etProject, etTask, etWorkHour, etSubject, etMessage;
-    private RelativeLayout rlAdd;
+    private RelativeLayout rlAdd, rlAddDate;
     private String projectId;
     private String wpId;
     private ProgressDialog dialog;
@@ -77,6 +79,7 @@ public class AddTimesheetActivity extends BaseActivity {
         service = ApiUtils.apiService();
         model = new ProjectListTimesheetSenderModel();
         getTodayDate();
+        chooseDate();
         etProject.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -122,6 +125,7 @@ public class AddTimesheetActivity extends BaseActivity {
         etSubject = (EditText) findViewById(R.id.et_addts_subject);
         etMessage = (EditText) findViewById(R.id.et_addts_msg);
         rlAdd = (RelativeLayout) findViewById(R.id.rl_addts);
+        rlAddDate = (RelativeLayout) findViewById(R.id.rl_addts_date);
         ivBack = (ImageView) findViewById(R.id.iv_back);
         query.id(R.id.tv_title_toolbar_addts).typeface(Typeface.createFromAsset(getAssets(), "lato_black.ttf"));
         query.id(R.id.tv_addts_new).typeface(Typeface.createFromAsset(getAssets(), "lato_regular.ttf"));
@@ -134,6 +138,34 @@ public class AddTimesheetActivity extends BaseActivity {
         etDate.setText(fDate);
         model.setDate(fDate);
         model.setMobile("1");
+    }
+
+////// UPDATE 25 AGT
+    public void chooseDate() {
+        final Calendar calendar = Calendar.getInstance();
+        final DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                calendar.set(Calendar.YEAR, year);
+                calendar.set(Calendar.MONTH, month);
+                calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+
+                String dataFormat = "yyy-MM-dd";
+                SimpleDateFormat sdfData = new SimpleDateFormat(dataFormat);
+                etDate.setText(sdfData.format(calendar.getTime()));
+                model.setDate(sdfData.format(calendar.getTime()));
+                model.setMobile("1");
+            }
+        };
+
+        etDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new DatePickerDialog(AddTimesheetActivity.this, date, calendar.get(Calendar.YEAR),
+                        calendar.get(Calendar.MONTH),
+                        calendar.get(Calendar.DAY_OF_MONTH)).show();
+            }
+        });
     }
 
     public void getProjectData()

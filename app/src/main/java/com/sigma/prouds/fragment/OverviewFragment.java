@@ -120,7 +120,6 @@ public class OverviewFragment extends BaseFragment
         query.id(R.id.tv_overview_title_spi).typeface(Typeface.createFromAsset(ctx.getAssets(), "lato_bold.ttf"));
         query.id(R.id.tv_overview_title_cpi).typeface(Typeface.createFromAsset(ctx.getAssets(), "lato_bold.ttf"));
         query.id(R.id.tv_overview_title_project_detail).typeface(Typeface.createFromAsset(ctx.getAssets(), "lato_bold.ttf"));
-        query.id(R.id.tv_overview_more).typeface(Typeface.createFromAsset(ctx.getAssets(), "lato_bold.ttf"));
         query.id(R.id.tv_overview_title_workplan).typeface(Typeface.createFromAsset(ctx.getAssets(), "lato_bold.ttf"));
         query.id(R.id.tv_overview_title_completed).typeface(Typeface.createFromAsset(ctx.getAssets(), "lato_bold.ttf"));
         query.id(R.id.tv_overview_title_inprogress).typeface(Typeface.createFromAsset(ctx.getAssets(), "lato_bold.ttf"));
