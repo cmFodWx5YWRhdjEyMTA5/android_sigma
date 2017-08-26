@@ -97,6 +97,23 @@ public class TimesheetHolder extends RecyclerView.ViewHolder
 
         tvDesc.setText(model.getMessage());
         tvDesc.setTypeface(latoRegular);
+
+        if (model.getIsApproved().equalsIgnoreCase("0"))
+        {
+            tvReSubmit.setVisibility(View.VISIBLE);
+            tvIsAproved.setText("Denied");
+        }
+        else if (model.getIsApproved().equalsIgnoreCase("1"))
+        {
+            tvReSubmit.setVisibility(View.GONE);
+            tvIsAproved.setText("Approved");
+        }
+        else if (model.getIsApproved().equalsIgnoreCase("-1"))
+        {
+            tvReSubmit.setVisibility(View.GONE);
+            tvIsAproved.setText("Waiting for approval");
+        }
+
     }
 
 }

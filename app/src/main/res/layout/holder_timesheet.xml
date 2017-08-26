@@ -23,7 +23,6 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/white"
                 android:textSize="12sp"
                 android:layout_centerInParent="true"
                 android:id="@+id/tv_ts_isapproved"/>
@@ -43,7 +42,8 @@
             android:layout_marginBottom="16dp"
             android:textSize="14sp"
             android:textColor="@color/homeParent"
-            android:id="@+id/tv_ts_submit"/>
+            android:id="@+id/tv_ts_submit"
+            />
 
         <TextView
             android:layout_width="wrap_content"
@@ -68,8 +68,8 @@
             android:text="@string/ts_resubmit"
             android:textSize="14sp"
             android:textColor="@color/btn"
-            android:visibility="visible"
-            android:id="@+id/tv_ts_resubmit"/>
+            android:visibility="invisible"
+            android:id="@+id/tv_ts_resubmit" />
     </LinearLayout>
 
     <View

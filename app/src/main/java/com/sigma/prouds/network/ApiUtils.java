@@ -6,7 +6,7 @@ package com.sigma.prouds.network;
 
 public class ApiUtils
 {
-    public static final String BASE_URL = "http://45.77.45.126/";
+    public static final String BASE_URL = "http://prouds2.telkomsigma.co.id/prouds-api/";
 
     public static ApiService apiService() {
         return RetrofitClient.getClient(BASE_URL).create(ApiService.class);

@@ -50,59 +50,59 @@ import retrofit2.http.Path;
 
 public interface ApiService
 {
-    @POST("dev/login/login/")
+    @POST("login/login")
     Call<LoginResponse> login(@Body LoginModel model);
 
 
-    @GET("dev/home/detailproject/{project_id}")
+    @GET("home/detailproject/{project_id}")
     Call<DetailProjectResponse> getDetailProject(@Path("project_id") String projectId, @Header("token") String token);
 
-    @GET("dev/home/")
+    @GET("home/")
     Call<ProjectResponse> getHome(@Header("token") String token);
 
-    @GET("dev/home/p_teammember/{project_id}")
+    @GET("home/p_teammember/{project_id}")
     Call<TeamMemberResponse> getTeamMember (@Path("project_id") String projectId, @Header("token") String token);
 
-    @GET("dev/home/projectdoc/{project_id}")
+    @GET("home/projectdoc/{project_id}")
     Call<ProjectDocResponse> getProjectDoc (@Path("project_id") String projectId, @Header("token") String token);
 
-    @GET("dev/home/projectissue/{project_id}")
+    @GET("home/projectissue/{project_id}")
     Call<ProjectIssueResponse> getProjectIssues (@Path("project_id") String projectId, @Header("token") String token);
 
-    @GET("dev/home/projectactivities/{project_id}")
+    @GET("home/projectactivities/{project_id}")
     Call<ProjectActivityResponse> getProjectActivity (@Path("project_id") String projectId, @Header("token") String token);
 
-    @GET("dev/home/myactivities")
+    @GET("home/myactivities")
     Call<MyActivityResponse> getMyActivity(@Header("token") String token);
 
-    @GET("dev/home/myassignment")
+    @GET("home/myassignment")
     Call<MyAssignmentNewResponse> getMyAssignmentResponse(@Header("token") String token);
 
-    @POST("dev/report/myperformances")
+    @POST("report/myperformances")
     Call<MyPerformanceResponse> getMyPerfomance(@Header("token") String token, @Body PerformanceSendModel model);
 
-    @POST("dev/report/myperformances_yearly")
+    @POST("report/myperformances_yearly")
     Call<MyPerformanceYearlyResponse> getYearPerformance(@Header("token") String token, @Body PerformanceYearSendModel model);
 
 
-    @POST("dev/timesheet/view/")
+    @POST("timesheet/view/")
     Call<UserProjectTimesheetResponse> getUserProjectTimesheet(@Header("token") String token, @Body ProjectListTimesheetSenderModel model);
 
-    @POST("dev/timesheet/taskList/")
+    @POST("timesheet/taskList/")
     Call<TaskAddTimeSheetResponse> getTaskTimeSheet(@Header("token") String token, @Body TaskListTimesheetSenderModel model);
 
-    @POST("dev/timesheet/addTimesheet/")
+    @POST("timesheet/addTimesheet/")
     Call<AddTimeSheetResponse> addTimeSheet(@Header("token") String token, @Body AddTimeSheetModel model);
 
     @Multipart
-    @POST("dev/home/addissue")
+    @POST("home/addissue")
     Call<UploadProjectIssueResponse> uploadIssue(@Header("token") String token, @Part("PROJECT_ID") RequestBody id, @Part("SUBJECT") RequestBody subject, @Part("MESSAGE") RequestBody message,
                                                  @Part("PRIORITY") RequestBody priority, @Part MultipartBody.Part image);
 
     @Multipart
-    @POST("dev/home/documentupload/{project_id}")
+    @POST("home/documentupload/{project_id}")
     Call<UploadProjectDocResponse> uploadDoc(@Header("token") String token, @Path("project_id") String projectId, @Part("desc") RequestBody desc, @Part MultipartBody.Part doc);
 
-    @GET("dev/project/editProject_view/{project_id}")
+    @GET("project/editProject_view/{project_id}")
     Call<ProjectSettingResponse> getProjectSetting(@Header("token") String token, @Path("project_id") String projectId);
 }
