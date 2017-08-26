@@ -18,17 +18,40 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="12dp"
             android:orientation="horizontal">
-
-            <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_marginRight="12dp"
-                android:id="@+id/iv_issue_priority"/>
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/rl_issue_priority">
+                <!-- high priority -->
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginRight="12dp"
+                    android:src="@drawable/issue_highpriority"
+                    android:id="@+id/iv_issue_priority"
+                    android:visibility="gone"/>
+                <!-- medium priority -->
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginRight="12dp"
+                    android:src="@drawable/issue_mediumpriority"
+                    android:id="@+id/iv_issue_priority_medium"
+                    android:visibility="gone"/>
+                <!-- low priority -->
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginRight="12dp"
+                    android:src="@drawable/issue_lowpriority"
+                    android:id="@+id/iv_issue_priority_low"
+                    android:visibility="gone"/>
+            </RelativeLayout>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/iv_issue_priority"
+                android:layout_toRightOf="@+id/rl_issue_priority"
                 android:textSize="12sp"
                 android:id="@+id/tv_issue_priority"
                 android:layout_centerVertical="true"

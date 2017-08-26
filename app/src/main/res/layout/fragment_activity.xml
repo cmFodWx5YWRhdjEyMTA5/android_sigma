@@ -8,4 +8,17 @@
         android:layout_height="match_parent"
         android:id="@+id/rv_activity">
     </android.support.v7.widget.RecyclerView>
+
+    <ProgressBar
+        android:id="@+id/pb_activity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"/>
+    <TextView
+        android:id="@+id/tv_empty_activity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="There is no activity yet"
+        android:layout_centerInParent="true"
+        android:visibility="gone"/>
 </RelativeLayout>

@@ -6,6 +6,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.sigma.prouds.ProudsApplication;
 import com.sigma.prouds.R;
@@ -15,6 +16,8 @@ import com.sigma.prouds.model.ProjectWorkplanStatusModel;
 import com.sigma.prouds.network.ApiService;
 import com.sigma.prouds.network.ApiUtils;
 import com.sigma.prouds.network.response.DetailProjectResponse;
+
+import org.w3c.dom.Text;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -33,6 +36,7 @@ public class WorkplanFragment extends BaseFragment {
     private ProudsApplication app;
     private ApiService service;
     private ProgressBar pbWorkplan;
+    private TextView tvEmptyWorkplan;
 
     public static WorkplanFragment newInstance(Context context, String projectId)
     {
@@ -58,6 +62,7 @@ public class WorkplanFragment extends BaseFragment {
 
         pbWorkplan = (ProgressBar) view.findViewById(R.id.pb_workplan);
         rvWorkplan = (RecyclerView) view.findViewById(R.id.rv_workplan);
+        tvEmptyWorkplan = (TextView) view.findViewById(R.id.tv_empty_workplan);
         getWorkPlanData();
     }
 
@@ -73,6 +78,10 @@ public class WorkplanFragment extends BaseFragment {
                 RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(ctx);
                 rvWorkplan.setLayoutManager(mLayoutManager);
                 rvWorkplan.setAdapter(adapter);
+
+                if (response.body().getProjectWorkplanStatus().getTask().size() == 0) {
+                    tvEmptyWorkplan.setVisibility(View.VISIBLE);
+                }
             }
 
             @Override
