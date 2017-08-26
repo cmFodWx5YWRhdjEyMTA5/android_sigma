@@ -28,7 +28,7 @@
                     android:layout_height="24dp"
                     android:layout_marginRight="12dp"
                     android:src="@drawable/issue_highpriority"
-                    android:id="@+id/iv_issue_priority"
+                    android:id="@+id/iv_issue_priority_high"
                     android:visibility="gone"/>
                 <!-- medium priority -->
                 <ImageView

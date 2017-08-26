@@ -10,8 +10,6 @@ import android.widget.TextView;
 import com.sigma.prouds.R;
 import com.sigma.prouds.model.ProjectDocModel;
 
-import org.w3c.dom.Text;
-
 /**
  * Created by 1414 on 7/24/2017.
  */
@@ -19,7 +17,7 @@ import org.w3c.dom.Text;
 public class ProjectDocHolder extends RecyclerView.ViewHolder
 {
     private Context context;
-    private ImageView ivDocType;
+    private ImageView ivDocWord, ivDocExcel;
     private TextView tvDocName;
     private ImageView ivDocDownload;
     private TextView tvDocUploader;
@@ -31,7 +29,8 @@ public class ProjectDocHolder extends RecyclerView.ViewHolder
     {
         super(itemView);
         this.context = context;
-        ivDocType = (ImageView) itemView.findViewById(R.id.iv_doc_type);
+        ivDocWord = (ImageView) itemView.findViewById(R.id.iv_doc_msword);
+        ivDocExcel = (ImageView) itemView.findViewById(R.id.iv_doc_msexcel);
         tvDocName = (TextView) itemView.findViewById(R.id.tv_doc_name);
         ivDocDownload = (ImageView) itemView.findViewById(R.id.iv_doc_download);
         tvDocUploader = (TextView) itemView.findViewById(R.id.tv_doc_uploader);

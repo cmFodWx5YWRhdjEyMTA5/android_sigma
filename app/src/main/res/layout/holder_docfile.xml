@@ -14,11 +14,22 @@
         android:background="@color/white"
         android:orientation="horizontal">
         <!-- TODO java -->
-        <ImageView
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_marginRight="12dp"
-            android:id="@+id/iv_doc_type"/>
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginRight="12dp"
+                android:visibility="gone"
+                android:id="@+id/iv_doc_msword"/>
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginRight="12dp"
+                android:visibility="gone"
+                android:id="@+id/iv_doc_msexcel"/>
+        </RelativeLayout>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

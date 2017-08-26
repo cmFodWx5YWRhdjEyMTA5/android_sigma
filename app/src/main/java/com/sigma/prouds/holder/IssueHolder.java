@@ -2,8 +2,10 @@ package com.sigma.prouds.holder;
 
 import android.content.Context;
 import android.graphics.Typeface;
+import android.media.Image;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.sigma.prouds.R;
@@ -23,6 +25,7 @@ public class IssueHolder extends RecyclerView.ViewHolder
     private TextView tvDateIssue;
     private TextView tvIssuePriority;
     private Typeface latoBold, latoRegular;
+    private ImageView ivPriorityHigh, ivPriorityMed, ivPriorityLow;
 
     public IssueHolder(Context context, View itemView)
     {
@@ -34,6 +37,9 @@ public class IssueHolder extends RecyclerView.ViewHolder
         tvIssue = (TextView) itemView.findViewById(R.id.tv_issue);
         tvDateIssue = (TextView) itemView.findViewById(R.id.tv_date_issue);
         tvIssuePriority = (TextView) itemView.findViewById(R.id.tv_issue_priority);
+        ivPriorityHigh = (ImageView) itemView.findViewById(R.id.iv_issue_priority_high);
+        ivPriorityMed = (ImageView) itemView.findViewById(R.id.iv_issue_priority_medium);
+        ivPriorityLow = (ImageView) itemView.findViewById(R.id.iv_issue_priority_low);
 
         latoBold = Typeface.createFromAsset(itemView.getContext().getAssets(), "lato_bold.ttf");
         latoRegular = Typeface.createFromAsset(itemView.getContext().getAssets(), "lato_regular.ttf");
