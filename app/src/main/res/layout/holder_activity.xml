@@ -99,11 +99,21 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="12dp"
-                    android:layout_toLeftOf="@+id/tv_act_approve"
+                    android:layout_toLeftOf="@+id/tv_act_resubmit"
                     android:textSize="12dp"
-                    android:textColor="@color/btn"
+                    android:textColor="@color/inactiveText"
                     android:text="@string/act_denied"
                     android:id="@+id/tv_act_deny"
+                    android:visibility="gone"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="12dp"
+                    android:layout_alignParentRight="true"
+                    android:textSize="12dp"
+                    android:textColor="@color/btn"
+                    android:text="@string/ts_resubmit"
+                    android:id="@+id/tv_act_resubmit"
                     android:visibility="gone"/>
                 <TextView
                     android:layout_width="wrap_content"
