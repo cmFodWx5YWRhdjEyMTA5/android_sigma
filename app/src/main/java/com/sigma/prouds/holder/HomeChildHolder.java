@@ -13,6 +13,8 @@ import com.sigma.prouds.R;
 import com.sigma.prouds.model.ProjectModel;
 import com.thoughtbot.expandablerecyclerview.viewholders.ChildViewHolder;
 
+import java.text.DecimalFormat;
+
 import de.greenrobot.event.EventBus;
 
 /**
@@ -43,6 +45,9 @@ public class HomeChildHolder extends ChildViewHolder
     {
         project.setText(model.getProjectName());
         project.setTypeface(latoRegular);
+        DecimalFormat form = new DecimalFormat("#.##");
+        final double projectComplete = Double.parseDouble(model.getProjectComplete());
+        final String persen = form.format(projectComplete);
         llProjectHome.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -52,7 +57,7 @@ public class HomeChildHolder extends ChildViewHolder
                 bundle.putString(PagerActivity.KEY_PROJECT_ID,model.getProjectId() + "");
                 bundle.putString(PagerActivity.KEY_PROJECT_NAME, model.getProjectName());
                 bundle.putString(PagerActivity.KEY_PROJECT_STATUS, model.getProjectStatus());
-                bundle.putString(PagerActivity.KEY_PROJECT_COMPLETED, model.getProjectComplete() + "");
+                bundle.putString(PagerActivity.KEY_PROJECT_COMPLETED, persen);
                 EventBus.getDefault().post(bundle);
             }
         });
@@ -60,7 +65,7 @@ public class HomeChildHolder extends ChildViewHolder
         float progress = Float.parseFloat(model.getProjectComplete());
         int finalProgress = (int) progress;
         progressBar.setProgress(finalProgress);
-        percen.setText(model.getProjectComplete() + "%");
+        percen.setText(persen + "%");
         status.setText(model.getProjectStatus());
         percen.setTypeface(latoBlack);
         status.setTypeface(latoRegular);
