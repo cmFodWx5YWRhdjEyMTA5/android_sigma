@@ -21,6 +21,11 @@ import com.sigma.prouds.network.ApiUtils;
 import com.sigma.prouds.network.response.UploadProjectDocResponse;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
@@ -166,5 +171,61 @@ public class FormDocUploadActivity extends BaseActivity {
                 Log.i("Failed status ", t.toString());
             }
         });
+    }
+
+    public String getImagePathFromInputStreamUri(Uri uri) {
+        InputStream inputStream = null;
+        String filePath = null;
+
+        if (uri.getAuthority() != null) {
+            try {
+                inputStream = getContentResolver().openInputStream(uri); // context needed
+                File photoFile = createTemporalFileFrom(inputStream);
+
+                filePath = photoFile.getPath();
+
+            } catch (FileNotFoundException e) {
+                // log
+            } catch (IOException e) {
+                // log
+            }finally {
+                try {
+                    inputStream.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+        return filePath;
+    }
+
+    private File createTemporalFileFrom(InputStream inputStream) throws IOException {
+        File targetFile = null;
+
+        if (inputStream != null) {
+            int read;
+            byte[] buffer = new byte[8 * 1024];
+
+            targetFile = createTemporalFile();
+            OutputStream outputStream = new FileOutputStream(targetFile);
+
+            while ((read = inputStream.read(buffer)) != -1) {
+                outputStream.write(buffer, 0, read);
+            }
+            outputStream.flush();
+
+            try {
+                outputStream.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        return targetFile;
+    }
+
+    private File createTemporalFile() {
+        return new File(getExternalCacheDir(), "tempFile.jpg"); // context needed
     }
 }
