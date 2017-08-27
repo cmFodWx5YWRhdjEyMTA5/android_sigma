@@ -21,12 +21,16 @@ import com.sigma.prouds.AddTimesheetActivity;
 import com.sigma.prouds.ProudsApplication;
 import com.sigma.prouds.R;
 import com.sigma.prouds.base.BaseFragment;
+import com.sigma.prouds.model.AccountManagerModel;
+import com.sigma.prouds.model.ProjectManagerModel;
+import com.sigma.prouds.model.TypeOfEffortModel;
 import com.sigma.prouds.network.ApiService;
 import com.sigma.prouds.network.ApiUtils;
 import com.sigma.prouds.network.response.ProjectSettingResponse;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -72,6 +76,10 @@ public class ProjectSettingFragment extends BaseFragment
     private ProgressDialog dialog;
     final Calendar calendar = Calendar.getInstance();
     DatePickerDialog.OnDateSetListener startDate, endDate;
+
+    private List<TypeOfEffortModel> listTypeOfEffort;
+    private List<ProjectManagerModel> listManager;
+    private List<AccountManagerModel> listAccountManager;
 
     public static ProjectSettingFragment newInstance(Context context, String projectId)
     {
@@ -210,9 +218,9 @@ public class ProjectSettingFragment extends BaseFragment
                 AlertDialog.Builder builderSingle = new AlertDialog.Builder(ctx);
                 builderSingle.setTitle("Select status");
                 final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(ctx, android.R.layout.select_dialog_singlechoice);
-                arrayAdapter.add("COMPLETED");
-                arrayAdapter.add("CANCELED");
-                arrayAdapter.add("IN PROGRESS");
+                arrayAdapter.add("Completed");
+                arrayAdapter.add("Cancelled");
+                arrayAdapter.add("In Progress");
 
                 builderSingle.setNegativeButton("cancel", new DialogInterface.OnClickListener() {
                     @Override
@@ -225,6 +233,98 @@ public class ProjectSettingFragment extends BaseFragment
                     @Override
                     public void onClick(DialogInterface dialog, int position) {
                         etProjectStatus.setText(arrayAdapter.getItem(position));
+                        dialog.dismiss();
+                    }
+                });
+                builderSingle.show();
+            }
+        });
+
+        etTypeEffort.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                AlertDialog.Builder builderSingle = new AlertDialog.Builder(ctx);
+                builderSingle.setTitle("Select type of effort");
+                final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(ctx, android.R.layout.select_dialog_singlechoice);
+                for (int i = 0; i <= listTypeOfEffort.size() - 1; i++)
+                {
+                    arrayAdapter.add(listTypeOfEffort.get(i).getName());
+                }
+
+                builderSingle.setNegativeButton("cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+
+                builderSingle.setAdapter(arrayAdapter, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int position) {
+                        etTypeEffort.setText(arrayAdapter.getItem(position));
+                        dialog.dismiss();
+                    }
+                });
+                builderSingle.show();
+            }
+        });
+
+        etPm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v)
+            {
+                AlertDialog.Builder builderSingle = new AlertDialog.Builder(ctx);
+                builderSingle.setTitle("Select manager");
+                final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(ctx, android.R.layout.select_dialog_singlechoice);
+                for (int i = 0; i <= listAccountManager.size() - 1; i++)
+                {
+                    arrayAdapter.add(listAccountManager.get(i).getUserName());
+                }
+
+                builderSingle.setNegativeButton("cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+
+                builderSingle.setAdapter(arrayAdapter, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int position) {
+                        etPm.setText(arrayAdapter.getItem(position));
+                        dialog.dismiss();
+                    }
+                });
+                builderSingle.show();
+
+            }
+        });
+
+        etAccountManager.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v)
+            {
+                AlertDialog.Builder builderSingle = new AlertDialog.Builder(ctx);
+                builderSingle.setTitle("Select manager");
+                final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(ctx, android.R.layout.select_dialog_singlechoice);
+                for (int i = 0; i <= listManager.size() - 1; i++)
+                {
+                    arrayAdapter.add(listManager.get(i).getUserName());
+                }
+
+                builderSingle.setNegativeButton("cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+
+                builderSingle.setAdapter(arrayAdapter, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int position) {
+                        etAccountManager.setText(arrayAdapter.getItem(position));
                         dialog.dismiss();
                     }
                 });
@@ -281,6 +381,10 @@ public class ProjectSettingFragment extends BaseFragment
                     rbNonProject.setChecked(false);
                     rbProject.setChecked(true);
                 }
+
+                listTypeOfEffort = response.body().getTypeOfEffort();
+                listManager = response.body().getProjectManajerList();
+                listAccountManager = response.body().getAccountManagerList();
 
                 //if (response.body().getProjectSetting().)
 

@@ -289,6 +289,8 @@
                         android:paddingLeft="16dp"
                         android:paddingRight="40dp"
                         android:hint="@string/set_pm"
+                        android:focusableInTouchMode="false"
+                        android:focusable="false"
                         android:id="@+id/et_pm"/>
                     <ImageView
                         android:layout_width="14dp"
@@ -312,6 +314,8 @@
                         android:paddingLeft="16dp"
                         android:paddingRight="40dp"
                         android:hint="@string/set_acc_manager"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
                         android:id="@+id/et_account_manager"/>
                     <ImageView
                         android:layout_width="14dp"
@@ -336,7 +340,9 @@
                         android:paddingLeft="16dp"
                         android:paddingRight="40dp"
                         android:hint="@string/set_type_effort"
-                        android:id="@+id/et_type_effort"/>
+                        android:id="@+id/et_type_effort"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"/>
                     <ImageView
                         android:layout_width="14dp"
                         android:layout_height="14dp"
