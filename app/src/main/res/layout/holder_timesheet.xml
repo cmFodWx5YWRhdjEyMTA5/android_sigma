@@ -11,21 +11,63 @@
         android:orientation="vertical"
         android:padding="16dp"
         android:visibility="visible">
+        <!-- denied -->
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="16dp">
+            android:layout_marginBottom="16dp"
+            android:id="@+id/rl_ts_status_denied"
+            android:visibility="gone">
             <ImageView
                 android:layout_width="100dp"
                 android:layout_height="24dp"
-                android:id="@+id/iv_ts_status"/>
+                android:src="@drawable/round_red" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="12sp"
                 android:layout_centerInParent="true"
+                android:textColor="@color/white"
+                android:text="@string/ts_denied"
                 android:id="@+id/tv_ts_isapproved"/>
+        </RelativeLayout>
+
+        <!-- approved -->
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="16dp"
+            android:id="@+id/rl_ts_status_approved"
+            android:visibility="gone">
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="24dp"
+                android:src="@drawable/round_blue" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:layout_centerInParent="true"
+                android:textColor="@color/white"
+                android:text="@string/ts_approved" />
+        </RelativeLayout>
+        <!-- wait -->
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="16dp"
+            android:id="@+id/rl_ts_status_wait"
+            android:visibility="gone">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:layout_centerInParent="true"
+                android:textColor="@color/homeParent"
+                android:text="@string/ts_wait" />
         </RelativeLayout>
 
         <TextView
@@ -64,7 +106,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
-            android:layout_marginBottom="16dp"
+            android:layout_marginBottom="8dp"
             android:text="@string/ts_resubmit"
             android:textSize="14sp"
             android:textColor="@color/btn"

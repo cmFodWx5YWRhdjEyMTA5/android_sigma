@@ -129,34 +129,8 @@ public class TimesheetFragment extends BaseFragment {
                 dialog.getDatePicker().setMinDate(calendarMin.getTimeInMillis());
                 dialog.getDatePicker().setMaxDate(System.currentTimeMillis());
                 dialog.show();
-//                new DatePickerDialog(getActivity(), date, calendar.get(Calendar.YEAR),
-//                        calendar.get(Calendar.MONTH),
-//                        calendar.get(Calendar.DAY_OF_MONTH)).show();
             }
         });
-
-//        final DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
-//            @Override
-//            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-//                calendar.set(Calendar.YEAR, year);
-//                calendar.set(Calendar.MONTH, month);
-//                calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-//
-//                String fullFormat = "EEE, MMM d yyyy";
-//                String halfFormat = "EEE, MMM d";
-//                String dataFormat = "yyy-MM-dd";
-//                SimpleDateFormat sdf = new SimpleDateFormat(fullFormat);
-//                SimpleDateFormat sdfHalf = new SimpleDateFormat(halfFormat);
-//                SimpleDateFormat sdfData = new SimpleDateFormat(dataFormat);
-//                String form = year + "-" + String.valueOf(month + 1)+ "-" + dayOfMonth;
-//                tvDate.setText(sdf.format(calendar.getTime()));
-//                tvDateBelow.setText(sdfHalf.format(calendar.getTime()).toUpperCase());
-//                Log.i("Date selected : ", sdfData.format(calendar.getTime()));
-//                getData(sdfData.format(calendar.getTime()));
-//
-//            }
-//        };
-
 
         llAddTimesheet = (RelativeLayout) view.findViewById(R.id.ll_add_timesheet);
         llAddTimesheet.setOnClickListener(new View.OnClickListener()

@@ -64,6 +64,7 @@
         app:tabGravity="fill"
         app:tabIndicatorHeight="3dp"
         app:tabIndicatorColor="@color/header"
+        android:layout_marginBottom="16dp"
         android:id="@+id/tl_performance"
         >
     </android.support.design.widget.TabLayout>

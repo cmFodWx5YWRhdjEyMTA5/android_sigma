@@ -75,7 +75,8 @@
             android:layout_below="@+id/tb_project_details"
             android:paddingLeft="16dp"
             android:paddingRight="16dp"
-            android:layout_marginBottom="28dp"
+            android:paddingBottom="16dp"
+            android:layout_marginBottom="12dp"
             android:orientation="vertical"
             android:gravity="center_vertical"
             android:id="@+id/ll_pd_header">
