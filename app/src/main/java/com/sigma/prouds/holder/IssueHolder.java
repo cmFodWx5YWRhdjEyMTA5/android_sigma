@@ -53,6 +53,24 @@ public class IssueHolder extends RecyclerView.ViewHolder
         tvIssue.setText(model.getNote() + "");
         tvDateIssue.setText(model.getDateIssue());
         tvIssuePriority.setText(model.getPriority());
+
+        if (model.getPriority().equalsIgnoreCase("high")) {
+            ivPriorityHigh.setVisibility(View.VISIBLE);
+            ivPriorityMed.setVisibility(View.GONE);
+            ivPriorityLow.setVisibility(View.GONE);
+        }
+
+        else if (model.getPriority().equalsIgnoreCase("medium")) {
+            ivPriorityHigh.setVisibility(View.GONE);
+            ivPriorityMed.setVisibility(View.VISIBLE);
+            ivPriorityLow.setVisibility(View.GONE);
+        }
+
+        else if (model.getPriority().equalsIgnoreCase("low")) {
+            ivPriorityHigh.setVisibility(View.GONE);
+            ivPriorityMed.setVisibility(View.GONE);
+            ivPriorityLow.setVisibility(View.VISIBLE);
+        }
         setTypeFace();
     }
 
