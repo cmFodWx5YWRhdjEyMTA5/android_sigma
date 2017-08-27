@@ -1,17 +1,28 @@
 package com.sigma.prouds;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.sigma.prouds.base.BaseActivity;
+import com.sigma.prouds.network.ApiService;
+import com.sigma.prouds.network.ApiUtils;
+import com.sigma.prouds.network.response.MyActivityResponse;
+import com.sigma.prouds.network.response.ProjectResponse;
+import com.sigma.prouds.network.response.UserdataResponse;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class ProfileSettingActivity extends BaseActivity {
 
@@ -21,6 +32,11 @@ public class ProfileSettingActivity extends BaseActivity {
     private Typeface latoRegular;
     private RelativeLayout rlProfileSetting;
     private ImageView ivBack, ivNotif;
+    private ProgressDialog dialog;
+
+    private EditText etUserId, etRole, etFullName, etEmail, etPhone, etAddress;
+
+    private ApiService service;
 
     @Override
     protected int getLayout() {
@@ -32,6 +48,9 @@ public class ProfileSettingActivity extends BaseActivity {
     {
         assignXML();
         app = (ProudsApplication) getApplicationContext();
+        service = ApiUtils.apiService();
+        dialog = new ProgressDialog(this);
+        dialog.setMessage("Please wait...");
         Intent intent = getIntent();
         tvUsername.setText(intent.getExtras().getString("user"));
         llLogout.setOnClickListener(new View.OnClickListener() {
@@ -61,6 +80,8 @@ public class ProfileSettingActivity extends BaseActivity {
             }
         });
 
+        getProfileData();
+
     }
 
     public void assignXML()
@@ -70,6 +91,14 @@ public class ProfileSettingActivity extends BaseActivity {
         rlProfileSetting = (RelativeLayout) findViewById(R.id.rl_profile_setting);
         ivBack = (ImageView) findViewById(R.id.iv_back);
         ivNotif = (ImageView) findViewById(R.id.iv_notif);
+
+        etUserId = (EditText) findViewById(R.id.et_profset_uid);
+        etRole = (EditText) findViewById(R.id.et_profset_role);
+        etFullName = (EditText) findViewById(R.id.et_profset_name);
+        etEmail = (EditText) findViewById(R.id.et_profset_email);
+        etPhone = (EditText) findViewById(R.id.et_profset_phone);
+        etAddress = (EditText) findViewById(R.id.et_profset_address);
+
     }
 
     public void toNotif() {
@@ -96,6 +125,31 @@ public class ProfileSettingActivity extends BaseActivity {
                 setFontForContainer((ViewGroup) view);
             }
         }
+    }
+
+    public void getProfileData()
+    {
+        dialog.show();
+        service.getUserdata(app.getSessionManager().getToken()).enqueue(new Callback<UserdataResponse>()
+        {
+            @Override
+            public void onResponse(Call<UserdataResponse> call, Response<UserdataResponse> response)
+            {
+                dialog.dismiss();
+                etUserId.setText(response.body().getUserdata().getUserId());
+                etEmail.setText(response.body().getUserdata().getEmail());
+                etFullName.setText(response.body().getUserdata().getUserName());
+                etRole.setText(response.body().getUserdata().getProfId());
+                etPhone.setText(response.body().getUserdata().getPhoneNo());
+                etAddress.setText(response.body().getUserdata().getAddress());
+            }
+
+            @Override
+            public void onFailure(Call<UserdataResponse> call, Throwable t)
+            {
+                dialog.dismiss();
+            }
+        });
     }
 
 }
