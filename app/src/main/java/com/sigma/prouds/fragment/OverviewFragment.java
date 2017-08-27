@@ -99,8 +99,6 @@ public class OverviewFragment extends BaseFragment
         ev = Double.parseDouble(model.getProjectPerformanceIndex().getEv());
         pv = Double.parseDouble(model.getProjectPerformanceIndex().getPv());
         ac = Double.parseDouble(model.getProjectPerformanceIndex().getAc());
-        spi = Double.parseDouble(model.getProjectPerformanceIndex().getSpi());
-        cpi = Double.parseDouble(model.getProjectPerformanceIndex().getCpi());
 
         query.id(R.id.tv_iwo).text(model.getOverview().getIwo());
         query.id(R.id.tv_buo).text(model.getOverview().getBuOwner());
@@ -108,8 +106,22 @@ public class OverviewFragment extends BaseFragment
         query.id(R.id.tv_ev).text(form.format(ev));
         query.id(R.id.tv_pv).text(form.format(pv));
         query.id(R.id.tv_ac).text(form.format(ac));
-        query.id(R.id.tv_spi).text(form.format(spi));
-        query.id(R.id.tv_cpi).text(form.format(cpi));
+
+        if (model.getProjectPerformanceIndex().getSpi().toLowerCase().contains("unable to count")) {
+            query.id(R.id.tv_spi).text(model.getProjectPerformanceIndex().getSpi() + "");
+        }
+        else {
+            spi = Double.parseDouble(model.getProjectPerformanceIndex().getSpi());
+            query.id(R.id.tv_spi).text(form.format(spi));
+        }
+
+        if (model.getProjectPerformanceIndex().getCpi().toLowerCase().contains("unable to count")) {
+            query.id(R.id.tv_cpi).text(model.getProjectPerformanceIndex().getCpi() + "");
+        }
+        else {
+            cpi = Double.parseDouble(model.getProjectPerformanceIndex().getCpi());
+            query.id(R.id.tv_cpi).text(form.format(cpi));
+        }
     }
 
     public void setTypeFace() {
