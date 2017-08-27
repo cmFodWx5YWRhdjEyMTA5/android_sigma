@@ -181,6 +181,7 @@
                     android:background="@color/white"
                     android:hint="@string/profset_phone"
                     android:textSize="14sp"
+                    android:inputType="number"
                     android:id="@+id/et_profset_phone" />
 
                 <!-- ADDRESS -->
