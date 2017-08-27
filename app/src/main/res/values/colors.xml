@@ -29,4 +29,5 @@
     <color name="blue">#0bbdc3</color>
     <color name="yellow">#ffba00</color>
     <color name="grey">#6b6b6b</color>
+    <color name="light_grey">#EEEEEE</color>
 </resources>
