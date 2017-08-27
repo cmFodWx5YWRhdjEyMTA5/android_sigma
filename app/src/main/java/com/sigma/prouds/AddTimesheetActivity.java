@@ -146,27 +146,48 @@ public class AddTimesheetActivity extends BaseActivity {
 ////// UPDATE 25 AGT
     public void chooseDate() {
         final Calendar calendar = Calendar.getInstance();
-        final DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
-            @Override
-            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                calendar.set(Calendar.YEAR, year);
-                calendar.set(Calendar.MONTH, month);
-                calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+        final Calendar calendarMin = Calendar.getInstance();
+        calendarMin.add(Calendar.MONTH, -2);
+//        final DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
+//            @Override
+//            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+//                calendar.set(Calendar.YEAR, year);
+//                calendar.set(Calendar.MONTH, month);
+//                calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+//
+//                String dataFormat = "yyy-MM-dd";
+//                SimpleDateFormat sdfData = new SimpleDateFormat(dataFormat);
+//                etDate.setText(sdfData.format(calendar.getTime()));
+//                model.setDate(sdfData.format(calendar.getTime()));
+//                model.setMobile("1");
+//            }
+//        };
 
-                String dataFormat = "yyy-MM-dd";
-                SimpleDateFormat sdfData = new SimpleDateFormat(dataFormat);
-                etDate.setText(sdfData.format(calendar.getTime()));
-                model.setDate(sdfData.format(calendar.getTime()));
-                model.setMobile("1");
-            }
-        };
 
         etDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new DatePickerDialog(AddTimesheetActivity.this, date, calendar.get(Calendar.YEAR),
-                        calendar.get(Calendar.MONTH),
-                        calendar.get(Calendar.DAY_OF_MONTH)).show();
+                DatePickerDialog dialog = new DatePickerDialog(AddTimesheetActivity.this, new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                        calendar.set(Calendar.YEAR, year);
+                        calendar.set(Calendar.MONTH, month);
+                        calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+
+                        String dataFormat = "yyy-MM-dd";
+                        SimpleDateFormat sdfData = new SimpleDateFormat(dataFormat);
+                        etDate.setText(sdfData.format(calendar.getTime()));
+                        model.setDate(sdfData.format(calendar.getTime()));
+                        model.setMobile("1");
+                    }
+                }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
+                dialog.getDatePicker().setMinDate(calendarMin.getTimeInMillis());
+                dialog.getDatePicker().setMaxDate(System.currentTimeMillis());
+                dialog.show();
+
+//                new DatePickerDialog(AddTimesheetActivity.this, date, calendar.get(Calendar.YEAR),
+//                        calendar.get(Calendar.MONTH),
+//                        calendar.get(Calendar.DAY_OF_MONTH)).show();
             }
         });
     }
