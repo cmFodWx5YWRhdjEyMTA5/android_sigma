@@ -12,10 +12,13 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.sigma.prouds.base.BaseActivity;
+import com.sigma.prouds.model.EditProfileSendModel;
 import com.sigma.prouds.network.ApiService;
 import com.sigma.prouds.network.ApiUtils;
+import com.sigma.prouds.network.response.EditProfileResponse;
 import com.sigma.prouds.network.response.MyActivityResponse;
 import com.sigma.prouds.network.response.ProjectResponse;
 import com.sigma.prouds.network.response.UserdataResponse;
@@ -26,7 +29,7 @@ import retrofit2.Response;
 
 public class ProfileSettingActivity extends BaseActivity {
 
-    private TextView tvUsername;
+    private TextView tvUsername, tvSave;
     private LinearLayout llLogout;
     private ProudsApplication app;
     private Typeface latoRegular;
@@ -82,6 +85,15 @@ public class ProfileSettingActivity extends BaseActivity {
 
         getProfileData();
 
+        tvSave.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                saveProfileChange();
+            }
+        });
+
     }
 
     public void assignXML()
@@ -99,6 +111,34 @@ public class ProfileSettingActivity extends BaseActivity {
         etPhone = (EditText) findViewById(R.id.et_profset_phone);
         etAddress = (EditText) findViewById(R.id.et_profset_address);
 
+        tvSave = (TextView) findViewById(R.id.tv_profset_save);
+
+    }
+
+    public void saveProfileChange()
+    {
+        dialog.show();
+        EditProfileSendModel model = new EditProfileSendModel();
+        model.setNoHp(etPhone.getText().toString());
+        model.setAddress(etAddress.getText().toString());
+
+        service.editProfile(app.getSessionManager().getToken(), model).enqueue(new Callback<EditProfileResponse>()
+        {
+            @Override
+            public void onResponse(Call<EditProfileResponse> call, Response<EditProfileResponse> response)
+            {
+                dialog.dismiss();
+                Toast.makeText(getApplicationContext(), "Profile Updated", Toast.LENGTH_SHORT).show();
+                ProfileSettingActivity.this.finish();
+            }
+
+            @Override
+            public void onFailure(Call<EditProfileResponse> call, Throwable t)
+            {
+                dialog.dismiss();
+                Toast.makeText(getApplicationContext(), "Update failed", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     public void toNotif() {
