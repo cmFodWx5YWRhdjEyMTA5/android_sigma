@@ -77,7 +77,14 @@ public class FormDocUploadActivity extends BaseActivity {
         rlUploadDoc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                uploadDoc();
+                if (etDocUpload.getText().length() == 0 || etDesc.getText().length() == 0)
+                {
+                    Toast.makeText(getApplicationContext(), "Fill must be fill", Toast.LENGTH_SHORT).show();
+                }
+                else
+                {
+                    uploadDoc();
+                }
             }
         });
 
