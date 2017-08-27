@@ -9,7 +9,8 @@
     <RelativeLayout
         android:layout_above="@+id/rl_doc"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_marginTop="16dp">
 
         <ProgressBar
             android:id="@+id/pb_doc_file"
