@@ -27,6 +27,7 @@ import com.sigma.prouds.network.response.TeamMemberResponse;
 import com.sigma.prouds.network.response.UploadProjectDocResponse;
 import com.sigma.prouds.network.response.UploadProjectIssueResponse;
 import com.sigma.prouds.network.response.UserProjectTimesheetResponse;
+import com.sigma.prouds.network.response.UserdataResponse;
 
 import java.util.Map;
 
@@ -105,4 +106,7 @@ public interface ApiService
 
     @GET("project/editProject_view/{project_id}")
     Call<ProjectSettingResponse> getProjectSetting(@Header("token") String token, @Path("project_id") String projectId);
+
+    @GET("home/userdata")
+    Call<UserdataResponse> getUserdata(@Header("token") String token);
 }
