@@ -5,12 +5,15 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.Typeface;
 import android.media.Image;
 import android.net.Uri;
+import android.os.Build;
 import android.provider.MediaStore;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.CursorLoader;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -28,6 +31,11 @@ import com.sigma.prouds.network.ApiUtils;
 import com.sigma.prouds.network.response.UploadProjectIssueResponse;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
@@ -129,6 +137,7 @@ public class FormReportIssueActivity extends BaseActivity {
         {
             startActivityForResult(intent, REQUEST_SELECT_IMAGE_IN_ALBUM);
         }
+
     }
 
     public void getPriority()
@@ -179,6 +188,7 @@ public class FormReportIssueActivity extends BaseActivity {
             if (data != null) {
                 Uri contentURI = data.getData();
                 imagePath = contentURI;
+                Log.i("Path : ", getImagePathFromInputStreamUri(imagePath));
                 try {
                     //Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), contentURI);
                     etIssueUpload.setText(contentURI.getLastPathSegment());
@@ -194,7 +204,7 @@ public class FormReportIssueActivity extends BaseActivity {
     public void uploadIssue()
     {
         dialog.show();
-        File file = new File(imagePath.getPath());
+        File file = new File(getImagePathFromInputStreamUri(imagePath));
         final RequestBody requestFile =
                 RequestBody.create(MediaType.parse("multipart/form-data"), file);
 
@@ -238,5 +248,61 @@ public class FormReportIssueActivity extends BaseActivity {
             }
         });
 
+    }
+
+    public String getImagePathFromInputStreamUri(Uri uri) {
+        InputStream inputStream = null;
+        String filePath = null;
+
+        if (uri.getAuthority() != null) {
+            try {
+                inputStream = getContentResolver().openInputStream(uri); // context needed
+                File photoFile = createTemporalFileFrom(inputStream);
+
+                filePath = photoFile.getPath();
+
+            } catch (FileNotFoundException e) {
+                // log
+            } catch (IOException e) {
+                // log
+            }finally {
+                try {
+                    inputStream.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+        return filePath;
+    }
+
+    private File createTemporalFileFrom(InputStream inputStream) throws IOException {
+        File targetFile = null;
+
+        if (inputStream != null) {
+            int read;
+            byte[] buffer = new byte[8 * 1024];
+
+            targetFile = createTemporalFile();
+            OutputStream outputStream = new FileOutputStream(targetFile);
+
+            while ((read = inputStream.read(buffer)) != -1) {
+                outputStream.write(buffer, 0, read);
+            }
+            outputStream.flush();
+
+            try {
+                outputStream.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        return targetFile;
+    }
+
+    private File createTemporalFile() {
+        return new File(getExternalCacheDir(), "tempFile.jpg"); // context needed
     }
 }

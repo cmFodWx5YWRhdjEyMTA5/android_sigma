@@ -158,5 +158,7 @@
     <string name="dayoff_update">You don\'t have to update anything today</string>
 
     <string name="assign_details_due">Due soon</string>
+    
+    <string name="select_picture">select picture</string>
 
 </resources>
