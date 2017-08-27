@@ -3,6 +3,7 @@ package com.sigma.prouds.holder;
 import android.content.Context;
 import android.graphics.Typeface;
 import android.os.Build;
+import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.text.Html;
 import android.text.Spannable;
@@ -14,8 +15,10 @@ import android.widget.TextView;
 
 import com.sigma.prouds.CustomTypefaceSpan;
 import com.sigma.prouds.R;
+import com.sigma.prouds.fragment.MyActivityFragment;
 import com.sigma.prouds.model.ProjectActivityModel;
 
+import de.greenrobot.event.EventBus;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 /**
@@ -52,7 +55,7 @@ public class ActivityHolder extends RecyclerView.ViewHolder
         latoRegular = Typeface.createFromAsset(itemView.getContext().getAssets(), "lato_regular.ttf");
     }
 
-    public void bind(ProjectActivityModel model)
+    public void bind(final ProjectActivityModel model)
     {
         tvUser.setText(model.getUserName());
         tvActName.setText(model.getWbsName());
@@ -108,6 +111,13 @@ public class ActivityHolder extends RecyclerView.ViewHolder
             tvDenied.setVisibility(View.GONE);
             tvReSubmit.setVisibility(View.GONE);
         }
+
+        tvReSubmit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                EventBus.getDefault().post(model);
+            }
+        });
 
     }
 

@@ -26,7 +26,9 @@ import com.sigma.prouds.ProudsApplication;
 import com.sigma.prouds.R;
 import com.sigma.prouds.adapter.TimesheetAdapter;
 import com.sigma.prouds.base.BaseFragment;
+import com.sigma.prouds.model.ProjectAssignmentModel;
 import com.sigma.prouds.model.ProjectListTimesheetSenderModel;
+import com.sigma.prouds.model.UserActivityTimesheetModel;
 import com.sigma.prouds.network.ApiService;
 import com.sigma.prouds.network.ApiUtils;
 import com.sigma.prouds.network.response.UserProjectTimesheetResponse;
@@ -242,5 +244,20 @@ public class TimesheetFragment extends BaseFragment {
                 }
                 break;
         }
+    }
+
+    public void onEvent(UserActivityTimesheetModel model)
+    {
+        ProjectAssignmentModel projectActivityModel = new ProjectAssignmentModel();
+        projectActivityModel.setProjectName(model.getProjectName());
+        projectActivityModel.setProjectId(model.getProjectId());
+        projectActivityModel.setWbsName(model.getWbsName());
+        projectActivityModel.setWbsId(model.getWbsId());
+
+        Intent intent = new Intent(getActivity(), AddTimesheetActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("model", projectActivityModel);
+        intent.putExtra("model", bundle);
+        startActivityForResult(intent, REFRESH_REQ_CODE);
     }
 }
