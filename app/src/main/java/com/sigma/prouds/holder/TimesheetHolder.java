@@ -18,6 +18,8 @@ import com.sigma.prouds.R;
 import com.sigma.prouds.model.UserActivityTimesheetModel;
 import com.sigma.prouds.network.response.UserProjectTimesheetResponse;
 
+import de.greenrobot.event.EventBus;
+
 /**
  * Created by lucgu.qolfiera on 8/16/2017.
  */
@@ -50,7 +52,7 @@ public class TimesheetHolder extends RecyclerView.ViewHolder
         latoRegular = Typeface.createFromAsset(itemView.getContext().getAssets(), "lato_regular.ttf");
     }
 
-    public void bind(UserActivityTimesheetModel model)
+    public void bind(final UserActivityTimesheetModel model)
     {
         tvTsTime.setText(model.getTsDate());
         tvTsTime.setTypeface(latoRegular);
@@ -113,6 +115,15 @@ public class TimesheetHolder extends RecyclerView.ViewHolder
             tvReSubmit.setVisibility(View.GONE);
             tvIsAproved.setText("Waiting for approval");
         }
+
+        tvReSubmit.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                EventBus.getDefault().post(model);
+            }
+        });
 
     }
 
