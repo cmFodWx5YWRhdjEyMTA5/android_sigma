@@ -26,7 +26,7 @@ public class ActivityHolder extends RecyclerView.ViewHolder
 {
     private Context context;
     private CircleImageView ivProfile;
-    private TextView tvUser, tvPosition, tvProjectName, tvActName, tvSubject, tvDesc, tvFooter, tvApprove, tvDenied, tvWait;
+    private TextView tvUser, tvPosition, tvProjectName, tvActName, tvSubject, tvDesc, tvFooter, tvApprove, tvDenied, tvWait, tvReSubmit;
     private Typeface latoBold, latoBlack, latoRegular;
     private String errorMsg;
 
@@ -45,6 +45,7 @@ public class ActivityHolder extends RecyclerView.ViewHolder
         tvApprove = (TextView) itemView.findViewById(R.id.tv_act_approve);
         tvDenied = (TextView) itemView.findViewById(R.id.tv_act_deny);
         tvWait = (TextView) itemView.findViewById(R.id.tv_act_wait_approval);
+        tvReSubmit = (TextView) itemView.findViewById(R.id.tv_act_resubmit);
 
         latoBold = Typeface.createFromAsset(itemView.getContext().getAssets(), "lato_bold.ttf");
         latoBlack = Typeface.createFromAsset(itemView.getContext().getAssets(), "lato_black.ttf");
@@ -91,18 +92,21 @@ public class ActivityHolder extends RecyclerView.ViewHolder
             tvApprove.setVisibility(View.VISIBLE);
             tvDenied.setVisibility(View.GONE);
             tvWait.setVisibility(View.GONE);
+            tvReSubmit.setVisibility(View.GONE);
         }
         else if (model.getIsApproved().equalsIgnoreCase("0"))
         {
             tvDenied.setVisibility(View.VISIBLE);
             tvApprove.setVisibility(View.GONE);
             tvWait.setVisibility(View.GONE);
+            tvReSubmit.setVisibility(View.VISIBLE);
         }
         else if (model.getIsApproved().equalsIgnoreCase("-1"))
         {
             tvWait.setVisibility(View.VISIBLE);
             tvApprove.setVisibility(View.GONE);
             tvDenied.setVisibility(View.GONE);
+            tvReSubmit.setVisibility(View.GONE);
         }
 
     }
@@ -118,5 +122,6 @@ public class ActivityHolder extends RecyclerView.ViewHolder
         tvApprove.setTypeface(latoBlack);
         tvDenied.setTypeface(latoBlack);
         tvWait.setTypeface(latoBlack);
+        tvReSubmit.setTypeface(latoBlack);
     }
 }
