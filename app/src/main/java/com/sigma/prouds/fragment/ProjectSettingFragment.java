@@ -22,6 +22,7 @@ import com.sigma.prouds.ProudsApplication;
 import com.sigma.prouds.R;
 import com.sigma.prouds.base.BaseFragment;
 import com.sigma.prouds.model.AccountManagerModel;
+import com.sigma.prouds.model.IwoModel;
 import com.sigma.prouds.model.ProjectManagerModel;
 import com.sigma.prouds.model.TypeOfEffortModel;
 import com.sigma.prouds.network.ApiService;
@@ -80,6 +81,7 @@ public class ProjectSettingFragment extends BaseFragment
     private List<TypeOfEffortModel> listTypeOfEffort;
     private List<ProjectManagerModel> listManager;
     private List<AccountManagerModel> listAccountManager;
+    private List<IwoModel> listIwo;
 
     public static ProjectSettingFragment newInstance(Context context, String projectId)
     {
@@ -191,14 +193,15 @@ public class ProjectSettingFragment extends BaseFragment
             }
         };
 
-        etStartDate.setOnClickListener(new View.OnClickListener() {
+        //StartDate cannot be edited
+        /*etStartDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 new DatePickerDialog(getActivity(), startDate, calendar.get(Calendar.YEAR),
                         calendar.get(Calendar.MONTH),
                         calendar.get(Calendar.DAY_OF_MONTH)).show();
             }
-        });
+        });*/
 
         etEndDate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -307,7 +310,7 @@ public class ProjectSettingFragment extends BaseFragment
             public void onClick(View v)
             {
                 AlertDialog.Builder builderSingle = new AlertDialog.Builder(ctx);
-                builderSingle.setTitle("Select manager");
+                builderSingle.setTitle("Select Account manager");
                 final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(ctx, android.R.layout.select_dialog_singlechoice);
                 for (int i = 0; i <= listManager.size() - 1; i++)
                 {
@@ -325,6 +328,42 @@ public class ProjectSettingFragment extends BaseFragment
                     @Override
                     public void onClick(DialogInterface dialog, int position) {
                         etAccountManager.setText(arrayAdapter.getItem(position));
+                        dialog.dismiss();
+                    }
+                });
+                builderSingle.show();
+            }
+        });
+
+        etprojectId.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                AlertDialog.Builder builderSingle = new AlertDialog.Builder(ctx);
+                builderSingle.setTitle("Select IWO");
+                final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(ctx, android.R.layout.select_dialog_singlechoice);
+                for (int i = 0; i <= listIwo.size() - 1; i++)
+                {
+                    arrayAdapter.add(listIwo.get(i).getIwoNo());
+                }
+
+                builderSingle.setNegativeButton("cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+
+                builderSingle.setAdapter(arrayAdapter, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int position) {
+                        etprojectId.setText(arrayAdapter.getItem(position));
+                        etProjectName.setText(listIwo.get(position).getProjectName());
+                        etBusinessUnit.setText(listIwo.get(position).getBuAlias());
+                        etRelatedBusinessUnit.setText(listIwo.get(position).getRelatedBu());
+                        etProjectValue.setText(listIwo.get(position).getAmount() + "");
+                        etMargin.setText(listIwo.get(position).getMargin());
                         dialog.dismiss();
                     }
                 });
@@ -354,17 +393,17 @@ public class ProjectSettingFragment extends BaseFragment
             public void onResponse(Call<ProjectSettingResponse> call, Response<ProjectSettingResponse> response)
             {
                 dialog.dismiss();
-                etprojectId.setText(response.body().getProjectSetting().getProjectId());
+                etprojectId.setText(response.body().getProjectSetting().getIwoNo());
                 etProjectName.setText(response.body().getProjectSetting().getProjectName());
                 etBusinessUnit.setText(response.body().getProjectSetting().getBuName());
                 etRelatedBusinessUnit.setText(response.body().getProjectSetting().getRelatedBu());
                 etCustomer.setText(response.body().getProjectSetting().getCustId());
                 etCustomer.setText(response.body().getProjectSetting().getCustEndId());
-                //etProjectValue.setText(response.body().getProjectSetting().getProje);
+                etProjectValue.setText(response.body().getProjectSetting().getAmount() + "");
                 etMargin.setText(response.body().getProjectSetting().getMargin());
                 etDesc.setText(response.body().getProjectSetting().getProjectDesc());
                 etPm.setText(response.body().getProjectSetting().getPmId());
-                //etAccountManager.setText(response.body().getProjectSetting().getAc);
+                etAccountManager.setText(response.body().getProjectSetting().getAmName() + "");
                 etTypeEffort.setText(response.body().getProjectSetting().getTypeOfEffort());
                 etProductType.setText(response.body().getProjectSetting().getProductType());
                 etProjectStatus.setText(response.body().getProjectSetting().getProjectStatus());
@@ -385,6 +424,7 @@ public class ProjectSettingFragment extends BaseFragment
                 listTypeOfEffort = response.body().getTypeOfEffort();
                 listManager = response.body().getProjectManajerList();
                 listAccountManager = response.body().getAccountManagerList();
+                listIwo = response.body().getIwolist();
 
                 //if (response.body().getProjectSetting().)
 

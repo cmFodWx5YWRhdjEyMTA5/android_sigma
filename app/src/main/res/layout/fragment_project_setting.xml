@@ -50,6 +50,8 @@
                         android:paddingLeft="16dp"
                         android:paddingRight="40dp"
                         android:hint="@string/set_projectid"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
                         android:id="@+id/et_projectid"/>
                     <ImageView
                         android:layout_width="14dp"
@@ -70,6 +72,8 @@
                     android:hint="@string/set_project_name"
                     android:padding="10dp"
                     android:textSize="14sp"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
                     android:paddingLeft="16dp" />
 
                 <EditText
@@ -81,7 +85,9 @@
                     android:textSize="14sp"
                     android:paddingLeft="16dp"
                     android:hint="@string/set_business_unit"
-                    android:id="@+id/et_business_unit"/>
+                    android:id="@+id/et_business_unit"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"/>
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -91,7 +97,9 @@
                     android:textSize="14sp"
                     android:paddingLeft="16dp"
                     android:hint="@string/set_related_business"
-                    android:id="@+id/et_related_business_unit"/>
+                    android:id="@+id/et_related_business_unit"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"/>
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -107,7 +115,9 @@
                         android:paddingLeft="16dp"
                         android:hint="@string/set_customer"
                         android:layout_weight="2"
-                        android:id="@+id/et_customer"/>
+                        android:id="@+id/et_customer"
+                        android:focusableInTouchMode="false"
+                        android:focusable="false"/>
                     <EditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -117,7 +127,9 @@
                         android:paddingLeft="16dp"
                         android:hint="@string/set_end_customer"
                         android:layout_weight="1"
-                        android:id="@+id/et_end_customer"/>
+                        android:id="@+id/et_end_customer"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"/>
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -134,7 +146,9 @@
                         android:paddingLeft="16dp"
                         android:hint="@string/set_project_val"
                         android:layout_weight="1"
-                        android:id="@+id/et_project_val"/>
+                        android:id="@+id/et_project_val"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"/>
                     <EditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -144,7 +158,9 @@
                         android:paddingLeft="16dp"
                         android:hint="@string/set_margin"
                         android:layout_weight="2"
-                        android:id="@+id/et_margin"/>
+                        android:id="@+id/et_margin"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"/>
                 </LinearLayout>
 
                 <!-- PRODUCT -->

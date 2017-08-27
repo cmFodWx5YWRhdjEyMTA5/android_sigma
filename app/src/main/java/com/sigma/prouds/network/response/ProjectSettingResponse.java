@@ -1,6 +1,7 @@
 package com.sigma.prouds.network.response;
 
 import com.sigma.prouds.model.AccountManagerModel;
+import com.sigma.prouds.model.IwoModel;
 import com.sigma.prouds.model.ProjectManagerModel;
 import com.sigma.prouds.model.ProjectSettingModel;
 import com.sigma.prouds.model.TypeOfEffortModel;
@@ -17,6 +18,7 @@ public class ProjectSettingResponse
     private List<TypeOfEffortModel> typeOfEffort;
     private List<ProjectManagerModel> projectManajerList;
     private List<AccountManagerModel> accountManagerList;
+    private List<IwoModel> iwolist;
 
     public ProjectSettingModel getProjectSetting() {
         return projectSetting;
@@ -48,5 +50,13 @@ public class ProjectSettingResponse
 
     public void setAccountManagerList(List<AccountManagerModel> accountManagerList) {
         this.accountManagerList = accountManagerList;
+    }
+
+    public List<IwoModel> getIwolist() {
+        return iwolist;
+    }
+
+    public void setIwolist(List<IwoModel> iwolist) {
+        this.iwolist = iwolist;
     }
 }
