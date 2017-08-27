@@ -1,20 +1,26 @@
 package com.sigma.prouds.fragment;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
+import com.sigma.prouds.AddTimesheetActivity;
 import com.sigma.prouds.ProudsApplication;
 import com.sigma.prouds.R;
 import com.sigma.prouds.adapter.MyActivityAdapter;
 import com.sigma.prouds.base.BaseFragment;
 import com.sigma.prouds.model.ProjectActivityModel;
+import com.sigma.prouds.model.ProjectAssignmentModel;
 import com.sigma.prouds.network.ApiService;
 import com.sigma.prouds.network.ApiUtils;
 import com.sigma.prouds.network.response.MyActivityResponse;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,6 +34,9 @@ import retrofit2.Response;
 
 public class MyActivityFragment extends BaseFragment
 {
+    public static final String KEY_TO_TIMESHEET = "key_to_timesheet";
+    public static final int KEY_REFRESH = 0;
+
     static Context ctx;
     private RecyclerView vpActivity;
     private MyActivityAdapter adapter;
@@ -77,5 +86,33 @@ public class MyActivityFragment extends BaseFragment
 
             }
         });
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data)
+    {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == KEY_REFRESH)
+        {
+            if (resultCode == Activity.RESULT_OK)
+            {
+                getData();
+            }
+        }
+    }
+
+    public void onEvent(ProjectActivityModel model)
+    {
+        ProjectAssignmentModel projectActivityModel = new ProjectAssignmentModel();
+        projectActivityModel.setProjectName(model.getProjectName());
+        projectActivityModel.setProjectId(model.getProjectId());
+        projectActivityModel.setWbsName(model.getWbsName());
+        projectActivityModel.setWbsId(model.getWbsId());
+
+        Intent intent = new Intent(getActivity(), AddTimesheetActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("model", projectActivityModel);
+        intent.putExtra("model", bundle);
+        startActivityForResult(intent, KEY_REFRESH);
     }
 }
