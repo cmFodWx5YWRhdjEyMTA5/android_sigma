@@ -3,11 +3,14 @@ package com.sigma.prouds.fragment;
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RadioButton;
@@ -199,6 +202,35 @@ public class ProjectSettingFragment extends BaseFragment
         });
 
         getProjectSettingData();
+
+        etProjectStatus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v)
+            {
+                AlertDialog.Builder builderSingle = new AlertDialog.Builder(ctx);
+                builderSingle.setTitle("Select status");
+                final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(ctx, android.R.layout.select_dialog_singlechoice);
+                arrayAdapter.add("COMPLETED");
+                arrayAdapter.add("CANCELED");
+                arrayAdapter.add("IN PROGRESS");
+
+                builderSingle.setNegativeButton("cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+
+                builderSingle.setAdapter(arrayAdapter, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int position) {
+                        etProjectStatus.setText(arrayAdapter.getItem(position));
+                        dialog.dismiss();
+                    }
+                });
+                builderSingle.show();
+            }
+        });
     }
 
     // set typeface for all text
