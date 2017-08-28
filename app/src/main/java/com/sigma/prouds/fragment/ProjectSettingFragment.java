@@ -16,6 +16,7 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.sigma.prouds.AddTimesheetActivity;
 import com.sigma.prouds.ProudsApplication;
@@ -53,6 +54,10 @@ public class ProjectSettingFragment extends BaseFragment
     static Context ctx;
     private String projectId;
     private ProudsApplication app;
+
+    private String projectTypeId;
+    private String ho;
+    private String buCode;
 
     private EditText etprojectId;
     private EditText etProjectName;
@@ -143,6 +148,7 @@ public class ProjectSettingFragment extends BaseFragment
             {
                 rbNonProject.setChecked(false);
                 rbProject.setChecked(true);
+                projectTypeId = "Project";
             }
         });
 
@@ -152,6 +158,7 @@ public class ProjectSettingFragment extends BaseFragment
             {
                 rbNonProject.setChecked(true);
                 rbProject.setChecked(false);
+                projectTypeId = "Non Project";
             }
         });
 
@@ -160,6 +167,7 @@ public class ProjectSettingFragment extends BaseFragment
             public void onClick(View v) {
                 rbYesOperation.setChecked(true);
                 rbNoOperation.setChecked(false);
+                ho = "yes";
             }
         });
 
@@ -168,6 +176,7 @@ public class ProjectSettingFragment extends BaseFragment
             public void onClick(View v) {
                 rbYesOperation.setChecked(false);
                 rbNoOperation.setChecked(true);
+                ho = "no";
             }
         });
 
@@ -380,21 +389,47 @@ public class ProjectSettingFragment extends BaseFragment
             @Override
             public void onClick(View v)
             {
+                dialog.setMessage("Loading...");
+                dialog.show();
                 EditProjectSendModel model = new EditProjectSendModel();
-
+                model.setAmount(etProjectValue.getText().toString() + "");
+                model.setBu(buCode);
+                model.setCustId(etCustomer.getText().toString() + "");
+                model.setDesc(etDesc.getText().toString() + "");
+                model.setEndCustId(etEndCustomer.getText().toString() + "null");
+                model.setIwoNo(etprojectId.getText().toString() + "");
+                model.setMargin(etMargin.getText().toString() + "");
+                model.setPm(etPm.getText().toString() + "");
+                model.setProductType(etProductType.getText().toString() + "");
+                model.setProjectName(etProjectName.getText().toString() + "");
+                model.setProjectStatus(etProjectStatus.getText().toString() + "");
+                model.setProjectTypeId(projectTypeId);
+                model.setRelated(etRelatedBusinessUnit.getText().toString() + "");
+                model.setTypeOfEffort(etTypeEffort.getText().toString());
+                model.setTypeOfExpense("CAPITAL EXPENSE");
+                model.setHo(ho);
+                model.setStart(etStartDate.getText().toString());
+                model.setEnd(etEndDate.getText().toString());
+                model.setOverhead("200");
+                model.setActualCost("200");
+                model.setCogs("RES");
+                model.setMobile("1");
+                model.setProjectId(projectId);
 
                 service.editProject(app.getSessionManager().getToken(), model).enqueue(new Callback<EditProjectResponse>()
                 {
                     @Override
                     public void onResponse(Call<EditProjectResponse> call, Response<EditProjectResponse> response)
                     {
-
+                        dialog.dismiss();
+                        Toast.makeText(ctx, "Update Success", Toast.LENGTH_SHORT).show();
+                        getActivity().finish();
                     }
 
                     @Override
                     public void onFailure(Call<EditProjectResponse> call, Throwable t)
                     {
-
+                        Toast.makeText(ctx, "Failed to edit project", Toast.LENGTH_SHORT).show();
                     }
                 });
             }
@@ -438,22 +473,26 @@ public class ProjectSettingFragment extends BaseFragment
                 etProjectStatus.setText(response.body().getProjectSetting().getProjectStatus());
                 etStartDate.setText(response.body().getProjectSetting().getScheduleStart());
                 etEndDate.setText(response.body().getProjectSetting().getScheduleEnd());
+                buCode = response.body().getProjectSetting().getBuCode();
 
                 if (response.body().getProjectSetting().getProjectTypeId().equalsIgnoreCase("non project"))
                 {
                     rbProject.setChecked(false);
                     rbNonProject.setChecked(true);
+                    projectTypeId = "Non Project";
                 }
                 else
                 {
                     rbNonProject.setChecked(false);
                     rbProject.setChecked(true);
+                    projectTypeId = "Project";
                 }
 
                 listTypeOfEffort = response.body().getTypeOfEffort();
                 listManager = response.body().getProjectManajerList();
                 listAccountManager = response.body().getAccountManagerList();
                 listIwo = response.body().getIwolist();
+                ho = "yes";
 
                 //if (response.body().getProjectSetting().)
 

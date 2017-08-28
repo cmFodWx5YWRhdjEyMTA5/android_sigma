@@ -10,6 +10,7 @@ public class EditProjectSendModel
     private String amId;
     private String bu;
     private String desc;
+    private String custId;
     private String endCustId;
     private String iwoNo;
     private String margin;
@@ -213,5 +214,13 @@ public class EditProjectSendModel
 
     public void setMobile(String mobile) {
         this.mobile = mobile;
+    }
+
+    public String getCustId() {
+        return custId;
+    }
+
+    public void setCustId(String custId) {
+        this.custId = custId;
     }
 }
