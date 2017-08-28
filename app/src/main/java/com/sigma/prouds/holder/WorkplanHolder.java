@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.github.aakira.expandablelayout.ExpandableLinearLayout;
 import com.sigma.prouds.R;
 import com.sigma.prouds.model.TaskModel;
+import com.sigma.prouds.model.WorkplanNewModel;
 
 /**
  * Created by lucgu.qolfiera on 8/12/2017.
@@ -51,10 +52,16 @@ public class WorkplanHolder extends RecyclerView.ViewHolder
         latoRegular = Typeface.createFromAsset(itemView.getContext().getAssets(), "lato_regular.ttf");
     }
 
-    public void bind(TaskModel model)
+    public void bind(WorkplanNewModel model)
     {
         tvTask.setText(model.getWbsName());
+        tvStartDate.setText(model.getStartDate());
+        tvEndDate.setText(model.getFinishDate());
+        tvWork.setText(model.getWork());
+        tvDuration.setText(model.getDuration());
+        tvMonitoringPercent.setText(model.getWorkPercentageComplete() + "%");
         tvMonitoringStatus.setText(model.getProjectStatus());
+        //tvMonitoringStatus.setText(model.getProjectStatus());
         ivToggle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -62,6 +69,18 @@ public class WorkplanHolder extends RecyclerView.ViewHolder
             }
         });
         setTypeFace();
+
+        try
+        {
+            float progress = Float.parseFloat(model.getWorkPercentageComplete());
+            int finalProgress = (int) progress;
+            pbMonitoring.setProgress(finalProgress);
+        }
+        catch (Exception e)
+        {
+
+        }
+
     }
 
     public void setTypeFace() {

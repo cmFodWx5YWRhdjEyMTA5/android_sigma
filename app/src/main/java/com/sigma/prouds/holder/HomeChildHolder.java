@@ -62,9 +62,17 @@ public class HomeChildHolder extends ChildViewHolder
             }
         });
 
-        float progress = Float.parseFloat(model.getProjectComplete());
-        int finalProgress = (int) progress;
-        progressBar.setProgress(finalProgress);
+        try
+        {
+            float progress = Float.parseFloat(model.getProjectComplete());
+            int finalProgress = (int) progress;
+            progressBar.setProgress(finalProgress);
+        }
+        catch (Exception e)
+        {
+
+        }
+
         percen.setText(persen + "%");
         status.setText(model.getProjectStatus());
         percen.setTypeface(latoBlack);

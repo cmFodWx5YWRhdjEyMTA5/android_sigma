@@ -16,6 +16,7 @@ import com.sigma.prouds.model.ProjectWorkplanStatusModel;
 import com.sigma.prouds.network.ApiService;
 import com.sigma.prouds.network.ApiUtils;
 import com.sigma.prouds.network.response.DetailProjectResponse;
+import com.sigma.prouds.network.response.WorkplanResponse;
 
 import org.w3c.dom.Text;
 
@@ -68,7 +69,7 @@ public class WorkplanFragment extends BaseFragment {
 
     public void getWorkPlanData()
     {
-        service.getDetailProject(projectId, app.getSessionManager().getToken()).enqueue(new Callback<DetailProjectResponse>()
+        /*service.getDetailProject(projectId, app.getSessionManager().getToken()).enqueue(new Callback<DetailProjectResponse>()
         {
             @Override
             public void onResponse(Call<DetailProjectResponse> call, Response<DetailProjectResponse> response)
@@ -86,6 +87,29 @@ public class WorkplanFragment extends BaseFragment {
 
             @Override
             public void onFailure(Call<DetailProjectResponse> call, Throwable t)
+            {
+
+            }
+        });*/
+
+        service.getWorkplan(app.getSessionManager().getToken(), projectId).enqueue(new Callback<WorkplanResponse>()
+        {
+            @Override
+            public void onResponse(Call<WorkplanResponse> call, Response<WorkplanResponse> response)
+            {
+                pbWorkplan.setVisibility(View.GONE);
+                adapter = new ProjectWorkPlanAdapter(context, response.body().getWorkplan());
+                RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(ctx);
+                rvWorkplan.setLayoutManager(mLayoutManager);
+                rvWorkplan.setAdapter(adapter);
+
+                if (response.body().getWorkplan().size() == 0) {
+                    tvEmptyWorkplan.setVisibility(View.VISIBLE);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<WorkplanResponse> call, Throwable t)
             {
 
             }

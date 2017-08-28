@@ -10,6 +10,7 @@ import com.sigma.prouds.R;
 import com.sigma.prouds.holder.WorkplanHolder;
 import com.sigma.prouds.model.ProjectWorkplanStatusModel;
 import com.sigma.prouds.model.TaskModel;
+import com.sigma.prouds.model.WorkplanNewModel;
 
 import java.util.List;
 
@@ -20,9 +21,9 @@ import java.util.List;
 public class ProjectWorkPlanAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 {
     private Context context;
-    private List<TaskModel> list;
+    private List<WorkplanNewModel> list;
 
-    public ProjectWorkPlanAdapter(Context context, List<TaskModel> list)
+    public ProjectWorkPlanAdapter(Context context, List<WorkplanNewModel> list)
     {
         this.context = context;
         this.list = list;

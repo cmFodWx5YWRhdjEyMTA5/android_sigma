@@ -34,6 +34,7 @@ import com.sigma.prouds.network.response.UploadProjectDocResponse;
 import com.sigma.prouds.network.response.UploadProjectIssueResponse;
 import com.sigma.prouds.network.response.UserProjectTimesheetResponse;
 import com.sigma.prouds.network.response.UserdataResponse;
+import com.sigma.prouds.network.response.WorkplanResponse;
 
 import java.util.Map;
 
@@ -124,4 +125,7 @@ public interface ApiService
 
     @POST("timesheet/confirmationTimesheet")
     Call<ApproveTimeSheetResponse> approveTimesheet(@Header("token") String token, @Body ApproveTimesheetSendModel model);
+
+    @GET("task/workplan_view_mobile/{project_id}")
+    Call<WorkplanResponse> getWorkplan(@Header("token") String token, @Path("project_id") String projectId);
 }
