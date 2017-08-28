@@ -22,11 +22,13 @@ import com.sigma.prouds.ProudsApplication;
 import com.sigma.prouds.R;
 import com.sigma.prouds.base.BaseFragment;
 import com.sigma.prouds.model.AccountManagerModel;
+import com.sigma.prouds.model.EditProjectSendModel;
 import com.sigma.prouds.model.IwoModel;
 import com.sigma.prouds.model.ProjectManagerModel;
 import com.sigma.prouds.model.TypeOfEffortModel;
 import com.sigma.prouds.network.ApiService;
 import com.sigma.prouds.network.ApiUtils;
+import com.sigma.prouds.network.response.EditProjectResponse;
 import com.sigma.prouds.network.response.ProjectSettingResponse;
 
 import java.text.SimpleDateFormat;
@@ -72,6 +74,7 @@ public class ProjectSettingFragment extends BaseFragment
     private EditText etProjectStatus;
     private EditText etStartDate;
     private EditText etEndDate;
+    private TextView tvSave;
     private Typeface latoRegular;
     private RelativeLayout rlProjectSetting;
     private ProgressDialog dialog;
@@ -129,6 +132,7 @@ public class ProjectSettingFragment extends BaseFragment
         etStartDate = (EditText) view.findViewById(R.id.et_start_date);
         etEndDate = (EditText) view.findViewById(R.id.et_end_date);
         rlProjectSetting = (RelativeLayout) view.findViewById(R.id.rl_project_setting);
+        tvSave = (TextView) view.findViewById(R.id.tv_save);
 
         latoRegular = Typeface.createFromAsset(ctx.getAssets(), "lato_regular.ttf");
         setFontForContainer(rlProjectSetting);
@@ -368,6 +372,31 @@ public class ProjectSettingFragment extends BaseFragment
                     }
                 });
                 builderSingle.show();
+            }
+        });
+
+        tvSave.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                EditProjectSendModel model = new EditProjectSendModel();
+
+
+                service.editProject(app.getSessionManager().getToken(), model).enqueue(new Callback<EditProjectResponse>()
+                {
+                    @Override
+                    public void onResponse(Call<EditProjectResponse> call, Response<EditProjectResponse> response)
+                    {
+
+                    }
+
+                    @Override
+                    public void onFailure(Call<EditProjectResponse> call, Throwable t)
+                    {
+
+                    }
+                });
             }
         });
     }

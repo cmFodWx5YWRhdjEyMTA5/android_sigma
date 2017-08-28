@@ -2,6 +2,7 @@ package com.sigma.prouds.network;
 
 import com.sigma.prouds.model.AddTimeSheetModel;
 import com.sigma.prouds.model.EditProfileSendModel;
+import com.sigma.prouds.model.EditProjectSendModel;
 import com.sigma.prouds.model.EmptyModel;
 import com.sigma.prouds.model.LoginModel;
 import com.sigma.prouds.model.PerformanceSendModel;
@@ -13,6 +14,7 @@ import com.sigma.prouds.network.response.AddReportResponse;
 import com.sigma.prouds.network.response.AddTimeSheetResponse;
 import com.sigma.prouds.network.response.DetailProjectResponse;
 import com.sigma.prouds.network.response.EditProfileResponse;
+import com.sigma.prouds.network.response.EditProjectResponse;
 import com.sigma.prouds.network.response.LoginResponse;
 import com.sigma.prouds.network.response.MyActivityResponse;
 import com.sigma.prouds.network.response.MyAssignmentNewResponse;
@@ -114,4 +116,7 @@ public interface ApiService
 
     @POST("home/edit_user/")
     Call<EditProfileResponse> editProfile(@Header("token") String token, @Body EditProfileSendModel model);
+
+    @POST("project/editProject_action/")
+    Call<EditProjectResponse> editProject(@Header("token") String token, @Body EditProjectSendModel model);
 }
