@@ -35,6 +35,7 @@ public class ProjectDetailsActivity extends BaseActivity {
     private ProgressBar pbDetail;
 
     public static final String KEY_DRAWER_ITEM = "key_drawer_item";
+    public static final String KEY_BACK_TO_OVERVIEW = "key_back_to_overview";
 
     private ImageView ivMenu, ivDrawerClose, ivBack, ivNotif;
     private TextView tvToolbarTitle, tvProject, tvPercen, tvStatus;
@@ -186,6 +187,13 @@ public class ProjectDetailsActivity extends BaseActivity {
             pdFragmentManager.beginTransaction().replace(R.id.pd_container, pdFragment).commit();
             closeDrawer();
             //pdDrawer.closeDrawer(pdListView);
+        }
+
+        else if (bundle.containsKey(KEY_BACK_TO_OVERVIEW))
+        {
+            pdFragment = new OverviewFragment().newInstance(this, projectId);
+            tvToolbarTitle.setText("PROJECT OVERVIEW");
+            pdFragmentManager.beginTransaction().replace(R.id.pd_container, pdFragment).commit();
         }
     }
 

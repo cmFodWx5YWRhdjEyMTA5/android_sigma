@@ -19,6 +19,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.sigma.prouds.AddTimesheetActivity;
+import com.sigma.prouds.ProjectDetailsActivity;
 import com.sigma.prouds.ProudsApplication;
 import com.sigma.prouds.R;
 import com.sigma.prouds.base.BaseFragment;
@@ -36,6 +37,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.List;
 
+import de.greenrobot.event.EventBus;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -423,7 +425,11 @@ public class ProjectSettingFragment extends BaseFragment
                     {
                         dialog.dismiss();
                         Toast.makeText(ctx, "Update Success", Toast.LENGTH_SHORT).show();
-                        getActivity().finish();
+                        //getActivity().finish();
+
+                        Bundle bundle = new Bundle();
+                        bundle.putInt(ProjectDetailsActivity.KEY_BACK_TO_OVERVIEW, 0);
+                        EventBus.getDefault().post(bundle);
                     }
 
                     @Override
