@@ -1,27 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/background"
+    android:orientation="vertical"
+    android:paddingBottom="16dp"
     android:paddingLeft="16dp"
-    android:paddingRight="16dp"
-    android:paddingBottom="16dp">
+    android:paddingRight="16dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="1dp"
+        android:background="@color/white"
         android:orientation="horizontal"
-        android:padding="16dp"
-        android:background="@color/white">
+        android:padding="16dp">
         <!-- display picture -->
         <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/civ_activity"
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:layout_marginRight="12dp"
-            android:id="@+id/civ_activity"
-            android:visibility="visible"
-            android:src="@drawable/user"/>
+            android:src="@drawable/user"
+            android:visibility="visible" />
 
         <!--content-->
         <LinearLayout
@@ -30,113 +31,164 @@
             android:orientation="vertical">
             <!-- user -->
             <TextView
+                android:id="@+id/tv_act_user"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
-                android:textSize="16dp"
                 android:textColor="@color/homeParent"
-                android:id="@+id/tv_act_user"/>
+                android:textSize="16dp" />
             <!-- position -->
             <TextView
+                android:id="@+id/tv_act_position"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
-                android:textSize="12dp"
                 android:textColor="@color/inactiveText"
-                android:id="@+id/tv_act_position"/>
+                android:textSize="12dp" />
 
             <!-- project name -->
             <TextView
+                android:id="@+id/tv_act_project_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
-                android:textSize="14dp"
                 android:textColor="@color/btn"
-                android:id="@+id/tv_act_project_name"/>
+                android:textSize="14dp" />
 
             <!-- activity name -->
             <TextView
+                android:id="@+id/tv_act_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="12dp"
-                android:textSize="14dp"
                 android:textColor="@color/homeParent"
-                android:id="@+id/tv_act_name"/>
+                android:textSize="14dp" />
 
             <!-- error msg -->
             <TextView
+                android:id="@+id/tv_act_errormsg"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
-                android:textSize="14sp"
                 android:textColor="@color/homeParent"
-                android:id="@+id/tv_act_errormsg" />
+                android:textSize="14sp" />
 
             <!-- desc-->
             <TextView
+                android:id="@+id/tv_act_desc"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="14dp"
                 android:layout_marginBottom="16dp"
                 android:textColor="@color/homeParent"
-                android:id="@+id/tv_act_desc"/>
+                android:textSize="14dp" />
 
             <!--footer-->
             <TextView
+                android:id="@+id/tv_act_footer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
-                android:textSize="10sp"
                 android:textColor="@color/inactiveText"
-                android:id="@+id/tv_act_footer"/>
+                android:textSize="10sp" />
 
             <!-- permission -->
             <LinearLayout
+                android:id="@+id/rl_permission"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"
-                android:orientation="horizontal"
-                android:id="@+id/rl_permission">
+                android:orientation="horizontal">
+
                 <TextView
+                    android:id="@+id/tv_act_deny"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="12dp"
                     android:layout_toLeftOf="@+id/tv_act_resubmit"
-                    android:textSize="12dp"
-                    android:textColor="@color/inactiveText"
                     android:text="@string/act_denied"
-                    android:id="@+id/tv_act_deny"
-                    android:visibility="gone"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="12dp"
-                    android:layout_alignParentRight="true"
-                    android:textSize="12dp"
-                    android:textColor="@color/btn"
-                    android:text="@string/ts_resubmit"
-                    android:id="@+id/tv_act_resubmit"
-                    android:visibility="gone"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="12dp"
-                    android:layout_alignParentRight="true"
-                    android:textSize="12dp"
-                    android:textColor="@color/blue"
-                    android:text="@string/act_approve"
-                    android:id="@+id/tv_act_approve"
-                    android:visibility="gone"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="12dp"
-                    android:layout_alignParentRight="true"
-                    android:textSize="12dp"
                     android:textColor="@color/inactiveText"
-                    android:text="WAITING TO APPROVAL"
+                    android:textSize="12dp"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/tv_act_resubmit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginLeft="12dp"
+                    android:text="@string/ts_resubmit"
+                    android:textColor="@color/btn"
+                    android:textSize="12dp"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/tv_act_approve"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginLeft="12dp"
+                    android:text="@string/act_approve"
+                    android:textColor="@color/blue"
+                    android:textSize="12dp"
+                    android:visibility="gone" />
+
+                <TextView
                     android:id="@+id/tv_act_wait_approval"
-                    android:visibility="gone"/>
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginLeft="12dp"
+                    android:text="WAITING TO APPROVAL"
+                    android:textColor="@color/inactiveText"
+                    android:textSize="12dp"
+                    android:visibility="gone" />
+
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="8dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:id="@+id/tv_deny"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="DENY"
+                        android:textColor="@color/splash"
+                        android:textSize="17dp"
+                        android:visibility="gone" />
+
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:id="@+id/tv_approve"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="APPROVE"
+                        android:textColor="@color/blue"
+                        android:textSize="17dp"
+                        android:visibility="gone" />
+
+
+                </RelativeLayout>
+
             </LinearLayout>
 
         </LinearLayout>

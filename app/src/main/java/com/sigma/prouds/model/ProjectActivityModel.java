@@ -6,6 +6,7 @@ package com.sigma.prouds.model;
 
 public class ProjectActivityModel
 {
+    private String tsId;
     private String wp;
     private String dateId;
     private String wbsId;
@@ -212,5 +213,13 @@ public class ProjectActivityModel
 
     public void setIsApproved(String isApproved) {
         this.isApproved = isApproved;
+    }
+
+    public String getTsId() {
+        return tsId;
+    }
+
+    public void setTsId(String tsId) {
+        this.tsId = tsId;
     }
 }

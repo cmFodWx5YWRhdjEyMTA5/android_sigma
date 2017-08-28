@@ -1,6 +1,7 @@
 package com.sigma.prouds.network;
 
 import com.sigma.prouds.model.AddTimeSheetModel;
+import com.sigma.prouds.model.ApproveTimesheetSendModel;
 import com.sigma.prouds.model.EditProfileSendModel;
 import com.sigma.prouds.model.EditProjectSendModel;
 import com.sigma.prouds.model.EmptyModel;
@@ -12,6 +13,7 @@ import com.sigma.prouds.model.ReportIssueModel;
 import com.sigma.prouds.model.TaskListTimesheetSenderModel;
 import com.sigma.prouds.network.response.AddReportResponse;
 import com.sigma.prouds.network.response.AddTimeSheetResponse;
+import com.sigma.prouds.network.response.ApproveTimeSheetResponse;
 import com.sigma.prouds.network.response.DetailProjectResponse;
 import com.sigma.prouds.network.response.EditProfileResponse;
 import com.sigma.prouds.network.response.EditProjectResponse;
@@ -119,4 +121,7 @@ public interface ApiService
 
     @POST("project/editProject_action/")
     Call<EditProjectResponse> editProject(@Header("token") String token, @Body EditProjectSendModel model);
+
+    @POST("timesheet/confirmationTimesheet")
+    Call<ApproveTimeSheetResponse> approveTimesheet(@Header("token") String token, @Body ApproveTimesheetSendModel model);
 }

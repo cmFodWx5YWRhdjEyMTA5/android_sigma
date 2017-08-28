@@ -88,6 +88,7 @@ public class LoginActivity extends BaseActivity
                     app.getSessionManager().setToken(response.body().getToken());
                     app.getSessionManager().setUserName(model.getUserId());
                     app.getSessionManager().setPassword(model.getPassword());
+                    app.getSessionManager().setProfId(response.body().getUserdata().getProfId());
                     Log.i("Token", app.getSessionManager().getToken());
                     Intent intent = new Intent(LoginActivity.this, PagerActivity.class);
                     startActivity(intent);
