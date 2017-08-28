@@ -11,6 +11,7 @@ import android.text.SpannableString;
 import android.text.style.ForegroundColorSpan;
 import android.util.Log;
 import android.view.View;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.sigma.prouds.CustomTypefaceSpan;
@@ -34,6 +35,7 @@ public class TimesheetHolder extends RecyclerView.ViewHolder
     private TextView tvIsAproved;
     private TextView tvReSubmit;
     private Typeface latoBold, latoRegular;
+    private RelativeLayout rlDenied, rlApproved, rlWait;
     String hour, projectName, wbs;
 
 
@@ -47,6 +49,9 @@ public class TimesheetHolder extends RecyclerView.ViewHolder
         tvTsSubject = (TextView) itemView.findViewById(R.id.tv_ts_errormsg);
         tvDesc = (TextView) itemView.findViewById(R.id.tv_act_desc);
         tvReSubmit = (TextView) itemView.findViewById(R.id.tv_ts_resubmit);
+        rlDenied = (RelativeLayout) itemView.findViewById(R.id.rl_ts_status_denied);
+        rlApproved = (RelativeLayout) itemView.findViewById(R.id.rl_ts_status_approved);
+        rlWait = (RelativeLayout) itemView.findViewById(R.id.rl_ts_status_wait);
 
         latoBold = Typeface.createFromAsset(itemView.getContext().getAssets(), "lato_bold.ttf");
         latoRegular = Typeface.createFromAsset(itemView.getContext().getAssets(), "lato_regular.ttf");
@@ -103,17 +108,26 @@ public class TimesheetHolder extends RecyclerView.ViewHolder
         if (model.getIsApproved().equalsIgnoreCase("0"))
         {
             tvReSubmit.setVisibility(View.VISIBLE);
-            tvIsAproved.setText("Denied");
+//            tvIsAproved.setText("Denied");
+            rlDenied.setVisibility(View.VISIBLE);
+            rlApproved.setVisibility(View.GONE);
+            rlWait.setVisibility(View.GONE);
         }
         else if (model.getIsApproved().equalsIgnoreCase("1"))
         {
             tvReSubmit.setVisibility(View.GONE);
-            tvIsAproved.setText("Approved");
+//            tvIsAproved.setText("Approved");
+            rlDenied.setVisibility(View.GONE);
+            rlApproved.setVisibility(View.VISIBLE);
+            rlWait.setVisibility(View.GONE);
         }
         else if (model.getIsApproved().equalsIgnoreCase("-1"))
         {
             tvReSubmit.setVisibility(View.GONE);
-            tvIsAproved.setText("Waiting for approval");
+//            tvIsAproved.setText("Waiting for approval");
+            rlDenied.setVisibility(View.GONE);
+            rlApproved.setVisibility(View.GONE);
+            rlWait.setVisibility(View.VISIBLE);
         }
 
         tvReSubmit.setOnClickListener(new View.OnClickListener()

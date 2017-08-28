@@ -18,6 +18,8 @@ import com.sigma.prouds.network.ApiService;
 import com.sigma.prouds.network.ApiUtils;
 import com.sigma.prouds.network.response.DetailProjectResponse;
 
+import java.text.DecimalFormat;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -36,6 +38,7 @@ public class OverviewFragment extends BaseFragment
     private ScrollView svOverview;
     private ProgressBar pbOverview;
     private TextView tvIwo;
+    private Double ev, pv, ac, spi, cpi;
 
     public static OverviewFragment newInstance(Context context, String projectId) {
         OverviewFragment fragment = new OverviewFragment();
@@ -92,14 +95,33 @@ public class OverviewFragment extends BaseFragment
 
     public void setView(DetailProjectResponse model)
     {
+        DecimalFormat form = new DecimalFormat("#.##");
+        ev = Double.parseDouble(model.getProjectPerformanceIndex().getEv());
+        pv = Double.parseDouble(model.getProjectPerformanceIndex().getPv());
+        ac = Double.parseDouble(model.getProjectPerformanceIndex().getAc());
+
         query.id(R.id.tv_iwo).text(model.getOverview().getIwo());
         query.id(R.id.tv_buo).text(model.getOverview().getBuOwner());
         query.id(R.id.tv_desc).text(model.getOverview().getDescription() + "");
-        query.id(R.id.tv_ev).text(model.getProjectPerformanceIndex().getEv());
-        query.id(R.id.tv_pv).text(model.getProjectPerformanceIndex().getPv());
-        query.id(R.id.tv_ac).text(model.getProjectPerformanceIndex().getAc());
-        query.id(R.id.tv_spi).text(model.getProjectPerformanceIndex().getSpi() + "");
-        query.id(R.id.tv_cpi).text(model.getProjectPerformanceIndex().getCpi() + "");
+        query.id(R.id.tv_ev).text(form.format(ev));
+        query.id(R.id.tv_pv).text(form.format(pv));
+        query.id(R.id.tv_ac).text(form.format(ac));
+
+        if (model.getProjectPerformanceIndex().getSpi().toLowerCase().contains("unable to count")) {
+            query.id(R.id.tv_spi).text(model.getProjectPerformanceIndex().getSpi() + "");
+        }
+        else {
+            spi = Double.parseDouble(model.getProjectPerformanceIndex().getSpi());
+            query.id(R.id.tv_spi).text(form.format(spi));
+        }
+
+        if (model.getProjectPerformanceIndex().getCpi().toLowerCase().contains("unable to count")) {
+            query.id(R.id.tv_cpi).text(model.getProjectPerformanceIndex().getCpi() + "");
+        }
+        else {
+            cpi = Double.parseDouble(model.getProjectPerformanceIndex().getCpi());
+            query.id(R.id.tv_cpi).text(form.format(cpi));
+        }
     }
 
     public void setTypeFace() {
