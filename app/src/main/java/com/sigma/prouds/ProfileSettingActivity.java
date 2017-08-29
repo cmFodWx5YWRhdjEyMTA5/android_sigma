@@ -3,14 +3,18 @@ package com.sigma.prouds;
 import android.Manifest;
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.v4.app.ActivityCompat;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
@@ -56,6 +60,7 @@ public class ProfileSettingActivity extends BaseActivity {
     private ApiService service;
 
     public static final int ACTION_REQUEST_CAMERA = 1;
+    public static final int ACTION_REQUEST_GALERY = 2;
 
     private String mCurrentPhotoPath;
     private String imagePath;
@@ -70,6 +75,7 @@ public class ProfileSettingActivity extends BaseActivity {
     {
         ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.CAMERA,
                 Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                Manifest.permission.READ_EXTERNAL_STORAGE,
                 Manifest.permission.ACCESS_FINE_LOCATION,
                 Manifest.permission.ACCESS_COARSE_LOCATION}, 1);
 
@@ -143,7 +149,21 @@ public class ProfileSettingActivity extends BaseActivity {
             @Override
             public void onClick(View v)
             {
-                takePicture();
+                AlertDialog.Builder builder = new AlertDialog.Builder(ProfileSettingActivity.this);
+                builder.setTitle("Choose source");
+                builder.setPositiveButton("Camera", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        takePicture();
+                    }
+                });
+                builder.setNegativeButton("Galery", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        pickFromGallery();
+                    }
+                });
+                builder.show();
             }
         });
 
@@ -193,7 +213,12 @@ public class ProfileSettingActivity extends BaseActivity {
 
     public void pickFromGallery()
     {
-
+        Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+        intent.setType("image/*");
+        if (intent.resolveActivity(getPackageManager()) != null)
+        {
+            startActivityForResult(intent, ACTION_REQUEST_GALERY);
+        }
     }
 
     @Override
@@ -210,6 +235,21 @@ public class ProfileSettingActivity extends BaseActivity {
 
                 }
                 break;
+
+            case ACTION_REQUEST_GALERY:
+                if (resultCode == Activity.RESULT_OK)
+                {
+                    if (data != null) {
+                        Uri contentURI = data.getData();
+                        try {
+                            Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), contentURI);
+                            Glide.with(this).load(bitmap).asBitmap().into(ivDp);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+                }
         }
     }
 

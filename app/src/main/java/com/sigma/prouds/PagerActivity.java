@@ -151,7 +151,7 @@ public class PagerActivity extends BaseFragmentActivity {
             case 1:
                 if (fragment2 == null)
                 {
-                    fragment2 = AssignmentFragment.newInstance(this);
+                    fragment2 = AssignmentFragment.newInstance(PagerActivity.this);
                 }
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment2).commit();
                 tbHome.setVisibility(View.INVISIBLE);
