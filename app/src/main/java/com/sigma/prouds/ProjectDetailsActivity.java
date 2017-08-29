@@ -129,9 +129,14 @@ public class ProjectDetailsActivity extends BaseActivity {
         query.id(R.id.tv_pd_percen).text(bundle.getString(PagerActivity.KEY_PROJECT_COMPLETED)+"%");
         query.id(R.id.tv_pd_status).text(bundle.getString(PagerActivity.KEY_PROJECT_STATUS));
 
-        float progress = Float.parseFloat(bundle.getString(PagerActivity.KEY_PROJECT_COMPLETED));
-        int finalProgress = (int) progress;
-        pbDetail.setProgress(finalProgress);
+        try {
+            float progress = Float.parseFloat(bundle.getString(PagerActivity.KEY_PROJECT_COMPLETED));
+            int finalProgress = (int) progress;
+            pbDetail.setProgress(finalProgress);
+        }catch (Exception e)
+        {
+
+        }
 
         projectId = bundle.getString(PagerActivity.KEY_PROJECT_ID);
 
