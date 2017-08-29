@@ -35,6 +35,7 @@ import com.sigma.prouds.network.response.UserProjectTimesheetResponse;
 import com.synnapps.carouselview.CarouselView;
 import com.synnapps.carouselview.ViewListener;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -118,6 +119,7 @@ public class TimesheetFragment extends BaseFragment {
                         SimpleDateFormat sdf = new SimpleDateFormat(fullFormat);
                         SimpleDateFormat sdfHalf = new SimpleDateFormat(halfFormat);
                         SimpleDateFormat sdfData = new SimpleDateFormat(dataFormat);
+
                         String form = year + "-" + String.valueOf(month + 1)+ "-" + dayOfMonth;
                         tvDate.setText(sdf.format(calendar.getTime()));
                         tvDateBelow.setText(sdfHalf.format(calendar.getTime()).toUpperCase());
@@ -240,7 +242,18 @@ public class TimesheetFragment extends BaseFragment {
             case REFRESH_REQ_CODE:
                 if (resultCode == Activity.RESULT_OK)
                 {
-                    getData(curDate);
+                    String fullFormat = "EEE, MMM d yyyy";
+                    SimpleDateFormat sdf = new SimpleDateFormat(fullFormat);
+                    String date = tvDate.getText().toString();
+                    try {
+                        Date chosenDate = sdf.parse(date);
+                        String dataFormat = "yyy-MM-dd";
+                        SimpleDateFormat sdfData = new SimpleDateFormat(dataFormat);
+                        getData(sdfData.format(chosenDate));
+                    } catch (ParseException e) {
+                        e.printStackTrace();
+                    }
+
                     /*String fullFormat = "EEE, MMM d yyyy";
                     SimpleDateFormat sdfFull = new SimpleDateFormat(fullFormat);
                     tvDate.setText(sdfFull.format(calendar.getTime()));*/
