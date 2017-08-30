@@ -26,6 +26,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.sigma.prouds.base.BaseActivity;
 import com.sigma.prouds.model.EditProfileSendModel;
 import com.sigma.prouds.network.ApiService;
@@ -426,7 +427,7 @@ public class ProfileSettingActivity extends BaseActivity {
                 etRole.setText(response.body().getUserdata().getProfId());
                 etPhone.setText(response.body().getUserdata().getPhoneNo());
                 etAddress.setText(response.body().getUserdata().getAddress());
-                Glide.with(ProfileSettingActivity.this).load("http://prouds2.telkomsigma.co.id/prouds-api/" + response.body().getUserdata().getImage()).asBitmap().into(ivDp);
+                Glide.with(ProfileSettingActivity.this).load("http://prouds2.telkomsigma.co.id/prouds-api/" + response.body().getUserdata().getImage()).diskCacheStrategy(DiskCacheStrategy.NONE).skipMemoryCache(true).into(ivDp);
 
             }
 
