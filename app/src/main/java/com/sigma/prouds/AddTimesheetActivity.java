@@ -40,6 +40,8 @@ import retrofit2.Response;
 
 public class AddTimesheetActivity extends BaseActivity {
 
+    public static final String KEY_DATE = "key_date";
+
     private ProudsApplication app;
     private ApiService service;
     private ProjectListTimesheetSenderModel model;
@@ -51,6 +53,7 @@ public class AddTimesheetActivity extends BaseActivity {
     private ImageView ivBack;
     private ProjectAssignmentModel projectModel;
     private String returnDate;
+    private String curDate;
 
     @Override
     protected int getLayout()
@@ -64,6 +67,17 @@ public class AddTimesheetActivity extends BaseActivity {
         assignXML();
 
         projectModel = new ProjectAssignmentModel();
+
+        if (getIntent().getStringExtra(KEY_DATE) != null)
+        {
+            curDate = getIntent().getStringExtra(KEY_DATE);
+        }
+        else
+        {
+            Date cDate = new Date();
+            String fDate = new SimpleDateFormat("yyyy-MM-dd").format(cDate);
+            curDate = fDate;
+        }
 
         if (getIntent().getBundleExtra("model") != null)
         {
@@ -136,10 +150,8 @@ public class AddTimesheetActivity extends BaseActivity {
 
     public void getTodayDate()
     {
-        Date cDate = new Date();
-        String fDate = new SimpleDateFormat("yyyy-MM-dd").format(cDate);
-        etDate.setText(fDate);
-        model.setDate(fDate);
+        etDate.setText(curDate);
+        model.setDate(curDate);
         model.setMobile("1");
     }
 
