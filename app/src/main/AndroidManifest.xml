@@ -15,38 +15,53 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/noActionBar">
-        <activity android:name=".LoginActivity" />
+        <activity android:name=".LoginActivity"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".RegisterActivity"
-            android:label="@string/title_activity_register" />
+            android:label="@string/title_activity_register"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".PagerActivity"
-            android:windowSoftInputMode="stateAlwaysHidden" />
-        <activity android:name=".AssignmentDetailsActivity" />
-        <activity android:name=".ProjectDetailsActivity" />
-        <activity android:name=".SplashActivity">
+            android:windowSoftInputMode="stateAlwaysHidden"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".AssignmentDetailsActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".ProjectDetailsActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".SplashActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".AddTimesheetActivity" />
+        <activity android:name=".AddTimesheetActivity"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".ProfileSettingActivity"
-            android:windowSoftInputMode="adjustPan" />
-        <activity android:name=".FormReportIssueActivity" />
-        <activity android:name=".HomeSearchResultActivity" />
-        <activity android:name=".NotifActivity" />
-        <activity android:name=".HomeSearchActivity" />
+            android:windowSoftInputMode="adjustPan"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".FormReportIssueActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".HomeSearchResultActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".NotifActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".HomeSearchActivity"
+            android:screenOrientation="portrait"/>
 
         <meta-data
             android:name="io.fabric.ApiKey"
             android:value="61375f44bb9bc0ab906665b7bca9ee29eb698c48" />
 
-        <activity android:name=".FormDocUploadActivity" />
-        <activity android:name=".SearchAssignmentActivity" />
-        <activity android:name=".SearchAssignmentResultActivity"></activity>
+        <activity android:name=".FormDocUploadActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".SearchAssignmentActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".SearchAssignmentResultActivity"
+            android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>
