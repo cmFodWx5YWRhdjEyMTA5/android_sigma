@@ -17,6 +17,7 @@ public class SessionManager
     private static final String LOGIN = "login";
     private static final String TOKEN = "token";
     private static final String PROF_ID = "prof_id";
+    private static final String PROFILE_PATH = "profile_path";
 
     private SharedPreferences pref; // use to access preference
     private SharedPreferences.Editor editor; // use to edit preference
@@ -88,4 +89,9 @@ public class SessionManager
         return pref.getString(PROF_ID, "-1");
     }
 
+    public void setProfilePath(String profilePath)
+    {
+        editor.putString(PROFILE_PATH, profilePath);
+        editor.commit();
+    }
 }

@@ -110,6 +110,7 @@ public class PerformanceFragment extends BaseFragment
             {
                 try {
                     Glide.with(ctx).load("http://prouds2.telkomsigma.co.id/prouds-api/" + response.body().getUserdata().getImage()).diskCacheStrategy(DiskCacheStrategy.NONE).skipMemoryCache(true).into(ivDp);
+
                 }catch (Exception e)
                 {
 
