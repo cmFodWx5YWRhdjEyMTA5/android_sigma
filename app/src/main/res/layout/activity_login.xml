@@ -36,9 +36,12 @@
             android:layout_height="48dp"
             android:layout_marginBottom="14dp"
             android:paddingLeft="20dp"
+            android:paddingRight="20dp"
             android:hint="Username"
+            android:maxLines="1"
             android:background="@drawable/round_et"
             android:id="@+id/et_username"
+            android:singleLine="true"
             />
 
 
@@ -47,10 +50,13 @@
             android:layout_height="48dp"
             android:layout_marginBottom="14dp"
             android:paddingLeft="20dp"
+            android:paddingRight="20dp"
             android:hint="Password"
             android:inputType="textPassword"
             android:background="@drawable/round_et"
             android:id="@+id/et_password"
+            android:maxLines="1"
+            android:singleLine="true"
             />
             <!--android:text="S201502162"-->
         <Button
