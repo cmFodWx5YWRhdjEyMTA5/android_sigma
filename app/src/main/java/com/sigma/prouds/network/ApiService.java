@@ -108,6 +108,11 @@ public interface ApiService
                                                  @Part("PRIORITY") RequestBody priority, @Part MultipartBody.Part image);
 
     @Multipart
+    @POST("home/edit_user/")
+    Call<EditProfileResponse> editProfile(@Header("token") String token, @Part("no_hp") RequestBody phoneNumber, @Part("address") RequestBody address,
+                                          @Part MultipartBody.Part image);
+
+    @Multipart
     @POST("home/documentupload/{project_id}")
     Call<UploadProjectDocResponse> uploadDoc(@Header("token") String token, @Path("project_id") String projectId, @Part("desc") RequestBody desc, @Part MultipartBody.Part doc);
 
@@ -116,9 +121,6 @@ public interface ApiService
 
     @GET("home/userdata")
     Call<UserdataResponse> getUserdata(@Header("token") String token);
-
-    @POST("home/edit_user/")
-    Call<EditProfileResponse> editProfile(@Header("token") String token, @Body EditProfileSendModel model);
 
     @POST("project/editProject_action/")
     Call<EditProjectResponse> editProject(@Header("token") String token, @Body EditProjectSendModel model);

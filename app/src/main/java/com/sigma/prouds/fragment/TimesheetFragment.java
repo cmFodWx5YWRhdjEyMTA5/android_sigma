@@ -124,6 +124,7 @@ public class TimesheetFragment extends BaseFragment {
                         tvDate.setText(sdf.format(calendar.getTime()));
                         tvDateBelow.setText(sdfHalf.format(calendar.getTime()).toUpperCase());
                         Log.i("Date selected : ", sdfData.format(calendar.getTime()));
+                        curDate = sdfData.format(calendar.getTime());
                         getData(sdfData.format(calendar.getTime()));
 
                     }
@@ -169,6 +170,7 @@ public class TimesheetFragment extends BaseFragment {
     public void toAddTimesheet()
     {
         Intent intent = new Intent(getActivity(), AddTimesheetActivity.class);
+        intent.putExtra(AddTimesheetActivity.KEY_DATE, curDate);
         startActivityForResult(intent, REFRESH_REQ_CODE);
     }
 

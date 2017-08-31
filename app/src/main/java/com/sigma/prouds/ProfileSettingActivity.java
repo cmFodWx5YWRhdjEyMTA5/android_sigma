@@ -6,6 +6,7 @@ import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Environment;
@@ -25,6 +26,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.sigma.prouds.base.BaseActivity;
 import com.sigma.prouds.model.EditProfileSendModel;
 import com.sigma.prouds.network.ApiService;
@@ -35,11 +37,18 @@ import com.sigma.prouds.network.response.ProjectResponse;
 import com.sigma.prouds.network.response.UserdataResponse;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import de.hdodenhof.circleimageview.CircleImageView;
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -56,6 +65,8 @@ public class ProfileSettingActivity extends BaseActivity {
 
     private EditText etUserId, etRole, etFullName, etEmail, etPhone, etAddress;
     private CircleImageView ivDp;
+
+    private Uri imageUri;
 
     private ApiService service;
 
@@ -240,10 +251,16 @@ public class ProfileSettingActivity extends BaseActivity {
                 if (resultCode == Activity.RESULT_OK)
                 {
                     if (data != null) {
-                        Uri contentURI = data.getData();
+                        //Uri contentURI = data.getData();
+                        //imageUri = contentURI;
+                        imagePath = data.getData().getPath();
                         try {
-                            Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), contentURI);
-                            Glide.with(this).load(bitmap).asBitmap().into(ivDp);
+                            //Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), contentURI);
+                            //Glide.with(this).load(bitmap).asBitmap().into(ivDp);
+                            final Uri imageUri = data.getData();
+                            final InputStream imageStream = getContentResolver().openInputStream(imageUri);
+                            final Bitmap selectedImage = BitmapFactory.decodeStream(imageStream);
+                            ivDp.setImageBitmap(selectedImage);
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
@@ -253,9 +270,99 @@ public class ProfileSettingActivity extends BaseActivity {
         }
     }
 
+    public String getImagePathFromInputStreamUri(Uri uri) {
+        InputStream inputStream = null;
+        String filePath = null;
+
+        if (uri.getAuthority() != null) {
+            try {
+                inputStream = getContentResolver().openInputStream(uri); // context needed
+                File photoFile = createTemporalFileFrom(inputStream);
+
+                filePath = photoFile.getPath();
+
+            } catch (FileNotFoundException e) {
+                // log
+            } catch (IOException e) {
+                // log
+            }finally {
+                try {
+                    inputStream.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+        return filePath;
+    }
+
+    private File createTemporalFileFrom(InputStream inputStream) throws IOException {
+        File targetFile = null;
+
+        if (inputStream != null) {
+            int read;
+            byte[] buffer = new byte[8 * 1024];
+
+            targetFile = createTemporalFile();
+            OutputStream outputStream = new FileOutputStream(targetFile);
+
+            while ((read = inputStream.read(buffer)) != -1) {
+                outputStream.write(buffer, 0, read);
+            }
+            outputStream.flush();
+
+            try {
+                outputStream.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        return targetFile;
+    }
+
+    private File createTemporalFile() {
+        return new File(getExternalCacheDir(), "tempFile.jpg"); // context needed
+    }
+
     public void saveProfileChange()
     {
+        File file = new File(imagePath);
+        final RequestBody requestFile =
+                RequestBody.create(MediaType.parse("multipart/form-data"), file);
+
+        MultipartBody.Part body =
+                MultipartBody.Part.createFormData("image", file.getName(), requestFile);
+
+        RequestBody phone =
+                RequestBody.create(
+                        MediaType.parse("multipart/form-data"), etPhone.getText().toString());
+
+        RequestBody address =
+                RequestBody.create(
+                        MediaType.parse("multipart/form-data"), etAddress.getText().toString());
+
         dialog.show();
+
+        service.editProfile(app.getSessionManager().getToken(), phone, address, body).enqueue(new Callback<EditProfileResponse>() {
+            @Override
+            public void onResponse(Call<EditProfileResponse> call, Response<EditProfileResponse> response)
+            {
+                dialog.dismiss();
+                Toast.makeText(getApplicationContext(), "Profile Updated", Toast.LENGTH_SHORT).show();
+                ProfileSettingActivity.this.finish();
+            }
+
+            @Override
+            public void onFailure(Call<EditProfileResponse> call, Throwable t)
+            {
+                dialog.dismiss();
+                Toast.makeText(getApplicationContext(), "Update failed", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        /*dialog.show();
         EditProfileSendModel model = new EditProfileSendModel();
         model.setNoHp(etPhone.getText().toString());
         model.setAddress(etAddress.getText().toString());
@@ -276,7 +383,7 @@ public class ProfileSettingActivity extends BaseActivity {
                 dialog.dismiss();
                 Toast.makeText(getApplicationContext(), "Update failed", Toast.LENGTH_SHORT).show();
             }
-        });
+        });*/
     }
 
     public void toNotif() {
@@ -287,7 +394,7 @@ public class ProfileSettingActivity extends BaseActivity {
     public void logout()
     {
         app.getSessionManager().clearSession();
-        Intent intent = new Intent(this, SplashActivity.class);
+        Intent intent = new Intent(this, LoginActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
         ProfileSettingActivity.this.finish();
@@ -320,6 +427,8 @@ public class ProfileSettingActivity extends BaseActivity {
                 etRole.setText(response.body().getUserdata().getProfId());
                 etPhone.setText(response.body().getUserdata().getPhoneNo());
                 etAddress.setText(response.body().getUserdata().getAddress());
+                Glide.with(ProfileSettingActivity.this).load("http://prouds2.telkomsigma.co.id/prouds-api/" + response.body().getUserdata().getImage()).diskCacheStrategy(DiskCacheStrategy.NONE).skipMemoryCache(true).into(ivDp);
+
             }
 
             @Override

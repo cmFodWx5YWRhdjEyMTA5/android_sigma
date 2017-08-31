@@ -25,6 +25,9 @@ import com.sigma.prouds.network.ApiService;
 import com.sigma.prouds.network.ApiUtils;
 import com.sigma.prouds.network.response.ApproveTimeSheetResponse;
 
+import java.sql.ResultSet;
+import java.sql.Timestamp;
+
 import de.greenrobot.event.EventBus;
 import de.hdodenhof.circleimageview.CircleImageView;
 import retrofit2.Call;
@@ -220,6 +223,9 @@ public class ActivityHolder extends RecyclerView.ViewHolder
                 EventBus.getDefault().post(model);
             }
         });
+
+        //Timestamp timestamp = Timestamp.valueOf(model.getSubmitDate().toString());
+        tvFooter.setText(model.getSubmitDate());
 
     }
 
