@@ -225,7 +225,13 @@ public class ActivityHolder extends RecyclerView.ViewHolder
         });
 
         //Timestamp timestamp = Timestamp.valueOf(model.getSubmitDate().toString());
-        tvFooter.setText(model.getSubmitDate().substring(0,9) + " | " + model.getSubmitDate().substring(10,15) + " " + model.getSubmitDate().substring(26,28));
+        try
+        {
+            tvFooter.setText(model.getSubmitDate().substring(0,9) + " | " + model.getSubmitDate().substring(10,15) + " " + model.getSubmitDate().substring(26,28));
+        }catch (Exception e)
+        {
+            
+        }
 
     }
 

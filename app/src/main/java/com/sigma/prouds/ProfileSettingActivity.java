@@ -247,6 +247,7 @@ public class ProfileSettingActivity extends BaseActivity {
                     imagePath = mCurrentPhotoPath;
                     File mediaFile = new File(imagePath);
                     Glide.with(this).load(mediaFile).asBitmap().into(ivDp);
+                    changeProfile = true;
 
                 }
                 break;
@@ -265,6 +266,7 @@ public class ProfileSettingActivity extends BaseActivity {
                             final InputStream imageStream = getContentResolver().openInputStream(imageUri);
                             final Bitmap selectedImage = BitmapFactory.decodeStream(imageStream);
                             ivDp.setImageBitmap(selectedImage);
+                            changeProfile = true;
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
@@ -332,39 +334,97 @@ public class ProfileSettingActivity extends BaseActivity {
 
     public void saveProfileChange()
     {
-        File file = new File(imagePath);
-        final RequestBody requestFile =
-                RequestBody.create(MediaType.parse("multipart/form-data"), file);
+        if (changeProfile)
+        {
+            File file = new File(imagePath);
+            final RequestBody requestFile =
+                    RequestBody.create(MediaType.parse("multipart/form-data"), file);
 
-        MultipartBody.Part body =
-                MultipartBody.Part.createFormData("image", file.getName(), requestFile);
+            MultipartBody.Part body =
+                    MultipartBody.Part.createFormData("image", file.getName(), requestFile);
 
-        RequestBody phone =
-                RequestBody.create(
-                        MediaType.parse("multipart/form-data"), etPhone.getText().toString());
+            RequestBody phone =
+                    RequestBody.create(
+                            MediaType.parse("multipart/form-data"), etPhone.getText().toString());
 
-        RequestBody address =
-                RequestBody.create(
-                        MediaType.parse("multipart/form-data"), etAddress.getText().toString());
+            RequestBody address =
+                    RequestBody.create(
+                            MediaType.parse("multipart/form-data"), etAddress.getText().toString());
 
-        dialog.show();
+            dialog.show();
 
-        service.editProfile(app.getSessionManager().getToken(), phone, address, body).enqueue(new Callback<EditProfileResponse>() {
-            @Override
-            public void onResponse(Call<EditProfileResponse> call, Response<EditProfileResponse> response)
-            {
-                dialog.dismiss();
-                Toast.makeText(getApplicationContext(), response.body().getStatusName(), Toast.LENGTH_SHORT).show();
-                ProfileSettingActivity.this.finish();
-            }
+            service.editProfile(app.getSessionManager().getToken(), phone, address, body).enqueue(new Callback<EditProfileResponse>() {
+                @Override
+                public void onResponse(Call<EditProfileResponse> call, Response<EditProfileResponse> response)
+                {
+                    dialog.dismiss();
 
-            @Override
-            public void onFailure(Call<EditProfileResponse> call, Throwable t)
-            {
-                dialog.dismiss();
-                Toast.makeText(getApplicationContext(), "Update failed", Toast.LENGTH_SHORT).show();
-            }
-        });
+                    if (response.body().getImageError().equalsIgnoreCase("0"))
+                    {
+                        Toast.makeText(getApplicationContext(), "The upload file exceeds the maximum allowed size", Toast.LENGTH_SHORT).show();
+                    }
+                    else if (response.body().getImageError().equalsIgnoreCase("-1"))
+                    {
+                        Toast.makeText(getApplicationContext(), "File format not supported", Toast.LENGTH_SHORT).show();
+                    }
+                    else
+                    {
+                        Toast.makeText(getApplicationContext(), response.body().getStatusName(), Toast.LENGTH_SHORT).show();
+                        ProfileSettingActivity.this.finish();
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<EditProfileResponse> call, Throwable t)
+                {
+                    dialog.dismiss();
+                    Toast.makeText(getApplicationContext(), "Update failed", Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
+        else
+        {
+
+            RequestBody phone =
+                    RequestBody.create(
+                            MediaType.parse("multipart/form-data"), etPhone.getText().toString());
+
+            RequestBody address =
+                    RequestBody.create(
+                            MediaType.parse("multipart/form-data"), etAddress.getText().toString());
+
+            dialog.show();
+
+            service.editProfile(app.getSessionManager().getToken(), phone, address, null).enqueue(new Callback<EditProfileResponse>() {
+                @Override
+                public void onResponse(Call<EditProfileResponse> call, Response<EditProfileResponse> response)
+                {
+                    dialog.dismiss();
+
+                    if (response.body().getImageError().equalsIgnoreCase("0"))
+                    {
+                        Toast.makeText(getApplicationContext(), "The upload file exceeds the maximum allowed size", Toast.LENGTH_SHORT).show();
+                    }
+                    else if (response.body().getImageError().equalsIgnoreCase("-1"))
+                    {
+                        Toast.makeText(getApplicationContext(), "File format not supported", Toast.LENGTH_SHORT).show();
+                    }
+                    else
+                    {
+                        Toast.makeText(getApplicationContext(), response.body().getStatusName(), Toast.LENGTH_SHORT).show();
+                        ProfileSettingActivity.this.finish();
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<EditProfileResponse> call, Throwable t)
+                {
+                    dialog.dismiss();
+                    Toast.makeText(getApplicationContext(), "Update failed", Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
+
 
         /*dialog.show();
         EditProfileSendModel model = new EditProfileSendModel();

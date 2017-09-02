@@ -135,6 +135,7 @@ public class LoginActivity extends BaseActivity
     {
         dialog = new ProgressDialog(this);
         dialog.setMessage("Signing in...");
+        dialog.setCancelable(false);
     }
 
 }

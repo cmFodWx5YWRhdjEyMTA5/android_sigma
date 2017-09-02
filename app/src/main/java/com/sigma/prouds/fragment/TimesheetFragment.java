@@ -84,7 +84,7 @@ public class TimesheetFragment extends BaseFragment {
 
     @Override
     protected void workingSpace(View view) {
-        app = (ProudsApplication) ctx.getApplicationContext();
+        app = (ProudsApplication) getActivity().getApplicationContext();
         service = ApiUtils.apiService();
         llDayOff = (LinearLayout) view.findViewById(R.id.ll_ts_dayoff);
         rvTimesheet = (RecyclerView) view.findViewById(R.id.rv_timesheet);

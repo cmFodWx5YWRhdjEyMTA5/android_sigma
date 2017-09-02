@@ -6,6 +6,7 @@ package com.sigma.prouds.network.response;
 
 public class EditProfileResponse
 {
+    private String imageError;
     private String statusName;
 
     public String getStatusName() {
@@ -14,5 +15,13 @@ public class EditProfileResponse
 
     public void setStatusName(String statusName) {
         this.statusName = statusName;
+    }
+
+    public String getImageError() {
+        return imageError;
+    }
+
+    public void setImageError(String imageError) {
+        this.imageError = imageError;
     }
 }
