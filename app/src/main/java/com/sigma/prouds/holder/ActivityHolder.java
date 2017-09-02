@@ -143,9 +143,9 @@ public class ActivityHolder extends RecyclerView.ViewHolder
             dialog.setMessage("Please wait");
             dialog.setCancelable(false);
 
-            int profId = Integer.parseInt(app.getSessionManager().getProfId());
-            Log.i("Prof id ", profId + "");
-            if (profId < 8)
+            //int profId = Integer.parseInt(app.getSessionManager().getProfId());
+            //Log.i("Prof id ", profId + "");
+            if (app.getSessionManager().getPrivilageTimesheet())
             {
                 tvActionApprove.setVisibility(View.VISIBLE);
                 tvActionDeny.setVisibility(View.VISIBLE);

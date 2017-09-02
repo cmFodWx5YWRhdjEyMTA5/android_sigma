@@ -1,5 +1,6 @@
 package com.sigma.prouds.network.response;
 
+import com.sigma.prouds.model.PrivilageModel;
 import com.sigma.prouds.model.UserModel;
 
 /**
@@ -11,6 +12,8 @@ public class LoginResponse
     private UserModel userdata;
 
     private String token;
+
+    private PrivilageModel privilege;
 
     public UserModel getUserdata()
     {
@@ -30,5 +33,13 @@ public class LoginResponse
     public void setToken(String token)
     {
         this.token = token;
+    }
+
+    public PrivilageModel getPrivilege() {
+        return privilege;
+    }
+
+    public void setPrivilege(PrivilageModel privilege) {
+        this.privilege = privilege;
     }
 }

@@ -19,6 +19,7 @@ public class SessionManager
     private static final String PROF_ID = "prof_id";
     private static final String PROFILE_PATH = "profile_path";
     private static final String ROLE_NAME = "role_name";
+    private static final String PRIVILAGE_TIMESHEET = "privilage";
 
     private SharedPreferences pref; // use to access preference
     private SharedPreferences.Editor editor; // use to edit preference
@@ -105,5 +106,16 @@ public class SessionManager
     public String getRoleName()
     {
         return pref.getString(ROLE_NAME, "");
+    }
+
+    public void setPrivilageTimesheet(boolean privilageTimesheet)
+    {
+        editor.putBoolean(PRIVILAGE_TIMESHEET, privilageTimesheet);
+        editor.commit();
+    }
+
+    public boolean getPrivilageTimesheet()
+    {
+        return pref.getBoolean(PRIVILAGE_TIMESHEET, false);
     }
 }

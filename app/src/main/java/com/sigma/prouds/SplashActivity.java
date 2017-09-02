@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import com.crashlytics.android.Crashlytics;
@@ -54,8 +55,10 @@ public class SplashActivity extends BaseActivity {
                         {
                             if (response.code() == 200)
                             {
+                                Log.i("Privilege", response.body().getPrivilege().isAccDenyTimesheet() + "");
                                 app.getSessionManager().setToken(response.body().getToken());
                                 app.getSessionManager().setRoleName(response.body().getUserdata().getProfileName());
+                                app.getSessionManager().setPrivilageTimesheet(response.body().getPrivilege().isAccDenyTimesheet());
                                 Intent intent = new Intent(SplashActivity.this, PagerActivity.class);
                                 startActivity(intent);
                                 SplashActivity.this.finish();
