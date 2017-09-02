@@ -23,73 +23,108 @@
                 android:textSize="14sp"
                 android:textColor="@color/homeParent"
                 android:id="@+id/tv_task"/>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
                 <!-- Start date -->
                 <LinearLayout
+                    android:id="@+id/ll_startdate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
                     android:layout_marginRight="16dp"
-                    android:id="@+id/ll_startdate">
+                    android:orientation="vertical">
+
                     <TextView
+                        android:id="@+id/tv_ad_title_startdate"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="2dp"
-                        android:textSize="11sp"
+                        android:text="@string/ad_start"
                         android:textColor="@color/inactiveText"
-                        android:id="@+id/tv_ad_title_startdate"
-                        android:text="@string/ad_start"/>
+                        android:textSize="11sp" />
+
                     <TextView
+                        android:id="@+id/tv_ad_startdate"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="12sp"
                         android:textColor="@color/notifText"
-                        android:id="@+id/tv_ad_startdate"/>
+                        android:textSize="12sp" />
                 </LinearLayout>
 
                 <!-- End date -->
                 <LinearLayout
+                    android:id="@+id/ll_enddate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
                     android:layout_toRightOf="@id/ll_startdate"
-                    android:id="@+id/ll_enddate">
+                    android:orientation="vertical">
+
                     <TextView
+                        android:id="@+id/tv_ad_title_enddate"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="2dp"
-                        android:textSize="11sp"
+                        android:text="@string/ad_end"
                         android:textColor="@color/inactiveText"
-                        android:id="@+id/tv_ad_title_enddate"
-                        android:text="@string/ad_end"/>
+                        android:textSize="11sp" />
+
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
+
                         <TextView
+                            android:id="@+id/tv_ad_enddate"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginRight="12dp"
-                            android:textSize="12sp"
                             android:textColor="@color/homeParent"
-                            android:id="@+id/tv_ad_enddate"/>
+                            android:textSize="12sp" />
                         <!-- Due soon -->
                         <TextView
+                            android:id="@+id/tv_ad_due"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:textSize="12sp"
-                            android:textColor="@color/yellow"
                             android:layout_below="@+id/iv_add_timesheet"
                             android:text="@string/assign_details_due"
-                            android:visibility="invisible"
-                            android:id="@+id/tv_ad_due" />
+                            android:textColor="@color/yellow"
+                            android:textSize="12sp"
+                            android:visibility="invisible" />
                     </LinearLayout>
                 </LinearLayout>
-
             </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical">
+
+                <ProgressBar
+                    android:id="@+id/pb_detail_assignment"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="8dp"
+                    android:layout_weight="1"
+                     />
+
+                <TextView
+                    android:id="@+id/tv_percen_detail_assignment"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="8dp"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_assignment_details_status"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+
+
         </LinearLayout>
         <ImageView
             android:layout_width="24dp"

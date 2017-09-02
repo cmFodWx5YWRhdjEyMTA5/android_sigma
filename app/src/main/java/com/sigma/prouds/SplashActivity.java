@@ -64,7 +64,7 @@ public class SplashActivity extends BaseActivity {
                             {
                                 AlertDialog.Builder builder = new AlertDialog.Builder(SplashActivity.this);
                                 builder.setTitle("Error");
-                                builder.setMessage("Internal server error");
+                                builder.setMessage("Internal server error, try again later");
 
                                 builder.setNegativeButton("Exit", new DialogInterface.OnClickListener() {
                                     @Override
@@ -79,7 +79,17 @@ public class SplashActivity extends BaseActivity {
                         @Override
                         public void onFailure(Call<LoginResponse> call, Throwable t)
                         {
+                            AlertDialog.Builder builder = new AlertDialog.Builder(SplashActivity.this);
+                            builder.setTitle("Error");
+                            builder.setMessage("No internet connection");
 
+                            builder.setNegativeButton("Exit", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    SplashActivity.this.finish();
+                                }
+                            });
+                            builder.show();
                         }
                     });
                 }

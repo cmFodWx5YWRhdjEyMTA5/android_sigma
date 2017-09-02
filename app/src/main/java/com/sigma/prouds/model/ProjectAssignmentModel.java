@@ -19,6 +19,8 @@ public class ProjectAssignmentModel implements Serializable
     private String wbsName;
     private String startDate;
     private String finishDate;
+    private String projectStatus;
+    private String projectPercent;
 
     public String getUserId()
     {
@@ -118,5 +120,21 @@ public class ProjectAssignmentModel implements Serializable
     public void setFinishDate(String finishDate)
     {
         this.finishDate = finishDate;
+    }
+
+    public String getProjectStatus() {
+        return projectStatus;
+    }
+
+    public void setProjectStatus(String projectStatus) {
+        this.projectStatus = projectStatus;
+    }
+
+    public String getProjectPercent() {
+        return projectPercent;
+    }
+
+    public void setProjectPercent(String projectPercent) {
+        this.projectPercent = projectPercent;
     }
 }

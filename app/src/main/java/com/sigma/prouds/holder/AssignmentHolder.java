@@ -24,6 +24,7 @@ public class AssignmentHolder extends RecyclerView.ViewHolder
 {
     private Context context;
     private TextView tvHolderAssignment;
+    private TextView tvStatus;
     private LinearLayout llAssignment;
     private Typeface latoRegular;
 
@@ -33,6 +34,7 @@ public class AssignmentHolder extends RecyclerView.ViewHolder
         this.context = context;
         tvHolderAssignment = (TextView) itemView.findViewById(R.id.tv_holder_assignment);
         llAssignment = (LinearLayout) itemView.findViewById(R.id.ll_assignment);
+        tvStatus = (TextView) itemView.findViewById(R.id.tv_status);
     }
 
     public void bind(final ProjectDetailModel model)
