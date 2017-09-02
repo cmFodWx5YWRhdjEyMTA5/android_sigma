@@ -1,5 +1,7 @@
 package com.sigma.prouds;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
@@ -50,10 +52,28 @@ public class SplashActivity extends BaseActivity {
                         @Override
                         public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response)
                         {
-                            app.getSessionManager().setToken(response.body().getToken());
-                            Intent intent = new Intent(SplashActivity.this, PagerActivity.class);
-                            startActivity(intent);
-                            SplashActivity.this.finish();
+                            if (response.code() == 200)
+                            {
+                                app.getSessionManager().setToken(response.body().getToken());
+                                Intent intent = new Intent(SplashActivity.this, PagerActivity.class);
+                                startActivity(intent);
+                                SplashActivity.this.finish();
+                            }
+
+                            else if (response.code() == 500)
+                            {
+                                AlertDialog.Builder builder = new AlertDialog.Builder(SplashActivity.this);
+                                builder.setTitle("Error");
+                                builder.setMessage("Internal server error");
+
+                                builder.setNegativeButton("Exit", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        SplashActivity.this.finish();
+                                    }
+                                });
+                                builder.show();
+                            }
                         }
 
                         @Override
