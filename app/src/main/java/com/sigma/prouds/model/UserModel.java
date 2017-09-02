@@ -14,6 +14,7 @@ public class UserModel
     private String profId;
     private String lastLogin;
     private String loggedIn;
+    private String profileName;
 
     public String getUserId()
     {
@@ -93,5 +94,13 @@ public class UserModel
     public void setLoggedIn(String loggedIn)
     {
         this.loggedIn = loggedIn;
+    }
+
+    public String getProfileName() {
+        return profileName;
+    }
+
+    public void setProfileName(String profileName) {
+        this.profileName = profileName;
     }
 }

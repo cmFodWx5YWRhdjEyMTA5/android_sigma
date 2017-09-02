@@ -42,7 +42,7 @@ public class PerformanceFragment extends BaseFragment
     static Context ctx;
     private ViewPager vpPerformance;
     private PerformanceAdapter adapter;
-    private TextView tvUserName;
+    private TextView tvUserName, tvRole;
     private ProudsApplication app;
     private TabLayout tabLayout;
     private ImageView ivSetting;
@@ -69,8 +69,10 @@ public class PerformanceFragment extends BaseFragment
         service = ApiUtils.apiService();
         vpPerformance = (ViewPager) view.findViewById(R.id.vp_performance);
         tvUserName = (TextView) view.findViewById(R.id.tv_username);
+        tvRole = (TextView) view.findViewById(R.id.tv_role);
         ivDp = (CircleImageView) view.findViewById(R.id.iv_dp);
         tvUserName.setText(app.getSessionManager().getUserName());
+        tvRole.setText(app.getSessionManager().getRoleName());
         setViewPager(vpPerformance);
 
         tabLayout = (TabLayout) view.findViewById(R.id.tl_performance);

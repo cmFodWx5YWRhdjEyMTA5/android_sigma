@@ -17,6 +17,7 @@ public class ProfileSettingModel
     private String phoneNo;
     private String address;
     private String image;
+    private String profName;
 
     public String getUserId()
     {
@@ -118,5 +119,13 @@ public class ProfileSettingModel
 
     public void setImage(String image) {
         this.image = image;
+    }
+
+    public String getProfName() {
+        return profName;
+    }
+
+    public void setProfName(String profName) {
+        this.profName = profName;
     }
 }

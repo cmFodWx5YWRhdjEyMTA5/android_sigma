@@ -55,6 +55,7 @@ public class SplashActivity extends BaseActivity {
                             if (response.code() == 200)
                             {
                                 app.getSessionManager().setToken(response.body().getToken());
+                                app.getSessionManager().setRoleName(response.body().getUserdata().getProfileName());
                                 Intent intent = new Intent(SplashActivity.this, PagerActivity.class);
                                 startActivity(intent);
                                 SplashActivity.this.finish();

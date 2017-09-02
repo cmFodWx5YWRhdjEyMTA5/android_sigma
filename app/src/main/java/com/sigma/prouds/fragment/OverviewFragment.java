@@ -96,18 +96,38 @@ public class OverviewFragment extends BaseFragment
     public void setView(DetailProjectResponse model)
     {
         DecimalFormat form = new DecimalFormat("#.##");
-        ev = Double.parseDouble(model.getProjectPerformanceIndex().getEv());
-        pv = Double.parseDouble(model.getProjectPerformanceIndex().getPv());
-        ac = Double.parseDouble(model.getProjectPerformanceIndex().getAc());
+        try
+        {
+            ev = Double.parseDouble(model.getProjectPerformanceIndex().getEv());
+            pv = Double.parseDouble(model.getProjectPerformanceIndex().getPv());
+            ac = Double.parseDouble(model.getProjectPerformanceIndex().getAc());
+            query.id(R.id.tv_ev).text(form.format(ev));
+            query.id(R.id.tv_pv).text(form.format(pv));
+            query.id(R.id.tv_ac).text(form.format(ac));
+
+            spi = Double.parseDouble(model.getProjectPerformanceIndex().getSpi());
+            query.id(R.id.tv_spi).text(form.format(spi));
+
+            cpi = Double.parseDouble(model.getProjectPerformanceIndex().getCpi());
+            query.id(R.id.tv_cpi).text(form.format(cpi));
+
+        }
+        catch (Exception e)
+        {
+            query.id(R.id.tv_ev).text("0");
+            query.id(R.id.tv_pv).text("0");
+            query.id(R.id.tv_ac).text("0");
+            query.id(R.id.tv_spi).text("0");
+            query.id(R.id.tv_cpi).text("0");
+        }
+
 
         query.id(R.id.tv_iwo).text(model.getOverview().getIwo());
         query.id(R.id.tv_buo).text(model.getOverview().getBuOwner());
         query.id(R.id.tv_desc).text(model.getOverview().getDescription() + "");
-        query.id(R.id.tv_ev).text(form.format(ev));
-        query.id(R.id.tv_pv).text(form.format(pv));
-        query.id(R.id.tv_ac).text(form.format(ac));
 
-        if (model.getProjectPerformanceIndex().getSpi().toLowerCase().contains("unable to count")) {
+
+        /*if (model.getProjectPerformanceIndex().getSpi().toLowerCase().contains("unable to count")) {
             query.id(R.id.tv_spi).text(model.getProjectPerformanceIndex().getSpi() + "");
         }
         else {
@@ -121,7 +141,7 @@ public class OverviewFragment extends BaseFragment
         else {
             cpi = Double.parseDouble(model.getProjectPerformanceIndex().getCpi());
             query.id(R.id.tv_cpi).text(form.format(cpi));
-        }
+        }*/
     }
 
     public void setTypeFace() {

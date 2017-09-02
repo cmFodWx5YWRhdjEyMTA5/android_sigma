@@ -425,7 +425,7 @@ public class ProfileSettingActivity extends BaseActivity {
                 etUserId.setText(response.body().getUserdata().getUserId());
                 etEmail.setText(response.body().getUserdata().getEmail());
                 etFullName.setText(response.body().getUserdata().getUserName());
-                etRole.setText(response.body().getUserdata().getProfId());
+                etRole.setText(response.body().getUserdata().getProfName());
                 etPhone.setText(response.body().getUserdata().getPhoneNo());
                 etAddress.setText(response.body().getUserdata().getAddress());
                 Glide.with(ProfileSettingActivity.this).load("http://prouds2.telkomsigma.co.id/prouds-api/" + response.body().getUserdata().getImage()).diskCacheStrategy(DiskCacheStrategy.NONE).skipMemoryCache(true).into(ivDp);

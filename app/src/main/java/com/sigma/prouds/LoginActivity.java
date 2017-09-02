@@ -1,6 +1,8 @@
 package com.sigma.prouds;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.util.Log;
 import android.view.View;
@@ -89,6 +91,7 @@ public class LoginActivity extends BaseActivity
                     app.getSessionManager().setUserName(model.getUserId());
                     app.getSessionManager().setPassword(model.getPassword());
                     app.getSessionManager().setProfId(response.body().getUserdata().getProfId());
+                    app.getSessionManager().setRoleName(response.body().getUserdata().getProfileName());
                     Log.i("Token", app.getSessionManager().getToken());
                     Intent intent = new Intent(LoginActivity.this, PagerActivity.class);
                     startActivity(intent);
@@ -98,6 +101,21 @@ public class LoginActivity extends BaseActivity
                 {
                     dialog.dismiss();
                     Toast.makeText(getApplicationContext(), "Username Atau Password salah", Toast.LENGTH_SHORT).show();
+                }
+
+                else if (response.code() == 500)
+                {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
+                    builder.setTitle("Error");
+                    builder.setMessage("Internal server error, try again later");
+
+                    builder.setNegativeButton("Exit", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            LoginActivity.this.finish();
+                        }
+                    });
+                    builder.show();
                 }
 
             }
