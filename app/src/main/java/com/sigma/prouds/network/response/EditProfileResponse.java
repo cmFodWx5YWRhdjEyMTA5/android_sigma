@@ -6,13 +6,13 @@ package com.sigma.prouds.network.response;
 
 public class EditProfileResponse
 {
-    private String status;
+    private String statusName;
 
-    public String getStatus() {
-        return status;
+    public String getStatusName() {
+        return statusName;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setStatusName(String statusName) {
+        this.statusName = statusName;
     }
 }

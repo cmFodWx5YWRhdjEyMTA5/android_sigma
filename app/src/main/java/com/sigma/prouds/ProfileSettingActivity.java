@@ -77,6 +77,8 @@ public class ProfileSettingActivity extends BaseActivity {
     private String mCurrentPhotoPath;
     private String imagePath;
 
+    private boolean changeProfile;
+
     @Override
     protected int getLayout() {
         return R.layout.activity_profile_setting;
@@ -351,7 +353,7 @@ public class ProfileSettingActivity extends BaseActivity {
             public void onResponse(Call<EditProfileResponse> call, Response<EditProfileResponse> response)
             {
                 dialog.dismiss();
-                Toast.makeText(getApplicationContext(), "Profile Updated", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), response.body().getStatusName(), Toast.LENGTH_SHORT).show();
                 ProfileSettingActivity.this.finish();
             }
 
