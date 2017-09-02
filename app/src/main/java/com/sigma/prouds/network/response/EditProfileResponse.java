@@ -8,6 +8,7 @@ public class EditProfileResponse
 {
     private String imageError;
     private String statusName;
+    private String message;
 
     public String getStatusName() {
         return statusName;
@@ -23,5 +24,13 @@ public class EditProfileResponse
 
     public void setImageError(String imageError) {
         this.imageError = imageError;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
     }
 }

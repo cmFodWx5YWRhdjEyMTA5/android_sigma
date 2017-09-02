@@ -303,6 +303,6 @@ public class FormReportIssueActivity extends BaseActivity {
     }
 
     private File createTemporalFile() {
-        return new File(getExternalCacheDir(), "tempFile.jpg"); // context needed
+        return new File(getExternalCacheDir(), "tempFileGeiya.jpg"); // context needed
     }
 }

@@ -77,6 +77,9 @@ public class ProfileSettingActivity extends BaseActivity {
 
     private String mCurrentPhotoPath;
     private String imagePath;
+    private File fileFromGalery;
+
+    private int sourceFrom = 0;
 
     private boolean changeProfile;
 
@@ -204,6 +207,7 @@ public class ProfileSettingActivity extends BaseActivity {
                         photoFile);
                 //Uri photoURI = Uri.fromFile(photoFile);
                 takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
+                sourceFrom = ACTION_REQUEST_CAMERA;
                 startActivityForResult(takePictureIntent, ACTION_REQUEST_CAMERA);
             }
         }
@@ -232,6 +236,7 @@ public class ProfileSettingActivity extends BaseActivity {
         intent.setType("image/*");
         if (intent.resolveActivity(getPackageManager()) != null)
         {
+            sourceFrom = ACTION_REQUEST_GALERY;
             startActivityForResult(intent, ACTION_REQUEST_GALERY);
         }
     }
@@ -258,7 +263,8 @@ public class ProfileSettingActivity extends BaseActivity {
                     if (data != null) {
                         //Uri contentURI = data.getData();
                         //imageUri = contentURI;
-                        imagePath = data.getData().getPath();
+                        //imagePath = data.getData().getPath();
+                        Log.i("Image path", data.getData().toString());
                         try {
                             //Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), contentURI);
                             //Glide.with(this).load(bitmap).asBitmap().into(ivDp);
@@ -266,7 +272,11 @@ public class ProfileSettingActivity extends BaseActivity {
                             final InputStream imageStream = getContentResolver().openInputStream(imageUri);
                             final Bitmap selectedImage = BitmapFactory.decodeStream(imageStream);
                             ivDp.setImageBitmap(selectedImage);
+                            storeImage(selectedImage);
                             changeProfile = true;
+
+
+
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
@@ -274,6 +284,54 @@ public class ProfileSettingActivity extends BaseActivity {
                     }
                 }
         }
+    }
+
+    private void storeImage(Bitmap image) {
+        File pictureFile = getOutputMediaFile();
+        if (pictureFile == null) {
+            Log.d("Prouds",
+                    "Error creating media file, check storage permissions: ");// e.getMessage());
+            return;
+        }
+        try {
+            FileOutputStream fos = new FileOutputStream(pictureFile);
+            image.compress(Bitmap.CompressFormat.PNG, 90, fos);
+            fos.close();
+        } catch (FileNotFoundException e) {
+            Log.d("Prouds", "File not found: " + e.getMessage());
+        } catch (IOException e) {
+            Log.d("Prouds", "Error accessing file: " + e.getMessage());
+        }
+
+        imagePath = pictureFile.getPath();
+        fileFromGalery = pictureFile;
+        Log.d("ImagePath", imagePath);
+
+    }
+
+    private  File getOutputMediaFile(){
+        // To be safe, you should check that the SDCard is mounted
+        // using Environment.getExternalStorageState() before doing this.
+        File mediaStorageDir = new File(Environment.getExternalStorageDirectory()
+                + "/Android/data/"
+                + getApplicationContext().getPackageName()
+                + "/Files");
+
+        // This location works best if you want the created images to be shared
+        // between applications and persist after your app has been uninstalled.
+
+        // Create the storage directory if it does not exist
+        if (! mediaStorageDir.exists()){
+            if (! mediaStorageDir.mkdirs()){
+                return null;
+            }
+        }
+        // Create a media file name
+        String timeStamp = new SimpleDateFormat("ddMMyyyy_HHmm").format(new Date());
+        File mediaFile;
+        String mImageName="MI_"+ timeStamp +".png";
+        mediaFile = new File(mediaStorageDir.getPath() + File.separator + mImageName);
+        return mediaFile;
     }
 
     public String getImagePathFromInputStreamUri(Uri uri) {
@@ -329,19 +387,38 @@ public class ProfileSettingActivity extends BaseActivity {
     }
 
     private File createTemporalFile() {
-        return new File(getExternalCacheDir(), "tempFile.jpg"); // context needed
+        return new File(getExternalCacheDir(), "tempFile9999.jpg"); // context needed
     }
 
     public void saveProfileChange()
     {
         if (changeProfile)
         {
-            File file = new File(imagePath);
-            final RequestBody requestFile =
-                    RequestBody.create(MediaType.parse("multipart/form-data"), file);
+            MultipartBody.Part body = null;
+            if (sourceFrom == ACTION_REQUEST_CAMERA)
+            {
+                File file = new File(imagePath);
+                final RequestBody requestFile =
+                        RequestBody.create(MediaType.parse("multipart/form-data"), file);
 
-            MultipartBody.Part body =
-                    MultipartBody.Part.createFormData("image", file.getName(), requestFile);
+                body =
+                        MultipartBody.Part.createFormData("image", file.getName(), requestFile);
+            }
+
+            else if (sourceFrom == ACTION_REQUEST_GALERY)
+            {
+
+                File file = fileFromGalery;
+                //File file = new File(imagePath);
+                final RequestBody requestFile =
+                        RequestBody.create(MediaType.parse("multipart/form-data"), file);
+
+                body =
+                        MultipartBody.Part.createFormData("image", fileFromGalery.getName(), requestFile);
+
+                Log.i("Image from galerry", file.getPath());
+            }
+
 
             RequestBody phone =
                     RequestBody.create(
@@ -369,7 +446,7 @@ public class ProfileSettingActivity extends BaseActivity {
                     }
                     else
                     {
-                        Toast.makeText(getApplicationContext(), response.body().getStatusName(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
                         Intent returnIntent = new Intent();
                         setResult(Activity.RESULT_OK);
                         ProfileSettingActivity.this.finish();
@@ -380,6 +457,7 @@ public class ProfileSettingActivity extends BaseActivity {
                 public void onFailure(Call<EditProfileResponse> call, Throwable t)
                 {
                     dialog.dismiss();
+                    Log.i("Throw", t.toString());
                     Toast.makeText(getApplicationContext(), "Update failed", Toast.LENGTH_SHORT).show();
                 }
             });
