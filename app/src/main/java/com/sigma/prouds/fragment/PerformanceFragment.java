@@ -1,5 +1,6 @@
 package com.sigma.prouds.fragment;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
@@ -39,6 +40,8 @@ import retrofit2.Response;
 
 public class PerformanceFragment extends BaseFragment
 {
+    public static final int REFRESH_IMAGE_REQ_CODE = 0;
+
     static Context ctx;
     private ViewPager vpPerformance;
     private PerformanceAdapter adapter;
@@ -86,7 +89,7 @@ public class PerformanceFragment extends BaseFragment
             {
                 Intent intent = new Intent(getActivity(), ProfileSettingActivity.class);
                 intent.putExtra("user", tvUserName.getText().toString());
-                startActivity(intent);
+                startActivityForResult(intent, REFRESH_IMAGE_REQ_CODE);
             }
         });
 
@@ -127,7 +130,15 @@ public class PerformanceFragment extends BaseFragment
         });
     }
 
-
-
-
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data)
+    {
+        if (requestCode == REFRESH_IMAGE_REQ_CODE)
+        {
+            if (resultCode == Activity.RESULT_OK)
+            {
+                getProfilePics();
+            }
+        }
+    }
 }

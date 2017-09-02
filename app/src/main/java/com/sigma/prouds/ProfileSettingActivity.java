@@ -370,6 +370,8 @@ public class ProfileSettingActivity extends BaseActivity {
                     else
                     {
                         Toast.makeText(getApplicationContext(), response.body().getStatusName(), Toast.LENGTH_SHORT).show();
+                        Intent returnIntent = new Intent();
+                        setResult(Activity.RESULT_OK);
                         ProfileSettingActivity.this.finish();
                     }
                 }
