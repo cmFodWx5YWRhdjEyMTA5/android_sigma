@@ -14,6 +14,7 @@ import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.v4.app.ActivityCompat;
 
+import android.support.v4.content.FileProvider;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -198,10 +199,10 @@ public class ProfileSettingActivity extends BaseActivity {
             }
             // Continue only if the File was successfully created
             if (photoFile != null) {
-                /*Uri photoURI = FileProvider.getUriForFile(this,
-                        "com.dattabot.surveygisclick",
-                        photoFile);*/
-                Uri photoURI = Uri.fromFile(photoFile);
+                Uri photoURI = FileProvider.getUriForFile(ProfileSettingActivity.this,
+                        "com.sigma.prouds.fileprovider",
+                        photoFile);
+                //Uri photoURI = Uri.fromFile(photoFile);
                 takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
                 startActivityForResult(takePictureIntent, ACTION_REQUEST_CAMERA);
             }
