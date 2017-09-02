@@ -12,6 +12,8 @@ import android.widget.TextView;
 import com.sigma.prouds.R;
 import com.sigma.prouds.model.ProjectAssignmentModel;
 
+import java.text.DecimalFormat;
+
 import de.greenrobot.event.EventBus;
 
 /**
@@ -56,18 +58,22 @@ public class AssignmentDetailHolder extends RecyclerView.ViewHolder
                 EventBus.getDefault().post(model);
             }
         });
+
+        DecimalFormat form = new DecimalFormat("#.##");
+
         tvStatus.setText(model.getProjectStatus());
-        tvPercent.setText(model.getProjectPercent() + "%");
+
 
         try
         {
             float progress = Float.parseFloat(model.getProjectPercent());
             int finalProgress = (int) progress;
             pbTask.setProgress(finalProgress);
+            tvPercent.setText(form.format(progress) + "%");
         }
         catch (Exception e)
         {
-
+            tvPercent.setText("Not set");
         }
 
         setTypeFace();
