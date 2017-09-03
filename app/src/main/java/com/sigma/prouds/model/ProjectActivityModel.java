@@ -1,10 +1,12 @@
 package com.sigma.prouds.model;
 
+import java.io.Serializable;
+
 /**
  * Created by 1414 on 7/10/2017.
  */
 
-public class ProjectActivityModel
+public class ProjectActivityModel implements Serializable
 {
     private String tsId;
     private String wp;

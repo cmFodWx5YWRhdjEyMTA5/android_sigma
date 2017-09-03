@@ -71,6 +71,16 @@ public class DocFileFragment extends BaseFragment
         tvEmptyDocument = (TextView) view.findViewById(R.id.tv_empty_document);
         query.id(R.id.tv_empty_document).typeface(Typeface.createFromAsset(ctx.getAssets(), "lato_regular.ttf"));
         query.id(R.id.tv_doc_upload).typeface(Typeface.createFromAsset(ctx.getAssets(), "lato_regular.ttf"));
+
+        if (app.getSessionManager().getPrivilageUploadDoc())
+        {
+            rlAddDoc.setVisibility(View.VISIBLE);
+        }
+        else
+        {
+            rlAddDoc.setVisibility(View.GONE);
+        }
+
         rlAddDoc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

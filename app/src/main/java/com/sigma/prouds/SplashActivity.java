@@ -55,10 +55,13 @@ public class SplashActivity extends BaseActivity {
                         {
                             if (response.code() == 200)
                             {
-                                Log.i("Privilege", response.body().getPrivilege().isAccDenyTimesheet() + "");
+                                Log.i("Privilege", response.body().getPrivilege().isTimesheetApproval() + "");
                                 app.getSessionManager().setToken(response.body().getToken());
                                 app.getSessionManager().setRoleName(response.body().getUserdata().getProfileName());
-                                app.getSessionManager().setPrivilageTimesheet(response.body().getPrivilege().isAccDenyTimesheet());
+                                app.getSessionManager().setPrivilageTimesheet(response.body().getPrivilege().isTimesheetApproval());
+                                app.getSessionManager().setPrivilageEditProject(response.body().getPrivilege().isEditProject());
+                                app.getSessionManager().setPrivilageUploadDoc(response.body().getPrivilege().isUploadDoc());
+                                app.getSessionManager().setPrivilageUploadIssue(response.body().getPrivilege().isUploadIssue());
                                 Intent intent = new Intent(SplashActivity.this, PagerActivity.class);
                                 startActivity(intent);
                                 SplashActivity.this.finish();

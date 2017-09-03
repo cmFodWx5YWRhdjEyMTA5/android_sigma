@@ -109,9 +109,10 @@ public class MyActivityFragment extends BaseFragment
         projectActivityModel.setWbsName(model.getWbsName());
         projectActivityModel.setWbsId(model.getWbsId());
 
+
         Intent intent = new Intent(getActivity(), AddTimesheetActivity.class);
         Bundle bundle = new Bundle();
-        bundle.putSerializable("model", projectActivityModel);
+        bundle.putSerializable("model", (Serializable) model);
         intent.putExtra("model", bundle);
         startActivityForResult(intent, KEY_REFRESH);
     }

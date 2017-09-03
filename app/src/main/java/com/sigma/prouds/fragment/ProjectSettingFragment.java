@@ -386,60 +386,74 @@ public class ProjectSettingFragment extends BaseFragment
             }
         });
 
-        tvSave.setOnClickListener(new View.OnClickListener()
+        if (app.getSessionManager().getPrivilageEditProject())
         {
-            @Override
-            public void onClick(View v)
+            tvSave.setOnClickListener(new View.OnClickListener()
             {
-                dialog.setMessage("Loading...");
-                dialog.show();
-                EditProjectSendModel model = new EditProjectSendModel();
-                model.setAmount(etProjectValue.getText().toString() + "");
-                model.setBu(buCode);
-                model.setCustId(etCustomer.getText().toString() + "");
-                model.setDesc(etDesc.getText().toString() + "");
-                model.setEndCustId(etEndCustomer.getText().toString() + "null");
-                model.setIwoNo(etprojectId.getText().toString() + "");
-                model.setMargin(etMargin.getText().toString() + "");
-                model.setPm(etPm.getText().toString() + "");
-                model.setProductType(etProductType.getText().toString() + "");
-                model.setProjectName(etProjectName.getText().toString() + "");
-                model.setProjectStatus(etProjectStatus.getText().toString() + "");
-                model.setProjectTypeId(projectTypeId);
-                model.setRelated(etRelatedBusinessUnit.getText().toString() + "");
-                model.setTypeOfEffort(etTypeEffort.getText().toString());
-                model.setTypeOfExpense("CAPITAL EXPENSE");
-                model.setHo(ho);
-                model.setStart(etStartDate.getText().toString());
-                model.setEnd(etEndDate.getText().toString());
-                model.setOverhead("200");
-                model.setActualCost("200");
-                model.setCogs("RES");
-                model.setMobile("1");
-                model.setProjectId(projectId);
-
-                service.editProject(app.getSessionManager().getToken(), model).enqueue(new Callback<EditProjectResponse>()
+                @Override
+                public void onClick(View v)
                 {
-                    @Override
-                    public void onResponse(Call<EditProjectResponse> call, Response<EditProjectResponse> response)
-                    {
-                        dialog.dismiss();
-                        Toast.makeText(ctx, "Update Success", Toast.LENGTH_SHORT).show();
-                        //getActivity().finish();
+                    dialog.setMessage("Loading...");
+                    dialog.show();
+                    EditProjectSendModel model = new EditProjectSendModel();
+                    model.setAmount(etProjectValue.getText().toString() + "");
+                    model.setBu(buCode);
+                    model.setCustId(etCustomer.getText().toString() + "");
+                    model.setDesc(etDesc.getText().toString() + "");
+                    model.setEndCustId(etEndCustomer.getText().toString() + "null");
+                    model.setIwoNo(etprojectId.getText().toString() + "");
+                    model.setMargin(etMargin.getText().toString() + "");
+                    model.setPm(etPm.getText().toString() + "");
+                    model.setProductType(etProductType.getText().toString() + "");
+                    model.setProjectName(etProjectName.getText().toString() + "");
+                    model.setProjectStatus(etProjectStatus.getText().toString() + "");
+                    model.setProjectTypeId(projectTypeId);
+                    model.setRelated(etRelatedBusinessUnit.getText().toString() + "");
+                    model.setTypeOfEffort(etTypeEffort.getText().toString());
+                    model.setTypeOfExpense("CAPITAL EXPENSE");
+                    model.setHo(ho);
+                    model.setStart(etStartDate.getText().toString());
+                    model.setEnd(etEndDate.getText().toString());
+                    model.setOverhead("200");
+                    model.setActualCost("200");
+                    model.setCogs("RES");
+                    model.setMobile("1");
+                    model.setProjectId(projectId);
 
-                        Bundle bundle = new Bundle();
-                        bundle.putInt(ProjectDetailsActivity.KEY_BACK_TO_OVERVIEW, 0);
-                        EventBus.getDefault().post(bundle);
-                    }
-
-                    @Override
-                    public void onFailure(Call<EditProjectResponse> call, Throwable t)
+                    service.editProject(app.getSessionManager().getToken(), model).enqueue(new Callback<EditProjectResponse>()
                     {
-                        Toast.makeText(ctx, "Failed to edit project", Toast.LENGTH_SHORT).show();
-                    }
-                });
-            }
-        });
+                        @Override
+                        public void onResponse(Call<EditProjectResponse> call, Response<EditProjectResponse> response)
+                        {
+                            dialog.dismiss();
+                            Toast.makeText(ctx, "Update Success", Toast.LENGTH_SHORT).show();
+                            //getActivity().finish();
+
+                            Bundle bundle = new Bundle();
+                            bundle.putInt(ProjectDetailsActivity.KEY_BACK_TO_OVERVIEW, 0);
+                            EventBus.getDefault().post(bundle);
+                        }
+
+                        @Override
+                        public void onFailure(Call<EditProjectResponse> call, Throwable t)
+                        {
+                            Toast.makeText(ctx, "Failed to edit project", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                }
+            });
+        }
+        else
+        {
+            tvSave.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(ctx, "Not authorize to edit project", Toast.LENGTH_SHORT).show();
+                }
+            });
+
+        }
+
     }
 
     // set typeface for all text

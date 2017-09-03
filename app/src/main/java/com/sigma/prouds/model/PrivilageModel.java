@@ -6,13 +6,40 @@ package com.sigma.prouds.model;
 
 public class PrivilageModel
 {
-    private boolean accDenyTimesheet;
+    private boolean timesheetApproval;
+    private boolean editProject;
+    private boolean uploadDoc;
+    private boolean uploadIssue;
 
-    public boolean isAccDenyTimesheet() {
-        return accDenyTimesheet;
+    public boolean isTimesheetApproval() {
+        return timesheetApproval;
     }
 
-    public void setAccDenyTimesheet(boolean accDenyTimesheet) {
-        this.accDenyTimesheet = accDenyTimesheet;
+    public void setTimesheetApproval(boolean timesheetApproval) {
+        this.timesheetApproval = timesheetApproval;
+    }
+
+    public boolean isEditProject() {
+        return editProject;
+    }
+
+    public void setEditProject(boolean editProject) {
+        this.editProject = editProject;
+    }
+
+    public boolean isUploadDoc() {
+        return uploadDoc;
+    }
+
+    public void setUploadDoc(boolean uploadDoc) {
+        this.uploadDoc = uploadDoc;
+    }
+
+    public boolean isUploadIssue() {
+        return uploadIssue;
+    }
+
+    public void setUploadIssue(boolean uploadIssue) {
+        this.uploadIssue = uploadIssue;
     }
 }

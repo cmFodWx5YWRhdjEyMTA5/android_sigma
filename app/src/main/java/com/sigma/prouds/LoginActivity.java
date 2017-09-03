@@ -92,7 +92,10 @@ public class LoginActivity extends BaseActivity
                     app.getSessionManager().setPassword(model.getPassword());
                     app.getSessionManager().setProfId(response.body().getUserdata().getProfId());
                     app.getSessionManager().setRoleName(response.body().getUserdata().getProfileName());
-                    app.getSessionManager().setPrivilageTimesheet(response.body().getPrivilege().isAccDenyTimesheet());
+                    app.getSessionManager().setPrivilageTimesheet(response.body().getPrivilege().isTimesheetApproval());
+                    app.getSessionManager().setPrivilageEditProject(response.body().getPrivilege().isEditProject());
+                    app.getSessionManager().setPrivilageUploadDoc(response.body().getPrivilege().isUploadDoc());
+                    app.getSessionManager().setPrivilageUploadIssue(response.body().getPrivilege().isUploadIssue());
                     Log.i("Token", app.getSessionManager().getToken());
                     Intent intent = new Intent(LoginActivity.this, PagerActivity.class);
                     startActivity(intent);

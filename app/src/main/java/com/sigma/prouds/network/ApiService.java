@@ -10,6 +10,7 @@ import com.sigma.prouds.model.PerformanceSendModel;
 import com.sigma.prouds.model.PerformanceYearSendModel;
 import com.sigma.prouds.model.ProjectListTimesheetSenderModel;
 import com.sigma.prouds.model.ReportIssueModel;
+import com.sigma.prouds.model.ResubmitTimeSheetModel;
 import com.sigma.prouds.model.TaskListTimesheetSenderModel;
 import com.sigma.prouds.network.response.AddReportResponse;
 import com.sigma.prouds.network.response.AddTimeSheetResponse;
@@ -101,6 +102,9 @@ public interface ApiService
 
     @POST("timesheet/addTimesheet/")
     Call<AddTimeSheetResponse> addTimeSheet(@Header("token") String token, @Body AddTimeSheetModel model);
+
+    @POST("timesheet/editTimesheet/")
+    Call<AddTimeSheetResponse> resubmit(@Header("token") String token, @Body ResubmitTimeSheetModel model);
 
     @Multipart
     @POST("home/addissue")

@@ -17,18 +17,23 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.sigma.prouds.base.BaseActivity;
 import com.sigma.prouds.model.AddTimeSheetModel;
+import com.sigma.prouds.model.ProjectActivityModel;
 import com.sigma.prouds.model.ProjectAssignmentModel;
 import com.sigma.prouds.model.ProjectListTimesheetSenderModel;
+import com.sigma.prouds.model.ResubmitTimeSheetModel;
 import com.sigma.prouds.model.TaskListTimesheetSenderModel;
 import com.sigma.prouds.network.ApiService;
 import com.sigma.prouds.network.ApiUtils;
 import com.sigma.prouds.network.response.AddTimeSheetResponse;
 import com.sigma.prouds.network.response.TaskAddTimeSheetResponse;
 import com.sigma.prouds.network.response.UserProjectTimesheetResponse;
+
+import org.w3c.dom.Text;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -49,11 +54,17 @@ public class AddTimesheetActivity extends BaseActivity {
     private RelativeLayout rlAdd, rlAddDate;
     private String projectId;
     private String wpId;
+    private String tsId;
     private ProgressDialog dialog;
     private ImageView ivBack;
     private ProjectAssignmentModel projectModel;
     private String returnDate;
     private String curDate;
+    private TextView tvActionBarTitle;
+
+    private ProjectActivityModel resubmitModel;
+
+    private boolean resubmit;
 
     @Override
     protected int getLayout()
@@ -81,13 +92,19 @@ public class AddTimesheetActivity extends BaseActivity {
 
         if (getIntent().getBundleExtra("model") != null)
         {
+            tvActionBarTitle.setText("RESUBMIT TIMESHEET");
             Bundle bundle = new Bundle();
             bundle = getIntent().getBundleExtra("model");
-            projectModel = (ProjectAssignmentModel) bundle.getSerializable("model");
-            etProject.setText(projectModel.getProjectName());
-            etTask.setText(projectModel.getWbsName());
-            projectId = projectModel.getProjectId();
-            wpId = projectModel.getWpId();
+            resubmitModel = (ProjectActivityModel) bundle.getSerializable("model");
+            etProject.setText(resubmitModel.getProjectName());
+            etTask.setText(resubmitModel.getWbsName());
+            projectId = resubmitModel.getProjectId();
+            wpId = resubmitModel.getWp();
+            tsId = resubmitModel.getTsId();
+            resubmit = true;
+            Log.i("Resubmit", tsId + "");
+            Log.i("Wp id", wpId + "");
+            Log.i("project id", projectId + "");
         }
 
         dialog = new ProgressDialog(this);
@@ -120,7 +137,15 @@ public class AddTimesheetActivity extends BaseActivity {
                 }
                 else
                 {
-                    addTimeSheet();
+                    if (!resubmit)
+                    {
+                        addTimeSheet();
+                    }
+                    else
+                    {
+                        resubmitTimesheet();
+                    }
+
                 }
             }
         });
@@ -144,6 +169,7 @@ public class AddTimesheetActivity extends BaseActivity {
         rlAdd = (RelativeLayout) findViewById(R.id.rl_addts);
         rlAddDate = (RelativeLayout) findViewById(R.id.rl_addts_date);
         ivBack = (ImageView) findViewById(R.id.iv_back);
+        tvActionBarTitle = (TextView) findViewById(R.id.tv_title_toolbar_addts);
         query.id(R.id.tv_title_toolbar_addts).typeface(Typeface.createFromAsset(getAssets(), "lato_black.ttf"));
         query.id(R.id.tv_addts_new).typeface(Typeface.createFromAsset(getAssets(), "lato_regular.ttf"));
     }
@@ -322,6 +348,50 @@ public class AddTimesheetActivity extends BaseActivity {
             public void onFailure(Call<AddTimeSheetResponse> call, Throwable t)
             {
                 Log.i("failed", t.toString());
+            }
+        });
+    }
+
+    public void resubmitTimesheet()
+    {
+        returnDate = model.getDate();
+        final ProgressDialog dialog = new ProgressDialog(this);
+        dialog.setMessage("Resubmit...");
+        dialog.show();
+        final ResubmitTimeSheetModel model = new ResubmitTimeSheetModel();
+        model.setMobile("1");
+        model.setHour(etWorkHour.getText().toString() + "");
+        model.setLatitude("0");
+        model.setLongtitude("0");
+        model.setTsDate(this.model.getDate());
+        model.setTsMessage(etMessage.getText().toString());
+        model.setTsSubject(etSubject.getText().toString());
+        model.setWpId(wpId);
+        model.setProjectId(projectId);
+        model.setTsId(tsId);
+
+        service.resubmit(app.getSessionManager().getToken(), model).enqueue(new Callback<AddTimeSheetResponse>() {
+            @Override
+            public void onResponse(Call<AddTimeSheetResponse> call, Response<AddTimeSheetResponse> response) {
+                dialog.dismiss();
+                if (response.code() == 200)
+                {
+                    Toast.makeText(AddTimesheetActivity.this, "Succesful resubmit timesheet", Toast.LENGTH_SHORT).show();
+                    Intent returnIntent = new Intent();
+                    returnIntent.putExtra("date", returnDate);
+                    setResult(Activity.RESULT_OK,returnIntent);
+                    AddTimesheetActivity.this.finish();
+                }
+                else if(response.code() == 400)
+                {
+                    Toast.makeText(AddTimesheetActivity.this, "Status project tidak dalam in progress atau on hold", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<AddTimeSheetResponse> call, Throwable t) {
+                dialog.dismiss();
+                Toast.makeText(AddTimesheetActivity.this, "Tidak ada koneksi internet", Toast.LENGTH_SHORT).show();
             }
         });
     }

@@ -20,6 +20,9 @@ public class SessionManager
     private static final String PROFILE_PATH = "profile_path";
     private static final String ROLE_NAME = "role_name";
     private static final String PRIVILAGE_TIMESHEET = "privilage";
+    private static final String PRIVILAGE_EDIT_PROJECT = "privilage_edit_project";
+    private static final String PRIVILAGE_UPLOAD_ISSUE = "privilage_upload_issue";
+    private static final String PRIVILAGE_UPLOAD_DOC = "privilage_upload_doc";
 
     private SharedPreferences pref; // use to access preference
     private SharedPreferences.Editor editor; // use to edit preference
@@ -118,4 +121,41 @@ public class SessionManager
     {
         return pref.getBoolean(PRIVILAGE_TIMESHEET, false);
     }
+
+    public void setPrivilageEditProject(boolean privilageEditProject)
+    {
+        editor.putBoolean(PRIVILAGE_EDIT_PROJECT, privilageEditProject);
+        editor.commit();
+    }
+
+    public boolean getPrivilageEditProject()
+    {
+        return pref.getBoolean(PRIVILAGE_EDIT_PROJECT, false);
+    }
+
+    public void setPrivilageUploadIssue(boolean privilageUploadIssue)
+    {
+        editor.putBoolean(PRIVILAGE_UPLOAD_ISSUE, privilageUploadIssue);
+        editor.commit();
+    }
+
+    public boolean getPrivilageUploadIssue()
+    {
+        return pref.getBoolean(PRIVILAGE_UPLOAD_ISSUE, false);
+    }
+
+    public void setPrivilageUploadDoc(boolean uploadDoc)
+    {
+        editor.putBoolean(PRIVILAGE_UPLOAD_DOC, uploadDoc);
+        editor.commit();
+    }
+
+    public boolean getPrivilageUploadDoc()
+    {
+        return  pref.getBoolean(PRIVILAGE_UPLOAD_DOC, false);
+    }
+
+
+
+
 }

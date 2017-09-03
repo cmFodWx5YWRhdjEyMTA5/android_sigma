@@ -73,6 +73,16 @@ public class IssuesFragment extends BaseFragment
         query.id(R.id.tv_empty_issue).typeface(Typeface.createFromAsset(ctx.getAssets(), "lato_regular.ttf"));
         query.id(R.id.tv_report_issue).typeface(Typeface.createFromAsset(ctx.getAssets(), "lato_regular.ttf"));
         getIssueData();
+
+        if (app.getSessionManager().getPrivilageUploadIssue())
+        {
+            rlAddIssue.setVisibility(View.VISIBLE);
+        }
+        else
+        {
+            rlAddIssue.setVisibility(View.GONE);
+        }
+
         rlAddIssue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
