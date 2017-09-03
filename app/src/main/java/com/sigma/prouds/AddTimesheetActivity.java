@@ -242,6 +242,7 @@ public class AddTimesheetActivity extends BaseActivity {
                     public void onClick(DialogInterface dialog, int position) {
                         etProject.setText(arrayAdapter.getItem(position));
                         projectId = response.body().getUserProject().get(position).getProjectId();
+                        etTask.setText("");
                         dialog.dismiss();
                     }
                 });
