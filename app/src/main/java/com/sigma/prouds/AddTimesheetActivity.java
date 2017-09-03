@@ -109,6 +109,7 @@ public class AddTimesheetActivity extends BaseActivity {
 
         dialog = new ProgressDialog(this);
         dialog.setMessage("Please wait");
+        dialog.setCancelable(false);
         app = (ProudsApplication) getApplicationContext();
         service = ApiUtils.apiService();
         model = new ProjectListTimesheetSenderModel();
@@ -310,6 +311,7 @@ public class AddTimesheetActivity extends BaseActivity {
         returnDate = model.getDate();
         final ProgressDialog dialog = new ProgressDialog(this);
         dialog.setMessage("Sending...");
+        dialog.setCancelable(false);
         dialog.show();
         final AddTimeSheetModel model = new AddTimeSheetModel();
         model.setMobile("1");
@@ -347,6 +349,7 @@ public class AddTimesheetActivity extends BaseActivity {
             @Override
             public void onFailure(Call<AddTimeSheetResponse> call, Throwable t)
             {
+                dialog.dismiss();
                 Log.i("failed", t.toString());
             }
         });

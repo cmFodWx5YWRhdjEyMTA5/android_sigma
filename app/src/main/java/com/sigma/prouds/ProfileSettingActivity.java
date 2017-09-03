@@ -102,6 +102,7 @@ public class ProfileSettingActivity extends BaseActivity {
         service = ApiUtils.apiService();
         dialog = new ProgressDialog(this);
         dialog.setMessage("Please wait...");
+        dialog.setCancelable(false);
         Intent intent = getIntent();
         tvUsername.setText(intent.getExtras().getString("user"));
         llLogout.setOnClickListener(new View.OnClickListener() {
@@ -579,6 +580,7 @@ public class ProfileSettingActivity extends BaseActivity {
             public void onFailure(Call<UserdataResponse> call, Throwable t)
             {
                 dialog.dismiss();
+                Toast.makeText(ProfileSettingActivity.this, "Tidak ada koneksi internet", Toast.LENGTH_SHORT).show();
             }
         });
     }

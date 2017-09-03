@@ -46,9 +46,10 @@
         </LinearLayout>
 
         <ImageView
-            android:layout_width="24dp"
-            android:layout_height="24dp"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
             android:layout_marginRight="12dp"
+            android:padding="12dp"
             android:layout_marginLeft="12dp"
             android:src="@drawable/setting"
             android:layout_alignParentRight="true"

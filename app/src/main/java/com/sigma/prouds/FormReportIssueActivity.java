@@ -74,6 +74,7 @@ public class FormReportIssueActivity extends BaseActivity {
 
         dialog = new ProgressDialog(this);
         dialog.setMessage("Uploading...");
+        dialog.setCancelable(false);
         service = ApiUtils.apiService();
         app = (ProudsApplication) getApplicationContext();
         projectId = getIntent().getExtras().getString("project_id");

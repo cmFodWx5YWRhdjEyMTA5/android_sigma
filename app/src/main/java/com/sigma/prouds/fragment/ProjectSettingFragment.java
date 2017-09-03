@@ -394,6 +394,7 @@ public class ProjectSettingFragment extends BaseFragment
                 public void onClick(View v)
                 {
                     dialog.setMessage("Loading...");
+                    dialog.setCancelable(false);
                     dialog.show();
                     EditProjectSendModel model = new EditProjectSendModel();
                     model.setAmount(etProjectValue.getText().toString() + "");
@@ -437,7 +438,8 @@ public class ProjectSettingFragment extends BaseFragment
                         @Override
                         public void onFailure(Call<EditProjectResponse> call, Throwable t)
                         {
-                            Toast.makeText(ctx, "Failed to edit project", Toast.LENGTH_SHORT).show();
+                            dialog.dismiss();
+                            Toast.makeText(ctx, "Failed to edit project, check internet connection", Toast.LENGTH_SHORT).show();
                         }
                     });
                 }

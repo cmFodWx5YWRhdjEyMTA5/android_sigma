@@ -60,6 +60,7 @@ public class FormDocUploadActivity extends BaseActivity {
         ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},1);
         dialog = new ProgressDialog(this);
         dialog.setMessage("Uploading...");
+        dialog.setCancelable(false);
         service = ApiUtils.apiService();
         app = (ProudsApplication) getApplicationContext();
         projectId = getIntent().getExtras().getString("project_id");
