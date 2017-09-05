@@ -184,11 +184,26 @@ public class TimesheetFragment extends BaseFragment {
         ProjectListTimesheetSenderModel model = new ProjectListTimesheetSenderModel();
         model.setMobile("1");
         model.setDate(date);
+
+        // check day of week
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        try {
+            Date parseDate = sdf.parse(date);
+            SimpleDateFormat day = new SimpleDateFormat("EEE");
+            String getDay = day.format(parseDate);
+            Log.i("getDay", getDay);
+
+            if (getDay.equalsIgnoreCase("sat") || getDay.equalsIgnoreCase("sun")) {
+                isHoliday = true;
+            }
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
         service.getUserProjectTimesheet(app.getSessionManager().getToken(), model).enqueue(new Callback<UserProjectTimesheetResponse>() {
             @Override
             public void onResponse(Call<UserProjectTimesheetResponse> call, Response<UserProjectTimesheetResponse> response)
             {
-                // SET DAYOFF LAYOUT
                 if (response.body().getHolidays() != null) {
                     for (int i = 0; i < response.body().getHolidays().size(); i++) {
                         if (response.body().getHolidays().get(i).getHolidayDate().equals(date)) {
@@ -197,17 +212,19 @@ public class TimesheetFragment extends BaseFragment {
                     }
                 }
 
-                if (response.body().getUserActivities().size() == 0)
-                {
-                    if (isHoliday == true) {
-                        llDayOff.setVisibility(View.VISIBLE);
+                // set layout visibility
+                if (isHoliday == true) {
+                    llDayOff.setVisibility(View.VISIBLE);
+                }
+                else {
+                    if (response.body().getUserActivities().size() == 0) {
+                        tvEmpty.setVisibility(View.VISIBLE);
                     }
                     else {
-                        tvEmpty.setVisibility(View.VISIBLE);
+                        rvTimesheet.setVisibility(View.VISIBLE);
                     }
                 }
 
-                rvTimesheet.setVisibility(View.VISIBLE);
                 pbTimeSheet.setVisibility(View.GONE);
                 Log.i("Succes : ", response.body().getUserActivities().size() + "");
                 adapter = new TimesheetAdapter(ctx, response.body().getUserActivities());
