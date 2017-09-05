@@ -1,11 +1,13 @@
 package com.sigma.prouds;
 
+import android.Manifest;
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Typeface;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -32,6 +34,7 @@ import com.sigma.prouds.network.ApiUtils;
 import com.sigma.prouds.network.response.AddTimeSheetResponse;
 import com.sigma.prouds.network.response.TaskAddTimeSheetResponse;
 import com.sigma.prouds.network.response.UserProjectTimesheetResponse;
+import com.sigma.prouds.util.GPSTracker;
 
 import org.w3c.dom.Text;
 
@@ -61,6 +64,7 @@ public class AddTimesheetActivity extends BaseActivity {
     private String returnDate;
     private String curDate;
     private TextView tvActionBarTitle;
+    private GPSTracker tracker;
 
     private ProjectActivityModel resubmitModel;
 
@@ -75,7 +79,14 @@ public class AddTimesheetActivity extends BaseActivity {
     @Override
     protected void workingSpace()
     {
+        ActivityCompat.requestPermissions(this,new String[]{
+                Manifest.permission.ACCESS_FINE_LOCATION,
+                Manifest.permission.ACCESS_COARSE_LOCATION}, 1);
+
         assignXML();
+        tracker = new GPSTracker(this);
+
+
 
         projectModel = new ProjectAssignmentModel();
 
@@ -317,8 +328,8 @@ public class AddTimesheetActivity extends BaseActivity {
         final AddTimeSheetModel model = new AddTimeSheetModel();
         model.setMobile("1");
         model.setHour(etWorkHour.getText().toString() + "");
-        model.setLatitude("0");
-        model.setLongtitude("0");
+        model.setLatitude(tracker.getLatitude() + "");
+        model.setLongtitude(tracker.getLongitude() + "");
         model.setTsDate(this.model.getDate());
         model.setTsMessage(etMessage.getText().toString());
         model.setTsSubject(etSubject.getText().toString());
