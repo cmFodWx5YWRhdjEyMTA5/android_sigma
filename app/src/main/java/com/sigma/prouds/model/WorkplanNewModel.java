@@ -25,6 +25,8 @@ public class WorkplanNewModel
     private String leaf;
     private String level;
     private String projectStatus;
+    private String indexRebaseline;
+    private String status;
 
     public String getOrde() {
         return orde;
@@ -176,5 +178,21 @@ public class WorkplanNewModel
 
     public void setProjectStatus(String projectStatus) {
         this.projectStatus = projectStatus;
+    }
+
+    public String getIndexRebaseline() {
+        return indexRebaseline;
+    }
+
+    public void setIndexRebaseline(String indexRebaseline) {
+        this.indexRebaseline = indexRebaseline;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

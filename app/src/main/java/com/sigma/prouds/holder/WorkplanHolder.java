@@ -26,6 +26,7 @@ public class WorkplanHolder extends RecyclerView.ViewHolder
     private ExpandableLinearLayout expandableLinearLayout;
     private ImageView ivToggle;
     private Typeface latoBold, latoBlack, latoRegular;
+    private ImageView ivRebaseLineCreate, ivRebaselineUpdate, ivRebaseLineDelete;
 
     public WorkplanHolder(Context context, View itemView)
     {
@@ -46,10 +47,14 @@ public class WorkplanHolder extends RecyclerView.ViewHolder
         expandableLinearLayout = (ExpandableLinearLayout) itemView.findViewById(R.id.ex_layout);
         pbMonitoring = (ProgressBar) itemView.findViewById(R.id.pb_monitoring);
         ivToggle = (ImageView) itemView.findViewById(R.id.iv_wp_dropdown);
+        ivRebaseLineCreate = (ImageView) itemView.findViewById(R.id.iv_rebaseline_create);
+        ivRebaseLineDelete = (ImageView) itemView.findViewById(R.id.iv_rebaseline_delete);
+        ivRebaselineUpdate = (ImageView) itemView.findViewById(R.id.iv_rebaseline_update);
 
         latoBold = Typeface.createFromAsset(itemView.getContext().getAssets(), "lato_bold.ttf");
         latoBlack = Typeface.createFromAsset(itemView.getContext().getAssets(), "lato_black.ttf");
         latoRegular = Typeface.createFromAsset(itemView.getContext().getAssets(), "lato_regular.ttf");
+
     }
 
     public void bind(WorkplanNewModel model)
@@ -75,6 +80,39 @@ public class WorkplanHolder extends RecyclerView.ViewHolder
             float progress = Float.parseFloat(model.getWorkPercentageComplete());
             int finalProgress = (int) progress;
             pbMonitoring.setProgress(finalProgress);
+        }
+        catch (Exception e)
+        {
+
+        }
+
+        try
+        {
+            if (model.getStatus().equalsIgnoreCase("create"))
+            {
+                ivRebaselineUpdate.setVisibility(View.INVISIBLE);
+                ivRebaseLineDelete.setVisibility(View.INVISIBLE);
+                ivRebaseLineCreate.setVisibility(View.VISIBLE);
+            }
+            else if (model.getStatus().equalsIgnoreCase("delete"))
+            {
+                ivRebaselineUpdate.setVisibility(View.INVISIBLE);
+                ivRebaseLineDelete.setVisibility(View.VISIBLE);
+                ivRebaseLineCreate.setVisibility(View.INVISIBLE);
+            }
+            else if (model.getStatus().equalsIgnoreCase("update"))
+            {
+                ivRebaselineUpdate.setVisibility(View.VISIBLE);
+                ivRebaseLineDelete.setVisibility(View.INVISIBLE);
+                ivRebaseLineCreate.setVisibility(View.INVISIBLE);
+            }
+            else
+            {
+                ivRebaselineUpdate.setVisibility(View.INVISIBLE);
+                ivRebaseLineDelete.setVisibility(View.INVISIBLE);
+                ivRebaseLineCreate.setVisibility(View.INVISIBLE);
+            }
+
         }
         catch (Exception e)
         {

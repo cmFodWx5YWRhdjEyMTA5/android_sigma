@@ -232,7 +232,7 @@ public class AddTimesheetActivity extends BaseActivity {
             public void onResponse(Call<UserProjectTimesheetResponse> call, final Response<UserProjectTimesheetResponse> response)
             {
                 dialog.dismiss();
-                Log.i("Response",response.body().getUserProject().get(0).getProjectName());
+                //Log.i("Response",response.body().getUserProject().get(0).getProjectName());
                 AlertDialog.Builder builderSingle = new AlertDialog.Builder(AddTimesheetActivity.this);
                 builderSingle.setTitle("Select project");
                 final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(AddTimesheetActivity.this, android.R.layout.select_dialog_singlechoice);

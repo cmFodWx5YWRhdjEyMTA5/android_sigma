@@ -234,6 +234,38 @@
 
             </LinearLayout>
 
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:padding="8dp">
+
+                <ImageView
+                    android:id="@+id/iv_rebaseline_create"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/error_green"
+                    android:layout_alignParentRight="true"
+                    android:visibility="invisible"/>
+
+                <ImageView
+                    android:id="@+id/iv_rebaseline_delete"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/error_red"
+                    android:layout_alignParentRight="true"
+                    android:visibility="invisible"/>
+
+                <ImageView
+                    android:id="@+id/iv_rebaseline_update"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/error_yellow"
+                    android:layout_alignParentRight="true"
+                    android:visibility="invisible"/>
+
+            </RelativeLayout>
+
         </LinearLayout>
 
     </com.github.aakira.expandablelayout.ExpandableLinearLayout>
