@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.sigma.prouds.adapter.AssignmentAdapter;
 import com.sigma.prouds.adapter.AssignmentDetailsAdapter;
 import com.sigma.prouds.base.BaseActivity;
+import com.sigma.prouds.model.ProjectActivityModel;
 import com.sigma.prouds.model.ProjectAssignmentModel;
 import com.sigma.prouds.model.ProjectDetailModel;
 
@@ -64,8 +65,15 @@ public class AssignmentDetailsActivity extends BaseActivity
     {
         Intent intent = new Intent(this, AddTimesheetActivity.class);
         Bundle bundle = new Bundle();
-        bundle.putSerializable("model", model);
-        intent.putExtra("model", bundle);
+
+        ProjectActivityModel projectActivityModel = new ProjectActivityModel();
+        projectActivityModel.setProjectId(model.getProjectId());
+        projectActivityModel.setProjectName(model.getProjectName());
+        projectActivityModel.setWbsName(model.getWbsName());
+        projectActivityModel.setWp(model.getWpId());
+
+        bundle.putSerializable("model", projectActivityModel);
+        intent.putExtra("assignment", bundle);
         startActivity(intent);
     }
 

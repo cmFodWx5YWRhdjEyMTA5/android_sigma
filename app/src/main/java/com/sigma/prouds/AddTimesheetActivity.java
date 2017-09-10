@@ -118,6 +118,21 @@ public class AddTimesheetActivity extends BaseActivity {
             Log.i("project id", projectId + "");
         }
 
+        if (getIntent().getBundleExtra("assignment") != null)
+        {
+            tvActionBarTitle.setText("ADD TIMESHEET");
+            Bundle bundle = new Bundle();
+            bundle = getIntent().getBundleExtra("assignment");
+            resubmitModel = (ProjectActivityModel) bundle.getSerializable("model");
+            etProject.setText(resubmitModel.getProjectName());
+            etTask.setText(resubmitModel.getWbsName());
+            projectId = resubmitModel.getProjectId();
+            wpId = resubmitModel.getWp();
+            resubmit = false;
+            Log.i("Wp id", wpId + "");
+            Log.i("project id", projectId + "");
+        }
+
         dialog = new ProgressDialog(this);
         dialog.setMessage("Please wait");
         dialog.setCancelable(false);
