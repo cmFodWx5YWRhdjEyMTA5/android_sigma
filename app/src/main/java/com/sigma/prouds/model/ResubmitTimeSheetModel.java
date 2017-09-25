@@ -15,6 +15,7 @@ public class ResubmitTimeSheetModel
     private String latitude;
     private String longtitude;
     private String projectId;
+    private String address;
     private String mobile;
 
     public String getWpId() {
@@ -95,5 +96,13 @@ public class ResubmitTimeSheetModel
 
     public void setTsId(String tsId) {
         this.tsId = tsId;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 }

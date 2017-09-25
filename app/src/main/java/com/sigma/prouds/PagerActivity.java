@@ -15,6 +15,7 @@ import com.sigma.prouds.fragment.AssignmentFragment;
 import com.sigma.prouds.fragment.HomeFragment;
 import com.sigma.prouds.fragment.PerformanceFragment;
 import com.sigma.prouds.fragment.TimesheetFragment;
+import com.sigma.prouds.util.NotificationHelper;
 
 public class PagerActivity extends BaseFragmentActivity {
 
@@ -54,6 +55,8 @@ public class PagerActivity extends BaseFragmentActivity {
         setTabLayout();
         tabEvent();
         setNotif();
+
+        alarmSetUp();
 
         fragment1 = PerformanceFragment.newInstance(this);
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment1).commit();
@@ -184,6 +187,12 @@ public class PagerActivity extends BaseFragmentActivity {
                 tbPerformance.setVisibility(View.INVISIBLE);
                 break;
         }
+    }
+
+    public void alarmSetUp()
+    {
+        NotificationHelper.scheduleRepeatingRTCNotification(this, null, null);
+        NotificationHelper.enableBootReceiver(this);
     }
 
     public void onEvent(Bundle bundle)

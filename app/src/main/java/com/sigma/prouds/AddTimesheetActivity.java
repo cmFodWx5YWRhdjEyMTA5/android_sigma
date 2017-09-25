@@ -7,6 +7,8 @@ import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Typeface;
+import android.location.Address;
+import android.location.Geocoder;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -41,6 +43,8 @@ import org.w3c.dom.Text;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
+import java.util.Locale;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -335,6 +339,9 @@ public class AddTimesheetActivity extends BaseActivity {
 
     public void addTimeSheet()
     {
+        Geocoder geocoder = new Geocoder(this, Locale.getDefault());
+        List<Address> addresses;
+
         returnDate = model.getDate();
         final ProgressDialog dialog = new ProgressDialog(this);
         dialog.setMessage("Sending...");
@@ -345,6 +352,26 @@ public class AddTimesheetActivity extends BaseActivity {
         model.setHour(etWorkHour.getText().toString() + "");
         model.setLatitude(tracker.getLatitude() + "");
         model.setLongtitude(tracker.getLongitude() + "");
+
+
+        try
+        {
+            addresses = geocoder.getFromLocation(tracker.getLatitude(), tracker.getLongitude(), 1);
+            String address = addresses.get(0).getAddressLine(0);
+            String city = addresses.get(0).getLocality();
+            String state = addresses.get(0).getAdminArea();
+            String country = addresses.get(0).getCountryName();
+            String postalCode = addresses.get(0).getPostalCode();
+
+            String finalAddress = address + " " + city + " " + state + " " + country + " " + postalCode;
+            model.setAddress(finalAddress);
+            Log.i("Adress", finalAddress);
+        }
+        catch (Exception e)
+        {
+            model.setAddress("");
+        }
+
         model.setTsDate(this.model.getDate());
         model.setTsMessage(etMessage.getText().toString());
         model.setTsSubject(etSubject.getText().toString());
@@ -399,6 +426,26 @@ public class AddTimesheetActivity extends BaseActivity {
         model.setWpId(wpId);
         model.setProjectId(projectId);
         model.setTsId(tsId);
+
+        Geocoder geocoder = new Geocoder(this, Locale.getDefault());
+        List<Address> addresses;
+
+        try
+        {
+            addresses = geocoder.getFromLocation(tracker.getLatitude(), tracker.getLongitude(), 1);
+            String address = addresses.get(0).getAddressLine(0);
+            String city = addresses.get(0).getLocality();
+            String state = addresses.get(0).getAdminArea();
+            String country = addresses.get(0).getCountryName();
+            String postalCode = addresses.get(0).getPostalCode();
+
+            String finalAddress = address + " " + city + " " + state + " " + country + " " + postalCode;
+            model.setAddress(finalAddress);
+        }
+        catch (Exception e)
+        {
+            model.setAddress("");
+        }
 
         service.resubmit(app.getSessionManager().getToken(), model).enqueue(new Callback<AddTimeSheetResponse>() {
             @Override
