@@ -5,16 +5,23 @@ package com.sigma.prouds.util;
  */
 
 import android.app.AlarmManager;
+import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
+import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.os.SystemClock;
+import android.support.v7.app.NotificationCompat;
 import android.util.Log;
 
+import com.sigma.prouds.R;
+import com.sigma.prouds.SplashActivity;
 import com.sigma.prouds.service.AlarmReceiver;
+import com.sigma.prouds.service.MyWakeLock;
 
 import java.util.Calendar;
 
@@ -43,10 +50,9 @@ public class NotificationHelper {
         Calendar calendar = Calendar.getInstance();
         calendar.setTimeInMillis(System.currentTimeMillis());
         //Setting time of the day (8am here) when notification will be sent every day (default)
-        calendar.set(Calendar.HOUR_OF_DAY, 16);
-        calendar.set(Calendar.MINUTE, 34);
+        calendar.set(Calendar.HOUR_OF_DAY, 2);
+        calendar.set(Calendar.MINUTE, 4);
         calendar.set(Calendar.SECOND, 0);
-
 
         if (calendar.before(today))
         {
@@ -54,6 +60,7 @@ public class NotificationHelper {
             calendar.add(Calendar.DATE, 1);
         }
 
+        Log.i("Masuk lagi", calendar.toString());
 
         //Setting intent to class where Alarm broadcast message will be handled
         Intent intent = new Intent(context, AlarmReceiver.class);
@@ -70,7 +77,10 @@ public class NotificationHelper {
         //We'll be using RTC.WAKEUP for demo purpose only
         alarmManagerRTC.setInexactRepeating(AlarmManager.RTC_WAKEUP,
                 calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY, alarmIntentRTC);
+
     }
+
+
 
     /***
      * This is another way to schedule notifications using the elapsed time.
@@ -134,4 +144,6 @@ public class NotificationHelper {
                 PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
                 PackageManager.DONT_KILL_APP);
     }
+
+
 }

@@ -1,8 +1,11 @@
 package com.sigma.prouds;
 
+import android.content.ComponentName;
 import android.content.Intent;
+import android.content.ServiceConnection;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.os.IBinder;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.Toolbar;
@@ -15,6 +18,7 @@ import com.sigma.prouds.fragment.AssignmentFragment;
 import com.sigma.prouds.fragment.HomeFragment;
 import com.sigma.prouds.fragment.PerformanceFragment;
 import com.sigma.prouds.fragment.TimesheetFragment;
+import com.sigma.prouds.service.NotificationService;
 import com.sigma.prouds.util.NotificationHelper;
 
 public class PagerActivity extends BaseFragmentActivity {
@@ -191,8 +195,25 @@ public class PagerActivity extends BaseFragmentActivity {
 
     public void alarmSetUp()
     {
-        NotificationHelper.scheduleRepeatingRTCNotification(this, null, null);
-        NotificationHelper.enableBootReceiver(this);
+        //NotificationHelper.scheduleRepeatingRTCNotification(this, null, null);
+        //NotificationHelper.enableBootReceiver(this);
+        //startService(new Intent(this, NotificationService.class));
+        //NotificationService notificationService = new NotificationService("service", this);
+        //notificationService.startService(new Intent(this, notificationService.getClass()));
+        Intent intent = new Intent(this, NotificationService.class);
+        startService(intent);
+
+        /*//startService(new Intent(this, notificationService));
+        ServiceConnection serviceConnection = new ServiceConnection() {
+            public void onServiceConnected(ComponentName className, IBinder service) {
+
+            }
+
+            public void onServiceDisconnected(ComponentName className) {
+
+            }
+        };
+        bindService(new Intent(this, NotificationService.class), serviceConnection, BIND_AUTO_CREATE);*/
     }
 
     public void onEvent(Bundle bundle)

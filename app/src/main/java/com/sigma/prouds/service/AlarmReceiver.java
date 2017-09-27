@@ -6,7 +6,9 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.os.PowerManager;
+import android.support.v4.content.WakefulBroadcastReceiver;
 import android.support.v7.app.NotificationCompat;
+import android.util.Log;
 
 import com.sigma.prouds.PagerActivity;
 import com.sigma.prouds.R;
@@ -23,6 +25,8 @@ public class AlarmReceiver extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
 //Intent to invoke app when click on notification.
         //In this sample, we want to start/launch this sample app when user clicks on notification
+        Log.i("aaaa","bbb");
+
         MyWakeLock.acquire(context);
         Intent intentToRepeat = new Intent(context, SplashActivity.class);
         //set flag to restart/relaunch the app
