@@ -8,6 +8,9 @@ import android.view.ViewGroup;
 
 import com.sigma.prouds.R;
 import com.sigma.prouds.holder.NotifHolder;
+import com.sigma.prouds.model.NotificationModel;
+
+import java.util.List;
 
 /**
  * Created by goy on 7/10/2017.
@@ -16,8 +19,13 @@ import com.sigma.prouds.holder.NotifHolder;
 public class NotifAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private Context context;
+    private List<NotificationModel> list;
 
-    //    BUILD CONSTRUCTOR HERE
+    public NotifAdapter(Context context, List<NotificationModel> list)
+    {
+        this.context = context;
+        this.list = list;
+    }
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -27,12 +35,14 @@ public class NotifAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     }
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-
+    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position)
+    {
+        NotifHolder item = (NotifHolder) holder;
+        item.bind(list.get(position));
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return list.size();
     }
 }

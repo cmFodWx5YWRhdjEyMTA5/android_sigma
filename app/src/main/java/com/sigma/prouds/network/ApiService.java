@@ -24,6 +24,7 @@ import com.sigma.prouds.network.response.MyAssignmentNewResponse;
 import com.sigma.prouds.network.response.MyAssignmentResponse;
 import com.sigma.prouds.network.response.MyPerformanceResponse;
 import com.sigma.prouds.network.response.MyPerformanceYearlyResponse;
+import com.sigma.prouds.network.response.NotificationResponse;
 import com.sigma.prouds.network.response.ProjectActivityResponse;
 import com.sigma.prouds.network.response.ProjectDocResponse;
 import com.sigma.prouds.network.response.ProjectIssueResponse;
@@ -134,4 +135,7 @@ public interface ApiService
 
     @GET("task/workplan_view_mobile/{project_id}")
     Call<WorkplanResponse> getWorkplan(@Header("token") String token, @Path("project_id") String projectId);
+
+    @GET("notif/get")
+    Call<NotificationResponse> getNotification(@Header("token") String token);
 }

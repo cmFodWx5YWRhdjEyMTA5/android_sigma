@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.sigma.prouds.CustomTypefaceSpan;
 import com.sigma.prouds.R;
+import com.sigma.prouds.model.NotificationModel;
 
 /**
  * Created by ruske on 22/08/17.
@@ -33,7 +34,7 @@ public class NotifHolder extends RecyclerView.ViewHolder {
         latoRegular = Typeface.createFromAsset(itemView.getContext().getAssets(), "lato_regular.ttf");
     }
 
-    public void bind() {
+    public void bind(NotificationModel model) {
         String user = "null"; // isi nama user
         String activity = "null"; // isi kegiatannya (ex: update, remove, approve)
         String object = "null"; // isi objek yang diupdate
@@ -48,6 +49,11 @@ public class NotifHolder extends RecyclerView.ViewHolder {
         tvNotif.setTypeface(latoRegular);
         tvAccept.setTypeface(latoRegular);
         tvTime.setTypeface(latoRegular);
+
+        tvNotif.setText(model.getUserName() + " " + model.getText());
+        tvTime.setText(model.getDatetime());
+
+
     }
 
 }
