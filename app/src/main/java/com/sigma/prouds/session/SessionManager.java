@@ -24,6 +24,8 @@ public class SessionManager
     private static final String PRIVILAGE_UPLOAD_ISSUE = "privilage_upload_issue";
     private static final String PRIVILAGE_UPLOAD_DOC = "privilage_upload_doc";
 
+    private static final String UNREAD_NOTIFICATION = "unread_notification";
+
     private SharedPreferences pref; // use to access preference
     private SharedPreferences.Editor editor; // use to edit preference
 
@@ -154,6 +156,19 @@ public class SessionManager
     {
         return  pref.getBoolean(PRIVILAGE_UPLOAD_DOC, false);
     }
+
+    public void setUnreadNotification(int count)
+    {
+        editor.putInt(UNREAD_NOTIFICATION, count);
+        editor.commit();
+    }
+
+    public int getUnreadNotification()
+    {
+        return pref.getInt(UNREAD_NOTIFICATION, 0);
+    }
+
+
 
 
 

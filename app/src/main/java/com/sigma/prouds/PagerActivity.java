@@ -18,6 +18,8 @@ import com.sigma.prouds.fragment.AssignmentFragment;
 import com.sigma.prouds.fragment.HomeFragment;
 import com.sigma.prouds.fragment.PerformanceFragment;
 import com.sigma.prouds.fragment.TimesheetFragment;
+import com.sigma.prouds.network.ApiService;
+import com.sigma.prouds.network.ApiUtils;
 import com.sigma.prouds.service.NotificationService;
 import com.sigma.prouds.util.NotificationHelper;
 
@@ -40,6 +42,9 @@ public class PagerActivity extends BaseFragmentActivity {
     private Fragment fragment3;
     private Fragment fragment4;
 
+    private ProudsApplication app;
+    private ApiService service;
+
     private int[] tabIcons = {
             R.drawable.tab_home,
             R.drawable.tab_assignment,
@@ -47,6 +52,7 @@ public class PagerActivity extends BaseFragmentActivity {
             R.drawable.tab_performance
     };
     private ImageView ivHomeNotif, ivAssignmentNotif, ivPerformanceNotif, ivTimesheetNotif;
+    private ImageView ivHomeNotifActive, ivAssignmentNotifActive, ivPerformanceNotifActive, ivTimesheetNotifActive;
 
     @Override
     protected int getLayout() {
@@ -55,6 +61,10 @@ public class PagerActivity extends BaseFragmentActivity {
 
     @Override
     protected void workingSpace() {
+
+        this.app = (ProudsApplication) getApplication();
+        service = ApiUtils.apiService();
+
         assignXML();
         setTabLayout();
         tabEvent();
@@ -64,10 +74,19 @@ public class PagerActivity extends BaseFragmentActivity {
 
         fragment1 = PerformanceFragment.newInstance(this);
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment1).commit();
+
+        setUnreadNotificationLogo();
     }
 
     public void setNotif() {
         ivHomeNotif.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                toNotif();
+            }
+        });
+
+        ivHomeNotifActive.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 toNotif();
@@ -81,6 +100,13 @@ public class PagerActivity extends BaseFragmentActivity {
             }
         });
 
+        ivAssignmentNotifActive.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                toNotif();
+            }
+        });
+
         ivPerformanceNotif.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -88,7 +114,21 @@ public class PagerActivity extends BaseFragmentActivity {
             }
         });
 
+        ivPerformanceNotifActive.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                toNotif();
+            }
+        });
+
         ivTimesheetNotif.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                toNotif();
+            }
+        });
+
+        ivTimesheetNotifActive.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 toNotif();
@@ -106,12 +146,29 @@ public class PagerActivity extends BaseFragmentActivity {
         ivPerformanceNotif = (ImageView) findViewById(R.id.iv_performance_notif);
         ivAssignmentNotif = (ImageView) findViewById(R.id.iv_assignment_notif);
         ivTimesheetNotif = (ImageView) findViewById(R.id.iv_ts_notif);
+        ivHomeNotifActive = (ImageView) findViewById(R.id.iv_home_notif_active);
+        ivAssignmentNotifActive = (ImageView) findViewById(R.id.iv_assignment_notif_active);
+        ivPerformanceNotifActive = (ImageView) findViewById(R.id.iv_performance_notif_active);
+        ivTimesheetNotifActive = (ImageView) findViewById(R.id.iv_ts_notif_active);
         query.id(R.id.tv_title_toolbar_assignment).typeface(Typeface.createFromAsset(getAssets(), "lato_black.ttf"));
         query.id(R.id.tv_title_toolbar_timesheet).typeface(Typeface.createFromAsset(getAssets(), "lato_black.ttf"));
         query.id(R.id.tv_title_toolbar_myperformance).typeface(Typeface.createFromAsset(getAssets(), "lato_black.ttf"));
     }
 
     public void toNotif() {
+
+        app.getSessionManager().setUnreadNotification(0);
+
+        ivTimesheetNotifActive.setVisibility(View.GONE);
+        ivHomeNotifActive.setVisibility(View.GONE);
+        ivAssignmentNotifActive.setVisibility(View.GONE);
+        ivPerformanceNotifActive.setVisibility(View.GONE);
+
+        ivTimesheetNotif.setVisibility(View.VISIBLE);
+        ivHomeNotif.setVisibility(View.VISIBLE);
+        ivAssignmentNotif.setVisibility(View.VISIBLE);
+        ivPerformanceNotif.setVisibility(View.VISIBLE);
+
         Intent intent = new Intent(this, NotifActivity.class);
         startActivity(intent);
     }
@@ -214,6 +271,40 @@ public class PagerActivity extends BaseFragmentActivity {
             }
         };
         bindService(new Intent(this, NotificationService.class), serviceConnection, BIND_AUTO_CREATE);*/
+    }
+
+    public void getNotifData()
+    {
+
+    }
+
+    public void setUnreadNotificationLogo()
+    {
+        if (app.getSessionManager().getUnreadNotification() != 0)
+        {
+            ivTimesheetNotifActive.setVisibility(View.VISIBLE);
+            ivHomeNotifActive.setVisibility(View.VISIBLE);
+            ivAssignmentNotifActive.setVisibility(View.VISIBLE);
+            ivPerformanceNotifActive.setVisibility(View.VISIBLE);
+
+            ivTimesheetNotif.setVisibility(View.GONE);
+            ivHomeNotif.setVisibility(View.GONE);
+            ivAssignmentNotif.setVisibility(View.GONE);
+            ivPerformanceNotif.setVisibility(View.GONE);
+
+        }
+        else
+        {
+            ivTimesheetNotifActive.setVisibility(View.GONE);
+            ivHomeNotifActive.setVisibility(View.GONE);
+            ivAssignmentNotifActive.setVisibility(View.GONE);
+            ivPerformanceNotifActive.setVisibility(View.GONE);
+
+            ivTimesheetNotif.setVisibility(View.VISIBLE);
+            ivHomeNotif.setVisibility(View.VISIBLE);
+            ivAssignmentNotif.setVisibility(View.VISIBLE);
+            ivPerformanceNotif.setVisibility(View.VISIBLE);
+        }
     }
 
     public void onEvent(Bundle bundle)

@@ -1,5 +1,6 @@
 package com.sigma.prouds.network.response;
 
+import com.sigma.prouds.model.NotificationInfoModel;
 import com.sigma.prouds.model.NotificationModel;
 
 import java.util.List;
@@ -10,7 +11,9 @@ import java.util.List;
 
 public class NotificationResponse
 {
-    List<NotificationModel> notifList;
+    private List<NotificationModel> notifList;
+    private NotificationInfoModel notifInfo;
+
 
     public List<NotificationModel> getNotifList() {
         return notifList;
@@ -18,5 +21,13 @@ public class NotificationResponse
 
     public void setNotifList(List<NotificationModel> notifList) {
         this.notifList = notifList;
+    }
+
+    public NotificationInfoModel getNotifInfo() {
+        return notifInfo;
+    }
+
+    public void setNotifInfo(NotificationInfoModel notifInfo) {
+        this.notifInfo = notifInfo;
     }
 }

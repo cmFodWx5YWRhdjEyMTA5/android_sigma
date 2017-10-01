@@ -1,5 +1,6 @@
 package com.sigma.prouds.network.response;
 
+import com.sigma.prouds.model.NotificationInfoModel;
 import com.sigma.prouds.model.PrivilageModel;
 import com.sigma.prouds.model.UserModel;
 
@@ -14,6 +15,8 @@ public class LoginResponse
     private String token;
 
     private PrivilageModel privilege;
+
+    private NotificationInfoModel notifInfo;
 
     public UserModel getUserdata()
     {
@@ -41,5 +44,13 @@ public class LoginResponse
 
     public void setPrivilege(PrivilageModel privilege) {
         this.privilege = privilege;
+    }
+
+    public NotificationInfoModel getNotifInfo() {
+        return notifInfo;
+    }
+
+    public void setNotifInfo(NotificationInfoModel notifInfo) {
+        this.notifInfo = notifInfo;
     }
 }
