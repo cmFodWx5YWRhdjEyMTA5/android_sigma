@@ -1,6 +1,7 @@
 package com.sigma.prouds;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
@@ -36,6 +37,7 @@ public class ProjectDetailsActivity extends BaseActivity {
 
     public static final String KEY_DRAWER_ITEM = "key_drawer_item";
     public static final String KEY_BACK_TO_OVERVIEW = "key_back_to_overview";
+    public static final String KEY_FROM_NOTIFICATION = "key_from_notification";
 
     private ImageView ivMenu, ivDrawerClose, ivBack, ivNotif;
     private TextView tvToolbarTitle, tvProject, tvPercen, tvStatus;
@@ -54,6 +56,7 @@ public class ProjectDetailsActivity extends BaseActivity {
         R.string.drawer_setting};
 
     private String projectId;
+    private boolean isFromNotification;
 
 
     @Override
@@ -82,8 +85,20 @@ public class ProjectDetailsActivity extends BaseActivity {
         });
 
         getDataFromHome();
-        pdFragment = new OverviewFragment().newInstance(this, projectId);
-        pdFragmentManager.beginTransaction().replace(R.id.pd_container, pdFragment).commit();
+
+        isFromNotification = getIntent().getBooleanExtra(KEY_FROM_NOTIFICATION, false);
+
+        if (isFromNotification)
+        {
+            pdFragment = new ActivityFragment().newInstance(this, projectId);
+            pdFragmentManager.beginTransaction().replace(R.id.pd_container, pdFragment).commit();
+        }
+        else
+        {
+            pdFragment = new OverviewFragment().newInstance(this, projectId);
+            pdFragmentManager.beginTransaction().replace(R.id.pd_container, pdFragment).commit();
+        }
+
 
         drawerItems();
         query.id(R.id.iv_menu).clicked(this, "openDrawer");

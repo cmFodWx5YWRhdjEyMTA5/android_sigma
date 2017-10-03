@@ -50,8 +50,8 @@ public class NotificationHelper {
         Calendar calendar = Calendar.getInstance();
         calendar.setTimeInMillis(System.currentTimeMillis());
         //Setting time of the day (8am here) when notification will be sent every day (default)
-        calendar.set(Calendar.HOUR_OF_DAY, 2);
-        calendar.set(Calendar.MINUTE, 4);
+        calendar.set(Calendar.HOUR_OF_DAY, 17);
+        calendar.set(Calendar.MINUTE, 0);
         calendar.set(Calendar.SECOND, 0);
 
         if (calendar.before(today))

@@ -97,7 +97,7 @@ public class ChartFragment extends BaseFragment
         tvUtilStatus = (TextView) view.findViewById(R.id.tv_util_status);
         latoRegular = Typeface.createFromAsset(ctx.getAssets(), "lato_regular.ttf");
         setFontForContainer(llChart);
-        getDataPerformance("8", "2017");
+        //getDataPerformance("8", "2017");
 
         //chart util
         Calendar calendar = Calendar.getInstance();
@@ -109,6 +109,11 @@ public class ChartFragment extends BaseFragment
         final SimpleDateFormat monthDate = new SimpleDateFormat("MMMM");
         etChartTsMonth.setText(monthDate.format(calendar.getTime()));
         etChartTsYear.setText(calendar.get(Calendar.YEAR) + "");
+
+        final SimpleDateFormat monthDateNumber = new SimpleDateFormat("MM");
+        Log.i("Month", monthDateNumber.format(calendar.getTime()));
+
+        getDataPerformance(monthDateNumber.format(calendar.getTime()), calendar.get(Calendar.YEAR) + "");
 
         etChartTsYear.setOnClickListener(new View.OnClickListener()
         {

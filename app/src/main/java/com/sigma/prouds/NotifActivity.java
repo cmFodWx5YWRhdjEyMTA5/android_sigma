@@ -2,10 +2,12 @@ package com.sigma.prouds;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,6 +31,11 @@ import retrofit2.Response;
  */
 
 public class NotifActivity extends BaseActivity {
+
+    public static final String KEY_NOTIF_TO_DETAIL = "key_notif_to_detail";
+    public static final String KEY_NOTIF_PROJECT_NAME = "key_notif_project_name";
+    public static final String KEY_NOTIF_PROJECT_STATUS = "key_notif_project_status";
+    public static final String KEY_NOTIF_PROJECT_COMPLETE = "key_notif_project_complete";
 
     private RecyclerView rvNotif;
     private NotifAdapter adapter;
@@ -95,5 +102,20 @@ public class NotifActivity extends BaseActivity {
                 dialog.dismiss();
             }
         });
+    }
+
+    public void onEvent(Bundle bundle)
+    {
+        if (bundle.containsKey("key_project_id"))
+        {
+            Log.i("Project name : ", bundle.getString(NotifActivity.KEY_NOTIF_PROJECT_NAME));
+            Intent intent = new Intent(NotifActivity.this, ProjectDetailsActivity.class);
+            intent.putExtra(PagerActivity.KEY_TO_DETAIL_PROJECT, bundle);
+            //intent.putExtra(PagerActivity.KEY_PROJECT_NAME, bundle.getString(NotifActivity.KEY_NOTIF_PROJECT_NAME));
+            //intent.putExtra(PagerActivity.KEY_PROJECT_COMPLETED, bundle.getString(NotifActivity.KEY_NOTIF_PROJECT_COMPLETE));
+            //intent.putExtra(PagerActivity.KEY_PROJECT_STATUS, bundle.getString(NotifActivity.KEY_NOTIF_PROJECT_STATUS));
+            //intent.putExtra(ProjectDetailsActivity.KEY_FROM_NOTIFICATION, true);
+            startActivity(intent);
+        }
     }
 }

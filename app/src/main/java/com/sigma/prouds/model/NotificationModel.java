@@ -12,6 +12,9 @@ public class NotificationModel
     private String text;
     private String unixtime;
     private String datetime;
+    private String projectName;
+    private String projectStatus;
+    private String projectComplete;
 
     public String getProjectId() {
         return projectId;
@@ -59,5 +62,29 @@ public class NotificationModel
 
     public void setDatetime(String datetime) {
         this.datetime = datetime;
+    }
+
+    public String getProjectName() {
+        return projectName;
+    }
+
+    public void setProjectName(String projectName) {
+        this.projectName = projectName;
+    }
+
+    public String getProjectStatus() {
+        return projectStatus;
+    }
+
+    public void setProjectStatus(String projectStatus) {
+        this.projectStatus = projectStatus;
+    }
+
+    public String getProjectComplete() {
+        return projectComplete;
+    }
+
+    public void setProjectComplete(String projectComplete) {
+        this.projectComplete = projectComplete;
     }
 }
