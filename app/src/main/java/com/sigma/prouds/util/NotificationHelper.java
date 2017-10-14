@@ -50,9 +50,11 @@ public class NotificationHelper {
         Calendar calendar = Calendar.getInstance();
         calendar.setTimeInMillis(System.currentTimeMillis());
         //Setting time of the day (8am here) when notification will be sent every day (default)
-        calendar.set(Calendar.HOUR_OF_DAY, 17);
-        calendar.set(Calendar.MINUTE, 0);
+        calendar.set(Calendar.HOUR_OF_DAY, 11);
+        calendar.set(Calendar.MINUTE, 28);
         calendar.set(Calendar.SECOND, 0);
+
+        int todayOfWeek = calendar.get(Calendar.DAY_OF_WEEK);
 
         if (calendar.before(today))
         {
@@ -60,24 +62,30 @@ public class NotificationHelper {
             calendar.add(Calendar.DATE, 1);
         }
 
-        Log.i("Masuk lagi", calendar.toString());
+        if (todayOfWeek != Calendar.SUNDAY && todayOfWeek != Calendar.SATURDAY)
+        {
+            Log.i("Masuk lagi", calendar.toString());
 
-        //Setting intent to class where Alarm broadcast message will be handled
-        Intent intent = new Intent(context, AlarmReceiver.class);
-        //Setting alarm pending intent
-        alarmIntentRTC = PendingIntent.getBroadcast(context, ALARM_TYPE_RTC, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+            //Setting intent to class where Alarm broadcast message will be handled
+            Intent intent = new Intent(context, AlarmReceiver.class);
+            //Setting alarm pending intent
+            alarmIntentRTC = PendingIntent.getBroadcast(context, ALARM_TYPE_RTC, intent, PendingIntent.FLAG_UPDATE_CURRENT);
 
-        //getting instance of AlarmManager service
-        alarmManagerRTC = (AlarmManager)context.getSystemService(ALARM_SERVICE);
+            //getting instance of AlarmManager service
+            alarmManagerRTC = (AlarmManager)context.getSystemService(ALARM_SERVICE);
 
-        //Setting alarm to wake up device every day for clock time.
-        //AlarmManager.RTC_WAKEUP is responsible to wake up device for sure, which may not be good practice all the time.
-        // Use this when you know what you're doing.
-        //Use RTC when you don't need to wake up device, but want to deliver the notification whenever device is woke-up
-        //We'll be using RTC.WAKEUP for demo purpose only
-        alarmManagerRTC.setInexactRepeating(AlarmManager.RTC_WAKEUP,
-                calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY, alarmIntentRTC);
-
+            //Setting alarm to wake up device every day for clock time.
+            //AlarmManager.RTC_WAKEUP is responsible to wake up device for sure, which may not be good practice all the time.
+            // Use this when you know what you're doing.
+            //Use RTC when you don't need to wake up device, but want to deliver the notification whenever device is woke-up
+            //We'll be using RTC.WAKEUP for demo purpose only
+            alarmManagerRTC.setInexactRepeating(AlarmManager.RTC_WAKEUP,
+                    calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY, alarmIntentRTC);
+        }
+        else
+        {
+            Log.i("Notif", "Holiday");
+        }
     }
 
 

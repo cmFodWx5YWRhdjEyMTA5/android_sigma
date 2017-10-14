@@ -47,15 +47,23 @@ public class ProjectDocHolder extends RecyclerView.ViewHolder
         tvDocDate.setText(" at " + model.getDateUpload());
         tvDocDesc.setText(model.getDocDesc());
 
-        if (model.getDocName().toLowerCase().contains("doc") || model.getDocName().toLowerCase().contains("docx")) {
-            ivDocWord.setVisibility(View.VISIBLE);
-            ivDocExcel.setVisibility(View.GONE);
+        try
+        {
+            if (model.getDocName().toLowerCase().contains("doc") || model.getDocName().toLowerCase().contains("docx")) {
+                ivDocWord.setVisibility(View.VISIBLE);
+                ivDocExcel.setVisibility(View.GONE);
+            }
+            else  if (model.getDocName().toLowerCase().contains("xls") || model.getDocName().toLowerCase().contains("xlsx")) {
+                ivDocWord.setVisibility(View.GONE);
+                ivDocExcel.setVisibility(View.VISIBLE);
+            }
+            else {
+                ivDocWord.setVisibility(View.GONE);
+                ivDocExcel.setVisibility(View.GONE);
+            }
         }
-        else  if (model.getDocName().toLowerCase().contains("xls") || model.getDocName().toLowerCase().contains("xlsx")) {
-            ivDocWord.setVisibility(View.GONE);
-            ivDocExcel.setVisibility(View.VISIBLE);
-        }
-        else {
+        catch (Exception e)
+        {
             ivDocWord.setVisibility(View.GONE);
             ivDocExcel.setVisibility(View.GONE);
         }
